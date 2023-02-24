@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+  <defaultcontrol always="true">50</defaultcontrol>
+  <backgroundcolor>Background</backgroundcolor>
+  <views>50,51</views>
+  <menucontrol>9000</menucontrol>
+  <include>OpenClose_Animation</include>
+  <controls>
+    <include>DefaultBackground</include>
+    <control type="group">
+      <control type="label">
+        <top>30</top>
+        <left>60</left>
+        <textcolor>white</textcolor>
+        <font>font30_title</font>
+        <label>$INFO[ListItem.Label]</label>
+        <visible>Control.HasFocus(50)</visible>
+      </control>
+      <control type="image">
+        <top>200</top>
+        <left>100</left>
+        <width>1720</width>
+        <height>800</height>
+        <texture colordiffuse="AltPosterBack" border="20">diffuse/poster-wall.png</texture>
+        <brodersize>20</brodersize>
+        <visible>Control.IsVisible(50)</visible>
+      </control>
+      <control type="image">
+        <top>520</top>
+        <left>100</left>
+        <width>1720</width>
+        <height>500</height>
+        <texture colordiffuse="AltPosterBack" border="20">diffuse/poster-wall.png</texture>
+        <brodersize>20</brodersize>
+        <visible>Control.IsVisible(51)</visible>
+      </control>
+      <control type="group">
+        <top>120</top>
+        <left>100</left>
+        <visible>Control.IsVisible(51)</visible>
+        <control type="label">
+          <textcolor>white</textcolor>
+          <font>font30_title</font>
+          <label>$INFO[ListItem.Title]</label>
+        </control>
+        <control type="label">
+          <right>100</right>
+          <align>right</align>
+          <textcolor>white</textcolor>
+          <font>font30_title</font>
+          <label>$INFO[ListItem.ChannelName]</label>
+        </control>
+        <include content="Object_Separator">
+          <param name="horizontal" value="true"/>
+          <param name="colordiffuse" value="1fcccccc"/>
+          <top>70</top>
+          <left>0</left>
+          <width>1720</width>
+        </include>
+        <control type="group">
+          <top>100</top>
+          <include content="Object_Info_Line">
+            <param name="visible_infoline" value="true" />
+          </include>
+        </control>
+        <control type="textbox">
+          <top>160</top>
+          <left>0</left>
+          <width>1720</width>
+          <height>147</height>
+          <font>font12</font>
+          <textcolor>b3ededed</textcolor>
+          <scroll>Skin.HasSetting(autoscroll)</scroll>
+          <label>$INFO[ListItem.Plot]</label>
+        </control>
+      </control>
+      <animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
+      <control type="group">
+        <control type="list" id="11">
+          <top>120</top>
+          <left>110</left>
+          <width>1700</width>
+          <align>center</align>
+          <ondown>50</ondown>
+          <orientation>horizontal</orientation>
+          <animation effect="slide" start="0" end="0,340" time="0" condition="Control.IsVisible(51)">Conditional</animation>
+          <scrolltime tween="cubic" easing="out">500</scrolltime>
+          <itemlayout width="170">
+            <control type="label">
+              <left>30</left>
+              <top>3</top>
+              <width>auto</width>
+              <height>22</height>
+              <font>font_tiny_hintlabel</font>
+              <aligny>center</aligny>
+              <align>center</align>
+              <textcolor>white</textcolor>
+              <label>$INFO[ListItem.Label]</label>
+            </control>
+          </itemlayout>
+          <focusedlayout width="170">
+            <control type="label">
+              <left>30</left>
+              <top>3</top>
+              <width>auto</width>
+              <height>22</height>
+              <font>font_tiny_hintlabel</font>
+              <aligny>center</aligny>
+              <align>center</align>
+              <textcolor>$VAR[ColorHighlight]</textcolor>
+              <label>$INFO[ListItem.Label]</label>
+            </control>
+          </focusedlayout>
+        </control>
+        <control type="fixedlist" id="50">
+          <left>100</left>
+          <top>200</top>
+          <right>100</right>
+          <bottom>80</bottom>
+          <onright>SetFocus(9000)</onright>
+          <onleft>11</onleft>
+          <onup>50</onup>
+          <ondown>50</ondown>
+          <movement>3</movement>
+          <focusposition>3</focusposition>
+          <scrolltime tween="cubic" easing="out">500</scrolltime>
+          <viewtype label="535">list</viewtype>
+          <include content="PVRListItemLayouts">
+            <param name="width" value="520"/>
+            <param name="width_next" value="820"/>
+          </include>
+        </control>
+        <control type="fixedlist" id="51">
+          <left>100</left>
+          <height>500</height>
+          <top>520</top>
+          <right>100</right>
+          <bottom>80</bottom>
+          <onright>SetFocus(9000)</onright>
+          <onleft>11</onleft>
+          <onup>51</onup>
+          <ondown>51</ondown>
+          <movement>1</movement>
+          <focusposition>1</focusposition>
+          <scrolltime tween="cubic" easing="out">500</scrolltime>
+          <viewtype label="31429">list</viewtype>
+          <include content="PVRListItemLayouts">
+              <param name="width" value="520"/>
+              <param name="width_next" value="820"/>
+          </include>
+        </control>
+        <include content="Object_Separator">
+          <param name="horizontal" value="false"/>
+          <param name="colordiffuse" value="1fcccccc"/>
+          <left>920</left>
+          <top>200</top>
+          <width>1</width>
+          <height>800</height>
+          <visible>Control.IsVisible(50)</visible>
+        </include>
+        <include content="Object_Separator">
+          <param name="horizontal" value="false"/>
+          <param name="colordiffuse" value="1fcccccc"/>
+          <left>920</left>
+          <top>520</top>
+          <width>1</width>
+          <height>500</height>
+          <visible>Control.IsVisible(51)</visible>
+        </include>
+      </control>
+      <include content="TopBar">
+        <param name="breadcrumbs_label" value="$VAR[BreadcrumbsPVRChannelsVar]"/>
+      </include>
+      <include>PVRChannelNumberInput</include>
+      <control type="group">
+        <include content="MediaMenuCommon">
+          <param name="visible">$EXP[MediaMenu]</param>
+          <param name="onleft">50</param>
+          <param name="onright">50</param>
+          <param name="onback">50</param>
+        </include>
+      </control>
+    </control>
+    <include>Defs_MediaMenuCommon</include>
+    <control type="button" id="28">
+      <include>HiddenObject</include>
+    </control>
+    <control type="label" id="29">
+      <font/>
+      <include>HiddenObject</include>
+    </control>
+    <control type="label" id="30">
+      <font/>
+      <include>HiddenObject</include>
+    </control>
+  </controls>
+</window>

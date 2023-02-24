@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="View_56_Posters">
+    <control type="group">
+      <top>25</top>
+      <visible>Control.IsVisible(56)</visible>
+      <control type="group">
+        <control type="label">
+          <left>695</left>
+          <top>150</top>
+          <right>50</right>
+          <height>40</height>
+          <textcolor>white</textcolor>
+          <label>$INFO[ListItem.Label]$VAR[ListSubLabelVar]</label>
+          <font>font45_title</font>
+          <visible>[String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(ListItem.Art(tvshow.clearlogo))] | Skin.HasSetting(DisableClearlogo)</visible>
+        </control>
+        <control type="image">
+          <top>60</top>
+          <left>695</left>
+          <right>50</right>
+          <width>480</width>
+          <height>200</height>
+          <aspectratio>keep</aspectratio>
+          <texture background="true">$VAR[Image_ClearLogo]</texture>
+          <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + !Skin.HasSetting(DisableClearlogo)</visible>
+        </control>
+      </control>
+      <control type="group">
+        <visible>!String.IsEmpty(Container(56).ListItem.Title)</visible>
+        <include content="Object_Ratings_Content">
+          <param name="directory" value="$INFO[Skin.String(Icons)]"/>
+          <param name="align" value="left"/>
+          <param name="top" value="580"/>
+          <param name="left" value="695"/>
+        </include>
+      </control>
+      <control type="textbox">
+        <left>695</left>
+        <top>280</top>
+        <height>145</height>
+        <right>120</right>
+        <autoscroll time="3000" delay="7000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
+        <label>$VAR[Label_PlotTextBoxVar]</label>
+        <shadowcolor>text_shadow</shadowcolor>
+        <visible>![ListItem.IsCollection + String.IsEmpty(ListItem.PlotOutline) + String.IsEmpty(ListItem.Plot)]</visible>
+      </control>
+      <control type="grouplist">
+        <left>695</left>
+        <top>440</top>
+        <itemgap>15</itemgap>
+        <orientation>vertical</orientation>
+        <control type="grouplist">
+          <width>1200</width>
+          <height>55</height>
+          <itemgap>30</itemgap>
+          <orientation>horizontal</orientation>
+          <visible>!String.IsEmpty(Container(56).ListItem.Title)</visible>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31256][/COLOR][CR]$VAR[StudioVar]</label>
+          </control>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31257][/COLOR][CR]$VAR[DirectorVar]</label>
+          </control>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31259][/COLOR][CR]$VAR[WriterVar]</label>
+          </control>
+        </control>
+        <control type="grouplist">
+          <left>695</left>
+          <top>440</top>
+          <width>1200</width>
+          <height>55</height>
+          <itemgap>30</itemgap>
+          <orientation>horizontal</orientation>
+          <visible>!String.IsEmpty(Container(56).ListItem.Title)</visible>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31255][/COLOR][CR]$VAR[GenreVar]</label>
+          </control>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31258][/COLOR][CR]$VAR[CountryVar]</label>
+          </control>
+          <control type="label">
+            <width>365</width>
+            <height>55</height>
+            <scroll>false</scroll>
+            <textcolor>white</textcolor>
+            <font>font_small_info_upp</font>
+            <label>[COLOR b3ededed]$LOCALIZE[31261][/COLOR][CR]$VAR[CastVar]</label>
+          </control>
+        </control>
+      </control>
+      <control type="group">
+        <description>Poster Viewtype</description>
+        <centertop>50%</centertop>
+        <height>720</height>
+        <control type="group">
+          <visible>Control.IsVisible(56)</visible>
+          <control type="fixedlist" id="56">
+            <top>466</top>
+            <left>630</left>
+            <right>60</right>
+            <width>70%</width>
+            <height>704</height>
+            <focusposition>1</focusposition>
+            <movement>1</movement>
+            <pagecontrol>5199</pagecontrol>
+            <scrolltime tween="cubic" easing="out">500</scrolltime>
+            <orientation>horizontal</orientation>
+            <onleft>56</onleft>
+            <onup>SetFocus(9000)</onup>
+            <ondown>5199</ondown>
+            <onright>56</onright>
+            <visible>Container.Content(movies) | Container.Content(seasons) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(games)</visible>
+            <preloaditems>1</preloaditems>
+            <viewtype label="31254">icon</viewtype>
+            <include content="View_Forced">
+              <param name="string" value="$LOCALIZE[31254]"/>
+            </include>
+            <itemlayout width="317" height="407">
+              <control type="group">
+                <include content="ViewPosterItemLayout"/>
+                <include content="View_WatchedOverlay">
+                  <param name="bottom" value="0"/>
+                  <param name="right" value="44"/>
+                  <param name="visible" value="true"/>
+                </include>
+              </control>
+            </itemlayout>
+            <focusedlayout width="317" height="407">
+              <control type="group">
+                <include content="ViewPosterItemLayout"/>
+                  <include content="Selectbox">
+                    <param name="visible_posters" value="true"/>
+                    <param name="visible_squares" value="false"/>
+                    <param name="visible_landscapes" value="false"/>
+                  </include>
+                  <include content="View_WatchedOverlay">
+                    <param name="bottom" value="0"/>
+                    <param name="right" value="44"/>
+                    <param name="selected" value="true"/>
+                  </include>
+              </control>
+            </focusedlayout>
+          </control>
+        </control>
+      </control>
+      <control type="group">
+        <control type="image">
+          <top>-50%</top>
+          <left>0</left>
+          <width>650</width>
+          <height>200%</height>
+          <texture colordiffuse="AltPosterBack">diffuse/poster-wall.png</texture>
+          <bordertexture border="21">overlays/shadow.png</bordertexture>
+          <bordersize>20</bordersize>
+        </control>
+        <control type="image">
+          <left>-1280</left>
+          <height>800</height>
+          <centertop>50%</centertop>
+          <aspectratio scalediffuse="true">keep</aspectratio>
+          <texture diffuse="diffuse/poster-big.png">$INFO[Container(56).ListItem.Art(poster)]</texture>
+        </control>
+      </control>
+    </control>
+  </include>
+</includes>
