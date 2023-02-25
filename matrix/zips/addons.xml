@@ -1258,7 +1258,7 @@
             <screenshot>resources/screenshot-06.jpg</screenshot>
         </assets>
     </extension>
-</addon><addon id="skin.arctic.zephyr.mod" version="1.1.72" name="Bingie Minus" provider-name="jurialmunkey, beatmasterrs">
+</addon><addon id="skin.arctic.zephyr.mod" version="1.1.72" name="Arctic Zephyr Reloded" provider-name="jurialmunkey, beatmasterrs">
     <requires>
         <import addon="xbmc.gui" version="5.15.0" />
         <import addon="script.skinshortcuts" version="0.4.0" />
