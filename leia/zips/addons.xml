@@ -1,7 +1,467 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.program.autocompletion" name="AutoCompletion for virtual keyboard" version="1.0.1" provider-name="Philipp Temminghoff (phil65)">
+<addons><addon id="context.themoviedb.helper" version="1.1.1" name="TMDbHelper - Additional Context Menu Items" provider-name="jurialmunkey">
     <requires>
-        <import addon="xbmc.python" version="2.25.0" />
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="plugin.video.themoviedb.helper" version="4.10.30" />
+    </requires>
+    <extension point="kodi.context.item">
+        <menu id="kodi.core.main">
+            <menu>
+                <label>$ADDON[plugin.video.themoviedb.helper 32145]</label>
+                <item library="context.py" args="play_using">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32322]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+                <item library="context.py" args="related_lists">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32235]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+                <item library="context.py" args="sync_trakt">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32295]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+                <item library="context.py" args="refresh_details">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32233]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+                <item library="context.py" args="manage_artwork">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32222]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+                <item library="context.py" args="add_to_library">
+                    <label>$ADDON[plugin.video.themoviedb.helper 32151]</label>
+                    <visible>[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]</visible>
+                </item>
+            </menu>
+        </menu>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Additional context menu items for TMDbHelper</summary>
+        <description lang="en">Adds additional TMDbHelper context menu items
+        </description>
+        <platform>all</platform>
+        <license>GPL-3.0-or-later</license>
+        <website>https://github.com/jurialmunkey/plugin.video.themoviedb.helper</website>
+        <forum>https://forum.kodi.tv/showthread.php?tid=345847</forum>
+        <source />
+        <disclaimer lang="en" />
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="metadata.common.allmusic.com" name="AllMusic Scraper Library" version="3.2.2" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="allmusic.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на музикална инф. от AllMusic</summary>
+    <summary lang="en">AllMusic Music Scraper Library</summary>
+    <summary lang="de">Musik-Scraper für AllMusic.com</summary>
+    <summary lang="es">Scraper de música de AllMusic</summary>
+    <summary lang="fi">AllMusic musiikkitietojen lataajan kirjasto</summary>
+    <summary lang="fr">Scraper AllMusic pour la musique</summary>
+    <summary lang="hu">AllMusic zenei adat leolvasó</summary>
+    <summary lang="nl">AllMusic-scraperfuncties</summary>
+    <summary lang="pl">Scraper muzyki AllMusic</summary>
+    <summary lang="pt">Scraper de música AllMusic</summary>
+    <summary lang="ro">Bibliotecă catalog de muzică AllMusic</summary>
+    <summary lang="ru">Музыкальная Информация AllMusic</summary>
+    <summary lang="se">Skrapa för AllMusic.com</summary>
+    <summary lang="zh">AllMusic音乐刮削器代码库</summary>
+    <description lang="bg">Извлича инф. за музикални файлове от www.allmusic.com</description>
+    <description lang="en">Download Music information from www.allmusic.com</description>
+    <description lang="de">Downloade Musik Informationen von www.allmusic.com</description>
+    <description lang="es">Descarga información musical de www.allmusic.com</description>
+    <description lang="fi">Lataa musiikkitietoja osoitteesta www.allmusic.com</description>
+    <description lang="fr">Télécharger les infos musicales depuis www.allmusic.com</description>
+    <description lang="hu">Zene információk letöltése a www.allmusic.com webhelyről</description>
+    <description lang="nl">Muziekinformatie ophalen van www.allmusic.com</description>
+    <description lang="pl">Pobieraj informacje o muzyce z www.allmusic.com</description>
+    <description lang="pt">Descarregar informação de música de www.allmusic.com</description>
+    <description lang="ro">Descărcați informații muzică de pe www.allmusic.com</description>
+    <description lang="ru">Загружать информацию о Музыке с www.allmusic.com</description>
+    <description lang="se">Ladda ner musikinformation från www.allmusic.com</description>
+    <description lang="zh">从www.allmusic.com下载音乐信息</description>
+  </extension>
+</addon><addon id="metadata.common.fanart.tv" name="fanart.tv Scraper Library" version="3.6.4" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="fanarttv.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на инф. от fanart.tv</summary>
+    <summary lang="en">fanart.tv Scraper Library</summary>
+    <summary lang="de">Scraper für Hintergründe von fanart.tv</summary>
+    <summary lang="es">Scraper de fanart.tv</summary>
+    <summary lang="fi">fanart.tv taustakuvalataajan kirjasto</summary>
+    <summary lang="fr">Scraper fanart.tv</summary>
+    <summary lang="hu">fanart.tv leolvasó-könyvtár</summary>
+    <summary lang="nl">fanart.tv-scraperfuncties</summary>
+    <summary lang="pl">Scraper biblioteki fanart.tv</summary>
+    <summary lang="pt">Biblioteca de fundos fanart.tv</summary>
+    <summary lang="ru">Обработчик Фоновых изображений с fanart.tv</summary>
+    <summary lang="se">Skrapa för fanart.tv</summary>
+    <summary lang="zh">fanart.tv刮削器代码库</summary>
+    <description lang="bg">Сваля декорации от www.fanart.tv.com</description>
+    <description lang="en">Download backdrops from www.fanart.tv.com</description>
+    <description lang="de">Downloade Hintergründe von www.fanart.tv.com</description>
+    <description lang="es">Descarga fanart y fotos de artistas de www.fanart.tv.com</description>
+    <description lang="fi">Lataa taustakuvia osoitteesta www.fanart.tv.com</description>
+    <description lang="fr">Télécharge les backdrops depuis www.htbackgrops.com</description>
+    <description lang="hu">Fanartképek letöltése www.fanart.tv.com webhelyről</description>
+    <description lang="nl">Achtergronden ophalen van www.fanart.tv.com</description>
+    <description lang="pl">Pobieraj tła z www.fanart.tv.com</description>
+    <description lang="pt">Descarregar fundos de www.fanart.tv.com</description>
+    <description lang="ru">Загружать фоновые изображения с www.fanart.tv.com</description>
+    <description lang="se">Ladda ner bakgrundsbilder från www.fanart.tv.com</description>
+    <description lang="zh">从www.fanart.tv.com下载背景图</description>
+  </extension>
+</addon><addon id="metadata.common.imdb.com" name="IMDB Scraper Library" version="3.2.8" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="imdb.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на инф. от IMDB</summary>
+    <summary lang="en">IMDB Scraper Library</summary>
+    <summary lang="fi">IMDB elokuvatietojen lataaja</summary>
+    <summary lang="hu">IMDB leolvasó-könyvtár</summary>
+    <summary lang="kr">IMDB 스크래퍼 라이브러리</summary>
+    <summary lang="nl">IMDB Scraper Bibliotheek</summary>
+    <summary lang="pl">Scraper IMDb</summary>
+    <summary lang="pt">Scraper de filmes IMDb</summary>
+    <summary lang="se">Skrapa för IMDB</summary>
+    <description lang="bg">Сваля информация за филми от www.imdb.com</description>
+    <description lang="en">Download Movie information from www.imdb.com</description>
+    <description lang="fi">Lataa elokuvatietoja osoitteesta www.imdb.com</description>
+    <description lang="hu">Film információk letöltése a www.imdb.com webhelyről</description>
+    <description lang="kr">www.imdb.com 에서 영화 정보 다운로드</description>
+    <description lang="nl">Download film informatie van www.imdb.com</description>
+    <description lang="pl">Pobieraj informacje o filmach z www.imdb.com</description>
+    <description lang="pt">Descarregar informação de filmes de www.imdb.com</description>
+    <description lang="se">Ladda ner filminformation från www.imdb.com</description>
+  </extension>
+</addon><addon id="metadata.common.musicbrainz.org" name="MusicBrainz Scraper Library" version="2.2.4" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="musicbrainz.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на музикална инф. от MusicBrainz</summary>
+    <summary lang="en">MusicBrainz Music Scraper Library</summary>
+    <summary lang="de">Musik-Scraper für musicbrainz.org</summary>
+    <summary lang="es">Scraper de música de MusicBrainz</summary>
+    <summary lang="fi">MusicBrainz musiikkitietojen lataajan kirjasto</summary>
+    <summary lang="fr">Scraper MusicBrainz pour la musique</summary>
+    <summary lang="hu">MusicBrainz zenei adat leolvasó</summary>
+    <summary lang="nl">MusicBrainz-scraperfuncties</summary>
+    <summary lang="pl">Scraper muzyki MusicBrainz</summary>
+    <summary lang="pt">Scraper de música MusicBrainz</summary>
+    <summary lang="ro">Bibliotecă catalog de muzică MusicBrainz</summary>
+    <summary lang="ru">Музыкальная Информация MusicBrainz</summary>
+    <summary lang="se">Skrapa för musicbrainz.org</summary>
+    <summary lang="zh">MusicBrainz音乐刮削器代码库</summary>
+    <description lang="bg">Извлича инф. за музикални файлове от www.musicbrainz.org</description>
+    <description lang="en">Download Music information from www.musicbrainz.org</description>
+    <description lang="de">Downloade Musik Informationen von www.musicbrainz.org</description>
+    <description lang="es">Descarga información musical de www.musicbrainz.org</description>
+    <description lang="fi">Lataa musiikkitietoja osoitteesta www.musicbrainz.org</description>
+    <description lang="fr">Télécharger les infos musicales depuis www.musicbrainz.org</description>
+    <description lang="hu">Zene információk letöltése a www.musicbrainz.org webhelyről</description>
+    <description lang="nl">Muziekinformatie ophalen van www.musicbrainz.org</description>
+    <description lang="pl">Pobieraj informacje o muzyce z www.musicbrainz.org</description>
+    <description lang="pt">Descarregar informação de música de www.musicbrainz.org</description>
+    <description lang="ro">Descărcați informații muzică de pe www.musicbrainz.org</description>
+    <description lang="ru">Загружать информацию о Музыке с www.musicbrainz.org</description>
+    <description lang="se">Ladda ner musikinformation från www.musicbrainz.org</description>
+    <description lang="zh">从www.musicbrainz.org下载音乐信息</description>
+  </extension>
+</addon><addon id="metadata.common.theaudiodb.com" name="TheAudioDb Scraper Library" version="2.0.3" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="tadb.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на музикална инф. от TheAudioDb</summary>
+    <summary lang="en">TheAudioDb Music Scraper Library</summary>
+    <summary lang="de">Musik-Scraper für TheAudioDb.org</summary>
+    <summary lang="es">Scraper de música de TheAudioDb</summary>
+    <summary lang="fi">TheAudioDb musiikkitietojen lataajan kirjasto</summary>
+    <summary lang="fr">Scraper TheAudioDb pour la musique</summary>
+    <summary lang="hu">TheAudioDb zenei adat leolvasó</summary>
+    <summary lang="nl">TheAudioDb-scraperfuncties</summary>
+    <summary lang="pl">Scraper muzyki TheAudioDb</summary>
+    <summary lang="pt">Scraper de música TheAudioDb</summary>
+    <summary lang="ro">Bibliotecă catalog de muzică TheAudioDb</summary>
+    <summary lang="ru">Музыкальная Информация TheAudioDb</summary>
+    <summary lang="se">Skrapa för TheAudioDb.org</summary>
+    <summary lang="zh">TheAudioDb音乐刮削器代码库</summary>
+    <description lang="bg">Извлича инф. за музикални файлове от www.theaudiodb.com</description>
+    <description lang="en">Download Music information from www.theaudiodb.com</description>
+    <description lang="de">Downloade Musik Informationen von www.theaudiodb.com</description>
+    <description lang="es">Descarga información musical de www.theaudiodb.com</description>
+    <description lang="fi">Lataa musiikkitietoja osoitteesta www.theaudiodb.com</description>
+    <description lang="fr">Télécharger les infos musicales depuis www.theaudiodb.com</description>
+    <description lang="hu">Zene információk letöltése a www.theaudiodb.com webhelyről</description>
+    <description lang="nl">Muziekinformatie ophalen van www.theaudiodb.com</description>
+    <description lang="pl">Pobieraj informacje o muzyce z www.theaudiodb.com</description>
+    <description lang="pt">Descarregar informação de música de www.theaudiodb.com</description>
+    <description lang="ro">Descărcați informații muzică de pe www.theaudiodb.com</description>
+    <description lang="ru">Загружать информацию о Музыке с www.theaudiodb.com</description>
+    <description lang="se">Ladda ner musikinformation från www.theaudiodb.com</description>
+    <description lang="zh">从www.theaudiodb.com下载音乐信息</description>
+  </extension>
+</addon><addon id="metadata.common.themoviedb.org" name="The Movie Database Scraper Library" version="3.2.19" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.library" library="tmdb.xml" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary lang="bg">Библиотека за сваляне на инф. от TMDb</summary>
+    <summary lang="en">TMDb Scraper Library</summary>
+    <summary lang="es">Scraper de peliculas de TMDb</summary>
+    <summary lang="fi">TMDb elokuvatietojen lataajan kirjasto</summary>
+    <summary lang="fr">Scraper TMDb</summary>
+    <summary lang="hu">TMDb leolvasó-könyvtár</summary>
+    <summary lang="nl">TMDb-scraperfuncties</summary>
+    <summary lang="pl">Scraper biblioteki TMDb</summary>
+    <summary lang="pt">Scraper de filmes TMDb</summary>
+    <summary lang="ro">Bibliotecă catalog TMDb</summary>
+    <summary lang="ru">Обработчик для TMDb</summary>
+    <summary lang="se">Skrapebibliotek för TMDb</summary>
+    <summary lang="zh">TMDb刮削器代码库</summary>
+    <description lang="bg">Сваля миниатюри и fanarts от www.themoviedb.org</description>
+    <description lang="en">Download thumbs and fanarts from www.themoviedb.org</description>
+    <description lang="es">Descarga posters y fanart de www.themoviedb.org</description>
+    <description lang="fi">Lataa pienoiskuvia ja fanitaidetta www.themoviedb.org -sivustolta</description>
+    <description lang="fr">Télécharge vignettes et backdrops depuis www.themoviedb.org</description>
+    <description lang="hu">Bélyeg- és fanartképek letöltése a www.themoviedb.org webhelyről</description>
+    <description lang="nl">Miniaturen en fanart ophalen van www.themoviedb.org</description>
+    <description lang="pl">Pobieraj ikony i fanarty z www.themoviedb.org</description>
+    <description lang="pt">Descarregar informação de filmes de www.themoviedb.org</description>
+    <description lang="ro">Descărcați miniaturi și imagini realizate de fani de pe www.themoviedb.org</description>
+    <description lang="ru">Загружать миниатюры и фанарт с www.themoviedb.org</description>
+    <description lang="se">Ladda ner miniatyrer och fanart från www.themoviedb.org</description>
+    <description lang="zh">从www.themoviedb.org下载海报和同人画</description>
+  </extension>
+</addon><addon id="metadata.themoviedb.org" name="The Movie Database" version="5.2.6" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+    <import addon="metadata.common.imdb.com" version="2.9.2" />
+    <import addon="metadata.common.themoviedb.org" version="3.2.6" />
+    <import addon="plugin.video.youtube" version="4.4.10" optional="true" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.movies" language="en" library="tmdb.xml" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="af_ZA">TMDB Fliek Skraper</summary>
+    <summary lang="be_BY">TMDB Movie Scraper</summary>
+    <summary lang="bg_BG">Сваля инф. за филми от TMDB</summary>
+    <summary lang="ca_ES">Arreplegador de pel·lícules TMDB</summary>
+    <summary lang="cs_CZ">Stahovač informací k filmům z TMDB</summary>
+    <summary lang="cy_GB">Crafwr Ffilmiau TMDB</summary>
+    <summary lang="da_DK">TMDB Scraper til Film</summary>
+    <summary lang="de_DE">TMDB Filmscraper</summary>
+    <summary lang="el_GR">Scraper Ταινιών του TMDb</summary>
+    <summary lang="en_GB">TMDB Movie Scraper</summary>
+    <summary lang="en_NZ">TMDB Movie Scraper</summary>
+    <summary lang="en_US">TMDB Movie Scraper</summary>
+    <summary lang="es_ES">Scraper de películas de TheMovieDB</summary>
+    <summary lang="es_AR">Scraper de Películas de TheMovieDB</summary>
+    <summary lang="es_MX">Scraper de Películas TMDb</summary>
+    <summary lang="et_EE">TMDB Filmi kaabits</summary>
+    <summary lang="fi_FI">TMDB elokuvatietojen lataaja</summary>
+    <summary lang="fr_FR">Collecteur de Films TMDB</summary>
+    <summary lang="fr_CA">Extracteur de films TMDB</summary>
+    <summary lang="gl_ES">Scraper de Filme de TMDB</summary>
+    <summary lang="he_IL">TMDB סקרייפר סרטים</summary>
+    <summary lang="hr_HR">TMDB filmski sakupljač informacija</summary>
+    <summary lang="hu_HU">TMDB filmadat leolvasó</summary>
+    <summary lang="id_ID">Pengais Film TMDB</summary>
+    <summary lang="is_IS">TMDB Skafa fyrir Kvikmyndir</summary>
+    <summary lang="it_IT">Ricercatore per TMDB Movie</summary>
+    <summary lang="ja_JP">TMDB映画のスクレーパー</summary>
+    <summary lang="ko_KR">TMDB 영화 정보수집기</summary>
+    <summary lang="lt_LT">TMDB filmų skreperis</summary>
+    <summary lang="mk_MK">TMDB инфо за филмови</summary>
+    <summary lang="ml_IN">മൂവി ഡി ബി, വിവരശേഖരം</summary>
+    <summary lang="ms_MY">Pengikis Cakera TMDB</summary>
+    <summary lang="my_MM">TMDB Movie Scraper</summary>
+    <summary lang="nl_NL">TMDb-filmscraper</summary>
+    <summary lang="nb_NO">TMDB-skraper</summary>
+    <summary lang="pl_PL">Ekstraktor filmowy TMDB</summary>
+    <summary lang="pt_PT">Colector de filmes TMDb</summary>
+    <summary lang="pt_BR">Scraper de Filmes TMDb</summary>
+    <summary lang="ro_RO">Scraper de filme TMDb</summary>
+    <summary lang="ru_RU">Инфоресурс на базе TMDB</summary>
+    <summary lang="se">Skrapa för TMDb</summary>
+    <summary lang="sk_SK">TheMovieDB filmový sťahovač</summary>
+    <summary lang="sl_SI">Ponudnik informacij o filmih TMDB</summary>
+    <summary lang="sv_SE">TMDB Filmskrapa</summary>
+    <summary lang="ta_IN">LastFM நிகழ்படம் சுரண்டி</summary>
+    <summary lang="th_TH">ตัวรับข้อมูลภาพยนต์ TMDB</summary>
+    <summary lang="tr_TR">TMDB Film Scraper</summary>
+    <summary lang="uk_UA">TMDB — джерело інформації про фільми</summary>
+    <summary lang="vi_VN">Trình lấy dữ liệu Phim từ TMDB</summary>
+    <summary lang="zh_CN">TMDB 电影刮削器</summary>
+    <summary lang="zh_TW">TMDB 電影搜括器</summary>
+    <description lang="af_ZA">themoviedb.org is 'n verniet en oop fliek databasis. Dit is totaal gebruiker gedryf deur mense soos jy. TMDB word huidiglik deur miljoene mense elke maand gebruik, en met hulle kragtige API word dit ook deur baie gewilde media sentrums soos Kodi gebruik om Fliek Metadata, Plakkate en Ondersteunerkuns te onttrek om die gebruiker se ondervinding te verryk.</description>
+    <description lang="be_BY">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="bg_BG">themoviedb.org е безплатна и отворена филмова база данни. Задвижва се изцяло от потребителите си, от хора като вас. Милиони хора по света всеки месец ползват TMDb. Благодарение на многофункционално API може да се ползва от най-различни и популярни медийни центрове като Kodi, които извличат метаданни, постери и фанарт за филми с цел за красивото оформяне на интерфейса.</description>
+    <description lang="ca_ES">themoviedb.org és una base de dades oberta i lliure. Es manté completament per usuaris, per gent com tu. TMDb s'utilitza actualment per milions de persones cada mes i amb la seva potent API també és utilitzada per molts centre media populas com l'Kodi per obtenir les meta-dades de pel·lícules, pósters i fanart per enriquir l'experiència d'usuari.</description>
+    <description lang="cs_CZ">themoviedb.org je bezplatná a otevřená databáze filmů a seriálů. Je celá řízena uživateli, tedy lidmi jako vy. TMDb je aktuálně používána každý měsíc milióny lidí a se svým výborným API je také používána mnoha oblíbenými multimediálními centry, jako je Kodi, k získávání metadat, plakátů a fanartů filmů a seriálů pro obohacení uživatelského zážitku.</description>
+    <description lang="cy_GB">Mae themoviedb.org yn gronfa ddata ffilmiau rhydd ac agored. Mae'n cael ei yrru gan ddefnyddwyr fel chi. Mae TMDb yn cael ei ddefnyddio gan filiynau o bobl bob mis a gyda'i API pwerus, mae'n cael ei ddefnyddio gan lawer o'r canolfannau cyfrwng fel Kodi i estyn metadata ffilmiau, posteri a chelf er mwyn cyfoethogi profiad defnyddwyr.</description>
+    <description lang="da_DK">themoviedb.org er en fri og åben filmdatabase. Den er helt og aldeles brugerdrevet af folk som dig. TMDb bruges i dag af millioner af mennesker hver måned, og med deres kraftfulde API er den også brugt af mange populære mediecentre såsom Kodi til at hente metadata, plakater og fankunst til film, for at berige brugerens oplevelse.</description>
+    <description lang="de_DE">TheMovieDB.org ist eine freie und offene Filmdatenbank. Sie wird von Benutzern wie dir angetrieben. TheMovieDB wird zur Zeit von millionen Nutzern jeden Monat genutzt und dank ihrer mächtigen API ist sie auch von vielen Media-Center, wie z.B. Kodi, implementiert, um Film-Metadaten, -Poster und -Fanarts zu beziehen, die das Benutzererlebnis verbessern.</description>
+    <description lang="el_GR">Το themoviedb.org είναι μία δωρεάν και ανοικτή βάση δεδομένων ταινιών. Διαχειρίζεται πλήρως από ανθρώπους σαν και εσάς. Το TMDb χρησιμοποιείται από εκατομμύρια ανθρώπους κάθε μήνα, και με το πανίσχυρο API τους, χρησιμοποιείται και από πολλά δημοφιλή κέντρα πολυμέσων όπως το Kodi για να λαμβάνουν μετα-δεδομένα Ταινιών, Αφίσες και Fanart για εμπλουτισμό της εμπειρίας του χρήστη.</description>
+    <description lang="en_GB">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="en_NZ">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="en_US">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="es_ES">themovieDB.org es una base de datos de películas gratuita y abierta. Es una página web que se basa en contenido subido por los usuarios. TMDb es usada diariamente por mucha gente gracias a su API, que es usada por más programas aparte de Kodi para descargar información de películas así como Posters o Fanart (Fondos de escritorio basados en películas usados en distintos skins) para enriquecer la experiencia de usar Kodi.</description>
+    <description lang="es_AR">themovieDB.org es una base de datos de películas gratuita y abierta. Está  formada con contenido subido por usuarios como vos. TMDb es actualmente utilizada por millones de personas cada mes y, gracias a su poderosa API, es usada por muchos programas populares como Kodi para descargar Información de Películas, Posters y Fanart para enriquecer la experiencia de usar Kodi.</description>
+    <description lang="es_MX">themoviedb.org es una base de datos de películas gratis y abierta. Es completamente manejada por usuarios y personas como tu. Actualmente TMDb es usada por millones de personas cada mes, y dado a su poderosa API, es usada también por varios media centers populares como Kodi para obtener Metada de Películas, Posters y Fanarts, enriqueciendo de esta manera la experiencia del usuario.</description>
+    <description lang="et_EE">themoviedb.org on tasuta ja vaba juurdepääsuga filmide andmebaas.See on täielikult koostatud sinu sarnaste inimeste poolt. TMDb on hetkel igapäevaselt kasutuses miljonite inimeste poolt ja seda kasutavad paljud populaarsed meediakeskused, nagu ka Kodi, filmiandmete, fännikunsti ja posterite leidmiseks.</description>
+    <description lang="fi_FI">themoviedb.org on vapaa ja avoin elokuvatietokanta. Se on täysin käyttäjien ylläpitämä. TMDb:a käyttää miljoonat ihmiset joka kuukausi, sitä käytetään käyttäjäkokemuksen rikastuttamiseen monissa muissakin suosituissa Kodi:n kaltaisissa ohjelmissa lataamalla elokuvien tietoja, julisteita ja fanitaidetta.</description>
+    <description lang="fr_FR">themoviedb.org est une base de données gratuite et libre d'accès de films. Elle est totalement gérée par les utilisateurs. TMDb est actuellement utilisée par des millions de personnes chaque mois et, grâce à ses puissantes fonctions et routines, elle est également utilisée par de nombreux Media Centers populaires comme Kodi aux fins de récupération des Métadonnées, Posters et Fanarts des films en vue d'améliorer l'expérience de l'utilisateur.</description>
+    <description lang="fr_CA">themoviedb.org est une base de données libre et ouverte. Elle est complètement gérée par des gens comme vous. TMDb est actuellement utilisée par des millions de personnes chaque mois et avec son API puissante, elle est également utilisée par de nombreux centres multimédias populaires comme Kodi pour récupérer les métadonnées des films, les affiches et le fanart afin d'enrichir l'expérience de l'utilisateur.</description>
+    <description lang="gl_ES">themoviedb.org é una base de datos sobre filmes libre e aberta, impulsada por xente coma ti. Na actualidade TMDb é usada por millóns de persoas todos os meses, e grazas ó seu potente API, usado por algúns dos centros multimedia máis populares como Kodi para obter a información dos filmes, Posters e Fanart e así mellorar a experiencia do usuario.</description>
+    <description lang="he_IL">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="hr_HR">themoviedb.org je besplatna i otvorena baza filmskih podataka. TMDb trenutno koriste milijuni ljudi svaki mjesec uz pomoću njegovog snažnog API-ja, isto tako se koristi u mnogim popularnim medijskim centrima poput Kodi-a, kako bi mogli sakupljati informacije o filmovima, filmske postere, omote filmova i na kraju obogatili korisničko iskustvo.</description>
+    <description lang="hu_HU">A themoviedb.org egy ingyenes és nyílt filmadatbázis. Teljes egészében olyan felhasználók töltik fel, mint például Te. A TMDb-t havonta emberek milliói használják és a hatékony API-n keresztül számos népszerű média center is, mint például az Kodi a filmadatok, poszterek, fanartképek letöltésére.</description>
+    <description lang="id_ID">themoviedb.org adalah database film yang gratis dan terbuka. Ini benar-benar digerakkan oleh orang-orang seperti Anda. TMDb saat ini digunakan oleh jutaan orang setiap bulannya dan dengan APInya yang digdaya, juga digunakan oleh beberapa pusat media seperti Kodi untuk mengambil Metadata Film, Poster dan Fanart untuk menperkaya pengalaman penggunanya.</description>
+    <description lang="is_IS">themoviedb.org er frír og opinn gagnagrunnur. Hann er algjörlega rekinn af fólki eins og þér. TMBd er notaður af milljónum manna í hverjum mánuði og með öflugum forritaskilum þeirra (API), er hann líka notaður af mörgum vinsælum heimabíókerfum eins og Kodi til að ná í Ítarupplýsingar yfir Kvikmyndir, Veggspjöld og Fanart til að lífga upplifun notandans.</description>
+    <description lang="it_IT">themoviedb.org è un database libero e aperto. E' gestito da utenti e persone come te. Viene usato correntemente da millioni di persone ogni mese e con le sue potenti API, è anche utilizzato da molti popolari media centers come Kodi per ottenere Metadati, Posters e Fanart di film per arricchire la loro esperienza utente.</description>
+    <description lang="ja_JP">themoviedb.org は自由でオープンな映画データベースです。その運営は、完全にユーザ主導で行われています。TMDb は現在毎月何百万人もの人に利用されているほか、Kodi のようなメディアセンターも、TMDb のパワフルな API を介して映画メタデータ、ポスター、ファンアートを取得し、使い勝手を向上させるなどして使っています。</description>
+    <description lang="ko_KR">themoviedb.org 는 전적으로 여러분 같은 이용자가 주도하는 무료 공개 영화 데이터베이스입니다. TMDb 는 현재 매월 수백만의 사람들이 강력한 API와 함께 사용하고 있을 뿐만 아니라 Kodi 같은 많은 미디어 센터가 영화 정보, 포스터, 팬아트를 가져와 풍성한 사용자 경험을 제공하는데 이용되고 있습니다.</description>
+    <description lang="lt_LT">themoviedb.org yra nemokama ir atvira filmų duomenų bazė. Ji palaikoma tokių pat vartotojų kaip ir jūs. TMDb šiuo metu naudojama milijonų žmonių kiekvieną mėnesį ir turi galingą API, o taip pat naudojama daugelio populiarių media centrų, tokių kaip Kodi, kad gautų filmų metaduomenis, plakatus ir Fanart, siekiant praturtinti vartotojo patirtį.</description>
+    <description lang="mk_MK">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="ml_IN">മൂവി ഡി ബി, എല്ലാവർക്കും കൈവക്കാവുന്ന ഒരു സൗജന്യ വിവരശേഖരമാണ്. ഇതുമൂലം ലോകം മുഴുവനും സിനിമാ പോസ്റ്ററുകൾ എല്ലവരും കാണുന്നു</description>
+    <description lang="ms_MY">themoviedb.org adalah pangkalan data cakera terbuka. Ia sepenuhnya dipacu oleh individu seperti anda. TMDb buat masa ini diguna oleh berjuta-juta individu setiap bulan dan dengan API hebat mereka, ia juga digunakan oleh banyak pusat media popular seperti Kodi untuk mendapatkan Data Meta, Poster, Seni Peminat Cereka untuk memperkayakan pengalaman pengguna.</description>
+    <description lang="nl_NL">Themoviedb.org is een vrije en open filmdatabank. Gebruikers zoals jij vormen de motor van deze site. Op dit moment gebruiken elke maand miljoenen mensen TMDb. De krachtige API van de site laat mediacenters zoals Kodi toe om metadata, posters en fanart op te halen en zo de gebruikerservaring te verrijken.</description>
+    <description lang="nb_NO">themoviedb.org er en fir og åpen filmdatabase. Den drives helt og fullt av mennesker som deg. TMDB brukes av millioner av mennesker hver måned og med sitt gode API, brukes den også av mange popluære mediasenterløsninger som Kodi for å hente metadata for filmer, plakater og fanart for å gi en bedre brukeropplevelse.</description>
+    <description lang="pl_PL">themoviedb.org jest wolną i otwartą filmową bazą danych, zarządzaną przez osoby takie jak Ty. Obecnie odwiedzają ją miliony osób miesięcznie, a dzięki dostępności interfejsu programistycznego jest używana przez wiele centrów multimedialnych takich jak Kodi, jako źródło informacji o filmach, plakatów i tapet.</description>
+    <description lang="pt_PT">O themoviedb.org é uma base de dados de filmes livre e aberta. É actualizado inteiramente por pessoas como você e usado por milhões todos os meses. Com o poderoso motor de busca disponível, também se tornou no favorito para muitos programas de centro de média, como o popular Kodi, para obter informação, posters e fanart que enriquecem a experiência do utilizador.</description>
+    <description lang="pt_BR">O themoviedb.org é um banco de dados aberto e gratuito. É completamente operado por pessoas como você. O TMDb é atualmente usado por milhares de pessoas a cada mês e com sua poderosa API, é usado por muitas centrais de mídia populares como o Kodi para buscar metadados, cartazes e fanart de filmes para enriquecer a experiência do usuário.</description>
+    <description lang="ro_RO">themoviedb.org este o bază de date de filme gratuită și deschisă. Este actualizată de oameni ca și tine. TMDb este curent folosită de milioane de oameni în fiecare lună și datorită API-ului puternic, este de asemena folosită de multe centre media populare ca Kodi pentru a obține informații despre filme, afișe și imagini produse de fani (Fanart) care îmbogățesc experiența utilizatorului.</description>
+    <description lang="ru_RU">themoviedb.org — это бесплатная и открытая база данных фильмов. Она полностью поддерживается обычными людьми. В данный момент сайт TMDb используют миллионы людей каждый месяц, и благодаря мощному API его могут использовать различные популярные медиацентры, такие как Kodi, чтобы получать метаданные, постеры и фанарт для фильмов с целью красивого оформления интерфейса.</description>
+    <description lang="se">themoviedb.org är en fri och öppen filmdatabas. Det drivs helt av människor som dig. TMDb används av miljontals människor varje månad och med deras kraftfulla API, är det också använt av många populära mediacenter som Kodi för att hämta filmmetadata, omslag och fanart för att förgylla användarens upplevelse.</description>
+    <description lang="sk_SK">themoviedb.org je voľná a otvorená databáza filmov. Je výlučne vedená užívateľmi ako si ty. TMDb je každý mesiac používaná miliónmi ľudí, a vďaka svojmu výkonnému API je veľmi populárna medzi 'media centrami' ako Kodi pre sťahovanie filmových metadát, plagátov a fanartov pre obohatenie  zážitkov.</description>
+    <description lang="sl_SI">themoviedb.org je brezplačna in prosta baza filmov. Je v celoti ustvarjena s strani uporabnikov kot ste vi. TMDB uporablja miljone ljudi in z njihovo močno API, jo lahko uporabljate tudi v multimedijskih centrih kot Kodi, s tem prenesete informacije o filmih, plakate in ozadja ter s tem popestrite uporabniško izkušnjo.</description>
+    <description lang="sv_SE">themoviedb.org är en gratis och öppen filmdatabas. Den drivs helt av människor som du. TMDb används för närvarande av miljoner människor varje månad och med deras kraftfulla API används den även av många populära mediacenter som t.ex. Kodi för att hämta metadata om filmer, affischer och fanart för att berika användarens upplevelse.</description>
+    <description lang="ta_IN">themoviedb.org ஒரு இலவச மற்றும் திறந்த திரைப்பட தரவுத்தளம் ஆகும். இந்த தரவுத்தளம்  முற்றிலும் பயனர் மக்களால் இயக்கப்படுகிறது. TMDb அவர்களது சக்திவாய்ந்த API இனால் தற்போது பல இலட்சக்கணக்கான மக்களால் ஒவ்வொரு மாதமும் பயன்படுத்தப்படுகிறது, இது Kodi போன்ற பல பிரபல ஊடக மையங்களில் பயனர் அனுபவத்தை மேம்படுத்த பயன்படுத்தப்படுகிறது.</description>
+    <description lang="th_TH">themoviedb.org เป็นฐานข้อมูลภาพยนตร์ที่ฟรีและเปิดกว้าง. มันถูกขับเคลื่อนจากผู้ใช้ โดยคนเช่นคุณ. TMDb ปัจจุบันมีการใช้โดยคนนับล้านในแต่ละเดือน และมีประสิทธิภาพด้วย API ของพวกเขา , มันยังถูกใช้โดยหลายศูนย์สื่อที่นิยมเช่น Kodi เพื่อดึง อธิบายข้อมูลภาพยนตร์, โปสเตอร์และ แฟนอาร์ต เพื่อเพิ่มประสบการณ์ของผู้ใช้</description>
+    <description lang="tr_TR">themoviedb.org ücretsiz ve herkese açık bir film veri tabanıdır. Tamamen kullanıcılar tarafından oluşturulmakta ve yönetilmektedir. TMDb her ay milyonlarca kullanıcı tarafından kullanılmakta ve güçlü API'si sayesinde Kodi gibi bir çok popüler medya merkezi tarafından Film Veritabanı, Poster ve Fanart bilgilerini kullanarak kullanıcı deneyimini zenginleştirmektedir.</description>
+    <description lang="uk_UA">themoviedb.org - це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. В даний момент сайт TMDb використовують мільйони людей кожен місяць, і завдяки потужному API, його можуть використовувати різні популярні медіацентри, такі як Kodi, щоб отримувати метадані, постери і фанарт для фільмів з метою оформлення інтерфейсу.</description>
+    <description lang="vi_VN">themoviedb.org là cơ sở dữ liệu về phim ảnh mở và miễn phí. Nó hoàn toàn được kiểm soát bởi những người như bạn. TMDb hiện tại đang được sử dụng bởi hàng triệu người dùng hàng tháng và với sự hỗ trợ của bộ API mạnh mẽ nó cũng được sử dụng bởi những thiết bị giải trí cá nhân như Kodi cho việc lấy dữ liệu về Phim ảnh, Poster và Fanart để làm tăng trải nghiệm của người sử dụng</description>
+    <description lang="zh_CN">themoviedb.org 是一个开放和自由的电影数据库。它完全由象你一样的用户来掌控。TMDb 每月为上百万用户提供服务，并通过强大的 API 界面为许多流行的媒体中心系统如 Kodi 提供电影资料、封面海报和同人画以丰富用户的体验。</description>
+    <description lang="zh_TW">themoviedb.org是一個免費和開放的電影資料庫。它是完全由與您一樣的廣大使用者來更新資訊。 TMDb目前擁有數以百萬計的使用人次並且有著強大的API，許多受歡迎的媒體中心平台像Kodi藉由TMDb獲取電影的數據資料庫，海報和影片資訊，以豐富使用者體驗。</description>
+    <platform>all</platform>
+    <license>GPL v2.0</license>
+    <forum>https://forum.kodi.tv/showthread.php?tid=339672</forum>
+    <website>https://www.themoviedb.org</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="metadata.tvshows.themoviedb.org" name="The Movie Database" version="3.5.14" provider-name="Team Kodi">
+  <requires>
+    <import addon="xbmc.metadata" version="2.1.0" />
+    <import addon="metadata.common.fanart.tv" version="3.1.0" />
+    <import addon="metadata.common.imdb.com" version="2.9.2" />
+  </requires>
+  <extension point="xbmc.metadata.scraper.tvshows" language="en" library="tmdb.xml" cachepersistence="00:15" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="bg_BG">Сваля инф. за ТВ Сериали от TMDB</summary>
+    <summary lang="cs_CZ">Stahovač informací k seriálům z TMDB</summary>
+    <summary lang="de_DE">TMDB Fernsehserien Scraper</summary>
+    <summary lang="el_GR">Scraper Τηλ. Σειρών του TMDb</summary>
+    <summary lang="en_GB">TMDB TV show Scraper</summary>
+    <summary lang="en_US">TMDB TV show Scraper</summary>
+    <summary lang="es_ES">Scraper de series TMDB</summary>
+    <summary lang="fr_CA">Extracteur de d'émissions télé TMDb</summary>
+    <summary lang="gl_ES">Scraper serie de TV TMDB</summary>
+    <summary lang="he_IL">סקרייפר סדרות TMDB</summary>
+    <summary lang="hr_HR">TMDB sakupljač TV serija</summary>
+    <summary lang="hu_HU">TMDB TV show Letöltő</summary>
+    <summary lang="id_ID">Pengais Serial TV TMDB</summary>
+    <summary lang="is_IS">TMDB TV skafa fyrir sjónvarpsefni</summary>
+    <summary lang="ko_KR">TMDB TV 쇼 정보수집기</summary>
+    <summary lang="lt_LT">TMDB TV laidų skreperis</summary>
+    <summary lang="nl_NL">TMDB TV-serie scraper</summary>
+    <summary lang="pl_PL">Ekstraktor serialowy TMDB</summary>
+    <summary lang="pt_PT">Colector de filmes TMDb</summary>
+    <summary lang="pt_BR">Scraper de Seriados TMDb</summary>
+    <summary lang="ru_RU">TMDB ТВ шоу инфоресурс</summary>
+    <summary lang="sv_SE">TMDB TV-serie skrapa</summary>
+    <summary lang="zh_CN">TMDB 剧集刮削器</summary>
+    <description lang="af_ZA">themoviedb.org is 'n verniet en oop fliek databasis. Dit is totaal gebruiker gedryf deur mense soos jy. TMDB word huidiglik deur miljoene mense elke maand gebruik, en met hulle kragtige API word dit ook deur baie gewilde media sentrums soos Kodi gebruik om Fliek Metadata, Plakkate en Ondersteunerkuns te onttrek om die gebruiker se ondervinding te verryk.</description>
+    <description lang="be_BY">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="bg_BG">themoviedb.org е безплатна и отворена филмова база данни. Задвижва се изцяло от потребителите си, от хора като вас. Милиони хора по света всеки месец ползват TMDb. Благодарение на многофункционално API може да се ползва от най-различни и популярни медийни центрове като Kodi, които извличат метаданни, постери и фанарт за филмите с цел за красивото оформяне на интерфейса.</description>
+    <description lang="ca_ES">themoviedb.org és una base de dades oberta i lliure. Es manté completament per usuaris, per gent com tu. TMDb s'utilitza actualment per milions de persones cada mes i amb la seva potent API també és utilitzada per molts centre media populas com l'Kodi per obtenir les meta-dades de pel·lícules, pósters i fanart per enriquir l'experiència d'usuari.</description>
+    <description lang="cs_CZ">themoviedb.org je bezplatná a otevřená databáze filmů a seriálů. Je celá řízena uživateli, tedy lidmi jako vy. TMDb je aktuálně používána každý měsíc milióny lidí a se svým výborným API je také používána mnoha oblíbenými multimediálními centry, jako je Kodi, k získávání metadat, plakátů a fanartů filmů a seriálů pro obohacení uživatelského zážitku.</description>
+    <description lang="cy_GB">Mae themoviedb.org yn gronfa ddata ffilmiau rhydd ac agored. Mae'n cael ei yrru gan ddefnyddwyr fel chi. Mae TMDb yn cael ei ddefnyddio gan filiynau o bobl bob mis a gyda'i API pwerus, mae'n cael ei ddefnyddio gan lawer o'r canolfannau cyfrwng fel Kodi i estyn metadata ffilmiau, posteri a chelf er mwyn cyfoethogi profiad defnyddwyr.</description>
+    <description lang="da_DK">themoviedb.org er en fri og åben filmdatabase. Den er helt og aldeles brugerdrevet af folk som dig. TMDb bruges i dag af millioner af mennesker hver måned, og med deres kraftfulde API er den også brugt af mange populære mediecentre såsom Kodi til at hente metadata, plakater og fankunst til film, for at berige brugerens oplevelse.</description>
+    <description lang="de_DE">TheMovieDB.org ist eine freie und offene Filmdatenbank. Sie wird von Benutzern wie dir angetrieben. TheMovieDB wird zur Zeit von millionen Nutzern jeden Monat genutzt und dank ihrer mächtigen API ist sie auch von vielen Media-Center, wie z.B. Kodi, implementiert, um Film-Metadaten, -Poster und -Fanarts zu beziehen, die das Benutzererlebnis verbessern.</description>
+    <description lang="el_GR">Το themoviedb.org είναι μία δωρεάν και ανοικτή βάση δεδομένων ταινιών. Διαχειρίζεται πλήρως από ανθρώπους σαν και εσάς. Το TMDb χρησιμοποιείται από εκατομμύρια ανθρώπους κάθε μήνα, και με το πανίσχυρο API τους, χρησιμοποιείται και από πολλά δημοφιλή κέντρα πολυμέσων όπως το Kodi για να λαμβάνουν μετα-δεδομένα Ταινιών, Αφίσες και Fanart για εμπλουτισμό της εμπειρίας του χρήστη.</description>
+    <description lang="en_GB">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="en_NZ">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="en_US">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="es_ES">themovieDB.org es una base de datos de películas gratuita y abierta. Es una página web que se basa en contenido subido por los usuarios. TMDb es usada diariamente por mucha gente gracias a su API, que es usada por más programas aparte de Kodi para descargar información de películas así como Posters o Fanart (Fondos de escritorio basados en películas usados en distintos skins) para enriquecer la experiencia de usar Kodi.</description>
+    <description lang="es_AR">themovieDB.org es una base de datos de películas gratuita y abierta. Está  formada con contenido subido por usuarios como vos. TMDb es actualmente utilizada por millones de personas cada mes y, gracias a su poderosa API, es usada por muchos programas populares como Kodi para descargar Información de Películas, Posters y Fanart para enriquecer la experiencia de usar Kodi.</description>
+    <description lang="es_MX">themoviedb.org es una base de datos de películas gratis y abierta. Es completamente manejada por usuarios y personas como tu. Actualmente TMDb es usada por millones de personas cada mes, y dado a su poderosa API, es usada también por varios media centers populares como Kodi para obtener Metada de Películas, Posters y Fanarts, enriqueciendo de esta manera la experiencia del usuario.</description>
+    <description lang="et_EE">themoviedb.org on tasuta ja vaba juurdepääsuga filmide andmebaas.See on täielikult koostatud sinu sarnaste inimeste poolt. TMDb on hetkel igapäevaselt kasutuses miljonite inimeste poolt ja seda kasutavad paljud populaarsed meediakeskused, nagu ka Kodi, filmiandmete, fännikunsti ja posterite leidmiseks.</description>
+    <description lang="fi_FI">themoviedb.org on vapaa ja avoin elokuvatietokanta. Se on täysin käyttäjien ylläpitämä. TMDb:a käyttää miljoonat ihmiset joka kuukausi, sitä käytetään käyttäjäkokemuksen rikastuttamiseen monissa muissakin suosituissa Kodi:n kaltaisissa ohjelmissa lataamalla elokuvien tietoja, julisteita ja fanitaidetta.</description>
+    <description lang="fr_FR">themoviedb.org est une base de données gratuite et libre d'accès de films. Elle est totalement gérée par les utilisateurs. TMDb est actuellement utilisée par des millions de personnes chaque mois et, grâce à ses puissantes fonctions et routines, elle est également utilisée par de nombreux Media Centers populaires comme Kodi aux fins de récupération des Métadonnées, Posters et Fanarts des films en vue d'améliorer l'expérience de l'utilisateur.</description>
+    <description lang="fr_CA">themoviedb.org est une base de données libre et ouverte. Elle est complètement gérée par des gens comme vous. TMDb est actuellement utilisée par des millions de personnes chaque mois et avec son API puissante, elle est également utilisée par de nombreux centres multimédias populaires comme Kodi pour récupérer les métadonnées des films, les affiches et le fanart afin d'enrichir l'expérience de l'utilisateur.</description>
+    <description lang="gl_ES">themoviedb.org é una base de datos sobre filmes libre e aberta, impulsada por xente coma ti. Na actualidade TMDb é usada por millóns de persoas todos os meses, e grazas ó seu potente API, usado por algúns dos centros multimedia máis populares como Kodi para obter a información dos filmes, Posters e Fanart e así mellorar a experiencia do usuario.</description>
+    <description lang="he_IL">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="hr_HR">themoviedb.org je besplatna i otvorena baza filmskih podataka. TMDb trenutno koriste milijuni ljudi svaki mjesec uz pomoću njegovog snažnog API-ja, isto tako se koristi u mnogim popularnim medijskim centrima poput Kodija, kako bi mogli sakupljati informacije o filmovima, filmske postere, omote filmova i na kraju obogatili korisničko iskustvo.</description>
+    <description lang="hu_HU">A themoviedb.org egy ingyenes és nyílt filmadatbázis. Teljes egészében olyan felhasználók töltik fel, mint például Te. A TMDb-t havonta emberek milliói használják és a hatékony API-n keresztül számos népszerű média center is, mint például az Kodi a filmadatok, poszterek, fanartképek letöltésére.</description>
+    <description lang="id_ID">themoviedb.org adalah database film yang gratis dan terbuka. Ini benar-benar digerakkan oleh orang-orang seperti Anda. TMDb saat ini digunakan oleh jutaan orang setiap bulannya dan dengan APInya yang digdaya, juga digunakan oleh beberapa pusat media seperti Kodi untuk mengambil Metadata Film, Poster dan Fanart untuk menperkaya pengalaman penggunanya.</description>
+    <description lang="is_IS">themoviedb.org er frír og opinn gagnagrunnur. Hann er algjörlega rekinn af fólki eins og þér. TMBd er notaður af milljónum manna í hverjum mánuði og með öflugum forritaskilum þeirra (API), er hann líka notaður af mörgum vinsælum heimabíókerfum eins og Kodi til að ná í Ítarupplýsingar yfir Kvikmyndir, Veggspjöld og Fanart til að lífga upplifun notandans.</description>
+    <description lang="it_IT">themoviedb.org è un database libero e aperto. E' gestito da utenti e persone come te. Viene usato correntemente da millioni di persone ogni mese e con le sue potenti API, è anche utilizzato da molti popolari media centers come Kodi per ottenere Metadati, Posters e Fanart di film per arricchire la loro esperienza utente.</description>
+    <description lang="ja_JP">themoviedb.org は自由でオープンな映画データベースです。その運営は、完全にユーザ主導で行われています。TMDb は現在毎月何百万人もの人に利用されているほか、Kodi のようなメディアセンターも、TMDb のパワフルな API を介して映画メタデータ、ポスター、ファンアートを取得し、使い勝手を向上させるなどして使っています。</description>
+    <description lang="ko_KR">themoviedb.org 는 전적으로 여러분 같은 이용자가 주도하는 무료 공개 영화 데이터베이스입니다. TMDb 는 현재 매월 수백만의 사람들이 강력한 API와 함께 사용하고 있을 뿐만 아니라 Kodi 같은 많은 미디어 센터가 영화 정보, 포스터, 팬아트를 가져와 풍성한 사용자 경험을 제공하는데 이용되고 있습니다.</description>
+    <description lang="lt_LT">themoviedb.org yra nemokama ir atvira Filmų duomenų bazė. Jis remiamas ir skaitinamas tokių pat vartotojų kaip ir jūs. TMDb šiuo metu naudoja milijonai žmonių kiekvieną mėnesį, ir turi galingą API (informacinį centrą), taip pat naudojamas daug populiarių žiniasklaidos centrų. Pavyzdžiui Kodi gauti filmo(-ų) metaduomenis, plakatus ir FanArt siekiant praturtinti vartotojo patirtį.</description>
+    <description lang="mk_MK">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
+    <description lang="ml_IN">മൂവി ഡി ബി, എല്ലാവർക്കും കൈവക്കാവുന്ന ഒരു സൗജന്യ വിവരശേഖരമാണ്. ഇതുമൂലം ലോകം മുഴുവനും സിനിമാ പോസ്റ്ററുകൾ എല്ലവരും കാണുന്നു</description>
+    <description lang="ms_MY">themoviedb.org adalah pangkalan data cakera terbuka. Ia sepenuhnya dipacu oleh individu seperti anda. TMDb buat masa ini diguna oleh berjuta-juta individu setiap bulan dan dengan API hebat mereka, ia juga digunakan oleh banyak pusat media popular seperti Kodi untuk mendapatkan Data Meta, Poster, Seni Peminat Cereka untuk memperkayakan pengalaman pengguna.</description>
+    <description lang="nl_NL">Themoviedb.org is een vrije en open filmdatabank. Gebruikers zoals jij vormen de motor van deze site. Op dit moment gebruiken elke maand miljoenen mensen TMDb. De krachtige API van de site laat mediacenters zoals Kodi toe om metadata, posters en fanart op te halen en zo de gebruikerservaring te verrijken.</description>
+    <description lang="nb_NO">themoviedb.org er en gratis og åpen filmdatabase. Den drives helt og fullt av mennesker som deg. TMDb brukes av millioner av mennesker hver måned og med sitt gode API, brukes den også av mange popluære mediasenterløsninger som Kodi for å hente metadata for filmer, plakater og fanart for å gi en bedre brukeropplevelse.</description>
+    <description lang="pl_PL">themoviedb.org jest wolną i otwartą filmową bazą danych, zarządzaną przez osoby takie jak Ty. Obecnie odwiedzają ją miliony osób miesięcznie, a dzięki dostępności interfejsu programistycznego jest używana przez wiele centrów multimedialnych takich jak Kodi, jako źródło informacji o filmach, plakatów i tapet.</description>
+    <description lang="pt_PT">O themoviedb.org é uma base de dados de filmes livre e aberta. É actualizado inteiramente por pessoas como você e usado por milhões todos os meses. Com o poderoso motor de busca disponível, também se tornou no favorito para muitos programas de centro de média, como o popular Kodi, para obter informação, posters e fanart que enriquecem a experiência do utilizador.</description>
+    <description lang="pt_BR">O themoviedb.org é um banco de dados aberto e gratuito. É completamente operado por pessoas como você. O TMDb é atualmente usado por milhares de pessoas a cada mês e com sua poderosa API, é usado por muitas centrais de mídia populares como o Kodi para buscar metadados, cartazes e fanart de filmes para enriquecer a experiência do usuário.</description>
+    <description lang="ro_RO">themoviedb.org este o bază de date de filme gratuită și deschisă. Este actualizată de oameni ca și tine. TMDb este curent folosită de milioane de oameni în fiecare lună și datorită API-ului puternic, este de asemena folosită de multe centre media populare ca Kodi pentru a obține informații despre filme, afișe și imagini produse de fani (Fanart) care îmbogățesc experiența utilizatorului.</description>
+    <description lang="ru_RU">themoviedb.org — это бесплатная и открытая база данных фильмов. Она полностью поддерживается обычными людьми. В данный момент сайт TMDb используют миллионы людей каждый месяц, и благодаря мощному API его могут использовать различные популярные медиацентры, такие как Kodi, чтобы получать метаданные, постеры и фанарт для фильмов с целью красивого оформления интерфейса.</description>
+    <description lang="se">themoviedb.org är en fri och öppen filmdatabas. Det drivs helt av människor som dig. TMDb används av miljontals människor varje månad och med deras kraftfulla API, är det också använt av många populära mediacenter som Kodi för att hämta filmmetadata, omslag och fanart för att förgylla användarens upplevelse.</description>
+    <description lang="sk_SK">themoviedb.org je voľná a otvorená databáza filmov. Je výlučne vedená užívateľmi ako si ty. TMDb je každý mesiac používaná miliónmi ľudí, a vďaka svojmu výkonnému API je veľmi populárna medzi 'media centrami' ako Kodi pre sťahovanie filmových metadát, plagátov a fanartov pre obohatenie  zážitkov.</description>
+    <description lang="sl_SI">themoviedb.org je brezplačna in prosta baza filmov. Je v celoti ustvarjena s strani uporabnikov kot ste vi. TMDB uporablja miljone ljudi in z njihovo močno API, jo lahko uporabljate tudi v multimedijskih centrih kot Kodi, s tem prenesete informacije o filmih, plakate in ozadja ter s tem popestrite uporabniško izkušnjo.</description>
+    <description lang="sv_SE">themoviedb.org är en gratis och öppen filmdatabas. Den drivs helt av människor som du. TMDb används för närvarande av miljoner människor varje månad och med deras kraftfulla API används den även av många populära mediacenter som t.ex. Kodi för att hämta metadata om filmer, affischer och fanart för att berika användarens upplevelse.</description>
+    <description lang="ta_IN">themoviedb.org ஒரு இலவச மற்றும் திறந்த திரைப்பட தரவுத்தளம் ஆகும். இந்த தரவுத்தளம்  முற்றிலும் பயனர் மக்களால் இயக்கப்படுகிறது. TMDb அவர்களது சக்திவாய்ந்த API இனால் தற்போது பல இலட்சக்கணக்கான மக்களால் ஒவ்வொரு மாதமும் பயன்படுத்தப்படுகிறது, இது Kodi போன்ற பல பிரபல ஊடக மையங்களில் பயனர் அனுபவத்தை மேம்படுத்த பயன்படுத்தப்படுகிறது.</description>
+    <description lang="th_TH">themoviedb.org เป็นฐานข้อมูลภาพยนตร์ที่ฟรีและเปิดกว้าง. มันถูกขับเคลื่อนจากผู้ใช้ โดยคนเช่นคุณ. TMDb ปัจจุบันมีการใช้โดยคนนับล้านในแต่ละเดือน และมีประสิทธิภาพด้วย API ของพวกเขา , มันยังถูกใช้โดยหลายศูนย์สื่อที่นิยมเช่น Kodi เพื่อดึง อธิบายข้อมูลภาพยนตร์, โปสเตอร์และ แฟนอาร์ต เพื่อเพิ่มประสบการณ์ของผู้ใช้</description>
+    <description lang="tr_TR">themoviedb.org ücretsiz ve herkese açık bir film veri tabanıdır. Tamamen kullanıcılar tarafından oluşturulmakta ve yönetilmektedir. TMDb her ay milyonlarca kullanıcı tarafından kullanılmakta ve güçlü API'si sayesinde Kodi gibi bir çok popüler medya merkezi tarafından Film Veritabanı, Poster ve Fanart bilgilerini kullanarak kullanıcı deneyimini zenginleştirmektedir.</description>
+    <description lang="uk_UA">themoviedb.org - це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. В даний момент сайт TMDb використовують мільйони людей кожен місяць, і завдяки потужному API, його можуть використовувати різні популярні медіацентри, такі як Kodi, щоб отримувати метадані, постери і фанарт для фільмів з метою оформлення інтерфейсу.</description>
+    <description lang="vi_VN">themoviedb.org là cơ sở dữ liệu về phim ảnh mở và miễn phí. Nó hoàn toàn được kiểm soát bởi những người như bạn. TMDb hiện tại đang được sử dụng bởi hàng triệu người dùng hàng tháng và với sự hỗ trợ của bộ API mạnh mẽ nó cũng được sử dụng bởi những thiết bị giải trí cá nhân như Kodi cho việc lấy dữ liệu về Phim ảnh, Poster và Fanart để làm tăng trải nghiệm của người sử dụng</description>
+    <description lang="zh_CN">themoviedb.org 是一个开放和自由的电影数据库。它完全由象你一样的用户来掌控。TMDb 每月为上百万用户提供服务，并通过强大的 API 界面为许多流行的媒体中心系统如 Kodi 提供电影资料、封面海报和同人画以丰富用户的体验。</description>
+    <description lang="zh_TW">themoviedb.org是一個免費和開放的電影資料庫。它是完全由與您一樣的廣大使用者來更新資訊。 TMDb目前擁有數以百萬計的使用人次並且有著強大的API，許多受歡迎的媒體中心平台像Kodi藉由TMDb獲取電影的數據資料庫，海報和影片資訊，以豐富使用者體驗。</description>
+    <platform>all</platform>
+    <license>GPL v2.0</license>
+    <forum>https://forum.kodi.tv/showthread.php?tid=200504</forum>
+    <website>https://www.themoviedb.org/</website>
+    <assets>
+        <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="plugin.program.autocompletion" name="AutoCompletion for virtual keyboard" version="1.0.1" provider-name="Philipp Temminghoff (phil65)">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
         <import addon="script.module.simplejson" version="3.3.0" />
         <import addon="script.module.autocompletion" version="1.0.0" />
     </requires>
@@ -16,13 +476,6 @@
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
         <source>https://github.com/phil65/plugin.program.autocompletion</source>
-        <assets>
-            <icon>resources/icon.png</icon>
-            <fanart>resources/fanart.jpg</fanart>
-            <screenshot>resources/screenshot-01.jpg</screenshot>
-            <screenshot>resources/screenshot-02.jpg</screenshot>
-            <screenshot>resources/screenshot-03.jpg</screenshot>
-        </assets>
     </extension>
 </addon><addon id="plugin.video.homelander" name="[COLOR red]Homelander[/COLOR]" provider-name="Homelander" version="1.0.5">
     <requires>
@@ -265,7 +718,7 @@
 			<fanart>resources/fanart.jpg</fanart>
 		</assets>
 	</extension>
-</addon><addon id="script.extendedinfo" name="ExtendedInfo Script" version="5.6.1" provider-name="phil65 (Philipp Temminghoff)">
+</addon><addon id="script.extendedinfo" name="ExtendedInfo Script" version="5.6.0" provider-name="phil65 (Philipp Temminghoff)">
 	<requires>
 		<import addon="xbmc.python" version="2.25.0" />
 		<import addon="resource.images.studios.white" version="0.0.5" />
@@ -283,8 +736,6 @@
 		<language />
 		<summary lang="en">ExtendedInfo Script</summary>
 		<description lang="en">This script offers various possibilities to display online content inside skins as well as a complete MovieDB browser including info dialogs for various media types. Used services are themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com and a lot more. Needs skin implementation for lot of functions.</description>
-		<summary lang="es">ExtendedInfo Script</summary>
-		<description lang="es">Este script ofrece varias posibilidades para poder mostrar información online dentro de una piel, así como un completo navegador de TheMovieDB, incluidos los cuadros de diálogo de información para diversos tipos de medios. Los servicios usados son themoviedb.org, theaudiodb.org, Trakt.TV, omdbapi.com y mucho más. Necesita la implementación en el skin para muchas de sus funciones.</description>
 		<platform>all</platform>
 		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
 		<forum>http://forum.kodi.tv/showthread.php?tid=160558</forum>
@@ -301,9 +752,9 @@
 			<screenshot>resources/screenshot-05.jpg</screenshot>
 		</assets>
 	</extension>
-</addon><addon id="script.globalsearch" name="Global Search" version="9.0.7" provider-name="ronie">
+</addon><addon id="script.globalsearch" name="Global Search" version="8.0.13" provider-name="ronie">
 	<requires>
-		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="xbmc.python" version="2.26.0" />
 	</requires>
 	<extension point="xbmc.python.script" library="default.py" />
 	<extension point="xbmc.addon.metadata">
@@ -315,7 +766,7 @@
 		<summary lang="en_GB">Search your library.</summary>
 		<summary lang="en_NZ">Search your library.</summary>
 		<summary lang="en_US">Search your library.</summary>
-		<summary lang="es_ES">Busca en tu biblioteca.</summary>
+		<summary lang="es_ES">Busca tu biblioteca.</summary>
 		<summary lang="fr_FR">Chercher dans la médiathèque.</summary>
 		<summary lang="fr_CA">Chercher dans votre bibliothèque</summary>
 		<summary lang="gl_ES">Buscar a súa biblioteca.</summary>
@@ -375,10 +826,7 @@
 			<icon>resources/icon.png</icon>
 			<fanart>resources/fanart.jpg</fanart>
 		</assets>
-		<news>- add support for searching musicvideos by artist name
-- add support for originaltitle search
-- add support for tv show actors
-- add videoresolution flag</news>
+		<news>- fix issue with unneeded seeking</news>
 	</extension>
 </addon><addon id="script.homelander.artwork" version="1.0.2" name="[COLOR red]Homelander [/COLOR]Artwork" provider-name="Homelander">
     <requires>
@@ -394,26 +842,23 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="script.image.resource.select" name="Image Resource Select Addon" version="3.0.2" provider-name="ronie">
+</addon><addon id="script.image.resource.select" name="Image Resource Select Addon" version="2.0.4" provider-name="ronie">
 	<requires>
-		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="xbmc.python" version="2.25.0" />
 	</requires>
 	<extension point="xbmc.python.library" library="default.py" />
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en_GB">Image resource selection addon</summary>
 		<description lang="en_GB">Script for skinners to let users select an image resource addon.</description>
+		<language />
 		<platform>all</platform>
-		<license>GPL-2.0-only</license>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2</license>
 		<forum>https://forum.kodi.tv/showthread.php?tid=239558</forum>
 		<source>https://gitlab.com/ronie/script.image.resource.select</source>
-		<assets>
-			<icon>resources/icon.png</icon>
-		</assets>
-		<news>- code refactor</news>
 	</extension>
-</addon><addon id="script.module.addon.signals" name="Addon Signals" version="0.0.6+matrix.1" provider-name="Rick Phillips (ruuk)">
+</addon><addon id="script.module.addon.signals" name="Addon Signals" version="0.0.6" provider-name="Rick Phillips (ruuk)">
     <requires>
-        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="xbmc.python" version="2.14.0" />
     </requires>
     <extension point="xbmc.python.module" library="lib" />
     <extension point="xbmc.addon.metadata">
@@ -426,6 +871,61 @@
             <icon>icon.png</icon>
         </assets>
     </extension>
+</addon><addon id="script.module.arrow" name="arrow" version="0.15.5" provider-name="crsmithdev, Razzeee">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" />
+    <import addon="script.module.dateutil" version="2.8.1" />
+    <import addon="script.module.backports.functools_lru_cache" version="1.5.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Arrow: better dates and times for Python</summary>
+    <description lang="en">Packed for Kodi from https://github.com/crsmithdev/arrow</description>
+    <platform>all</platform>
+    <license>Apache2</license>
+    <source>https://github.com/Razzeee/script.module.arrow</source>
+    <email>beenje AT gmail.com</email>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.autocompletion" name="AutoCompletion library" version="1.1.2" provider-name="Philipp Temminghoff (phil65)">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
+        <import addon="script.module.simplejson" version="3.3.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Module providing some AutoCompletion functions</summary>
+        <description lang="en">Module providing some AutoCompletion functions</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
+        <source>https://github.com/phil65/script.module.autocompletion</source>
+    </extension>
+</addon><addon id="script.module.backports.functools_lru_cache" name="backports.functools_lru_cache" version="1.6.1" provider-name="Jason R. Coombs">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Backport of functools.lru_cache from Python 3.3</summary>
+    <description lang="en">Packed for Kodi from https://github.com/jaraco/backports.functools_lru_cache</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <website>https://github.com/jaraco/backports.functools_lru_cache</website>
+    <source>https://github.com/Razzeee/script.module.backports.functools_lru_cache</source>
+  </extension>
+</addon><addon id="script.module.beautifulsoup" name="BeautifulSoup" version="3.2.1" provider-name="Leonard Richardson (leonardr@segfault.org)">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>HTML/XML parser for quick-turnaround applications like screen-scraping</summary>
+    <description>Beautiful Soup parses arbitrarily invalid SGML and provides a variety of methods and Pythonic idioms for iterating and searching the parse tree.</description>
+    <license>BSD</license>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="script.module.beautifulsoup4" name="BeautifulSoup4" version="4.9.3+matrix.1" provider-name="Leonard Richardson (leonardr@segfault.org)">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -443,10 +943,41 @@
       <icon>icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.dateutil" name="python-dateutil" version="2.8.2" provider-name="Paul Ganssle, Gustavo Niemeyer, Tomi Pieviläinen, Yaron de Leeuw">
+</addon><addon id="script.module.certifi" name="certifi" version="2021.10.8" provider-name="Certifi">
   <requires>
-    <import addon="xbmc.python" version="3.0.0" />
-    <import addon="script.module.six" version="1.15.0+matrix.1" />
+    <import addon="xbmc.python" version="2.25.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Python package for providing Mozilla's CA Bundle.</summary>
+    <description lang="en_GB">Certifi is a carefully curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. It has been extracted from the Requests project.</description>
+    <license>MPL-2.0</license>
+    <website>https://github.com/certifi/python-certifi</website>
+    <source>https://github.com/certifi/python-certifi</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.chardet" name="chardet" version="4.0.0" provider-name="Character Encoding Detector">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">The Universal Character Encoding Detector</summary>
+    <description lang="en_GB">The Universal Character Encoding Detector</description>
+    <license>LGPL-2.1</license>
+    <platform>all</platform>
+    <website>https://chardet.readthedocs.io/en/latest/</website>
+    <source>https://github.com/chardet/chardet</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.dateutil" name="python-dateutil" version="2.8.1" provider-name="Paul Ganssle, Gustavo Niemeyer">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" />
+    <import addon="script.module.six" version="1.12.0" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
@@ -486,6 +1017,22 @@
     </assets>
     <news />
     </extension>
+</addon><addon id="script.module.idna" name="idna" version="2.10.0" provider-name="Kim Davies">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Internationalized Domain Names for Python</summary>
+    <description lang="en_GB">Internationalized Domain Names for Python</description>
+    <license>BSD-3-Clause</license>
+    <platform>all</platform>
+    <website>https://github.com/kjd/idna</website>
+    <source>https://github.com/kjd/idna</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.module.inputstreamhelper" name="InputStream Helper" version="0.5.10+matrix.1" provider-name="emilsvennesson, dagwieers, mediaminister, horstle">
   <requires>
     
@@ -533,9 +1080,9 @@ v0.5.9 (2022-03-22)
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.kodi-six" name="Kodi Six" version="0.1.3.1" provider-name="Roman V.M.">
+</addon><addon id="script.module.kodi-six" name="Kodi Six" version="0.1.3" provider-name="Roman V.M.">
   <requires>
-    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="xbmc.python" version="2.26.0" />
   </requires>
   <extension point="xbmc.python.module" library="libs" />
   <extension point="xbmc.addon.metadata">
@@ -551,6 +1098,56 @@ v0.5.9 (2022-03-22)
     <news>0.1.3:
 - Fix non-UTF-8 byte string decoding in Python 2.</news>
   </extension>
+</addon><addon id="script.module.kodi65" name="Kodi65 Library" version="1.2.1" provider-name="Philipp Temminghoff (phil65)">
+	<requires>
+		<import addon="xbmc.python" version="2.25.0" />
+		<import addon="script.module.youtube.dl" version="14.519.1" />
+		<import addon="script.module.pil" version="1.1.7" />
+		<import addon="script.module.autocompletion" version="1.0.0" />
+		<import addon="script.module.requests" version="2.9.1" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Helper module</summary>
+		<description lang="en">Helper module for all kind of stuff</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
+		<source>https://github.com/phil65/script.module.kodi65</source>
+		<news>Adjust to latest core changes, bugfixes, API extensions</news>
+	</extension>
+</addon><addon id="script.module.metadatautils" name="Metadata and Artwork module" version="1.0.0" provider-name="marcelveldt">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
+        <import addon="script.module.requests" version="2.3.0" />
+        <import addon="script.module.beautifulsoup" version="3.0.8" />
+        <import addon="script.module.thetvdb" version="0.0.1" />
+        <import addon="script.module.musicbrainz" version="0.0.1" />
+        <import addon="script.module.simplecache" version="1.0.0" />
+        <import addon="script.module.arrow" version="0.6.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Metadata and artwork from common sources like TMDB, IMDB, TADB and fanart.tv </summary>
+        <description>
+            The metadata and artwork module for Kodi provides rich metadata, including artwork for 
+            various metatypes by scraping (and caching) this information from sites like TMDB, musicbrainz and fanart.tv.
+        </description>
+        <license>Apache 2.0</license>
+        <source>https://github.com/marcelveldt/script.module.metadatautils</source>
+        <platform>all</platform>
+    </extension>
+</addon><addon id="script.module.musicbrainz" name="Musicbrainz NGS webservice python bindings" version="0.6.0" provider-name="marcelveldt">
+  <requires>
+  <import addon="xbmc.python" version="2.24.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Python bindings for Musicbrainz' NGS webservice</summary>
+    <description>Kodi module library for the Python bindings for Musicbrainz' NGS webservice developed by alastair.</description>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2</license>
+    <source>https://github.com/marcelveldt/script.module.musicbrainz</source>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="script.module.pil" name="Python Image Library" version="1.1.7" provider-name="PythonWare">
 <requires>
 <import addon="xbmc.python" version="2.1.0" />
@@ -559,13 +1156,13 @@ v0.5.9 (2022-03-22)
 <extension point="xbmc.addon.metadata">
 <platform>all</platform>
 </extension>
-</addon><addon id="script.module.requests" name="requests" version="2.27.1+matrix.1" provider-name="Python Software Foundation">
+</addon><addon id="script.module.requests" name="requests" version="2.27.1" provider-name="Python Software Foundation">
   <requires>
-    <import addon="xbmc.python" version="3.0.0" />
-    <import addon="script.module.certifi" version="2022.5.18+matrix.1" />
-    <import addon="script.module.chardet" version="4.0.0+matrix.1" />
-    <import addon="script.module.idna" version="3.3.0+matrix.1" />
-    <import addon="script.module.urllib3" version="1.26.9+matrix.1" />
+    <import addon="xbmc.python" version="2.25.0" />
+    <import addon="script.module.certifi" version="2021.10.8" />
+    <import addon="script.module.chardet" version="4.0.0" />
+    <import addon="script.module.idna" version="2.10.0" />
+    <import addon="script.module.urllib3" version="1.26.9" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
@@ -573,7 +1170,7 @@ v0.5.9 (2022-03-22)
     <description lang="en_GB">Requests is an elegant and simple HTTP library for Python, built for human beings.</description>
     <license>Apache-2.0</license>
     <platform>all</platform>
-    <website>https://requests.readthedocs.io/</website>
+    <website>https://requests.readthedocs.io/en/latest/</website>
     <source>https://github.com/psf/requests</source>
     <assets>
       <icon>resources/icon.png</icon>
@@ -607,6 +1204,38 @@ v0.5.9 (2022-03-22)
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="script.module.routing" name="Plugin routing" version="0.2.3" provider-name="takoi">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Routing module for plugins</summary>
+        <description lang="en_GB">Library for building and parsing plugin URLs.</description>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <platform>all</platform>
+        <language>en_GB</language>
+        <source>https://github.com/tamland/kodi-plugin-routing</source>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="script.module.simplecache" name="Simple Cache Module" version="1.0.20" provider-name="sualfred">
+    <requires>
+        <import addon="xbmc.python" version="2.26.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Provides a simple file- and memory based cache for Kodi addons</summary>
+        <description lang="en_GB">Provides a simple file- and memory based cache for Kodi addons. Based on the original work of Marcelveldt.</description>
+        <platform>all</platform>
+        <license>Apache 2.0</license>
+        <forum />
+        <source>https://github.com/sualfred/script.module.simplecache</source>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
 </addon><addon id="script.module.simpleeval" name="Simple Eval" version="0.9.10" provider-name="Daniel Fairhead">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -622,27 +1251,24 @@ v0.5.9 (2022-03-22)
             <icon>icon.png</icon>
         </assets>
     </extension>
-</addon><addon id="script.module.simplejson" name="simplejson" version="3.17.0+matrix.2" provider-name="Bob Ippolito">
+</addon><addon id="script.module.simplejson" name="simplejson" version="3.16.1" provider-name="Bob Ippolito">
   <requires>
-    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="xbmc.python" version="2.14.0" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
     <language />
-    <summary lang="en_GB">Simple, fast, extensible JSON encoder/decoder for Python</summary>
-    <description lang="en_GB">Simple, fast, extensible JSON encoder/decoder for Python</description>
-    <disclaimer lang="en_GB">Code taken from https://pypi.org/project/simplejson/</disclaimer>
+    <summary lang="en">Simple, fast, extensible JSON encoder/decoder for Python</summary>
+    <description lang="en">Simple, fast, extensible JSON encoder/decoder for Python</description>
+    <disclaimer lang="en">Code taken from https://pypi.org/project/simplejson/</disclaimer>
     <license>MIT License, Academic Free License v. 2.1</license>
     <website>https://pypi.org/project/simplejson/</website>
     <source>https://github.com/simplejson/simplejson</source>
-    <assets>
-      <icon>icon.png</icon>
-    </assets>
   </extension>
-</addon><addon id="script.module.six" name="six" version="1.15.0+matrix.1" provider-name="gutworth">
+</addon><addon id="script.module.six" name="six" version="1.15.0" provider-name="gutworth">
   <requires>
-    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="xbmc.python" version="2.14.0" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
@@ -656,6 +1282,22 @@ v0.5.9 (2022-03-22)
       <icon>icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.module.thetvdb" name="The TVDB API v2" version="1.0.12" provider-name="marcelveldt">
+    <requires>
+        <import addon="xbmc.python" version="2.24.0" />
+        <import addon="script.module.requests" version="2.3.0" />
+        <import addon="script.module.simplejson" version="3.3.0" />
+        <import addon="script.module.simplecache" version="1.0.0" />
+        <import addon="script.module.arrow" version="0.6.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>TheTVDB API v2 python module for Kodi</summary>
+        <description>TheTVDB API v2 python module for Kodi</description>
+        <license>Apache 2.0</license>
+        <source>https://github.com/marcelveldt/script.module.thetvdb</source>
+        <platform>all</platform>
+    </extension>
 </addon><addon id="script.module.tmdbhelper" name="TMDbHelper Common" provider-name="jurialmunkey" version="0.0.7">
   <extension point="xbmc.python.module" library="resources/modules" />
   <extension point="xbmc.addon.metadata">
@@ -669,6 +1311,61 @@ v0.5.9 (2022-03-22)
       <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="script.module.unidecode" name="unidecode" version="1.1.1" provider-name="Tomaz Solc (Tomaz.solc@tablix.org)">
+	<requires>
+		<import addon="xbmc.python" version="2.14.0" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</summary>
+		<description lang="en">ASCII transliterations of Unicode text by Sean M. Burke and Tomaz Solc</description>
+		<disclaimer lang="en">Code taken from https://pypi.org/project/Unidecode</disclaimer>
+		<license>GPL-2.0-or-later</license>
+		<website>https://pypi.org/project/Unidecode</website>
+		<source>https://pypi.org/project/Unidecode</source>
+	</extension>
+</addon><addon id="script.module.urllib3" name="urllib3" version="1.26.9" provider-name="urllib3">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">urllib3 is a powerful, user-friendly HTTP client for Python</summary>
+    <description lang="en_GB">urllib3 is a powerful, user-friendly HTTP client for Python. Much of the Python ecosystem already uses urllib3 and you should too. urllib3 brings many critical features that are missing from the Python standard libraries</description>
+    <license>MIT</license>
+    <platform>all</platform>
+    <website>https://urllib3.readthedocs.io/en/latest/</website>
+    <source>https://github.com/urllib3/urllib3</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.youtube.dl" name="youtube-dl Control" version="21.303.0" provider-name="ytdl-org,ruuk,sy6sy2,wwark">
+    <requires>
+        <import addon="xbmc.python" version="2.26.0" />
+        <import addon="script.module.addon.signals" version="0.0.5" />
+        <import addon="script.module.kodi-six" version="0.1.3" />
+    </requires>
+    <extension point="xbmc.python.script" library="control.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en_GB">Module providing access to youtube-dl video stream extraction</summary>
+        <description lang="en_GB">Module providing access to youtube-dl video stream extraction for hundreds of sites. Version is based on youtube-dl date version: YY.MDD.V where V is the addon specific sub-version. Also provides downloading with the option for background downloading with a queue and queue manager.</description>
+        <summary lang="el_EL">Βοηθητική μονάδα πρόσβασης στους επιλυτές youtube-dl για την εξαγωγή ροών βίντεο</summary>
+        <description lang="el_EL">Βοηθητική μονάδα πρόσβασης στους επιλυτές youtube-dl για την εξαγωγή ροών βίντεο από εκατοντάδες ιστότοπους. Η έκδοση βασίζεται στην έκδοση ημερομηνίας του youtube-dl: EE.MHH.EK όπου ΕΚ η υπό-έκδοση συγκεκριμένα για το πρόσθετο. Επιπλέον δίνει δυνατότητα μεταφόρτωσης στο παρασκήνιο με ουρά και διαχειριστή αυτής.</description>
+        <summary lang="es_ES">Módulo que proporciona acceso a YouTube-dl para la extracción de flujos de video</summary>
+        <description lang="es_ES">Módulo que proporciona acceso a YouTube-dl para la extracción de flujos de video de cientos de sitios. La versión está basada en la versión de fecha youtube-dl: YY.MDD.V donde V es la subversión específica del complemento. También permite descargas con la opción de descarga en segundo plano con una cola y un administrador de colas.</description>
+        <license>LGPL-2.1-only</license>
+        <forum>https://forum.kodi.tv/showthread.php?tid=200877</forum>
+        <source>https://github.com/Catch-up-TV-and-More/script.module.youtube.dl</source>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
 </addon><addon id="script.openweathermap.maps" name="OpenWeatherMap Maps" version="1.0.6" provider-name="ronie">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
@@ -689,10 +1386,13 @@ v0.5.9 (2022-03-22)
 		</assets>
 		<news>- fix crash on timeout</news>
 	</extension>
-</addon><addon id="script.skin.helper.backgrounds" name="Skin Helper Service Backgrounds" version="1.0.36" provider-name="marcelveldt and others">
+</addon><addon id="script.skin.helper.backgrounds" name="Skin Helper Service Backgrounds" version="1.0.21" provider-name="marcelveldt">
 	<requires>
+		<import addon="xbmc.python" version="2.13.0" />
+		<import addon="xbmc.addon" version="12.0.0" />
+		<import addon="script.module.pil" version="1.1.7" />
         <import addon="script.module.simplecache" version="1.0.0" />
-        <import addon="script.module.metadatautils" version="1.0.31" />
+        <import addon="script.module.metadatautils" version="1.0.0" />
 	</requires>
 
     <extension point="xbmc.python.library" library="default.py" />
@@ -701,37 +1401,33 @@ v0.5.9 (2022-03-22)
 	<extension point="xbmc.addon.metadata">
 		<summary lang="en">Helper service for Kodi skins providing rotating backgrounds</summary>
         <description>Helper service for Kodi skins providing rotating backgrounds</description>
-		<assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
 		<language />
 		<platform>all</platform>
 		<license>GPL v2.0</license>
 		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum>
 		<website />
-		<source>https://github.com/kodi-community-addons/script.skin.helper.backgrounds</source>
+		<source>https://github.com/marcelveldt/script.skin.helper.backgrounds</source>
 	</extension>
-</addon><addon id="script.skin.helper.service" name="Skin Helper Service" version="1.20.0" provider-name="marcelveldt and others">
-    <requires>
-		<import addon="xbmc.python" version="3.0.0" />
-        <import addon="xbmc.addon" version="12.0.0" />
+</addon><addon id="script.skin.helper.service" name="Skin Helper Service" version="1.1.3" provider-name="marcelveldt">
+	<requires>
+		<import addon="xbmc.python" version="2.13.0" />
+		<import addon="xbmc.addon" version="12.0.0" />
         <import addon="script.module.simplejson" version="3.3.0" />
-        <import addon="script.module.simplecache" version="2.0.2" />
-        <import addon="script.module.metadatautils" version="1.20.0" />
-    </requires>
+        <import addon="script.module.simplecache" version="1.0.0" />
+        <import addon="script.module.metadatautils" version="1.0.0" />
+	</requires>
 
     <extension point="kodi.context.item">
         <menu id="kodi.core.main">
             <item library="resources\lib\context_animatedart.py">
               <label>32024</label>
-              <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.EnableAnimatedPosters)) + Container.Content(movies)</visible>
+              <visible>!IsEmpty(Window(Home).Property(SkinHelper.EnableAnimatedPosters)) + Container.Content(movies)</visible>
             </item>
             <item library="resources\lib\context_pvr.py">
                 <label>32023</label>
                 <description>PVR artwork Configuration</description>
                 <visible>
-                    !String.IsEmpty(Window(Home).Property(SkinHelper.EnablePvrThumbs)) + 
+                    !IsEmpty(Window(Home).Property(SkinHelper.EnablePvrThumbs)) + 
                     [Window.IsActive(MyPVRChannels.xml) | 
                     Window.IsActive(MyPVRGuide.xml) | Window.IsActive(MyPVRRecordings.xml) | 
                     Window.IsActive(MyPVRTimers.xml) | Window.IsActive(MyPVRSearch.xml)]
@@ -741,122 +1437,103 @@ v0.5.9 (2022-03-22)
                 <label>32023</label>
                 <description>Music artwork Configuration</description>
                 <visible>
-                    !String.IsEmpty(Window(Home).Property(SkinHelper.EnableMusicArt)) + 
+                    !IsEmpty(Window(Home).Property(SkinHelper.EnableMusicArt)) + 
                     [Container.Content(albums) | Container.Content(artists) | Container.Content(songs)]
                 </visible>
             </item>
         </menu>
-    </extension>
+	</extension>
 
     <extension point="xbmc.python.library" library="default.py" />
-    <extension point="xbmc.python.pluginsource" library="plugin.py" />
-    <extension library="service.py" point="xbmc.service" start="login" />
-
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Helper service for Kodi skins</summary>
-        <description>Helper service for Kodi skins</description>
-        <news>
-v1.20.0
-- Nexus version
-        </news>
-		<assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-        <language />
-        <platform>all</platform>
-        <license>GPL v2.0</license>
-        <forum>http://forum.kodi.tv/showthread.php?tid=235676</forum>
-        <website />
-        <source>https://github.com/kodi-community-addons/script.skin.helper.service</source>
+	<extension point="xbmc.python.pluginsource" library="plugin.py">
     </extension>
-</addon><addon id="script.skin.helper.widgets" name="Skin Helper Service Widgets" version="1.20.1" provider-name="marcelveldt and others">
-    <requires>
-		<import addon="xbmc.python" version="3.0.0" />
-        <import addon="xbmc.addon" version="12.0.0" />
-        <import addon="script.module.metadatautils" version="1.20.0" />
-        <import addon="script.module.simplecache" version="2.0.2" />
-    </requires>
+	<extension library="service.py" point="xbmc.service" start="login" />
 
-    <extension point="xbmc.python.pluginsource" library="plugin.py">
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Helper service for Kodi skins</summary>
+        <description>Helper service for Kodi skins</description>
+		<language />
+		<platform>all</platform>
+		<license>GPL v2.0</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum>
+		<website />
+		<source>https://github.com/marcelveldt/script.skin.helper.service</source>
+	</extension>
+</addon><addon id="script.skin.helper.widgets" name="Skin Helper Service Widgets" version="1.0.22" provider-name="marcelveldt">
+	<requires>
+		<import addon="xbmc.python" version="2.24.0" />
+		<import addon="xbmc.addon" version="12.0.0" />
+        <import addon="script.module.metadatautils" version="1.0.0" />
+        <import addon="script.module.simplecache" version="1.0.0" />
+	</requires>
+
+	<extension point="xbmc.python.pluginsource" library="plugin.py">
         <provides>video audio</provides>
     </extension>
     <extension library="service.py" point="xbmc.service" start="login" />
 
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Ready to use widgets for all kind of media types</summary>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Ready to use widgets for all kind of media types</summary>
         <description />
-	<news>
-	</news>
-		<assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-        <language />
-        <platform>all</platform>
-        <license>GPL v2.0</license>
-        <forum>http://forum.kodi.tv/showthread.php?tid=235676</forum>
-        <website />
-        <source>https://github.com/kodi-community-addons/script.skin.helper.widgets</source>
-    </extension>
-</addon><addon id="script.skinshortcuts" name="Skin Shortcuts" version="2.0.1" provider-name="BigNoid, marcelveldt, SiLVO">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0" />
-        <import addon="script.module.unidecode" version="1.1.1+matrix.2" />
-        <import addon="script.module.simpleeval" version="0.9.10" />
-    </requires>
-    <extension point="xbmc.python.library" library="resources/lib/entry_point.py" />
-    <extension point="xbmc.addon.metadata">
-        <news>
-[fix] some widgets not working |contrib: bumpaneer|
-[fix] new widget properties not being properly saved and applied |contrib: bumpaneer|
-[fix] fix configuration of widgets/actions on some skins |contrib: eXoterr|
-[lang] update translations from Weblate
-        </news>
-        <platform>all</platform>
-        <license>GPL-2.0-only</license>
-        <forum>https://forum.kodi.tv/showthread.php?tid=178294</forum>
-        <source>https://github.com/mikesilvo164/script.skinshortcuts</source>
-        <assets>
-            <icon>resources/media/icon.png</icon>
-            <fanart>resources/media/fanart.jpg</fanart>
-        </assets>
-        <description lang="cs_CZ">Doplněk pro vzhledy poskytující jednoduchý management a seznamy uživatelských zkratek (vyžaduje podporu vzhledu)</description>
-        <description lang="da_DK">Add-on til skins der giver enkel styring og lister over brugergenveje (kræver skin-understøttelse)</description>
-        <description lang="de_DE">Addon für Skins zum einfachen Bearbeiten und Auflisten von benutzerdefinierten Verknüpfungen (erfordert Skin-Unterstützung)</description>
-        <description lang="el_GR">Πρόσθετο για κελύφη, το οποίο παρέχει έναν απλό τρόπο διαχείρισης και κατηγοριοποίησης των συντομεύσεων του χρήστη (πρέπει να υποστηρίζεται από το κέλυφος)</description>
-        <description lang="en_GB">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
-        <description lang="en_NZ">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
-        <description lang="en_US">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
-        <description lang="es_ES">Complemento para las pieles para proporcionar una gestión sencilla y lista de atajos de usuario (requiere que la piel lo soporte)</description>
-        <description lang="fi_FI">Lisäosa ulkoasuille joka tarjoaa helpon hallinnan ja käyttäjien pikakuvakkeiden luetteloimisen (vaatii tuen ulkoasulta)</description>
-        <description lang="fr_CA">Addiciel pour habillages qui fournit une gestion simple et un listage des raccourcis utilisateurs (exige la prise en charge de l'habillage)</description>
-        <description lang="gl_ES">Complemento que fornece aos temas dunha xestión sinxela dos atallos dos usuarios (require soporte do tema)</description>
-        <description lang="hu_HU">Felszín kiegészítő amely könnyen kezelhetővé és listázhatóvá teszi a felhasználói parancsikonokat (Felszín támogatás szükséges)</description>
-        <description lang="is_IS">Viðbót fyrir viðmót til að halda utan um flýtivísa og fá yfirlit yfir þá (þarfnast stuðnings frá viðmóti)</description>
-        <description lang="it_IT">Add-on per gli skin per consentire un facile gestione ed elenco delle scorciatoie utente (richiede che lo skin lo supporti)</description>
-        <description lang="ko_KR">사용자 단축키의 간단한 관리 및 목록을 제공하는 스킨용 애드온(스킨 지원 필요)</description>
-        <description lang="lt_LT">Priedas teminėms išvaizdoms, kad jos turėtų galimybę paprastai tvarkyti ir atvaizduoti vartotojo sukurtas nuorodas (reikalingas teminės išvaizdos palaikymas)</description>
-        <description lang="nb_NO">Tillegg for enkel administrering og opplisting av bruker-snarveier i tema (krever støtte i tema)</description>
-        <description lang="nl_NL">Add-on voor skins om te voorzien in het eenvoudig beheren en sorteren van gebruikers snelkoppelingen (vereist skin ondersteuning)</description>
-        <description lang="pl_PL">Wtyczka dla skór, która zapewnia proste zarządzanie i tworzenie list skrótów użytkownika (wymaga wsparcia skóry)</description>
-        <description lang="pt_BR">Add-on para que as skins possam prover gerenciamento de lista de atalhos para o menu principal (requer suporte da skin)</description>
-        <description lang="pt_PT">Um add-on que permite que os temas tenham recursos simples para gerir e listar atalhos de utilizadores (é necessário suporte do tema)</description>
-        <description lang="ru_RU">Дополнение для обложек, предоставляющее простой способ управления пользовательскими ярлыками (требуется поддержка обложкой)</description>
-        <description lang="sk_SK">Doplnok poskytujúci jednoduchý manažment zoznamu užívateľských odkazov (vyžaduje podporu v doplnku pre vzhľad)</description>
-        <description lang="sv_SE">Skinntillägg som tillhandahåller enkel hantering och översikt av användargenvägar (om skinnet stöder det)</description>
-        <description lang="zh_CN">皮肤加载项，提供简单的用户快捷方式管理和列表（需要皮肤支持）</description>
-        <description lang="zh_TW">插件为皮肤提供了简单的管理和用户连接方式列表 (需要皮肤支持)</description>
-    </extension>
-</addon><addon id="script.toolbox" name="ToolBox Script" version="1.1.2" provider-name="phil65">
+		<language />
+		<platform>all</platform>
+		<license>GPL v2.0</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum>
+		<website />
+		<source>https://github.com/marcelveldt/script.skin.helper.widgets</source>
+	</extension>
+</addon><addon id="script.skinshortcuts" name="Skin Shortcuts" version="1.0.17" provider-name="BigNoid,marcelveldt">
+	<requires>
+		<import addon="xbmc.python" version="2.20.0" />
+		<import addon="script.module.simplejson" version="3.3.0" />
+		<import addon="script.module.unidecode" version="0.4.14" />
+	</requires>
+	<extension point="xbmc.python.library" library="default.py" />
+	<extension point="xbmc.addon.metadata">
+		<news>Template improvements and bug fixes</news>
+		<description lang="bg">Добавка за облици, която осигурява просто управление и списък с потребителски преки пътища (изисква поддръжка от облика)</description>
+		<description lang="de">Add-on für Skins für einfache Bearbeitung und Auflistung von benutzerdefinierten Verknüpfungen (erfordert Skin-Unterstützung)</description>
+		<description lang="el">Πρόσθετο για κελύφη, το οποίο παρέχει έναν απλό τρόπο διαχείρισης και κατηγοριοποίησης των συντομεύσεων του χρήστη (πρέπει να υποστηρίζεται από το κέλυφος)</description>
+		<description lang="en">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
+		<description lang="en_NZ">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
+		<description lang="en_US">Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
+		<description lang="es">Complemento para las pieles para proporcionar una gestión sencilla y lista de atajos de usuario (requiere que la piel lo soporte)</description>
+		<description lang="fr_CA">Addiciel pour habillages qui fournit une gestion simple et un listage des raccourcis utilisateurs (exige la prise en charge de l'habillage)</description>
+		<description lang="gl">Complemento que fornece aos temas dunha xestión sinxela dos atallos dos usuarios (require soporte do tema)</description>
+		<description lang="hr">Dodatak za presvlake koja omogućava jednostavno upravljanje i prikaz korisnikovih prečaca (zahtijeva podršku presvlake) </description>
+		<description lang="hu">Felszín kiegészítő amely könnyen kezelhetővé és listázhatóvá teszi a felhasználói parancsikonokat (Felszín támogatás szükséges)</description>
+		<description lang="is">Viðbót fyrir viðmót til að halda utan um flýtivísa og fá yfirlit yfir þá (þarfnast stuðnings frá viðmóti)</description>
+		<description lang="it">Add-on per gli skin per consentire un facile gestione ed elenco delle scorciatoie utente (richiede che lo skin lo supporti)</description>
+		<description lang="lt">Priedas teminėms išvaizdoms, kad jos turėtų galimybę paprastai tvarkyti ir atvaizduoti vartotojo  sukurtas nuorodas (reikalingas teminės išvaizdos palaikymas)</description>
+		<description lang="nl">Add-on voor skins om te voorzien in het eenvoudig beheren en sorteren van gebruikers snelkoppelingen (vereist skin ondersteuning)</description>
+		<description lang="no">Tillegg for enkel administrering og opplisting av bruker-snarveier i tema (krever støtte i tema)</description>
+		<description lang="pl">Wtyczka dla skór, która zapewnia proste zarządzanie i tworzenie list skrótów użytkownika (wymaga wsparcia skóry)</description>
+		<description lang="pt">Um add-on que permite que os temas tenham recursos simples para gerir e listar atalhos de utilizadores (é necessário suporte do tema)</description>
+		<description lang="pt_BR">Add-on para que as skins possam prover gerenciamento de lista de atalhos para o menu principal (requer suporte da skin)</description>
+		<description lang="ru">Дополнение для обложек, предоставляющее простой способ управления и список пользовательских ярлыков (требуется поддержка обложкой)</description>
+		<description lang="sv">Skinntillägg som tillhandahåller enkel hantering och översikt av användargenvägar (om skinnet stöder det)</description>
+		<description lang="zh">插件为皮肤提供了简单的管理和用户连接方式列表 (需要皮肤支持)</description>
+		<language />
+		<platform>all</platform>
+		<license>GNU General Public License, v2</license>
+		<forum>http://forum.xbmc.org/showthread.php?tid=178294</forum>
+		<website />
+		<email />
+		<source>https://github.com/BigNoid/script.skinshortcuts</source>
+	<assets>
+		<icon>icon.png</icon>
+		<fanart>fanart.jpg</fanart>
+	</assets>
+	</extension>
+</addon><addon id="script.toolbox" name="ToolBox Script" version="1.1.1" provider-name="phil65">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.simplejson" version="2.0.10" />
 		<import addon="script.module.pil" version="1.1.7" />
 	</requires>
-	<extension point="xbmc.python.script" library="default.py">
-		<provides>executable</provides>
-	</extension>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
 	<extension point="xbmc.addon.metadata">
 		<language />
 		<summary lang="en">ToolBox Script</summary>
@@ -867,23 +1544,29 @@ v1.20.0
 		<source>https://github.com/phil65/script.toolbox</source>
 		<email>phil65@kodi.tv</email>
 	</extension>
-</addon><addon id="service.library.data.provider" name="Library Data Provider" provider-name="BigNoid, SiLVO" version="0.4.2">
+</addon><addon id="service.library.data.provider" name="Library Data Provider" provider-name="BigNoid" version="0.3.2">
 	<requires>
-		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="xbmc.json" version="7.9.0" />
+		<import addon="xbmc.python" version="2.25.0" />
+		<import addon="script.module.simplejson" version="3.3.0" />
 		<import addon="script.module.routing" version="0.1.0" />
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="plugin.py">
 		<provides>video</provides>
 	</extension>
-	<extension library="service.py" point="xbmc.service" />
+	<extension library="service.py" point="xbmc.service" start="login" />
 	<extension point="xbmc.addon.metadata">
-		<summary lang="en_GB">Browse movies and episodes in a variety of sorted playlists.</summary>
-		<description lang="en_GB">Plugin for skins to provide library data throughout the skin. It can also be used as standalone plugin to browse the playlists in the video library.</description>
+		<summary lang="en">Browse movies and episodes in a variety of sorted playlists.</summary>
+		<description lang="en">Plugin for skins to provide library data throughout the skin. It can also be used as standalone plugin to browse the playlists in the video library.</description>
+		<disclaimer lang="en" />
 		<platform>all</platform>
-		<license>GPL-2.0-only</license>
-		<forum>https://forum.kodi.tv/showthread.php?tid=210063</forum>
-		<source>https://github.com/mikesilvo164/service.library.data.provider</source>
-		<news>Matrix fixes</news>
+		<language />
+		<license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+		<forum>http://forum.kodi.tv/showthread.php?tid=210063</forum>
+		<website>https://github.com/BigNoid/service.library.data.provider</website>
+		<email>big.noid@kodi.tv</email>
+		<source>https://github.com/BigNoid/service.library.data.provider</source>
+		<news>Added Polish and Hebrew translations, thx Etharr and Eng2Heb</news>
 		<assets>
 			<icon>resources/icon.png</icon>
 			<fanart>resources/fanart.jpg</fanart>

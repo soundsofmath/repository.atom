@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.globalsearch" name="Global Search" version="9.0.7" provider-name="ronie">
+<addon id="script.globalsearch" name="Global Search" version="8.0.13" provider-name="ronie">
 	<requires>
-		<import addon="xbmc.python" version="3.0.0"/>
+		<import addon="xbmc.python" version="2.26.0"/>
 	</requires>
 	<extension point="xbmc.python.script" library="default.py"/>
 	<extension point="xbmc.addon.metadata">
@@ -13,7 +13,7 @@
 		<summary lang="en_GB">Search your library.</summary>
 		<summary lang="en_NZ">Search your library.</summary>
 		<summary lang="en_US">Search your library.</summary>
-		<summary lang="es_ES">Busca en tu biblioteca.</summary>
+		<summary lang="es_ES">Busca tu biblioteca.</summary>
 		<summary lang="fr_FR">Chercher dans la médiathèque.</summary>
 		<summary lang="fr_CA">Chercher dans votre bibliothèque</summary>
 		<summary lang="gl_ES">Buscar a súa biblioteca.</summary>
@@ -73,9 +73,6 @@
 			<icon>resources/icon.png</icon>
 			<fanart>resources/fanart.jpg</fanart>
 		</assets>
-		<news>- add support for searching musicvideos by artist name
-- add support for originaltitle search
-- add support for tv show actors
-- add videoresolution flag</news>
+		<news>- fix issue with unneeded seeking</news>
 	</extension>
 </addon>

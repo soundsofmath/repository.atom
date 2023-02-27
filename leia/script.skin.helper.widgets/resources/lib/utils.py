@@ -7,27 +7,26 @@
     helper methods
 '''
 
-import os, sys
-import urllib.parse as urlparse
-from traceback import format_exc
-import traceback
 import xbmc
-import xbmcaddon
+from traceback import format_exc
+import sys
+import urllib
 
 ADDON_ID = "script.skin.helper.widgets"
 KODI_VERSION = int(xbmc.getInfoLabel("System.BuildVersion").split(".")[0])
 
 
 def log_msg(msg, loglevel=xbmc.LOGDEBUG):
-    ''' log message with addon name and version to kodi log '''
-    xbmc.log("%s --> %s" % (ADDON_ID, msg), level=loglevel)
+    '''log message to kodi log'''
+    if isinstance(msg, unicode):
+        msg = msg.encode('utf-8')
+    xbmc.log("Skin Helper Widgets --> %s" % msg, level=loglevel)
 
 
 def log_exception(modulename, exceptiondetails):
     '''helper to properly log an exception'''
-    exc_type, exc_value, exc_traceback = sys.exc_info()
-    lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-    log_msg("Exception details: Type: %s Value: %s Traceback: %s" % (exc_type.__name__, exc_value, ''.join(line for line in lines)), xbmc.LOGWARNING)
+    log_msg(format_exc(sys.exc_info()), xbmc.LOGWARNING)
+    log_msg("Exception in %s ! --> %s" % (modulename, exceptiondetails), xbmc.LOGERROR)
 
 
 def create_main_entry(item):
@@ -49,6 +48,8 @@ def create_main_entry(item):
 
 def urlencode(text):
     '''helper to urlencode a (unicode) string'''
+    if isinstance(text, unicode):
+        text = text.encode("utf-8")
     blah = urllib.urlencode({'blahblahblah': text})
     blah = blah[13:]
     return blah

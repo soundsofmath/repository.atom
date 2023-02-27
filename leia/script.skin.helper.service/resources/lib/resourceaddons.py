@@ -8,43 +8,40 @@
     several helpers to get data/images from kodi image resource addons
 '''
 
-import os, sys
 import xbmc
 import xbmcvfs
 import xbmcgui
 import xbmcaddon
-import urllib.request, urllib.error, urllib.parse
-from resources.lib.utils import KODI_VERSION, ADDON_ID, log_exception, kodi_json, getCondVisibility, try_decode
-from resources.lib.dialogselect import DialogSelect
+from utils import KODI_VERSION, ADDON_ID, log_exception, kodi_json
+from dialogselect import DialogSelect
+import urllib2
 import re
 from simplecache import SimpleCache
 
 
 def setresourceaddon(addontype, skinstring="", header=""):
     '''helper to let the user choose a resource addon and set that as skin string'''
-    cur_value = try_decode(xbmc.getInfoLabel("Skin.String(%s.name)" % skinstring))
+    xbmc.executebuiltin("ActivateWindow(busydialog)")
+    cur_value = xbmc.getInfoLabel("Skin.String(%s.name)" % skinstring).decode("utf-8")
     listing = []
     addon = xbmcaddon.Addon(ADDON_ID)
     if not header:
         header = addon.getLocalizedString(32010)
 
     # none option
-    listitem = xbmcgui.ListItem(label=addon.getLocalizedString(32001))
-    listitem.setArt({"icon": 'DefaultAddonNone.png'})
+    listitem = xbmcgui.ListItem(label=addon.getLocalizedString(32001), iconImage="DefaultAddonNone.png")
     listitem.setProperty("addonid", "none")
     listing.append(listitem)
 
     # custom path
-    listitem = xbmcgui.ListItem(label=addon.getLocalizedString(32009))
-    listitem.setArt({"icon": 'DefaultFolder.png'})
+    listitem = xbmcgui.ListItem(label=addon.getLocalizedString(32009), iconImage="DefaultFolder.png")
     listitem.setProperty("addonid", "custom")
     listing.append(listitem)
 
     # available resource addons
     for item in get_resourceaddons(addontype):
         label2 = "%s: %s" % (xbmc.getLocalizedString(21863), item["author"])
-        listitem = xbmcgui.ListItem(label=item["name"], label2=label2)
-        listitem.setArt({"icon": item["thumbnail"]})
+        listitem = xbmcgui.ListItem(label=item["name"], label2=label2, iconImage=item["thumbnail"])
         listitem.setPath(item["path"])
         listitem.setProperty("addonid", item["addonid"])
         listing.append(listitem)
@@ -52,8 +49,9 @@ def setresourceaddon(addontype, skinstring="", header=""):
     # special skinhelper paths
     if addontype == "resource.images.moviegenrefanart":
         label = addon.getLocalizedString(32019)
-        listitem = xbmcgui.ListItem(label=label, label2="Skin Helper Service")
-        listitem.setArt({"icon": 'special://home/addons/script.skin.helper.service/icon.png'})
+        listitem = xbmcgui.ListItem(
+            label=label, label2="Skin Helper Service",
+            iconImage="special://home/addons/script.skin.helper.service/icon.png")
         listitem.setPath("plugin://script.skin.helper.service/?action=moviegenrebackground&genre=")
         listitem.setProperty("addonid", "skinhelper.forgenre")
         listing.append(listitem)
@@ -72,7 +70,7 @@ def setresourceaddon(addontype, skinstring="", header=""):
         return setresourceaddon(addontype, skinstring)
     elif result:
         addon_id = result.getProperty("addonid")
-        addon_name = result.getLabel()
+        addon_name = result.getLabel().decode("utf-8")
         if addon_id == "none" and skinstring:
             # None
             xbmc.executebuiltin('Skin.Reset(%s)' % skinstring)
@@ -88,7 +86,7 @@ def setresourceaddon(addontype, skinstring="", header=""):
                 custom_path = dialog.browse(0, addon.getLocalizedString(32005), 'files')
                 del dialog
                 result.setPath(custom_path)
-            addonpath = result.getPath()
+            addonpath = result.getfilename().decode("utf-8")
             if addonpath:
                 is_multi, extension = get_multi_extension(addonpath)
                 xbmc.executebuiltin('Skin.SetString(%s,%s)' % (skinstring, addonpath))
@@ -105,14 +103,14 @@ def setresourceaddon(addontype, skinstring="", header=""):
 
 def downloadresourceaddons(addontype):
     '''show dialog with all available resource addons on the repo so the user can install one'''
+    xbmc.executebuiltin("ActivateWindow(busydialog)")
     listitems = []
     addon = xbmcaddon.Addon(ADDON_ID)
     for item in get_repo_resourceaddons(addontype):
-        if not getCondVisibility("System.HasAddon(%s)" % item["addonid"]):
+        if not xbmc.getCondVisibility("System.HasAddon(%s)" % item["addonid"]):
             label2 = "%s: %s" % (xbmc.getLocalizedString(21863), item["author"])
             listitem = xbmcgui.ListItem(label=item["name"],
-                                        label2=label2)
-            listitem.setArt({"icon": item["thumbnail"]})                          
+                                        label2=label2, iconImage=item["thumbnail"])
             listitem.setPath(item["path"])
             listitem.setProperty("addonid", item["addonid"])
             listitems.append(listitem)
@@ -142,7 +140,7 @@ def downloadresourceaddons(addontype):
             # wait (max 2 minutes) untill install is completed
             install_succes = False
             while not monitor.waitForAbort(1) and not install_succes and count < 120:
-                install_succes = getCondVisibility("System.HasAddon(%s)" % addon_id)
+                install_succes = xbmc.getCondVisibility("System.HasAddon(%s)" % addon_id)
             del monitor
             if install_succes:
                 return True
@@ -156,15 +154,15 @@ def checkresourceaddons(addonslist):
         setting = item.split(";")[0]
         addontype = item.split(";")[1]
         addontypelabel = item.split(";")[2]
-        skinsetting = try_decode(xbmc.getInfoLabel("Skin.String(%s.path)" % setting))
+        skinsetting = xbmc.getInfoLabel("Skin.String(%s.path)" % setting).decode("utf-8")
         if not skinsetting or (skinsetting and
-                               getCondVisibility("!System.HasAddon(%s)" %
+                               xbmc.getCondVisibility("!System.HasAddon(%s)" %
                                                       skinsetting.replace("resource://", "").replace("/", ""))):
             # skin setting is empty or filled with non existing addon...
             if not checkresourceaddon(setting, addontype):
                 ret = xbmcgui.Dialog().yesno(
                     heading=addon.getLocalizedString(32007) % addontypelabel,
-                    message=addon.getLocalizedString(32008) % addontypelabel)
+                    line1=addon.getLocalizedString(32008) % addontypelabel)
                 xbmc.executebuiltin("Skin.Reset(%s.path)" % setting)
                 if ret:
                     downloadresourceaddons(addontype)
@@ -227,8 +225,8 @@ def get_repo_resourceaddons(filterstr=""):
         if not filterstr or item.lower().startswith(filterstr.lower()):
             addoninfo = get_repo_addoninfo(item, simplecache)
             if not addoninfo.get("name"):
-                addoninfo = {"addonid": item, "name": item, "author": "Kodi"}
-                addoninfo["thumbnail"] = "http://mirrors.kodi.tv/addons/matrix/%s/icon.png" % item
+                addoninfo = {"addonid": item, "name": item, "author": ""}
+                addoninfo["thumbnail"] = "http://mirrors.kodi.tv/addons/krypton/%s/icon.png" % item
             addoninfo["path"] = "resource://%s/" % item
             result.append(addoninfo)
     simplecache.close()
@@ -242,7 +240,33 @@ def get_repo_addoninfo(addonid, simplecache=None):
         cachestr = "skinhelper.addoninfo.%s" % addonid
         info = simplecache.get(cachestr)
     if not info:
-        info = {"addonid": addonid, "name": "", "thumbnail": "", "author": "Kodi"}
+        info = {"addonid": addonid, "name": "", "thumbnail": "", "author": ""}
+        mirrorurl = "http://addons.kodi.tv/show/%s/" % addonid
+        try:
+            req = urllib2.Request(mirrorurl)
+            req.add_header('User-Agent',
+                           'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3')
+            response = urllib2.urlopen(req)
+            body = response.read()
+            response.close()
+            body = body.replace('\r', '').replace('\n', '').replace('\t', '')
+            for addondetail in re.compile('<div id="addonDetail">(.*?)</div>').findall(body):
+                for h2_item in re.compile('<h2>(.*?)</h2>').findall(addondetail):
+                    info["name"] = h2_item
+                    break
+                for thumbnail in re.compile('src="(.*?)"').findall(addondetail):
+                    icon = "http://addons.kodi.tv/%s" % thumbnail
+                    info["thumbnail"] = icon
+                    break
+                authors = []
+                for addonmetadata in re.compile('<div id="addonMetaData">(.*?)</div>').findall(body):
+                    for author in re.compile('<a href="(.*?)">(.*?)</a>').findall(addonmetadata):
+                        authors.append(author[1])
+                info["author"] = ",".join(authors)
+                break
+        except Exception as exc:
+            if "HTTP Error 404" not in exc:  # ignore not found exceptions
+                log_exception(__name__, exc)
         if simplecache:
             cache.set(cachestr, info)
     return info
@@ -266,7 +290,7 @@ def walk_directory(browsedir, recursive=False, label2=""):
         dirs = xbmcvfs.listdir(browsedir)[0]
         subdirs = [browsedir]
         for directory in dirs:
-            directory = try_decode(directory)
+            directory = directory.decode("utf-8")
             cur_dir = "%s%s/" % (browsedir, directory)
             if recursive:
                 subdirs.append(cur_dir)
@@ -275,7 +299,7 @@ def walk_directory(browsedir, recursive=False, label2=""):
                 images.append((label, cur_dir, label2, "DefaultFolder.png"))
         for subdir in subdirs:
             for imagefile in xbmcvfs.listdir(subdir)[1]:
-                imagefile = try_decode(imagefile)
+                imagefile = imagefile.decode("utf-8")
                 label = imagefile
                 imagepath = subdir + imagefile
                 images.append((label, imagepath, label2, imagepath))

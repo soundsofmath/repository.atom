@@ -7,12 +7,12 @@
     main_service.py
     Background service running the various threads
 '''
-import os, sys
-from resources.lib.utils import log_msg, ADDON_ID, log_exception, try_decode
-from resources.lib.skinsettings import SkinSettings
-from resources.lib.listitem_monitor import ListItemMonitor
-from resources.lib.kodi_monitor import KodiMonitor
-# from resources.lib.webservice import WebService
+
+from utils import log_msg, ADDON_ID, log_exception
+from skinsettings import SkinSettings
+from listitem_monitor import ListItemMonitor
+from kodi_monitor import KodiMonitor
+from webservice import WebService
 from metadatautils import MetadataUtils
 import xbmc
 import xbmcaddon
@@ -27,19 +27,18 @@ class MainService:
         self.win = xbmcgui.Window(10000)
         self.addon = xbmcaddon.Addon(ADDON_ID)
         self.metadatautils = MetadataUtils()
-        self.addonname = try_decode(self.addon.getAddonInfo('name'))
-        self.addonversion = try_decode(self.addon.getAddonInfo('version'))
+        self.addonname = self.addon.getAddonInfo('name').decode("utf-8")
+        self.addonversion = self.addon.getAddonInfo('version').decode("utf-8")
         self.kodimonitor = KodiMonitor(metadatautils=self.metadatautils, win=self.win)
-        self.listitem_monitor = ListItemMonitor(
+        listitem_monitor = ListItemMonitor(
             metadatautils=self.metadatautils, win=self.win, monitor=self.kodimonitor)
-        # self.webservice = WebService(self.metadatautils)
-        self.win.clearProperty("SkinHelperShutdownRequested")
+        webservice = WebService(metadatautils=self.metadatautils)
 
         # start the extra threads
-        self.listitem_monitor.start()
-        # self.webservice.start()
-        
-        log_msg('%s version %s started' % (self.addonname, self.addonversion), xbmc.LOGINFO)
+        listitem_monitor.start()
+        webservice.start()
+        self.win.clearProperty("SkinHelperShutdownRequested")
+        log_msg('%s version %s started' % (self.addonname, self.addonversion), xbmc.LOGNOTICE)
 
         # run as service, check skin every 10 seconds and keep the other threads alive
         while not self.kodimonitor.abortRequested():
@@ -51,28 +50,30 @@ class MainService:
             self.kodimonitor.waitForAbort(10)
 
         # Abort was requested while waiting. We should exit
+        self.win.setProperty("SkinHelperShutdownRequested", "shutdown")
+        log_msg('Shutdown requested !', xbmc.LOGNOTICE)
+        # stop the extra threads
+        listitem_monitor.stop()
+        webservice.stop()
+
+        # cleanup objects
         self.close()
 
     def close(self):
         '''Cleanup Kodi Cpython instances'''
-        #self.webservice.stop()
-        self.win.setProperty("SkinHelperShutdownRequested", "shutdown")
-        log_msg('Shutdown requested !', xbmc.LOGINFO)
-        self.listitem_monitor.stop()
         self.metadatautils.close()
         del self.win
         del self.kodimonitor
-        #del self.metadatautils
-        #del self.webservice
-        log_msg('%s version %s stopped' % (self.addonname, self.addonversion), xbmc.LOGINFO)
+        del self.metadatautils
+        log_msg('%s version %s stopped' % (self.addonname, self.addonversion), xbmc.LOGNOTICE)
 
     def check_skin_version(self):
         '''check if skin changed'''
         try:
             skin = xbmc.getSkinDir()
             skin_addon = xbmcaddon.Addon(id=skin)
-            skin_label = try_decode(skin_addon.getAddonInfo('name'))
-            skin_version = try_decode(skin_addon.getAddonInfo('version'))
+            skin_label = skin_addon.getAddonInfo('name').decode("utf-8")
+            skin_version = skin_addon.getAddonInfo('version').decode("utf-8")
             this_skin = "%s-%s" % (skin_label, skin_version)
             del skin_addon
             if self.last_skin != this_skin:

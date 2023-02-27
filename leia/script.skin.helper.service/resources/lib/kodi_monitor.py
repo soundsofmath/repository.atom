@@ -6,8 +6,9 @@
     kodi_monitor.py
     monitor all kodi events
 '''
-import os,sys
-from resources.lib.utils import log_msg, json, prepare_win_props, log_exception, getCondVisibility, try_decode
+
+from utils import log_msg, json, prepare_win_props, log_exception
+from metadatautils import process_method_on_list, extend_dict, get_clean_image
 import xbmc
 
 
@@ -22,13 +23,13 @@ class KodiMonitor(xbmc.Monitor):
         xbmc.Monitor.__init__(self)
         self.metadatautils = kwargs.get("metadatautils")
         self.win = kwargs.get("win")
-        self.enable_animatedart = getCondVisibility("Skin.HasSetting(SkinHelper.EnableAnimatedPosters)") == 1
+        self.enable_animatedart = xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.EnableAnimatedPosters)") == 1
 
     def onNotification(self, sender, method, data):
         '''builtin function for the xbmc.Monitor class'''
         try:
             log_msg("Kodi_Monitor: sender %s - method: %s  - data: %s" % (sender, method, data))
-            data = json.loads(try_decode(data))
+            data = json.loads(data.decode('utf-8'))
             mediatype = ""
             dbid = 0
             transaction = False
@@ -59,20 +60,15 @@ class KodiMonitor(xbmc.Monitor):
                 self.reset_win_props()
 
             if method == "Player.OnPlay":
-                if not self.monitoring_stream and not getCondVisibility("Player.DisplayAfterSeek"):
+                if not self.monitoring_stream:
                     self.reset_win_props()
                 if self.wait_for_player():
-                    if getCondVisibility("Player.HasVideo | Player.HasAudio"):
-                        if getCondVisibility("Player.IsInternetStream"):
+                    if xbmc.getCondVisibility("Player.HasAudio"):
+                        if xbmc.getCondVisibility("Player.IsInternetStream"):
                             self.monitor_radiostream()
                         else:
                             self.set_music_properties()
-                    if getCondVisibility("Pvr.IsPlayingRadio"):
-                        if getCondVisibility("!Player.IsInternetStream"):
-                            self.monitor_radiostream()
-                        else:
-                            self.set_music_properties()
-                    elif getCondVisibility("VideoPlayer.Content(livetv) | String.StartsWith(Player.FileNameAndPath,pvr://)"):
+                    elif xbmc.getCondVisibility("VideoPlayer.Content(livetv)"):
                         self.monitor_livetv()
                     else:
                         self.set_video_properties(mediatype, dbid)
@@ -126,7 +122,7 @@ class KodiMonitor(xbmc.Monitor):
 
     def reset_win_props(self):
         '''reset all window props set by the script...'''
-        self.metadatautils.process_method_on_list(self.win.clearProperty, self.all_window_props)
+        process_method_on_list(self.win.clearProperty, self.all_window_props)
         self.all_window_props = []
 
     def set_win_prop(self, prop_tuple):
@@ -139,7 +135,7 @@ class KodiMonitor(xbmc.Monitor):
     def wait_for_player():
         '''wait for player untill it's actually playing content'''
         count = 0
-        while not getCondVisibility("Player.HasVideo | Player.HasAudio"):
+        while not xbmc.getCondVisibility("Player.HasVideo | Player.HasAudio"):
             xbmc.sleep(100)
             if count == 50:
                 return False
@@ -158,14 +154,14 @@ class KodiMonitor(xbmc.Monitor):
             log_msg("Show OSD Infopanel - number of seconds: %s" % sec_to_display)
             self.infopanelshown = True
             if self.win.getProperty("VideoScreensaverRunning") != "true":
-                while retries != 50 and getCondVisibility("!Player.ShowInfo"):
+                while retries != 50 and xbmc.getCondVisibility("!Player.ShowInfo"):
                     xbmc.sleep(100)
-                    if getCondVisibility("!Player.ShowInfo + Window.IsActive(fullscreenvideo)"):
+                    if xbmc.getCondVisibility("!Player.ShowInfo + Window.IsActive(fullscreenvideo)"):
                         xbmc.executebuiltin('Action(info)')
                     retries += 1
                 # close info again after given amount of time
                 xbmc.Monitor().waitForAbort(sec_to_display)
-                if getCondVisibility("Player.ShowInfo + Window.IsActive(fullscreenvideo)"):
+                if xbmc.getCondVisibility("Player.ShowInfo + Window.IsActive(fullscreenvideo)"):
                     xbmc.executebuiltin('Action(info)')
 
     def set_video_properties(self, mediatype, li_dbid):
@@ -186,70 +182,61 @@ class KodiMonitor(xbmc.Monitor):
             li_imdb, li_tvdb = self.metadatautils.get_imdbtvdb_id(li_title, mediatype, li_year, li_imdb, li_showtitle)
 
             # generic video properties (studio, streamdetails, omdb, top250)
-            details = self.metadatautils.extend_dict(details, self.metadatautils.get_omdb_info(li_imdb))
-            details = self.metadatautils.extend_dict(details, self.metadatautils.get_trakt_info(li_imdb))
+            details = extend_dict(details, self.metadatautils.get_omdb_info(li_imdb))
             if li_dbid:
-                details = self.metadatautils.extend_dict(details, self.metadatautils.get_streamdetails(li_dbid, mediatype))
-            details = self.metadatautils.extend_dict(details, self.metadatautils.get_top250_rating(li_imdb))
+                details = extend_dict(details, self.metadatautils.get_streamdetails(li_dbid, mediatype))
+            details = extend_dict(details, self.metadatautils.get_top250_rating(li_imdb))
 
             # tvshows-only properties (tvdb)
             if mediatype == "episode":
-                details = self.metadatautils.extend_dict(details, self.metadatautils.get_tvdb_details(li_imdb, li_tvdb))
+                details = extend_dict(details, self.metadatautils.get_tvdb_details(li_imdb, li_tvdb))
 
             # movies-only properties (tmdb, animated art)
             if mediatype == "movie":
-                details = self.metadatautils.extend_dict(details, self.metadatautils.get_tmdb_details(li_imdb))
-                if li_imdb and getCondVisibility("Skin.HasSetting(SkinHelper.EnableAnimatedPosters)"):
-                    details = self.metadatautils.extend_dict(details, self.metadatautils.get_animated_artwork(li_imdb))
+                details = extend_dict(details, self.metadatautils.get_tmdb_details(li_imdb))
+                if li_imdb and xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.EnableAnimatedPosters)"):
+                    details = extend_dict(details, self.metadatautils.get_animated_artwork(li_imdb))
 
             # extended art
-            if getCondVisibility("Skin.HasSetting(SkinHelper.EnableExtendedArt)"):
+            if xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.EnableExtendedArt)"):
                 tmdbid = details.get("tmdb_id", "")
-                details = self.metadatautils.extend_dict(details, self.metadatautils.get_extended_artwork(
+                details = extend_dict(details, self.metadatautils.get_extended_artwork(
                     li_imdb, li_tvdb, tmdbid, mediatype))
 
-        if li_title == try_decode(xbmc.getInfoLabel("Player.Title")):
-            all_props = prepare_win_props(details, "SkinHelper.Player.")
-            self.metadatautils.process_method_on_list(self.set_win_prop, all_props)
+        if li_title == xbmc.getInfoLabel("Player.Title").decode('utf-8'):
+            all_props = prepare_win_props(details, u"SkinHelper.Player.")
+            process_method_on_list(self.set_win_prop, all_props)
 
     def set_music_properties(self):
         '''sets the window props for a playing song'''
-        li_title = try_decode(xbmc.getInfoLabel("MusicPlayer.Title"))
+        li_title = xbmc.getInfoLabel("MusicPlayer.Title").decode('utf-8')
         li_title_org = li_title
-        li_artist = try_decode(xbmc.getInfoLabel("MusicPlayer.Artist"))
-        li_album = try_decode(xbmc.getInfoLabel("MusicPlayer.Album"))
-        li_disc = try_decode(xbmc.getInfoLabel("MusicPlayer.DiscNumber"))
-        li_plot = try_decode(xbmc.getInfoLabel("MusicPlayer.Comment"))
-        
+        li_artist = xbmc.getInfoLabel("MusicPlayer.Artist").decode('utf-8')
+        li_album = xbmc.getInfoLabel("MusicPlayer.Album").decode('utf-8')
+        li_disc = xbmc.getInfoLabel("MusicPlayer.DiscNumber").decode('utf-8')
+        li_plot = xbmc.getInfoLabel("MusicPlayer.Comment").decode('utf-8')
+
         # fix for internet streams
-        if not li_artist and getCondVisibility("Player.IsInternetStream"):
+        if not li_artist and xbmc.getCondVisibility("Player.IsInternetStream"):
             for splitchar in [" - ", "-", ":", ";"]:
                 if splitchar in li_title:
                     li_artist = li_title.split(splitchar)[0].strip()
                     li_title = li_title.split(splitchar)[1].strip()
                     break
 
-        # fix for pvr.radio
-        if not li_artist and getCondVisibility("Pvr.IsPlayingRadio"):
-            for splitchar in [" - ", "-", ":", ";"]:
-                if splitchar in li_title:
-                    li_artist = li_title.split(splitchar)[0].strip()
-                    li_title = li_title.split(splitchar)[1].strip()
-                    break
-
-        if getCondVisibility("Skin.HasSetting(SkinHelper.EnableMusicArt)") and li_artist and(
+        if xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.EnableMusicArt)") and li_artist and(
                 li_title or li_album):
             result = self.metadatautils.get_music_artwork(li_artist, li_album, li_title, li_disc)
             if result.get("extendedplot") and li_plot:
                 li_plot = li_plot.replace('\n', ' ').replace('\r', '').rstrip()
                 result["extendedplot"] = "%s -- %s" % (result["extendedplot"], li_plot)
-            all_props = prepare_win_props(result, "SkinHelper.Player.")
-            if li_title_org == try_decode(xbmc.getInfoLabel("MusicPlayer.Title")):
-                self.metadatautils.process_method_on_list(self.set_win_prop, all_props)
+            all_props = prepare_win_props(result, u"SkinHelper.Player.")
+            if li_title_org == xbmc.getInfoLabel("MusicPlayer.Title").decode('utf-8'):
+                process_method_on_list(self.set_win_prop, all_props)
 
     def artwork_downloader(self, media_type, dbid):
         '''trigger artwork scan with artwork downloader if enabled'''
-        if getCondVisibility(
+        if xbmc.getCondVisibility(
                 "System.HasAddon(script.artwork.downloader) + Skin.HasSetting(EnableArtworkDownloader)"):
             if media_type == "episode":
                 media_type = "tvshow"
@@ -266,9 +253,9 @@ class KodiMonitor(xbmc.Monitor):
             # another monitoring already in progress...
             return
         last_title = ""
-        while not self.abortRequested() and getCondVisibility("Player.HasAudio"):
+        while not self.abortRequested() and xbmc.getCondVisibility("Player.HasAudio"):
             self.monitoring_stream = True
-            cur_title = try_decode(xbmc.getInfoLabel("MusicPlayer.Title"))
+            cur_title = xbmc.getInfoLabel("MusicPlayer.Title").decode('utf-8')
             if cur_title != last_title:
                 last_title = cur_title
                 self.reset_win_props()
@@ -285,44 +272,41 @@ class KodiMonitor(xbmc.Monitor):
             # another monitoring already in progress...
             return
         last_title = ""
-        while not self.abortRequested() and getCondVisibility("Player.HasVideo"):
+        while not self.abortRequested() and xbmc.getCondVisibility("Player.HasVideo"):
             self.monitoring_stream = True
-            li_title = try_decode(xbmc.getInfoLabel("Player.Title"))
+            li_title = xbmc.getInfoLabel("Player.Title").decode('utf-8')
             if li_title and li_title != last_title:
                 all_props = []
                 last_title = li_title
                 self.reset_win_props()
-                li_channel = try_decode(xbmc.getInfoLabel("VideoPlayer.ChannelName"))
+                li_channel = xbmc.getInfoLabel("VideoPlayer.ChannelName").decode('utf-8')
                 # pvr artwork
-                if getCondVisibility("Skin.HasSetting(SkinHelper.EnablePVRThumbs)"):
-                    li_genre = try_decode(xbmc.getInfoLabel("VideoPlayer.Genre"))
+                if xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.EnablePVRThumbs)"):
+                    li_genre = xbmc.getInfoLabel("VideoPlayer.Genre").decode('utf-8')
                     pvrart = self.metadatautils.get_pvr_artwork(li_title, li_channel, li_genre)
-                    all_props = prepare_win_props(pvrart, "SkinHelper.Player.")
+                    all_props = prepare_win_props(pvrart, u"SkinHelper.Player.")
                 # pvr channellogo
-                channellogo = self.metadatautils.get_channellogo(li_channel)
-                all_props.append(("SkinHelper.Player.ChannelLogo", channellogo))
-                all_props.append(("SkinHelper.Player.Art.ChannelLogo", channellogo))
+                all_props.append(("SkinHelper.Player.ChannelLogo", self.metadatautils.get_channellogo(li_channel)))
                 if last_title == li_title:
-                    self.metadatautils.process_method_on_list(self.set_win_prop, all_props)
-                # show infopanel if needed
-                self.show_info_panel()
+                    process_method_on_list(self.set_win_prop, all_props)
             self.waitForAbort(2)
         self.monitoring_stream = False
 
     @staticmethod
     def get_mediatype():
         '''get current content type'''
-        if getCondVisibility("VideoPlayer.Content(movies)"):
+        if xbmc.getCondVisibility("VideoPlayer.Content(movies)"):
             mediatype = "movie"
-        elif getCondVisibility("VideoPlayer.Content(episodes) | !String.IsEmpty(VideoPlayer.TvShowTitle)"):
+        elif xbmc.getCondVisibility("VideoPlayer.Content(episodes) | !IsEmpty(VideoPlayer.TvShowTitle)"):
             mediatype = "episode"
-        elif xbmc.getInfoLabel("VideoPlayer.Content(musicvideos) | !String.IsEmpty(VideoPlayer.Artist)"):
+        elif xbmc.getInfoLabel("VideoPlayer.Content(musicvideos) | !IsEmpty(VideoPlayer.Artist)"):
             mediatype = "musicvideo"
         else:
             mediatype = "file"
         return mediatype
 
-    def get_player_infolabels(self):
+    @staticmethod
+    def get_player_infolabels():
         '''collect basic infolabels for the current item in the videoplayer'''
         details = {"art": {}}
         # normal properties
@@ -332,7 +316,7 @@ class KodiMonitor(xbmc.Monitor):
                  "firstaired", "mpaa", "tagline", "rating", "imdbnumber"
                  ]
         for prop in props:
-            propvalue = try_decode(xbmc.getInfoLabel('VideoPlayer.%s' % prop))
+            propvalue = xbmc.getInfoLabel('VideoPlayer.%s' % prop).decode('utf-8')
             details[prop] = propvalue
         # art properties
         props = ["fanart", "poster", "clearlogo", "clearart", "landscape",
@@ -340,9 +324,9 @@ class KodiMonitor(xbmc.Monitor):
                  "tvshow.clearlogo", "tvshow.poster", "tvshow.fanart", "tvshow.banner"
                  ]
         for prop in props:
-            propvalue = try_decode(xbmc.getInfoLabel('Player.Art(%s)' % prop))
+            propvalue = xbmc.getInfoLabel('Player.Art(%s)' % prop).decode('utf-8')
             if propvalue:
                 prop = prop.replace("tvshow.", "")
-                propvalue = self.metadatautils.get_clean_image(propvalue)
+                propvalue = get_clean_image(propvalue)
                 details["art"][prop] = propvalue
         return details

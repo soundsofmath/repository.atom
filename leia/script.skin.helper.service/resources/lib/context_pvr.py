@@ -5,11 +5,9 @@
     Contextmenu for Pvr art
 '''
 
-import os, sys
 import xbmc
 import xbmcgui
 from metadatautils import MetadataUtils
-from utils import try_decode
 
 # pylint: disable-msg=invalid-constant-name
 
@@ -19,13 +17,15 @@ if __name__ == '__main__':
     ##### PVR Artwork ########
     win = xbmcgui.Window(10000)
     win.setProperty("SkinHelper.Artwork.ManualLookup", "busy")
-    title = try_decode(xbmc.getInfoLabel("ListItem.Title"))
+    xbmc.executebuiltin("ActivateWindow(busydialog)")
+    title = xbmc.getInfoLabel("ListItem.Title").decode('utf-8')
     if not title:
-        title = try_decode(xbmc.getInfoLabel("ListItem.Label"))
-    channel = try_decode(xbmc.getInfoLabel("ListItem.ChannelName"))
-    genre = try_decode(xbmc.getInfoLabel("ListItem.Genre"))
+        title = xbmc.getInfoLabel("ListItem.Label").decode('utf-8')
+    channel = xbmc.getInfoLabel("ListItem.ChannelName").decode('utf-8')
+    genre = xbmc.getInfoLabel("ListItem.Genre").decode('utf-8')
     metadatautils = MetadataUtils()
     metadatautils.pvr_artwork_options(title, channel, genre)
+    xbmc.executebuiltin("Dialog.Close(busydialog)")
     win.clearProperty("SkinHelper.Artwork.ManualLookup")
     metadatautils.close()
     del win

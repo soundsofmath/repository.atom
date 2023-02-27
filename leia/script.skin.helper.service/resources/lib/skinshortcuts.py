@@ -8,18 +8,18 @@
     Methods to connect skinhelper to skinshortcuts for smartshortcuts, widgets and backgrounds
 '''
 
-import os, sys
-from resources.lib.utils import kodi_json, log_msg, urlencode, ADDON_ID, getCondVisibility, try_encode, try_decode
-from metadatautils import MetadataUtils
+from utils import kodi_json, log_msg, urlencode, ADDON_ID
+from metadatautils import detect_plugin_content
 import xbmc
 import xbmcvfs
 import xbmcplugin
 import xbmcgui
 import xbmcaddon
+import sys
 
 # extendedinfo has some login-required widgets, these must not be probed without login details
 EXTINFO_CREDS = False
-if getCondVisibility("System.Hasaddon(script.extendedinfo)"):
+if xbmc.getCondVisibility("System.Hasaddon(script.extendedinfo)"):
     exinfoaddon = xbmcaddon.Addon(id="script.extendedinfo")
     if exinfoaddon.getSetting("tmdb_username") and exinfoaddon.getSetting("tmdb_password"):
         EXTINFO_CREDS = True
@@ -37,7 +37,7 @@ def add_directoryitem(entry, is_folder=True, widget=None, widget2=None):
     if is_folder:
         path = sys.argv[0] + "?action=SMARTSHORTCUTS&path=" + entry
         listitem = xbmcgui.ListItem(label, path=path)
-        listitem.setArt({"icon": 'DefaultFolder.png'})
+        listitem.setIconImage("DefaultFolder.png")
     else:
         listitem = xbmcgui.ListItem(label, path=path)
         props = {}
@@ -48,7 +48,8 @@ def add_directoryitem(entry, is_folder=True, widget=None, widget2=None):
         props["background"] = "$INFO[Window(Home).Property(%s.image)]" % entry
         props["backgroundName"] = "$INFO[Window(Home).Property(%s.title)]" % entry
         listitem.setInfo(type="Video", infoLabels={"Title": "smartshortcut"})
-        listitem.setArt({"icon": "special://home/addons/script.skin.helper.service/fanart.jpg", "thumb": image})
+        listitem.setThumbnailImage(image)
+        listitem.setIconImage("special://home/addons/script.skin.helper.service/fanart.jpg")
 
         if widget:
             widget_type = "$INFO[Window(Home).Property(%s.type)]" % widget
@@ -240,8 +241,7 @@ def get_widgets(item_filter="", sublevel=""):
             # only show main listing for this category...
             if widgets:
                 label = get_item_filter_label(item_filter)
-                listitem = xbmcgui.ListItem(label)
-                listitem.setArt({"icon": 'DefaultFolder.png'})
+                listitem = xbmcgui.ListItem(label, iconImage="DefaultFolder.png")
                 url = "plugin://script.skin.helper.service?action=widgets&path=%s" % item_filter
                 xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=url, listitem=listitem, isFolder=True)
         else:
@@ -291,7 +291,7 @@ def get_widgets(item_filter="", sublevel=""):
 
                 if is_folder:
                     listitem = xbmcgui.ListItem(widget[0])
-                    listitem.setArt({"icon": "DefaultFolder.png"})
+                    listitem.setIconImage("DefaultFolder.png")
                     xbmcplugin.addDirectoryItem(
                         handle=int(sys.argv[1]),
                         url=widget[1],
@@ -309,7 +309,8 @@ def get_widgets(item_filter="", sublevel=""):
                     props["widgetName"] = widget[0]
                     props["widget"] = item_filter
                     listitem.setInfo(type="Video", infoLabels={"Title": "smartshortcut"})
-                    listitem.setArt({"fanart": image, "thumb": image})
+                    listitem.setThumbnailImage(image)
+                    listitem.setArt({"fanart": image})
                     # we use the mpaa property to pass all properties to skinshortcuts
                     listitem.setInfo(type="Video", infoLabels={"mpaa": repr(props)})
                     xbmcplugin.addDirectoryItem(
@@ -358,7 +359,8 @@ def get_backgrounds():
     xbmcplugin.setContent(int(sys.argv[1]), 'files')
     for label, image in get_skinhelper_backgrounds():
         listitem = xbmcgui.ListItem(label, path=image)
-        listitem.setArt({"fanart": image, "thumb": image})
+        listitem.setArt({"fanart": image})
+        listitem.setThumbnailImage(image)
         xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]), url=image, listitem=listitem, isFolder=False)
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
@@ -376,9 +378,9 @@ def playlists_widgets():
                 if item["file"].endswith(".xsp"):
                     playlist = item["file"]
                     contents = xbmcvfs.File(item["file"], 'r')
-                    contents_data = try_decode(contents.read())
+                    contents_data = contents.read().decode('utf-8')
                     contents.close()
-                    xmldata = xmltree.fromstring(try_encode(contents_data))
+                    xmldata = xmltree.fromstring(contents_data.encode('utf-8'))
                     media_type = ""
                     label = item["label"]
                     for line in xmldata.getiterator():
@@ -392,9 +394,7 @@ def playlists_widgets():
                     except Exception:
                         pass
                     if not media_type:
-                        mutils = MetadataUtils()
-                        media_type = mutils.detect_plugin_content(playlist)
-                        del mutils
+                        media_type = detect_plugin_content(playlist)
                     widgets.append([label, playlist, media_type])
     return widgets
 
@@ -405,7 +405,7 @@ def plugin_widgetlisting(pluginpath, sublevel=""):
     if sublevel:
         media_array = kodi_json('Files.GetDirectory', {"directory": pluginpath, "media": "files"})
     else:
-        if not getCondVisibility("System.HasAddon(%s)" % pluginpath):
+        if not xbmc.getCondVisibility("System.HasAddon(%s)" % pluginpath):
             return []
         media_array = kodi_json('Files.GetDirectory', {"directory": "plugin://%s" % pluginpath, "media": "files"})
     for item in media_array:
@@ -418,29 +418,22 @@ def plugin_widgetlisting(pluginpath, sublevel=""):
             continue
         if item.get("filetype", "") == "file":
             continue
-        mutils = MetadataUtils()
-        media_type = mutils.detect_plugin_content(item["file"])
-        del mutils
+        media_type = detect_plugin_content(item["file"])
         if media_type == "empty":
             continue
         if media_type == "folder":
             content = "plugin://script.skin.helper.service?action=widgets&path=%s&sublevel=%s" % (
                 urlencode(item["file"]), label)
-        # add reload param for widgets
-        if "reload=" not in content:
-            if "movies" in content:
-                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload-movies)]"
-            elif "episodes" in content:
-                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload-episodes)]"
-            elif "tvshows" in content:
-                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload-tvshows)]"
-            elif "musicvideos" in content:
-                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload-musicvideos)]"
-            elif "albums" in content or "songs" in content or "artists" in content:
-                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload-music)]"
-            else:
+        # add reload param for skinhelper and libraryprovider widgets
+        if "reload=" not in content and (
+                "script.skin.helper" in pluginpath or pluginpath == "service.library.data.provider"):
+            if "albums" in content or "songs" in content or "artists" in content:
+                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreloadmusic)]"
+            elif ("pvr" in content or "media" in content or "favourite" in content) and "progress" not in content:
                 reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload)]"\
                     "$INFO[Window(Home).Property(widgetreload2)]"
+            else:
+                reloadstr = "&reload=$INFO[Window(Home).Property(widgetreload)]"
             content = content + reloadstr
         content = content.replace("&limit=100", "&limit=25")
         widgets.append([label, content, media_type])
@@ -464,9 +457,7 @@ def favourites_widgets():
                         "search" not in content.lower() and "play" not in content.lower()):
                     label = fav["title"]
                     log_msg("skinshortcuts widgets processing favourite: %s" % label)
-                    mutils = MetadataUtils()
-                    mediatype = mutils.detect_plugin_content(content)
-                    del mutils
+                    mediatype = detect_plugin_content(content)
                     if mediatype and mediatype != "empty":
                         widgets.append([label, content, mediatype])
     return widgets
@@ -479,7 +470,7 @@ def static_widgets():
     widgets.append([xbmc.getLocalizedString(8), "$INCLUDE[WeatherWidget]", "static"])
     widgets.append([xbmc.getLocalizedString(130), "$INCLUDE[SystemInfoWidget]", "static"])
     widgets.append([addon.getLocalizedString(32025), "$INCLUDE[skinshortcuts-submenu]", "static"])
-    if getCondVisibility("System.Hasaddon(script.games.rom.collection.browser)"):
+    if xbmc.getCondVisibility("System.Hasaddon(script.games.rom.collection.browser)"):
         widgets.append([addon.getLocalizedString(32026), "$INCLUDE[RCBWidget]", "static"])
     del addon
     return widgets
@@ -505,22 +496,23 @@ def set_skinshortcuts_property(property_name="", value="", label=""):
     if value or label:
         wait_for_skinshortcuts_window()
         xbmc.sleep(250)
-        xbmc.executebuiltin("SetProperty(customProperty,%s)" % try_encode(property_name))
-        xbmc.executebuiltin("SetProperty(customValue,%s)" % try_encode(value))
+        xbmc.executebuiltin("SetProperty(customProperty,%s)" % property_name.encode("utf-8"))
+        xbmc.executebuiltin("SetProperty(customValue,%s)" % value.encode("utf-8"))
         xbmc.executebuiltin("SendClick(404)")
         xbmc.sleep(250)
-        xbmc.executebuiltin("SetProperty(customProperty,%s.name)" % try_encode(property_name))
-        xbmc.executebuiltin("SetProperty(customValue,%s)" % try_encode(label))
+        xbmc.executebuiltin("SetProperty(customProperty,%s.name)" % property_name.encode("utf-8"))
+        xbmc.executebuiltin("SetProperty(customValue,%s)" % label.encode("utf-8"))
         xbmc.executebuiltin("SendClick(404)")
         xbmc.sleep(250)
-        xbmc.executebuiltin("SetProperty(customProperty,%sName)" % try_encode(property_name))
-        xbmc.executebuiltin("SetProperty(customValue,%s)" % try_encode(label))
+        xbmc.executebuiltin("SetProperty(customProperty,%sName)" % property_name.encode("utf-8"))
+        xbmc.executebuiltin("SetProperty(customValue,%s)" % label.encode("utf-8"))
         xbmc.executebuiltin("SendClick(404)")
+
 
 def wait_for_skinshortcuts_window():
     '''wait untill skinshortcuts is active window (because of any animations that may have been applied)'''
     for i in range(40):
-        if not (getCondVisibility(
+        if not (xbmc.getCondVisibility(
                 "Window.IsActive(DialogSelect.xml) | "
                 "Window.IsActive(script-skin_helper_service-ColorPicker.xml) | "
                 "Window.IsActive(DialogKeyboard.xml)")):

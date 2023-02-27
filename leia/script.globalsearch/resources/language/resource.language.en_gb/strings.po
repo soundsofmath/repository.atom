@@ -4,25 +4,17 @@
 # Addon Provider: ronie
 msgid ""
 msgstr ""
-"Project-Id-Version: Kodi add-ons\n"
-"Report-Msgid-Bugs-To: ronie@kodi.tv\n"
+"Project-Id-Version: XBMC Addons\n"
+"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: Kodi Translation Team\n"
+"Language-Team: English (http://www.transifex.com/projects/p/xbmc-addons/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en_gb\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-msgctxt "Addon Summary"
-msgid "Search your library."
-msgstr ""
-
-msgctxt "Addon Description"
-msgid "This addon can find any item in your video and music library."
-msgstr ""
 
 msgctxt "#32000"
 msgid "General"
@@ -56,27 +48,19 @@ msgctxt "#32007"
 msgid "Search Songs"
 msgstr ""
 
-# empty string with id 32008
+msgctxt "#32008"
+msgid "Search Actors"
+msgstr ""
 
 msgctxt "#32009"
 msgid "Search Live TV"
 msgstr ""
 
-# empty string with id 32010
-
-msgctxt "#32011"
-msgid "Search Movie Actors"
+msgctxt "#32010"
+msgid "Search Directors"
 msgstr ""
 
-msgctxt "#32012"
-msgid "Search Movie Directors"
-msgstr ""
-
-msgctxt "#32013"
-msgid "Search TV Show Actors"
-msgstr ""
-
-# empty strings from id 32012 to 32100
+#empty strings from id 32010 to 32100
 
 msgctxt "#32101"
 msgid "Enter search string"
@@ -126,17 +110,7 @@ msgctxt "#32212"
 msgid "Resume from %s"
 msgstr ""
 
-# empty strings from id 32213 to 32220
-
-msgctxt "#32221"
-msgid "Movie Actors"
-msgstr ""
-
-msgctxt "#32222"
-msgid "TV Show Actors"
-msgstr ""
-
-# empty strings from id 32223 to 32296
+#empty strings from id 32213 to 32296
 
 msgctxt "#32297"
 msgid "Searching:"

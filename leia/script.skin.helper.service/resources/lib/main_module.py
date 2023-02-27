@@ -7,19 +7,21 @@
     mainmodule.py
     All script methods provided by the addon
 '''
-import os, sys
+
 import xbmc
 import xbmcvfs
 import xbmcgui
 import xbmcaddon
-from .skinsettings import SkinSettings
-import urllib.parse
-from .dialogselect import DialogSelect
-from resources.lib.utils import log_msg, KODI_VERSION, kodi_json, clean_string, getCondVisibility
-from resources.lib.utils import log_exception, get_current_content_type, ADDON_ID, recursive_delete_dir, try_decode
+from skinsettings import SkinSettings
 from simplecache import SimpleCache
+from utils import log_msg, KODI_VERSION
+from utils import log_exception, get_current_content_type, ADDON_ID, recursive_delete_dir
+from dialogselect import DialogSelect
 from xml.dom.minidom import parse
-from metadatautils import MetadataUtils
+from metadatautils import KodiDb, process_method_on_list
+import urlparse
+import sys
+
 
 class MainModule:
     '''mainmodule provides the script methods for the skinhelper addon'''
@@ -28,8 +30,8 @@ class MainModule:
         '''Initialization and main code run'''
         self.win = xbmcgui.Window(10000)
         self.addon = xbmcaddon.Addon(ADDON_ID)
-        self.mutils = MetadataUtils()
-        self.cache = self.mutils.cache
+        self.kodidb = KodiDb()
+        self.cache = SimpleCache()
 
         self.params = self.get_params()
         log_msg("MainModule called with parameters: %s" % self.params)
@@ -49,9 +51,10 @@ class MainModule:
 
     def close(self):
         '''Cleanup Kodi Cpython instances on exit'''
-        self.mutils.close()
+        self.cache.close()
         del self.win
         del self.addon
+        del self.kodidb
         log_msg("MainModule exited")
 
     @classmethod
@@ -75,9 +78,9 @@ class MainModule:
         action = self.params.get("action")
         log_msg("Deprecated method: %s. Please call %s directly" % (action, newaddon), xbmc.LOGWARNING)
         paramstring = ""
-        for key, value in self.params.items():
+        for key, value in self.params.iteritems():
             paramstring += ",%s=%s" % (key, value)
-        if getCondVisibility("System.HasAddon(%s)" % newaddon):
+        if xbmc.getCondVisibility("System.HasAddon(%s)" % newaddon):
             xbmc.executebuiltin("RunAddon(%s%s)" % (newaddon, paramstring))
         else:
             # trigger install of the addon
@@ -94,21 +97,22 @@ class MainModule:
 
     def setview(self):
         '''sets the selected viewmode for the container'''
+        xbmc.executebuiltin("ActivateWindow(busydialog)")
         content_type = get_current_content_type()
         if not content_type:
             content_type = "files"
-        current_view = try_decode(xbmc.getInfoLabel("Container.Viewmode"))
+        current_view = xbmc.getInfoLabel("Container.Viewmode").decode("utf-8")
         view_id, view_label = self.selectview(content_type, current_view)
         current_forced_view = xbmc.getInfoLabel("Skin.String(SkinHelper.ForcedViews.%s)" % content_type)
 
         if view_id is not None:
             # also store forced view
             if (content_type and current_forced_view and current_forced_view != "None" and
-                    getCondVisibility("Skin.HasSetting(SkinHelper.ForcedViews.Enabled)")):
+                    xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.ForcedViews.Enabled)")):
                 xbmc.executebuiltin("Skin.SetString(SkinHelper.ForcedViews.%s,%s)" % (content_type, view_id))
                 xbmc.executebuiltin("Skin.SetString(SkinHelper.ForcedViews.%s.label,%s)" % (content_type, view_label))
                 self.win.setProperty("SkinHelper.ForcedView", view_id)
-                if not getCondVisibility("Control.HasFocus(%s)" % current_forced_view):
+                if not xbmc.getCondVisibility("Control.HasFocus(%s)" % current_forced_view):
                     xbmc.sleep(100)
                     xbmc.executebuiltin("Container.SetViewMode(%s)" % view_id)
                     xbmc.executebuiltin("SetFocus(%s)" % view_id)
@@ -127,7 +131,7 @@ class MainModule:
             listitem.setProperty("id", "None")
             all_views.append(listitem)
         # read the special skin views file
-        views_file = try_decode(xbmcvfs.translatePath('special://skin/extras/views.xml'))
+        views_file = xbmc.translatePath('special://skin/extras/views.xml').decode("utf-8")
         if xbmcvfs.exists(views_file):
             doc = parse(views_file)
             listing = doc.documentElement.getElementsByTagName('view')
@@ -142,10 +146,9 @@ class MainModule:
                         cur_view_select_id += 1
                 if (("all" in mediatypes or content_type.lower() in mediatypes) and
                     (not "!" + content_type.lower() in mediatypes) and not
-                        getCondVisibility("Skin.HasSetting(SkinHelper.view.Disabled.%s)" % viewid)):
+                        xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.view.Disabled.%s)" % viewid)):
                     image = "special://skin/extras/viewthumbs/%s.jpg" % viewid
-                    listitem = xbmcgui.ListItem(label=label)
-                    listitem.setArt({'icon': image})
+                    listitem = xbmcgui.ListItem(label=label, iconImage=image)
                     listitem.setProperty("viewid", viewid)
                     listitem.setProperty("icon", image)
                     all_views.append(listitem)
@@ -158,7 +161,7 @@ class MainModule:
         del dialog
         if result:
             viewid = result.getProperty("viewid")
-            label = try_decode(result.getLabel())
+            label = result.getLabel().decode("utf-8")
             return (viewid, label)
         else:
             return (None, None)
@@ -167,7 +170,7 @@ class MainModule:
     def enableviews(self):
         '''show select dialog to enable/disable views'''
         all_views = []
-        views_file = try_decode(xbmcvfs.translatePath('special://skin/extras/views.xml'))
+        views_file = xbmc.translatePath('special://skin/extras/views.xml').decode("utf-8")
         richlayout = self.params.get("richlayout", "") == "true"
         if xbmcvfs.exists(views_file):
             doc = parse(views_file)
@@ -177,10 +180,9 @@ class MainModule:
                 label = xbmc.getLocalizedString(int(view.attributes['languageid'].nodeValue))
                 desc = label + " (" + str(view_id) + ")"
                 image = "special://skin/extras/viewthumbs/%s.jpg" % view_id
-                listitem = xbmcgui.ListItem(label=label, label2=desc)
-                listitem.setArt({'icon': image})
+                listitem = xbmcgui.ListItem(label=label, label2=desc, iconImage=image)
                 listitem.setProperty("viewid", view_id)
-                if not getCondVisibility("Skin.HasSetting(SkinHelper.view.Disabled.%s)" % view_id):
+                if not xbmc.getCondVisibility("Skin.HasSetting(SkinHelper.view.Disabled.%s)" % view_id):
                     listitem.select(selected=True)
                 excludefromdisable = False
                 try:
@@ -225,14 +227,12 @@ class MainModule:
     @staticmethod
     def get_youtube_listing(searchquery):
         '''get items from youtube plugin by query'''
-        lib_path = "plugin://plugin.video.youtube/kodion/search/query/?q=%s" % searchquery
-        metadatautils = MetadataUtils()
-        files = metadatautils.kodidb.files(lib_path)
-        del metadatautils
-        return files
+        lib_path = u"plugin://plugin.video.youtube/kodion/search/query/?q=%s" % searchquery
+        return KodiDb().files(lib_path)
 
     def searchyoutube(self):
         '''helper to search youtube for the given title'''
+        xbmc.executebuiltin("ActivateWindow(busydialog)")
         title = self.params.get("title", "")
         window_header = self.params.get("header", "")
         results = []
@@ -244,19 +244,19 @@ class MainModule:
                 if media.get('art'):
                     if media['art'].get('thumb'):
                         image = (media['art']['thumb'])
-                listitem = xbmcgui.ListItem(label=label, label2=label2)
-                listitem.setArt({'icon': image})
+                listitem = xbmcgui.ListItem(label=label, label2=label2, iconImage=image)
                 listitem.setProperty("path", media["file"])
                 results.append(listitem)
 
         # finished lookup - display listing with results
+        xbmc.executebuiltin("dialog.Close(busydialog)")
         dialog = DialogSelect("DialogSelect.xml", "", listing=results, windowtitle=window_header,
                               multiselect=False, richlayout=True)
         dialog.doModal()
         result = dialog.result
         del dialog
         if result:
-            if getCondVisibility(
+            if xbmc.getCondVisibility(
                     "Window.IsActive(script-skin_helper_service-CustomInfo.xml) | "
                     "Window.IsActive(movieinformation)"):
                 xbmc.executebuiltin("Dialog.Close(movieinformation)")
@@ -267,24 +267,26 @@ class MainModule:
 
     def getcastmedia(self):
         '''helper to show a dialog with all media for a specific actor'''
+        xbmc.executebuiltin("ActivateWindow(busydialog)")
         name = self.params.get("name", "")
         window_header = self.params.get("name", "")
         results = []
-        items = self.mutils.kodidb.castmedia(name)
-        items = self.mutils.process_method_on_list(self.mutils.kodidb.prepare_listitem, items)
+        items = self.kodidb.castmedia(name)
+        items = process_method_on_list(self.kodidb.prepare_listitem, items)
         for item in items:
             if item["file"].startswith("videodb://"):
                 item["file"] = "ActivateWindow(Videos,%s,return)" % item["file"]
             else:
                 item["file"] = 'PlayMedia("%s")' % item["file"]
-            results.append(self.mutils.kodidb.create_listitem(item, False))
+            results.append(self.kodidb.create_listitem(item, False))
         # finished lookup - display listing with results
+        xbmc.executebuiltin("dialog.Close(busydialog)")
         dialog = DialogSelect("DialogSelect.xml", "", listing=results, windowtitle=window_header, richlayout=True)
         dialog.doModal()
         result = dialog.result
         del dialog
         if result:
-            while getCondVisibility("System.HasModalDialog | System.HasVisibleModalDialog"):
+            while xbmc.getCondVisibility("System.HasModalDialog"):
                 xbmc.executebuiltin("Action(Back)")
                 xbmc.sleep(300)
             xbmc.executebuiltin(result.getfilename())
@@ -300,13 +302,13 @@ class MainModule:
             position = int(relativeposition) - 1
         count = 0
         if control:
-            while not getCondVisibility("Control.HasFocus(%s)" % control):
-                if getCondVisibility("Window.IsActive(busydialog)"):
+            while not xbmc.getCondVisibility("Control.HasFocus(%s)" % control):
+                if xbmc.getCondVisibility("Window.IsActive(busydialog)"):
                     xbmc.sleep(150)
                     continue
-                elif count == 20 or (getCondVisibility(
+                elif count == 20 or (xbmc.getCondVisibility(
                         "!Control.IsVisible(%s) | "
-                        "!Integer.IsGreater(Container(%s).NumItems,0)" % (control, control))):
+                        "!IntegerGreaterThan(Container(%s).NumItems,0)" % (control, control))):
                     if fallback:
                         xbmc.executebuiltin("Control.SetFocus(%s)" % fallback)
                     break
@@ -322,11 +324,12 @@ class MainModule:
             xbmc.sleep(50)
             for i in range(10):
                 for control in controls:
-                    if getCondVisibility("Control.IsVisible(%s) + Integer.IsGreater(Container(%s).NumItems,0)"
+                    if xbmc.getCondVisibility("Control.IsVisible(%s) + IntegerGreaterThan(Container(%s).NumItems,0)"
                                               % (control, control)):
                         self.win.setProperty("SkinHelper.WidgetContainer", control)
                         return
                 xbmc.sleep(50)
+        self.win.clearProperty("SkinHelper.WidgetContainer")
 
     def saveskinimage(self):
         '''let the user select an image and save it to addon_data for easy backup'''
@@ -335,7 +338,7 @@ class MainModule:
         header = self.params.get("header", "")
         value = SkinSettings().save_skin_image(skinstring, allow_multi, header)
         if value:
-            xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring, value))
+            xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring.encode("utf-8"), value.encode("utf-8")))
 
     @staticmethod
     def checkskinsettings():
@@ -347,7 +350,7 @@ class MainModule:
         setting = self.params.get("setting", "")
         org_id = self.params.get("id", "")
         if "$" in org_id:
-            org_id = xbmc.getInfoLabel(org_id)
+            org_id = xbmc.getInfoLabel(org_id).decode("utf-8")
         header = self.params.get("header", "")
         SkinSettings().set_skin_setting(setting=setting, window_header=header, original_id=org_id)
 
@@ -374,7 +377,7 @@ class MainModule:
     def togglekodisetting(self):
         '''toggle kodi setting'''
         settingname = self.params.get("setting", "")
-        cur_value = getCondVisibility("system.getbool(%s)" % settingname)
+        cur_value = xbmc.getCondVisibility("system.getbool(%s)" % settingname)
         if cur_value:
             new_value = "false"
         else:
@@ -386,19 +389,27 @@ class MainModule:
     def setkodisetting(self):
         '''set kodi setting'''
         settingname = self.params.get("setting", "")
-        value = self.params.get("value", '')
-        numvalue = self.params.get("numvalue", '')
-        if numvalue:
-            value = '%s' % numvalue 
-        else:
-            value = '"%s"' % value   
+        value = self.params.get("value", "")
+        is_int = False
+        try:
+            valueint = int(value)
+            is_int = True
+            del valueint
+        except Exception:
+            pass
+        if value.lower() == "true":
+            value = 'true'
+        elif value.lower() == "false":
+            value = 'false'
+        elif is_int:
+            value = '"%s"' % value
         xbmc.executeJSONRPC('{"jsonrpc":"2.0", "id":1, "method":"Settings.SetSettingValue",\
             "params":{"setting":"%s","value":%s}}' % (settingname, value))
 
     def playtrailer(self):
         '''auto play windowed trailer inside video listing'''
-        if not getCondVisibility("Container.Scrolling | Container.OnNext | "
-                                      "Container.OnPrevious | !String.IsEmpty(Window(Home).Property(traileractionbusy))"):
+        if not xbmc.getCondVisibility("Player.HasMedia | Container.Scrolling | Container.OnNext | "
+                                      "Container.OnPrevious | !IsEmpty(Window(Home).Property(traileractionbusy))"):
             self.win.setProperty("traileractionbusy", "traileractionbusy")
             widget_container = self.params.get("widgetcontainer", "")
             trailer_mode = self.params.get("mode", "").replace("auto_", "")
@@ -410,8 +421,8 @@ class MainModule:
             else:
                 widget_container_prefix = ""
 
-            li_title = xbmc.getInfoLabel("%sListItem.Title" % widget_container_prefix)
-            li_trailer = xbmc.getInfoLabel("%sListItem.Trailer" % widget_container_prefix)
+            li_title = xbmc.getInfoLabel("%sListItem.Title" % widget_container_prefix).decode('utf-8')
+            li_trailer = xbmc.getInfoLabel("%sListItem.Trailer" % widget_container_prefix).decode('utf-8')
             if not li_trailer and allow_youtube:
                 youtube_result = self.get_youtube_listing("%s Trailer" % li_title)
                 if youtube_result:
@@ -419,7 +430,7 @@ class MainModule:
             # always wait a bit to prevent trailer start playing when we're scrolling the list
             xbmc.Monitor().waitForAbort(3)
             if li_trailer and (li_title == xbmc.getInfoLabel("%sListItem.Title"
-                                                             % widget_container_prefix)):
+                                                             % widget_container_prefix).decode('utf-8')):
                 if trailer_mode == "fullscreen" and li_trailer:
                     xbmc.executebuiltin('PlayMedia("%s")' % li_trailer)
                 else:
@@ -476,7 +487,7 @@ class MainModule:
             # for video or audio we have to wait for the player to finish...
             xbmc.Player().play(splashfile, windowed=True)
             xbmc.sleep(500)
-            while getCondVisibility("Player.HasMedia"):
+            while xbmc.getCondVisibility("Player.HasMedia"):
                 xbmc.sleep(150)
         # replace startup window with home
         startupwindow = xbmc.getInfoLabel("System.StartupWindow")
@@ -487,9 +498,10 @@ class MainModule:
 
     def videosearch(self):
         '''show the special search dialog'''
+        xbmc.executebuiltin("ActivateWindow(busydialog)")
         from resources.lib.searchdialog import SearchDialog
         search_dialog = SearchDialog("script-skin_helper_service-CustomSearch.xml",
-                                 try_decode(self.addon.getAddonInfo('path')), "Default", "1080i")
+                                     self.addon.getAddonInfo('path').decode("utf-8"), "Default", "1080i")
         search_dialog.doModal()
         del search_dialog
 
@@ -497,24 +509,23 @@ class MainModule:
         '''shows our special videoinfo dialog'''
         dbid = self.params.get("dbid", "")
         dbtype = self.params.get("dbtype", "")
-        from .infodialog import show_infodialog
+        from infodialog import show_infodialog
         show_infodialog(dbid, dbtype)
 
     def deletedir(self):
         '''helper to delete a directory, input can be normal filesystem path or vfs'''
         del_path = self.params.get("path")
         if del_path:
-            ret = xbmcgui.Dialog().yesno(
-                    message="%s" % (xbmc.getLocalizedString(125)),
-                    heading=xbmc.getLocalizedString(122))
+            ret = xbmcgui.Dialog().yesno(heading=xbmc.getLocalizedString(122),
+                                         line1=u"%s[CR]%s" % (xbmc.getLocalizedString(125), del_path))
             if ret:
                 success = recursive_delete_dir(del_path)
                 if success:
                     xbmcgui.Dialog().ok(heading=xbmc.getLocalizedString(19179),
-                                        message=self.addon.getLocalizedString(32014))
+                                        line1=self.addon.getLocalizedString(32014))
                 else:
                     xbmcgui.Dialog().ok(heading=xbmc.getLocalizedString(16205),
-                                        message=xbmc.getLocalizedString(32015))
+                                        line1=xbmc.getLocalizedString(32015))
 
     def overlaytexture(self):
         '''legacy: helper to let the user choose a background overlay from a skin defined folder'''
@@ -552,7 +563,7 @@ class MainModule:
         if label:
             if skinshortcutsprop:
                 # write value to skinshortcuts prop
-                from .skinshortcuts import set_skinshortcuts_property
+                from skinshortcuts import set_skinshortcuts_property
                 set_skinshortcuts_property(skinshortcutsprop, value, label)
             else:
                 # write the values to skin strings
@@ -560,8 +571,8 @@ class MainModule:
                     # we got an dynamic image from window property
                     skinsettings.set_skin_variable(skinstring, value)
                     value = "$VAR[%s]" % skinstring
-                skinstring = skinstring
-                label = label
+                skinstring = skinstring.encode("utf-8")
+                label = label.encode("utf-8")
                 xbmc.executebuiltin("Skin.SetString(%s.label,%s)" % (skinstring, label))
                 xbmc.executebuiltin("Skin.SetString(%s.name,%s)" % (skinstring, label))
                 xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring, value))
@@ -570,31 +581,42 @@ class MainModule:
 
     def dialogok(self):
         '''helper to show an OK dialog with a message'''
-        headertxt = clean_string(self.params.get("header", ""))
-        bodytxt = clean_string(self.params.get("message", ""))
+        headertxt = self.params.get("header")
+        bodytxt = self.params.get("message")
+        if bodytxt.startswith(" "):
+            bodytxt = bodytxt[1:]
+        if headertxt.startswith(" "):
+            headertxt = headertxt[1:]
         dialog = xbmcgui.Dialog()
-        dialog.ok(heading=headertxt, message=bodytxt)
+        dialog.ok(heading=headertxt, line1=bodytxt)
         del dialog
 
     def dialogyesno(self):
         '''helper to show a YES/NO dialog with a message'''
-        headertxt = clean_string(self.params.get("header", ""))
-        bodytxt = clean_string(self.params.get("message", ""))
+        headertxt = self.params.get("header")
+        bodytxt = self.params.get("message")
         yesactions = self.params.get("yesaction", "").split("|")
         noactions = self.params.get("noaction", "").split("|")
-        if xbmcgui.Dialog().yesno(heading=headertxt, message=bodytxt):
+        if bodytxt.startswith(" "):
+            bodytxt = bodytxt[1:]
+        if headertxt.startswith(" "):
+            headertxt = headertxt[1:]
+        if xbmcgui.Dialog().yesno(heading=headertxt, line1=bodytxt):
             for action in yesactions:
-                xbmc.executebuiltin(action)
+                xbmc.executebuiltin(action.encode("utf-8"))
         else:
             for action in noactions:
-                xbmc.executebuiltin(action)
+                xbmc.executebuiltin(action.encode("utf-8"))
 
     def textviewer(self):
         '''helper to show a textviewer dialog with a message'''
-        headertxt = clean_string(self.params.get("header", ""))
-        bodytxt = clean_string(self.params.get("message", ""))
+        headertxt = self.params.get("header", "")
+        bodytxt = self.params.get("message", "")
+        if bodytxt.startswith(" "):
+            bodytxt = bodytxt[1:]
+        if headertxt.startswith(" "):
+            headertxt = headertxt[1:]
         xbmcgui.Dialog().textviewer(headertxt, bodytxt)
-        
 
     def fileexists(self):
         '''helper to let the skinner check if a file exists
@@ -623,8 +645,7 @@ class MainModule:
             skinstring = self.params.get("skinstring")
         output = self.params.get("output")
         index = self.params.get("index", 0)
-        if skinstring is not None:
-            skinstring = skinstring.split(splitchar)[int(index)]
+        skinstring = skinstring.split(splitchar)[int(index)]
         self.win.setProperty(output, skinstring)
 
     def getfilename(self, filename=""):
@@ -635,7 +656,7 @@ class MainModule:
         if not filename:
             filename = xbmc.getInfoLabel("ListItem.FileName")
         if "filename=" in filename:
-            url_params = dict(urllib.parse.parse_qsl(filename))
+            url_params = dict(urlparse.parse_qsl(filename))
             filename = url_params.get("filename")
         self.win.setProperty(output, filename)
 
@@ -648,8 +669,8 @@ class MainModule:
 
     def getpercentage(self):
         '''helper to calculate the percentage of 2 numbers and write results to a skinstring'''
-        total = int(self.params.get("total"))
-        count = int(self.params.get("count"))
+        total = int(params.get("total"))
+        count = int(params.get("count"))
         roundsteps = self.params.get("roundsteps")
         skinstring = self.params.get("skinstring")
         percentage = int(round((1.0 * count / total) * 100))
@@ -658,38 +679,16 @@ class MainModule:
             percentage = percentage + (roundsteps - percentage) % roundsteps
         xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring, percentage))
 
-    def increasecount(self):
-        '''helper to increase a counter value and write result to a window prop or skinstring'''
-        value = int(self.params.get("value"))
-        skinstring = self.params.get("skinstring")
-        windowprop = self.params.get("winprop")
-        value += 1
-        if windowprop:
-            self.win.setProperty(windowprop, str(value))
-        if skinstring:
-            xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring, value))
-
-    def decreasecount(self):
-        '''helper to decrease a counter value and write result to a window prop or skinstring'''
-        value = int(self.params.get("value"))
-        skinstring = self.params.get("skinstring")
-        windowprop = self.params.get("winprop")
-        value -= 1
-        if windowprop:
-            self.win.setProperty(windowprop, str(value))
-        if skinstring:
-            xbmc.executebuiltin("Skin.SetString(%s,%s)" % (skinstring, value))
-
     def setresourceaddon(self):
         '''helper to let the user choose a resource addon and set that as skin string'''
-        from .resourceaddons import setresourceaddon
+        from resourceaddons import setresourceaddon
         addontype = self.params.get("addontype", "")
         skinstring = self.params.get("skinstring", "")
         setresourceaddon(addontype, skinstring)
 
     def checkresourceaddons(self):
         '''allow the skinner to perform a basic check if some required resource addons are available'''
-        from .resourceaddons import checkresourceaddons
+        from resourceaddons import checkresourceaddons
         addonslist = self.params.get("addonslist", [])
         if addonslist:
             addonslist = addonslist.split("|")

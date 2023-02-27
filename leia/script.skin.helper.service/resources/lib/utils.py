@@ -8,11 +8,12 @@
     Various helper methods
 '''
 
-import os, sys
 import xbmc
 import xbmcvfs
-import urllib.request, urllib.parse, urllib.error
-import traceback
+import os
+import sys
+import urllib
+from traceback import format_exc
 
 try:
     import simplejson as json
@@ -26,14 +27,15 @@ KODILANGUAGE = xbmc.getLanguage(xbmc.ISO_639_1)
 
 def log_msg(msg, loglevel=xbmc.LOGDEBUG):
     '''log message to kodi log'''
+    if isinstance(msg, unicode):
+        msg = msg.encode('utf-8')
     xbmc.log("Skin Helper Service --> %s" % msg, level=loglevel)
 
 
 def log_exception(modulename, exceptiondetails):
     '''helper to properly log an exception'''
-    exc_type, exc_value, exc_traceback = sys.exc_info()
-    lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
-    log_msg("Exception details: Type: %s Value: %s Traceback: %s" % (exc_type.__name__, exc_value, ''.join(line for line in lines)), xbmc.LOGWARNING)
+    log_msg(format_exc(sys.exc_info()), xbmc.LOGWARNING)
+    log_msg("Exception in %s ! --> %s" % (modulename, exceptiondetails), xbmc.LOGERROR)
 
 
 def kodi_json(jsonmethod, params=None, returntype=None):
@@ -46,8 +48,7 @@ def kodi_json(jsonmethod, params=None, returntype=None):
     kodi_json["params"] = params
     kodi_json["id"] = 1
     json_response = xbmc.executeJSONRPC(try_encode(json.dumps(kodi_json)))
-    json_object = json.loads(try_decode(json_response))
-
+    json_object = json.loads(json_response.decode('utf-8', 'replace'))
     # set the default returntype to prevent errors
     if "details" in jsonmethod.lower():
         result = {}
@@ -60,11 +61,10 @@ def kodi_json(jsonmethod, params=None, returntype=None):
         else:
             # no returntype specified, we'll have to look for it
             if isinstance(json_object['result'], dict):
-                if sys.version_info.major == 3:
-                    for key, value in list(json_object['result'].items()):
-                        if not key == "limits":
-                            result = value
-                            break
+                for key, value in json_object['result'].iteritems():
+                    if not key == "limits":
+                        result = value
+                        break
             else:
                 return json_object['result']
     else:
@@ -75,15 +75,23 @@ def kodi_json(jsonmethod, params=None, returntype=None):
 
 def try_encode(text, encoding="utf-8"):
     '''helper to encode a string to utf-8'''
-    return text
+    try:
+        return text.encode(encoding, "ignore")
+    except Exception:
+        return text
+
 
 def try_decode(text, encoding="utf-8"):
     '''helper to decode a string into unicode'''
-    return text
+    try:
+        return text.decode(encoding, "ignore")
+    except Exception:
+        return text
+
 
 def urlencode(text):
     '''urlencode a string'''
-    blah = urllib.parse.urlencode({'blahblahblah': try_encode(text)})
+    blah = urllib.urlencode({'blahblahblah': try_encode(text)})
     blah = blah[13:]
     return blah
 
@@ -92,92 +100,92 @@ def get_current_content_type(containerprefix=""):
     '''tries to determine the mediatype for the current listitem'''
     content_type = ""
     if not containerprefix:
-        if getCondVisibility("Container.Content(episodes)"):
+        if xbmc.getCondVisibility("Container.Content(episodes)"):
             content_type = "episodes"
-        elif getCondVisibility("Container.Content(movies) + !String.Contains(Container.FolderPath,setid=)"):
+        elif xbmc.getCondVisibility("Container.Content(movies) + !substring(Container.FolderPath,setid=)"):
             content_type = "movies"
-        elif getCondVisibility("[Container.Content(sets) | "
-                                    "String.IsEqual(Container.Folderpath,videodb://movies/sets/)] + "
-                                    "!String.Contains(Container.FolderPath,setid=)"):
+        elif xbmc.getCondVisibility("[Container.Content(sets) | "
+                                    "StringCompare(Container.Folderpath,videodb://movies/sets/)] + "
+                                    "!substring(Container.FolderPath,setid=)"):
             content_type = "sets"
-        elif getCondVisibility("String.Contains(Container.FolderPath,setid=)"):
+        elif xbmc.getCondVisibility("substring(Container.FolderPath,setid=)"):
             content_type = "setmovies"
-        elif getCondVisibility("!String.IsEmpty(Container.Content) + !String.IsEqual(Container.Content,pvr)"):
+        elif xbmc.getCondVisibility("!IsEmpty(Container.Content) + !StringCompare(Container.Content,pvr)"):
             content_type = xbmc.getInfoLabel("Container.Content")
-        elif getCondVisibility("Container.Content(tvshows)"):
+        elif xbmc.getCondVisibility("Container.Content(tvshows)"):
             content_type = "tvshows"
-        elif getCondVisibility("Container.Content(seasons)"):
+        elif xbmc.getCondVisibility("Container.Content(seasons)"):
             content_type = "seasons"
-        elif getCondVisibility("Container.Content(musicvideos)"):
+        elif xbmc.getCondVisibility("Container.Content(musicvideos)"):
             content_type = "musicvideos"
-        elif getCondVisibility("Container.Content(songs) | "
-                                    "String.IsEqual(Container.FolderPath,musicdb://singles/)"):
+        elif xbmc.getCondVisibility("Container.Content(songs) | "
+                                    "StringCompare(Container.FolderPath,musicdb://singles/)"):
             content_type = "songs"
-        elif getCondVisibility("Container.Content(artists)"):
+        elif xbmc.getCondVisibility("Container.Content(artists)"):
             content_type = "artists"
-        elif getCondVisibility("Container.Content(albums)"):
+        elif xbmc.getCondVisibility("Container.Content(albums)"):
             content_type = "albums"
-        elif getCondVisibility("Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRGuide.xml) | "
+        elif xbmc.getCondVisibility("Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRGuide.xml) | "
                                     "Window.IsActive(MyPVRSearch.xml) | Window.IsActive(pvrguideinfo)"):
             content_type = "tvchannels"
-        elif getCondVisibility("Window.IsActive(MyPVRRecordings.xml) | Window.IsActive(MyPVRTimers.xml) | "
+        elif xbmc.getCondVisibility("Window.IsActive(MyPVRRecordings.xml) | Window.IsActive(MyPVRTimers.xml) | "
                                     "Window.IsActive(pvrrecordinginfo)"):
             content_type = "tvrecordings"
-        elif getCondVisibility("Window.IsActive(programs) | Window.IsActive(addonbrowser)"):
+        elif xbmc.getCondVisibility("Window.IsActive(programs) | Window.IsActive(addonbrowser)"):
             content_type = "addons"
-        elif getCondVisibility("Window.IsActive(pictures)"):
+        elif xbmc.getCondVisibility("Window.IsActive(pictures)"):
             content_type = "pictures"
-        elif getCondVisibility("Container.Content(genres)"):
+        elif xbmc.getCondVisibility("Container.Content(genres)"):
             content_type = "genres"
-        elif getCondVisibility("Container.Content(files)"):
+        elif xbmc.getCondVisibility("Container.Content(files)"):
             content_type = "files"
     # last resort: try to determine type by the listitem properties
-    if not content_type and (containerprefix or getCondVisibility("Window.IsActive(movieinformation)")):
-        if getCondVisibility("!String.IsEmpty(%sListItem.DBTYPE)" % containerprefix):
+    if not content_type and (containerprefix or xbmc.getCondVisibility("Window.IsActive(movieinformation)")):
+        if xbmc.getCondVisibility("!IsEmpty(%sListItem.DBTYPE)" % containerprefix):
             content_type = xbmc.getInfoLabel("%sListItem.DBTYPE" % containerprefix) + "s"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Property(DBTYPE))" % containerprefix):
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Property(DBTYPE))" % containerprefix):
             content_type = xbmc.getInfoLabel("%sListItem.Property(DBTYPE)" % containerprefix) + "s"
-        elif getCondVisibility("String.Contains(%sListItem.FileNameAndPath,playrecording) | "
-                                    "String.Contains(%sListItem.FileNameAndPath,tvtimer)"
+        elif xbmc.getCondVisibility("SubString(%sListItem.FileNameAndPath,playrecording) | "
+                                    "SubString(%sListItem.FileNameAndPath,tvtimer)"
                                     % (containerprefix, containerprefix)):
             content_type = "tvrecordings"
-        elif getCondVisibility("String.Contains(%sListItem.FileNameAndPath,launchpvr)" % (containerprefix)):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FileNameAndPath,launchpvr)" % (containerprefix)):
             content_type = "tvchannels"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,pvr://channels)" % containerprefix):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,pvr://channels)" % containerprefix):
             content_type = "tvchannels"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,flix2kodi) + String.Contains(%sListItem.Genre,Series)"
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,flix2kodi) + SubString(%sListItem.Genre,Series)"
                                     % (containerprefix, containerprefix)):
             content_type = "tvshows"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,flix2kodi)" % (containerprefix)):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,flix2kodi)" % (containerprefix)):
             content_type = "movies"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Artist) + String.IsEqual(%sListItem.Label,%sListItem.Artist)"
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Artist) + StringCompare(%sListItem.Label,%sListItem.Artist)"
                                     % (containerprefix, containerprefix, containerprefix)):
             content_type = "artists"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Album) + String.IsEqual(%sListItem.Label,%sListItem.Album)"
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Album) + StringCompare(%sListItem.Label,%sListItem.Album)"
                                     % (containerprefix, containerprefix, containerprefix)):
             content_type = "albums"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Artist) + !String.IsEmpty(%sListItem.Album)"
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Artist) + !IsEmpty(%sListItem.Album)"
                                     % (containerprefix, containerprefix)):
             content_type = "songs"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.TvShowTitle) + "
-                                    "String.IsEqual(%sListItem.Title,%sListItem.TvShowTitle)"
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.TvShowTitle) + "
+                                    "StringCompare(%sListItem.Title,%sListItem.TvShowTitle)"
                                     % (containerprefix, containerprefix, containerprefix)):
             content_type = "tvshows"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Property(TotalEpisodes))" % (containerprefix)):
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Property(TotalEpisodes))" % (containerprefix)):
             content_type = "tvshows"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.TvshowTitle) + !String.IsEmpty(%sListItem.Season)"
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.TvshowTitle) + !IsEmpty(%sListItem.Season)"
                                     % (containerprefix, containerprefix)):
             content_type = "episodes"
-        elif getCondVisibility("String.IsEmpty(%sListItem.TvshowTitle) + !String.IsEmpty(%sListItem.Year)"
+        elif xbmc.getCondVisibility("IsEmpty(%sListItem.TvshowTitle) + !IsEmpty(%sListItem.Year)"
                                     % (containerprefix, containerprefix)):
             content_type = "movies"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,movies)" % containerprefix):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,movies)" % containerprefix):
             content_type = "movies"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,shows)" % containerprefix):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,shows)" % containerprefix):
             content_type = "tvshows"
-        elif getCondVisibility("String.Contains(%sListItem.FolderPath,episodes)" % containerprefix):
+        elif xbmc.getCondVisibility("SubString(%sListItem.FolderPath,episodes)" % containerprefix):
             content_type = "episodes"
-        elif getCondVisibility("!String.IsEmpty(%sListItem.Property(ChannelLogo))" % (containerprefix)):
+        elif xbmc.getCondVisibility("!IsEmpty(%sListItem.Property(ChannelLogo))" % (containerprefix)):
             content_type = "tvchannels"
     return content_type
 
@@ -194,62 +202,39 @@ def recursive_delete_dir(path):
     success = xbmcvfs.rmdir(path)
     return success
 
-if sys.version_info.major == 3:
-    def prepare_win_props(details, prefix="SkinHelper.ListItem."):
-        '''helper to pretty string-format a dict with details to key/value pairs so it can be used as window props'''
-        items = []
-        if details:
-            for key, value in list(details.items()):
-                if value or value == 0:
-                    key = "%s%s" % (prefix, key)
-                    key = key.lower()
-                    if isinstance(value, (bytes, str)):
+
+def prepare_win_props(details, prefix=u"SkinHelper.ListItem."):
+    '''helper to pretty string-format a dict with details to key/value pairs so it can be used as window props'''
+    items = []
+    if details:
+        for key, value in details.iteritems():
+            if value or value == 0:
+                key = u"%s%s" % (prefix, key)
+                key = key.lower()
+                if isinstance(value, (str, unicode)):
+                    items.append((key, value))
+                elif isinstance(value, (int, float)):
+                    items.append((key, "%s" % value))
+                elif isinstance(value, dict):
+                    for key2, value2 in value.iteritems():
+                        if isinstance(value2, (str, unicode)):
+                            items.append((u"%s.%s" % (key, key2), value2))
+                elif isinstance(value, list):
+                    list_strings = []
+                    for listvalue in value:
+                        if isinstance(listvalue, (str, unicode)):
+                            list_strings.append(listvalue)
+                    if list_strings:
+                        items.append((key, u" / ".join(list_strings)))
+                    elif len(value) == 1 and isinstance(value[0], (str, unicode)):
                         items.append((key, value))
-                    elif isinstance(value, int):
-                        items.append((key, "%s" % value))
-                    elif isinstance(value, float):
-                        items.append((key, "%.1f" % value))
-                    elif isinstance(value, dict):
-                        for key2, value2 in list(value.items()):
-                            if isinstance(value2, (bytes, str)):
-                                items.append(("%s.%s" % (key, key2), value2))
-                    elif isinstance(value, list):
-                        list_strings = []
-                        for listvalue in value:
-                            if isinstance(listvalue, (bytes, str)):
-                                list_strings.append(listvalue)
-                        if list_strings:
-                            items.append((key, " / ".join(list_strings)))
-                        elif len(value) == 1 and isinstance(value[0], (bytes, str)):
-                            items.append((key, value))
-        return items
+    return items
 
-def merge_dict(dict_a, dict_b, allow_overwrite=False):
+
+def merge_dict(dict_a, dict_b):
     '''append values to a dict without overwriting any existing values'''
-    if not dict_a and dict_b:
-        return dict_b
-    if not dict_b:
-        return dict_a
     result = dict_a.copy()
-    if sys.version_info.major == 3:
-        for key, value in list(dict_b.items()):
-            if (allow_overwrite or not key in dict_a or not dict_a[key]) and value:
-                result[key] = value
+    for key, value in dict_b.iteritems():
+        if not key in dict_a or not dict_a[key]:
+            result[key] = value
     return result
-
-
-def clean_string(text):
-    '''strip quotes and spaces from begin and end of a string'''
-    text = text.strip("'\"")
-    text = text.strip()
-    return text
-    
-    
-def getCondVisibility(text):
-    '''executes the builtin getCondVisibility'''
-    # temporary solution: check if strings needs to be adjusted for backwards compatability
-    if KODI_VERSION < 17:
-        text = text.replace("Integer.IsGreater", "IntegerGreaterThan")
-        text = text.replace("String.Contains", "SubString")
-        text = text.replace("String.IsEqual", "StringCompare")
-    return xbmc.getCondVisibility(text)

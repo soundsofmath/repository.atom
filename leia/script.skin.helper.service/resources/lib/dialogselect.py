@@ -7,10 +7,8 @@
     Wrapper around Kodi's dialogselect
 '''
 
-import os, sys
 import xbmcgui
 import xbmc
-from resources.lib.utils import getCondVisibility, try_decode
 
 
 class DialogSelect(xbmcgui.WindowXMLDialog):
@@ -68,7 +66,7 @@ class DialogSelect(xbmcgui.WindowXMLDialog):
         if self.autofocus_label:
             try:
                 for count, item in enumerate(self.listing):
-                    if try_decode(item.getLabel()) == self.autofocus_label:
+                    if item.getLabel().decode("utf-8") == self.autofocus_label:
                         self.list_control.selectItem(count)
             except Exception:
                 self.list_control.selectItem(0)
@@ -79,7 +77,7 @@ class DialogSelect(xbmcgui.WindowXMLDialog):
             self.close_dialog(True)
 
         # an item in the list is clicked
-        if (action.getId() == 7 or action.getId() == 100) and getCondVisibility(
+        if (action.getId() == 7 or action.getId() == 100) and xbmc.getCondVisibility(
                 "Control.HasFocus(3) | Control.HasFocus(6)"):
             if self.multiselect:
                 # select/deselect the item
@@ -104,7 +102,7 @@ class DialogSelect(xbmcgui.WindowXMLDialog):
                 self.close_dialog()
             else:
                 # OK button
-                from .resourceaddons import downloadresourceaddons
+                from resourceaddons import downloadresourceaddons
                 downloadresourceaddons(self.getmorebutton)
                 self.result = True
                 self.close()

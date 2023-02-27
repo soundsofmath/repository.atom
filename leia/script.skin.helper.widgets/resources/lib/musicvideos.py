@@ -7,8 +7,8 @@
     all musivideos widgets provided by the script
 '''
 
-from resources.lib.utils import create_main_entry
-from metadatautils import kodi_constants
+from utils import create_main_entry
+from metadatautils import kodi_constants, process_method_on_list
 import xbmc
 
 
@@ -36,7 +36,7 @@ class Musicvideos(object):
                 tag, "DefaultTvShows.png"),
             (xbmc.getLocalizedString(10134), "favourites&mediatype=musicvideos&tag=%s" %
                 tag, "DefaultMovies.png")]
-        return self.metadatautils.process_method_on_list(create_main_entry, all_items)
+        return process_method_on_list(create_main_entry, all_items)
 
     def favourites(self):
         '''get favourites'''
