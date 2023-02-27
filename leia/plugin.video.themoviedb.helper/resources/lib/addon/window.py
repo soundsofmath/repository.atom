@@ -1,30 +1,29 @@
-from xbmc import Monitor
-from xbmcgui import Window, getCurrentWindowId, getCurrentWindowDialogId
-from tmdbhelper.parser import try_type, try_int
-from resources.lib.addon.plugin import executebuiltin, get_condvisibility, get_infolabel
-
-
-DIALOG_ID_EXCLUDELIST = (9999, None)
-
-
-def get_current_window(get_dialog=True):
-    dialog = getCurrentWindowDialogId() if get_dialog else None
-    return dialog if dialog not in DIALOG_ID_EXCLUDELIST else getCurrentWindowId()
+import xbmc
+import xbmcgui
+from resources.lib.addon.parser import try_int, try_float
 
 
 def get_property(name, set_property=None, clear_property=False, window_id=None, prefix=None, is_type=None):
     if prefix != -1:
         prefix = prefix or 'TMDbHelper'
-        name = f'{prefix}.{name}'
+        name = u'{}.{}'.format(prefix, name)
     if window_id == 'current':
-        window_id = get_current_window()
-    window = Window(window_id or 10000)  # Fallback to home window id=10000
-    ret_property = set_property or window.getProperty(name)
+        window = xbmcgui.Window(xbmcgui.getCurrentWindowId())
+    elif window_id:
+        window = xbmcgui.Window(window_id)
+    else:
+        window = xbmcgui.Window(10000)
     if clear_property:
         window.clearProperty(name)
-    if set_property is not None:
-        window.setProperty(name, f'{set_property}')
-    return try_type(ret_property, is_type or str)
+        return
+    elif set_property is not None:
+        window.setProperty(name, u'{}'.format(set_property))
+        return set_property
+    if is_type == int:
+        return try_int(window.getProperty(name))
+    if is_type == float:
+        return try_float(window.getProperty(name))
+    return window.getProperty(name)
 
 
 def _property_is_value(name, value):
@@ -41,7 +40,7 @@ def wait_for_property(name, value=None, set_property=False, poll=1, timeout=10):
     Will set property to value if set_property flag is set. None value clears property.
     Returns True when successful.
     """
-    xbmc_monitor = Monitor()
+    xbmc_monitor = xbmc.Monitor()
     if set_property:
         get_property(name, value) if value else get_property(name, clear_property=True)
     while (
@@ -55,15 +54,15 @@ def wait_for_property(name, value=None, set_property=False, poll=1, timeout=10):
 
 
 def is_visible(window_id):
-    return get_condvisibility(f'Window.IsVisible({window_id})')
+    return xbmc.getCondVisibility(u"Window.IsVisible({})".format(window_id))
 
 
 def close(window_id):
-    return executebuiltin(f'Dialog.Close({window_id})')
+    return xbmc.executebuiltin(u'Dialog.Close({})'.format(window_id))
 
 
 def activate(window_id):
-    return executebuiltin(f'ActivateWindow({window_id})')
+    return xbmc.executebuiltin(u'ActivateWindow({})'.format(window_id))
 
 
 def _is_base_active(window_id):
@@ -73,8 +72,8 @@ def _is_base_active(window_id):
 
 
 def _is_updating(container_id):
-    is_updating = get_condvisibility(f"Container({container_id}).IsUpdating")
-    is_numitems = try_int(get_infolabel(f"Container({container_id}).NumItems"))
+    is_updating = xbmc.getCondVisibility(u"Container({}).IsUpdating".format(container_id))
+    is_numitems = try_int(xbmc.getInfoLabel(u"Container({}).NumItems".format(container_id)))
     if is_updating or not is_numitems:
         return True
 
@@ -90,7 +89,7 @@ def wait_until_active(window_id, instance_id=None, poll=1, timeout=30, invert=Fa
     Wait for window ID to open (or to close if invert set to True). Returns window_id if successful.
     Pass instance_id if there is also a base window that needs to be open underneath
     """
-    xbmc_monitor = Monitor()
+    xbmc_monitor = xbmc.Monitor()
     while (
             not xbmc_monitor.abortRequested() and timeout > 0
             and _is_inactive(window_id, invert)
@@ -107,7 +106,7 @@ def wait_until_updated(container_id=9999, instance_id=None, poll=1, timeout=60):
     Wait for container to update. Returns container_id if successful
     Pass instance_id if there is also a base window that needs to be open underneath
     """
-    xbmc_monitor = Monitor()
+    xbmc_monitor = xbmc.Monitor()
     while (
             not xbmc_monitor.abortRequested() and timeout > 0
             and _is_updating(container_id)
@@ -117,21 +116,3 @@ def wait_until_updated(container_id=9999, instance_id=None, poll=1, timeout=60):
     del xbmc_monitor
     if timeout > 0 and _is_base_active(instance_id):
         return container_id
-
-
-class WindowProperty():
-    def __init__(self, *args):
-        """ ContextManager for setting a WindowProperty over duration """
-        self.property_pairs = args
-
-        for k, v in self.property_pairs:
-            if not k or not v:
-                continue
-            get_property(k, set_property=v)
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, exc_type, exc_value, exc_traceback):
-        for k, v in self.property_pairs:
-            get_property(k, clear_property=True)

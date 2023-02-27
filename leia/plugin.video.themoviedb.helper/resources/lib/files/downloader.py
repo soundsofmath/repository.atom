@@ -1,29 +1,43 @@
 import os
+import sys
+import xbmc
 import xbmcvfs
-import gzip
-from xbmcgui import Dialog, ALPHANUM_HIDE_INPUT
-from io import BytesIO
-from urllib.parse import urlparse
-from resources.lib.addon.plugin import get_localized, ADDONNAME
-from resources.lib.addon.dialog import BusyDialog
-from resources.lib.addon.logger import kodi_log
-
-""" Lazyimports
+import xbmcgui
 import zipfile
-import requests
-"""
+import gzip
+from resources.lib.addon.plugin import ADDON, kodi_log
+from resources.lib.addon.decorators import busy_dialog
+from io import BytesIO
+try:  # Python 3
+    from urllib.parse import urlparse
+except ImportError:  # Python 2
+    from urlparse import urlparse
+if sys.version_info[0] >= 3:
+    unicode = str  # In Py3 str is now unicode
+
+
+requests = None  # Requests module is slow to import so lazy import via decorator instead
+
+
+def lazyimport_requests(func):
+    def wrapper(*args, **kwargs):
+        global requests
+        if requests is None:
+            import requests
+        return func(*args, **kwargs)
+    return wrapper
 
 
 class Downloader(object):
     def __init__(self, download_url=None, extract_to=None):
         self.download_url = download_url
-        self.extract_to = xbmcvfs.translatePath(extract_to)
-        self.msg_cleardir = get_localized(32054)
+        self.extract_to = xbmc.translatePath(extract_to)
+        self.msg_cleardir = ADDON.getLocalizedString(32054)
 
     def recursive_delete_dir(self, fullpath):
         '''helper to recursively delete a directory'''
         success = True
-        if not isinstance(fullpath, str):
+        if not isinstance(fullpath, unicode):
             fullpath = fullpath.decode("utf-8")
         dirs, files = xbmcvfs.listdir(fullpath)
         for file in files:
@@ -42,31 +56,31 @@ class Downloader(object):
         except ValueError:
             return False
 
+    @lazyimport_requests
     def check_url(self, url, cred):
-        import requests
         if not self.is_url(url):
-            kodi_log(f'URL is not of a valid schema: {url}', 1)
+            kodi_log(u"URL is not of a valid schema: {0}".format(url), 1)
             return False
         try:
             response = requests.head(url, allow_redirects=True, auth=cred)
             if response.status_code < 300:
-                kodi_log(f'URL check passed for {url}: Status code [{response.status_code}]', 1)
+                kodi_log(u"URL check passed for {0}: Status code [{1}]".format(url, response.status_code), 1)
                 return True
             elif response.status_code < 400:
-                kodi_log(f'URL check redirected from {url} to {response.headers["Location"]}: Status code [{response.status_code}]', 1)
+                kodi_log(u"URL check redirected from {0} to {1}: Status code [{2}]".format(url, response.headers['Location'], response.status_code), 1)
                 return self.check_url(response.headers['Location'])
             elif response.status_code == 401:
-                kodi_log(f'URL requires authentication for {url}: Status code [{response.status_code}]', 1)
+                kodi_log(u"URL requires authentication for {0}: Status code [{1}]".format(url, response.status_code), 1)
                 return 'auth'
             else:
-                kodi_log(f'URL check failed for {url}: Status code [{response.status_code}]', 1)
+                kodi_log(u"URL check failed for {0}: Status code [{1}]".format(url, response.status_code), 1)
                 return False
         except Exception as e:
-            kodi_log(f'URL check error for {url}: [{e}]', 1)
+            kodi_log(u"URL check error for {0}: [{1}]".format(url, e), 1)
             return False
 
+    @lazyimport_requests
     def open_url(self, url, stream=False, check=False, cred=None, count=0):
-        import requests
         if not url:
             return False
 
@@ -77,15 +91,15 @@ class Downloader(object):
         if check:
             return True
         if valid == 'auth' and not cred:
-            cred = (Dialog().input(heading=get_localized(1014)) or '', Dialog().input(heading=get_localized(733), option=ALPHANUM_HIDE_INPUT) or '')
+            cred = (xbmcgui.Dialog().input(heading=xbmc.getLocalizedString(1014)) or '', xbmcgui.Dialog().input(heading=xbmc.getLocalizedString(733), option=xbmcgui.ALPHANUM_HIDE_INPUT) or '')
 
         response = requests.get(url, timeout=10.000, stream=stream, auth=cred)
         if response.status_code == 401:
-            if count > 2 or not Dialog().yesno(ADDONNAME, get_localized(32056), yeslabel=get_localized(32057), nolabel=get_localized(222)):
-                Dialog().ok(ADDONNAME, get_localized(32055))
+            if count > 2 or not xbmcgui.Dialog().yesno(ADDON.getAddonInfo('name'), ADDON.getLocalizedString(32056), yeslabel=ADDON.getLocalizedString(32057), nolabel=xbmc.getLocalizedString(222)):
+                xbmcgui.Dialog().ok(ADDON.getAddonInfo('name'), ADDON.getLocalizedString(32055))
                 return False
             count += 1
-            cred = (Dialog().input(heading=get_localized(1014)) or '', Dialog().input(heading=get_localized(733), option=ALPHANUM_HIDE_INPUT) or '')
+            cred = (xbmcgui.Dialog().input(heading=xbmc.getLocalizedString(1014)) or '', xbmcgui.Dialog().input(heading=xbmc.getLocalizedString(733), option=xbmcgui.ALPHANUM_HIDE_INPUT) or '')
             response = self.open_url(url, stream, check, cred, count)
         return response
 
@@ -97,17 +111,17 @@ class Downloader(object):
                     os.unlink(file_path)
                 elif os.path.isdir(file_path):
                     self.recursive_delete_dir(file_path)
-            except Exception as exc:
-                kodi_log(f'Could not delete file {file_path}: {exc}')
+            except Exception as e:
+                kodi_log(u'Could not delete file {0}: {1}'.format(file_path, str(e)))
 
     def get_gzip_text(self):
         if not self.download_url:
             return
 
-        with BusyDialog():
+        with busy_dialog():
             response = self.open_url(self.download_url)
         if not response:
-            Dialog().ok(ADDONNAME, get_localized(32058))
+            xbmcgui.Dialog().ok(ADDON.getAddonInfo('name'), ADDON.getLocalizedString(32058))
             return
 
         with gzip.GzipFile(fileobj=BytesIO(response.content)) as downloaded_gzip:
@@ -115,24 +129,23 @@ class Downloader(object):
         return content
 
     def get_extracted_zip(self):
-        import zipfile
         if not self.download_url or not self.extract_to:
             return
 
-        with BusyDialog():
+        with busy_dialog():
             response = self.open_url(self.download_url)
         if not response:
-            Dialog().ok(ADDONNAME, get_localized(32058))
+            xbmcgui.Dialog().ok(ADDON.getAddonInfo('name'), ADDON.getLocalizedString(32058))
             return
 
         if not os.path.exists(self.extract_to):
             os.makedirs(self.extract_to)
 
-        if Dialog().yesno(ADDONNAME, self.msg_cleardir):
-            with BusyDialog():
+        if xbmcgui.Dialog().yesno(ADDON.getAddonInfo('name'), self.msg_cleardir):
+            with busy_dialog():
                 self.clear_dir(self.extract_to)
 
-        with BusyDialog():
+        with busy_dialog():
             num_files = 0
             with zipfile.ZipFile(BytesIO(response.content)) as downloaded_zip:
                 for item in [x for x in downloaded_zip.namelist() if x.endswith('.json')]:
@@ -148,8 +161,8 @@ class Downloader(object):
             try:
                 _tempzip = os.path.join(self.extract_to, 'temp.zip')
                 os.remove(_tempzip)
-            except Exception as exc:
-                kodi_log(f'Could not delete package {_tempzip}: {exc}')
+            except Exception as e:
+                kodi_log(u'Could not delete package {0}: {1}'.format(_tempzip, str(e)))
 
         if num_files:
-            Dialog().ok(ADDONNAME, f'{get_localized(32059)}\n\n{num_files} {get_localized(32060)}.')
+            xbmcgui.Dialog().ok(ADDON.getAddonInfo('name'), u'{0}\n\n{1} {2}.'.format(ADDON.getLocalizedString(32059), num_files, ADDON.getLocalizedString(32060)))

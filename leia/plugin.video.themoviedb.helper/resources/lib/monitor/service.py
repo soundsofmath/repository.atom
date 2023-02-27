@@ -1,6 +1,6 @@
-from xbmc import Monitor
-from resources.lib.addon.plugin import get_setting, get_condvisibility
+import xbmc
 from resources.lib.addon.window import get_property, wait_for_property
+from resources.lib.addon.plugin import ADDON
 from resources.lib.monitor.cronjob import CronJobMonitor
 from resources.lib.monitor.listitem import ListItemMonitor
 from resources.lib.monitor.player import PlayerMonitor
@@ -18,34 +18,30 @@ class ServiceMonitor(object):
     def __init__(self):
         self.exit = False
         self.listitem = None
-        self.cron_job = CronJobMonitor(get_setting('library_autoupdate_hour', 'int'))
+        self.cron_job = CronJobMonitor(ADDON.getSettingInt('library_autoupdate_hour'))
         self.cron_job.setName('Cron Thread')
         self.player_monitor = None
         self.listitem_monitor = ListItemMonitor()
-        self.xbmc_monitor = Monitor()
+        self.xbmc_monitor = xbmc.Monitor()
 
     def _on_listitem(self):
         self.listitem_monitor.get_listitem()
-        self.xbmc_monitor.waitForAbort(0.2)
+        self.xbmc_monitor.waitForAbort(0.3)
 
     def _on_scroll(self):
         self.listitem_monitor.clear_on_scroll()
-        self.xbmc_monitor.waitForAbort(0.2)
+        self.xbmc_monitor.waitForAbort(1)
 
     def _on_fullscreen(self):
         if self.player_monitor.isPlayingVideo():
             self.player_monitor.current_time = self.player_monitor.getTime()
         self.xbmc_monitor.waitForAbort(1)
 
-    def _on_idle(self, wait_time=30):
-        self.xbmc_monitor.waitForAbort(wait_time)
+    def _on_idle(self):
+        self.xbmc_monitor.waitForAbort(30)
 
     def _on_modal(self):
-        self.xbmc_monitor.waitForAbort(1)
-
-    def _on_context(self):
-        self.listitem_monitor.get_context_listitem()
-        self.xbmc_monitor.waitForAbort(1)
+        self.xbmc_monitor.waitForAbort(2)
 
     def _on_clear(self):
         """
@@ -73,52 +69,42 @@ class ServiceMonitor(object):
                 self.exit = True
 
             # If we're in fullscreen video then we should update the playermonitor time
-            elif get_condvisibility("Window.IsVisible(fullscreenvideo)"):
+            elif xbmc.getCondVisibility("Window.IsVisible(fullscreenvideo)"):
                 self._on_fullscreen()
 
             # Sit idle in a holding pattern if the skin doesn't need the service monitor yet
-            elif get_condvisibility(
-                    "!Skin.HasSetting(TMDbHelper.Service) + "
+            elif xbmc.getCondVisibility(
+                    "System.ScreenSaverActive | "
+                    "[!Skin.HasSetting(TMDbHelper.Service) + "
                     "!Skin.HasSetting(TMDbHelper.EnableBlur) + "
                     "!Skin.HasSetting(TMDbHelper.EnableDesaturate) + "
-                    "!Skin.HasSetting(TMDbHelper.EnableColors)"):
-                self._on_idle(30)
+                    "!Skin.HasSetting(TMDbHelper.EnableColors)]"):
+                self._on_idle()
 
-            # Sit idle in a holding pattern if screen saver is active
-            elif get_condvisibility("System.ScreenSaverActive"):
-                self._on_idle(4)
-
-            # skip when modal or busy dialogs are opened (e.g. select / progress / busy etc.)
-            elif get_condvisibility(
+            # skip when modal / busy dialogs are opened (e.g. context / select / busy etc.)
+            elif xbmc.getCondVisibility(
                     "Window.IsActive(DialogSelect.xml) | "
                     "Window.IsActive(progressdialog) | "
+                    "Window.IsActive(contextmenu) | "
                     "Window.IsActive(busydialog) | "
-                    "Window.IsActive(shutdownmenu) | "
-                    "!String.IsEmpty(Window.Property(TMDbHelper.ServicePause))"):
+                    "Window.IsActive(shutdownmenu)"):
                 self._on_modal()
 
-            # manage context menu separately from other modals to pass info through
-            elif get_condvisibility(
-                    "Window.IsActive(contextmenu) | "
-                    "!String.IsEmpty(Window.Property(TMDbHelper.ContextMenu))"):
-                self._on_context()
-
             # skip when container scrolling
-            elif get_condvisibility("Container.Scrolling"):
+            elif xbmc.getCondVisibility(
+                    "Container.OnScrollNext | "
+                    "Container.OnScrollPrevious | "
+                    "Container.Scrolling"):
                 self._on_scroll()
 
             # media window is opened or widgetcontainer set - start listitem monitoring!
-            elif get_condvisibility(
+            elif xbmc.getCondVisibility(
                     "Window.IsMedia | "
+                    "Window.IsVisible(MyPVRChannels.xml) | "
+                    "Window.IsVisible(MyPVRGuide.xml) | "
+                    "Window.IsVisible(DialogPVRInfo.xml) | "
                     "!String.IsEmpty(Window(Home).Property(TMDbHelper.WidgetContainer)) | "
-                    "!String.IsEmpty(Window.Property(TMDbHelper.WidgetContainer)) | "
-                    "Window.IsVisible(movieinformation) | "
-                    "Window.IsVisible(musicinformation) | "
-                    "Window.IsVisible(songinformation) | "
-                    "Window.IsVisible(addoninformation) | "
-                    "Window.IsVisible(pvrguideinfo) | "
-                    "Window.IsVisible(tvchannels) | "
-                    "Window.IsVisible(tvguide)"):
+                    "Window.IsVisible(movieinformation)"):
                 self._on_listitem()
 
             # Otherwise just sit here and wait

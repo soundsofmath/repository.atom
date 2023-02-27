@@ -1,344 +1,301 @@
-import xbmcgui
-from resources.lib.addon.plugin import get_infolabel, get_condvisibility, get_localized, get_setting
-from resources.lib.addon.logger import kodi_try_except
-from resources.lib.addon.window import get_property, get_current_window
+import xbmc
+from resources.lib.kodi.rpc import get_person_stats
+from resources.lib.addon.window import get_property
 from resources.lib.monitor.common import CommonMonitorFunctions, SETMAIN_ARTWORK, SETPROP_RATINGS
 from resources.lib.monitor.images import ImageFunctions
-from resources.lib.monitor.itemdetails import ListItemDetails
-from resources.lib.monitor.readahead import ListItemReadAhead, READAHEAD_CHANGED
-from resources.lib.items.listitem import ListItem
-from resources.lib.files.bcache import BasicCache
+from resources.lib.addon.plugin import ADDON, convert_media_type
+from resources.lib.addon.parser import try_decode
+from resources.lib.addon.decorators import try_except_log
 from threading import Thread
 
-CV_USE_LISTITEM = ""\
-    "!Skin.HasSetting(TMDbHelper.ForceWidgetContainer) + "\
-    "!Window.IsActive(script-tmdbhelper-recommendations.xml) + ["\
-    "Window.IsVisible(movieinformation) | "\
-    "Window.IsVisible(musicinformation) | "\
-    "Window.IsVisible(songinformation) | "\
-    "Window.IsVisible(addoninformation) | "\
-    "Window.IsVisible(pvrguideinfo) | "\
-    "Window.IsVisible(tvchannels) | "\
-    "Window.IsVisible(tvguide)]"
 
-CV_USE_LOCAL_CONTAINER = "Skin.HasSetting(TMDbHelper.UseLocalWidgetContainer)"
+def get_container():
+    widget_id = get_property('WidgetContainer', is_type=int)
+    if widget_id:
+        return u'Container({0}).'.format(widget_id)
+    return 'Container.'
+
+
+def get_container_item(container=None):
+    if xbmc.getCondVisibility(
+            "[Window.IsVisible(DialogPVRInfo.xml) | "
+            "Window.IsVisible(movieinformation)] + "
+            "!Skin.HasSetting(TMDbHelper.ForceWidgetContainer)"):
+        return 'ListItem.'
+    return u'{}ListItem.'.format(container or get_container())
 
 
 class ListItemMonitor(CommonMonitorFunctions):
     def __init__(self):
         super(ListItemMonitor, self).__init__()
-        self._cur_item = 0
-        self._pre_item = 1
-        self._cur_folder = None
-        self._pre_folder = None
-        self._cur_window = 0
-        self._pre_window = 1
-        self._last_blur_fallback = False
-        self._cache = BasicCache(filename=f'QuickService.db')
-        self._ignored_labels = ['..', get_localized(33078)]
-        self._listcontainer = None
-        self._last_listitem = None
-        self._readahead = None
-        self._item = None
+        self.cur_item = 0
+        self.pre_item = 1
+        self.cur_folder = None
+        self.pre_folder = None
         self.property_prefix = 'ListItem'
-        self._clearfunc_wp = {'func': self.on_exit, 'keep_tv_artwork': True, 'is_done': False}
-        self._clearfunc_lc = {'func': None}
-        self._offscreen_li = get_setting('rebuild_listitem_offscreen')  # Forces rebuilding ListItem before joining artwork and ratings threads. Workaround for potential issues with offscreen=True listitems being updated onscreen and GUI lock jankiness making offscreen=False unsuitable.
-        self._readahead_li = get_setting('service_listitem_readahead')  # Allows readahead queue of next ListItems when idle
-        self._pre_artwork_thread = None
+        self._last_blur_fallback = False
 
-    def setup_current_container(self):
-        self._cur_window = get_current_window()
-        self._listcontainer = self.get_listcontainer()
-        window_id = self._cur_window if get_condvisibility(CV_USE_LOCAL_CONTAINER) else None
-        widget_id = get_property('WidgetContainer', window_id=window_id, is_type=int)
-        self.container = f'Container({widget_id}).' if widget_id else 'Container.'
-        self.container_item = 'ListItem.' if get_condvisibility(CV_USE_LISTITEM) else f'{self.container}ListItem({{}}).'
+    def get_container(self):
+        self.container = get_container()
+        self.container_item = get_container_item(self.container)
 
-    def setup_current_item(self, position=0):
-        self._item = ListItemDetails(self, position)
-        self._item.setup_current_listitem()
-
-    def get_listcontainer(self, window_id=None, container_id=None):
-        window_id = window_id or self._cur_window
-        container_id = container_id or int(get_infolabel('Skin.String(TMDbHelper.MonitorContainer)') or 0)
-        if not window_id or not container_id:
-            return
-        if not get_condvisibility(f'Control.IsVisible({container_id})'):
-            return -1
-        return container_id
-
-    def get_infolabel(self, info, position=0):
-        return get_infolabel(f'{self.container_item.format(position)}{info}')
+    def get_infolabel(self, infolabel):
+        return xbmc.getInfoLabel(u'{}{}'.format(self.container_item, infolabel))
 
     def get_position(self):
-        return get_infolabel(f'{self.container}CurrentItem')
+        return xbmc.getInfoLabel(u'{}CurrentItem'.format(self.container))
 
     def get_numitems(self):
-        return get_infolabel(f'{self.container}NumItems')
+        return xbmc.getInfoLabel(u'{}NumItems'.format(self.container))
 
-    def get_cur_item(self, position=0):
-        return str((
-            'current_listitem_v2',
-            self.get_infolabel('dbtype', position),
-            self.get_infolabel('dbid', position),
-            self.get_infolabel('IMDBNumber', position),
-            self.get_infolabel('label', position),
-            self.get_infolabel('tvshowtitle', position),
-            self.get_infolabel('year', position),
-            self.get_infolabel('season', position),
-            self.get_infolabel('episode', position),))
+    def get_imdb_id(self):
+        imdb_id = self.get_infolabel('IMDBNumber') or ''
+        if imdb_id.startswith('tt'):
+            return imdb_id
+        return ''
 
-    def get_cur_folder(self):
-        return str((
-            'current_folder',
-            self.container, get_infolabel('Container.Content()'),
-            self.get_numitems(),))
+    def get_query(self):
+        if self.get_infolabel('TvShowTitle'):
+            return try_decode(self.get_infolabel('TvShowTitle'))
+        if self.get_infolabel('Title'):
+            return try_decode(self.get_infolabel('Title'))
+        if self.get_infolabel('Label'):
+            return try_decode(self.get_infolabel('Label'))
+
+    def get_season(self):
+        if self.dbtype == 'episodes':
+            return self.get_infolabel('Season')
+
+    def get_episode(self):
+        if self.dbtype == 'episodes':
+            return self.get_infolabel('Episode')
+
+    def get_dbtype(self):
+        if self.get_infolabel('Property(tmdb_type)') == 'person':
+            return 'actors'
+        elif xbmc.getCondVisibility(
+                "Window.IsVisible(DialogPVRInfo.xml) | "
+                "Window.IsVisible(MyPVRChannels.xml) | "
+                "Window.IsVisible(MyPVRGuide.xml)"):
+            return 'tvshows'
+        dbtype = self.get_infolabel('dbtype')
+        if not dbtype and self.container == 'Container.':
+            return xbmc.getInfoLabel('Container.Content()') or ''
+        return u'{0}s'.format(dbtype) if dbtype else ''
+
+    def get_tmdb_type(self, dbtype=None):
+        return convert_media_type(dbtype or self.dbtype, 'tmdb', strip_plural=True, parent_type=True)
+
+    def set_cur_item(self):
+        self.dbtype = self.get_dbtype()
+        self.dbid = self.get_infolabel('dbid')
+        self.imdb_id = self.get_imdb_id()
+        self.query = self.get_query()
+        self.year = self.get_infolabel('year')
+        self.season = self.get_season()
+        self.episode = self.get_episode()
+
+    def get_cur_item(self):
+        return (
+            self.get_infolabel('dbtype'),
+            self.get_infolabel('dbid'),
+            self.get_infolabel('IMDBNumber'),
+            self.get_infolabel('label'),
+            self.get_infolabel('year'),
+            self.get_infolabel('season'),
+            self.get_infolabel('episode'))
 
     def is_same_item(self, update=False):
-        self._cur_item = self.get_cur_item()
-        if self._cur_item == self._pre_item:
-            return self._cur_item
+        self.cur_item = self.get_cur_item()
+        if self.cur_item == self.pre_item:
+            return self.cur_item
         if update:
-            self._pre_item = self._cur_item
+            self.pre_item = self.cur_item
 
+    def get_cur_folder(self):
+        return (self.container, xbmc.getInfoLabel('Container.Content()'), self.get_numitems())
+
+    @try_except_log('lib.monitor.listitem.is_same_folder')
     def is_same_folder(self, update=True):
-        self._cur_folder = self.get_cur_folder()
-        if self._cur_folder == self._pre_folder:
-            return self._cur_folder
+        self.cur_folder = self.get_cur_folder()
+        if self.cur_folder == self.pre_folder:
+            return self.cur_folder
         if update:
-            self._pre_folder = self._cur_folder
+            self.pre_folder = self.cur_folder
 
-    def is_same_window(self, update=True):
-        self._cur_window = get_current_window()
-        if self._cur_window == self._pre_window:
-            return self._cur_window
-        if update:
-            self._pre_window = self._cur_window
+    @try_except_log('lib.monitor.listitem.process_artwork')
+    def process_artwork(self, details, tmdb_type):
+        self.clear_property_list(SETMAIN_ARTWORK)
+        if self.dbtype not in ['movies', 'tvshows', 'episodes']:
+            if tmdb_type not in ['movie', 'tv']:
+                return
+        if ADDON.getSettingBool('service_fanarttv_lookup'):
+            details = self.get_fanarttv_artwork(details, tmdb_type)
+        if not self.is_same_item():
+            return
+        self.set_iter_properties(details.get('art', {}), SETMAIN_ARTWORK)
 
-    def clear_properties(self, ignore_keys=None):
-        if not self._item or not self._item.get_artwork(source="Art(artist.clearlogo)|Art(tvshow.clearlogo)|Art(clearlogo)"):
-            self.properties.update({'CropImage', 'CropImage.Original'})
-        super().clear_properties(ignore_keys=ignore_keys)
+        # Crop Image
+        if details.get('clearlogo'):
+            if xbmc.getCondVisibility("Skin.HasSetting(TMDbHelper.EnableCrop)"):
+                self.crop_img = ImageFunctions(method='crop', artwork=details.get('clearlogo'))
+                self.crop_img.setName('crop_img')
+                self.crop_img.start()
 
+    @try_except_log('lib.monitor.listitem.process_ratings')
+    def process_ratings(self, details, tmdb_type, tmdb_id):
+        if tmdb_type not in ['movie', 'tv']:
+            return
+        details = self.get_omdb_ratings(details)
+        if tmdb_type == 'movie':
+            details = self.get_imdb_top250_rank(details)
+        details = self.get_trakt_ratings(
+            details, 'movie' if tmdb_type == 'movie' else 'show',
+            season=self.season, episode=self.episode)
+        if not self.is_same_item():
+            return
+        self.set_iter_properties(details.get('infoproperties', {}), SETPROP_RATINGS)
+
+    @try_except_log('lib.monitor.listitem.clear_on_scroll')
     def clear_on_scroll(self):
-        self.setup_current_container()
+        if not self.properties and not self.index_properties:
+            return
         if self.is_same_item():
             return
-        return self.get_listitem() if self._listcontainer else self.on_exit(keep_tv_artwork=True)
-
-    def on_exit(self, keep_tv_artwork=False, is_done=True):
-        if self._listcontainer:
-            return self.add_item_listcontainer(ListItem().get_listitem())
-        try:
-            ignore_keys = SETMAIN_ARTWORK if keep_tv_artwork and self._item._dbtype in ['episodes', 'seasons'] else None
-        except AttributeError:
-            ignore_keys = None
+        ignore_keys = None
+        if self.dbtype in ['episodes', 'seasons']:
+            ignore_keys = SETMAIN_ARTWORK
         self.clear_properties(ignore_keys=ignore_keys)
-        get_property('IsUpdating', clear_property=True) if is_done else None
 
-    @kodi_try_except('lib.monitor.listitem.blur_fallback')
+    @try_except_log('lib.monitor.listitem.get_artwork')
+    def get_artwork(self, source='', fallback=''):
+        source = source.lower()
+        lookup = {
+            'poster': ['Art(tvshow.poster)', 'Art(poster)', 'Art(thumb)'],
+            'fanart': ['Art(fanart)', 'Art(thumb)'],
+            'landscape': ['Art(landscape)', 'Art(fanart)', 'Art(thumb)'],
+            'thumb': ['Art(thumb)']}
+        infolabels = lookup.get(source, source.split("|") if source else lookup.get('thumb'))
+        for i in infolabels:
+            artwork = self.get_infolabel(i)
+            if artwork:
+                return artwork
+        return fallback
+
+    @try_except_log('lib.monitor.listitem.blur_fallback')
     def blur_fallback(self):
         if self._last_blur_fallback:
             return
         fallback = get_property('Blur.Fallback')
         if not fallback:
             return
-        if get_condvisibility("Skin.HasSetting(TMDbHelper.EnableBlur)"):
+        if xbmc.getCondVisibility("Skin.HasSetting(TMDbHelper.EnableBlur)"):
             self.blur_img = ImageFunctions(method='blur', artwork=fallback)
             self.blur_img.setName('blur_img')
             self.blur_img.start()
             self._last_blur_fallback = True
 
-    @kodi_try_except('lib.monitor.listitem.get_context_listitem')
-    def get_context_listitem(self):
-        if not self._last_listitem:
-            return
-        _id_dialog = xbmcgui.getCurrentWindowDialogId()
-        _id_d_list = self.get_listcontainer(_id_dialog)
-        if not _id_d_list or _id_d_list == -1:
-            return
-        _id_window = xbmcgui.getCurrentWindowId()
-        _id_w_list = self.get_listcontainer(_id_window)
-        if not _id_w_list or _id_w_list == -1:
-            return
-        self.add_item_listcontainer(self._last_listitem, _id_dialog, _id_d_list)
-
-    def add_item_listcontainer(self, listitem, window_id=None, container_id=None):
-        try:
-            _win = xbmcgui.Window(window_id or self._cur_window)  # Note get _win separate from _lst
-            _lst = _win.getControl(container_id or self._listcontainer)  # Note must get _lst in same func as addItem else crash
-        except Exception:
-            _lst = None
-        if not _lst:
-            return
-        _lst.addItem(listitem)  # Note dont delay adding listitem after retrieving list else memory reference changes
-        return listitem
-
-    def on_finalise_listcontainer(self, process_artwork=True, process_ratings=True):
-        """ Constructs ListItem adds to hidden container
-        process_artwork=True: Optional bool to process artwork
-        process_ratings=True: Optional bool to process ratings
-        Processing of artwork and ratings is done in a background thread to avoid locking main loop
-        """
-        _item = self._item
-        _item.get_additional_properties()
-        _listitem = self._last_listitem = _item.get_builtitem()
-        _pre_item = self._pre_item
-
-        if _pre_item != self.get_cur_item():
-            return
-
-        self.add_item_listcontainer(_listitem)
-
-        def _process_artwork():
-            _artwork = _item.get_builtartwork()
-            _artwork.update(_item.get_image_manipulations())
-            _listitem.setArt(_artwork)
-
-        def _process_ratings():
-            get_property('IsUpdatingRatings', 'True')
-            _details = _item.get_all_ratings() or {}
-            _listitem.setProperties(_details.get('infoproperties') or {})
-            get_property('IsUpdatingRatings', clear_property=True)
-
-        def _process_artwork_ratings():
-            # Thread ratings and artwork processing
-            t_artwork = Thread(target=_process_artwork) if process_artwork else None
-            t_ratings = Thread(target=_process_ratings) if process_ratings else None
-            t_artwork.start() if t_artwork else None
-            t_ratings.start() if t_ratings else None
-
-            # Wait for threads to join before readding listitem
-            t_artwork.join() if t_artwork else None
-            t_ratings.join() if t_ratings else None
-
-            # Check focused item is still the same before readding
-            if self._offscreen_li and _pre_item == self.get_cur_item():
-                self.add_item_listcontainer(_listitem)
-
-        if process_artwork or process_ratings:
-            _listitem = _item.get_builtitem() if self._offscreen_li else _listitem
-            t = Thread(target=_process_artwork_ratings)
-            t.start()
-
-    def on_finalise_winproperties(self, process_artwork=True, process_ratings=True):
-        _item = self._item
-        _item.get_additional_properties()
-        _item.get_nextaired()
-
-        # Item changed so reset properties
-        if not self.is_same_item():
-            return self.on_exit(keep_tv_artwork=True)
-
-        # Proces artwork in a thread
-        def _process_artwork():
-            _artwork = _item.get_builtartwork()
-            _artwork.update(_item.get_image_manipulations())
-            self.clear_property_list(SETMAIN_ARTWORK)
-            self.set_iter_properties(_artwork, SETMAIN_ARTWORK) if self.is_same_item() else None
-
-        if process_artwork:
-            thread_artwork = Thread(target=_process_artwork)
-            thread_artwork.start()
-
-        # Process ratings in a thread
-        def _process_ratings():
-            get_property('IsUpdatingRatings', 'True')
-            _details = _item.get_all_ratings() or {}
-            self.clear_property_list(SETPROP_RATINGS)
-            self.set_iter_properties(_details.get('infoproperties', {}), SETPROP_RATINGS) if self.is_same_item() else None
-            get_property('IsUpdatingRatings', clear_property=True)
-
-        if process_ratings:
-            thread_ratings = Thread(target=_process_ratings)
-            thread_ratings.start()
-
-        # Copy previous properties for clearing intersection
-        prev_properties = self.properties.copy()
-        self.properties = set()
-
-        # Set our properties
-        self.set_properties(_item._itemdetails.listitem)
-        ignore_keys = prev_properties.intersection(self.properties)
-        ignore_keys.update(SETPROP_RATINGS)
-        ignore_keys.update(SETMAIN_ARTWORK)
-        for k in prev_properties - ignore_keys:
-            self.clear_property(k)
-
-    def on_finalise(self):
-        func = self.on_finalise_listcontainer if self._listcontainer else self.on_finalise_winproperties
-        func(
-            process_artwork=get_condvisibility("!Skin.HasSetting(TMDbHelper.DisableArtwork)"),
-            process_ratings=get_condvisibility("!Skin.HasSetting(TMDbHelper.DisableRatings)"))
-        get_property('IsUpdating', clear_property=True)
-
-    def get_readahead(self):
-        # No readahead if disabled by user
-        if not self._readahead_li:
-            return
-
-        # No readahead in info dialog
-        if get_condvisibility(CV_USE_LISTITEM):
-            return
-
-        # No readahead has started so let's start one
-        if not self._readahead:
-            self._readahead = ListItemReadAhead(self, self._cur_window, self._cur_item)
-
-        # Readahead next item and if the main item changes in the meantime we reset to None
-        def _next_readahead():
-            if self._readahead._locked:
-                return
-            if self._readahead.next_readahead() != READAHEAD_CHANGED:
-                return
-            self._readahead = None
-
-        # Readahead is threaded to avoid locking up main lookup while loop
-        t = Thread(target=_next_readahead)
-        t.start()
-
-    @kodi_try_except('lib.monitor.listitem.get_listitem')
+    @try_except_log('lib.monitor.listitem.get_listitem')
     def get_listitem(self):
-        self.setup_current_container()
+        self.get_container()
 
-        # We want to set a special container but it doesn't exist so exit
-        if self._listcontainer == -1:
+        # Don't bother getting new details if we've got the same item
+        if self.is_same_item(update=True):
             return
 
-        # Check if the item has changed before retrieving details again
-        if self.is_same_window(update=True) and self.is_same_item(update=True):
-            return self.get_readahead() if self._listcontainer else None
+        # Parent folder item so clear properties and stop
+        if self.get_infolabel('Label') == '..':
+            return self.clear_properties()
 
-        # Ignore some special folders like next page and parent folder
-        if self.get_infolabel('Label') in self._ignored_labels:
-            return self.on_exit()
-
-        # Set a property for skins to check if item details are updating
+        # Set our is_updating flag
         get_property('IsUpdating', 'True')
 
-        # Clear properties for clean slate if user opened a new directory and using window properties
-        if not self._listcontainer and not self.is_same_folder(update=True):
-            self.on_exit(is_done=False)
+        # If the folder changed let's clear all the properties before doing a look-up
+        # Possible that our new look-up will fail so good to have a clean slate
+        if not self.is_same_folder():
+            self.clear_properties()
 
-        # Get the current listitem details for the details lookup
-        self.setup_current_item()
+        # Get look-up details
+        self.set_cur_item()
 
-        # Thread image functions to prevent blocking details lookup
-        if not self._listcontainer:
-            Thread(target=self._item.get_image_manipulations, kwargs={'use_winprops': True}).start()
+        # Blur Image
+        if xbmc.getCondVisibility("Skin.HasSetting(TMDbHelper.EnableBlur)"):
+            self.blur_img = ImageFunctions(method='blur', artwork=self.get_artwork(
+                source=get_property('Blur.SourceImage'),
+                fallback=get_property('Blur.Fallback')))
+            self.blur_img.setName('blur_img')
+            self.blur_img.start()
+            self._last_blur_fallback = False
 
-        # Allow early exit if the skin only needs image manipulations
-        if get_condvisibility("!Skin.HasSetting(TMDbHelper.Service)"):
+        # Desaturate Image
+        if xbmc.getCondVisibility("Skin.HasSetting(TMDbHelper.EnableDesaturate)"):
+            self.desaturate_img = ImageFunctions(method='desaturate', artwork=self.get_artwork(
+                source=get_property('Desaturate.SourceImage'),
+                fallback=get_property('Desaturate.Fallback')))
+            self.desaturate_img.setName('desaturate_img')
+            self.desaturate_img.start()
+
+        # CompColors
+        if xbmc.getCondVisibility("Skin.HasSetting(TMDbHelper.EnableColors)"):
+            self.colors_img = ImageFunctions(method='colors', artwork=self.get_artwork(
+                source=get_property('Colors.SourceImage'),
+                fallback=get_property('Colors.Fallback')))
+            self.colors_img.setName('colors_img')
+            self.colors_img.start()
+
+        # Allow early exit to only do image manipulations
+        if xbmc.getCondVisibility("!Skin.HasSetting(TMDbHelper.Service)"):
             return get_property('IsUpdating', clear_property=True)
 
-        # Get item details
-        uncached_func = self._clearfunc_lc if self._listcontainer else self._clearfunc_wp
-        self._item.get_itemdetails(**uncached_func)
+        # Need a TMDb type to do a details look-up so exit if we don't have one
+        tmdb_type = self.get_tmdb_type()
+        if not tmdb_type:
+            self.clear_properties()
+            return get_property('IsUpdating', clear_property=True)
 
-        # Get library stats for person
-        if get_condvisibility("!Skin.HasSetting(TMDbHelper.DisablePersonStats)"):
-            self._item.get_person_stats()
+        # Immediately clear some properties like ratings and artwork
+        # Don't want these to linger on-screen if the look-up takes a moment
+        if self.dbtype not in ['episodes', 'seasons']:
+            self.clear_property_list(SETMAIN_ARTWORK)
+        self.clear_property_list(SETPROP_RATINGS)
 
-        # Finish up setting our details to the container/window
-        self.on_finalise()
+        # Get TMDb Details
+        tmdb_id = self.get_tmdb_id(
+            tmdb_type, self.imdb_id, self.query,
+            year=self.year if tmdb_type == 'movie' else None,
+            episode_year=self.year if tmdb_type == 'tv' else None)
+        details = self.tmdb_api.get_details(tmdb_type, tmdb_id, self.season, self.episode)
+        if not details:
+            self.clear_properties()
+            return get_property('IsUpdating', clear_property=True)
+
+        # Need to update Next Aired with a shorter cache time than details
+        if tmdb_type == 'tv' and details.get('infoproperties'):
+            details['infoproperties'].update(self.tmdb_api.get_tvshow_nextaired(tmdb_id))
+
+        # Get our artwork properties
+        if xbmc.getCondVisibility("!Skin.HasSetting(TMDbHelper.DisableArtwork)"):
+            thread_artwork = Thread(target=self.process_artwork, args=[details, tmdb_type])
+            thread_artwork.start()
+
+        # Item changed whilst retrieving details so lets clear and get next item
+        if not self.is_same_item():
+            ignore_keys = None
+            if self.dbtype in ['episodes', 'seasons']:
+                ignore_keys = SETMAIN_ARTWORK
+            self.clear_properties(ignore_keys=ignore_keys)
+            return get_property('IsUpdating', clear_property=True)
+
+        # Get person library statistics
+        if tmdb_type == 'person' and details.get('infolabels', {}).get('title'):
+            if xbmc.getCondVisibility("!Skin.HasSetting(TMDbHelper.DisablePersonStats)"):
+                details.setdefault('infoproperties', {}).update(
+                    get_person_stats(details['infolabels']['title']) or {})
+
+        # Get our item ratings
+        if xbmc.getCondVisibility("!Skin.HasSetting(TMDbHelper.DisableRatings)"):
+            thread_ratings = Thread(target=self.process_ratings, args=[details, tmdb_type, tmdb_id])
+            thread_ratings.start()
+
+        self.set_properties(details)
+        get_property('IsUpdating', clear_property=True)

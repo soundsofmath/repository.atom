@@ -1,6 +1,6 @@
 import sys
 import xbmc
-from lib.plugin import viewitems, try_encode, try_decode
+from lib.parser import viewitems, try_encode, try_decode
 
 
 BASIC_MOVIE = {
@@ -45,7 +45,6 @@ ROUTE = {
             'query': lambda: sys.listitem.getVideoInfoTag().getTVShowTitle(),
             'season': lambda: sys.listitem.getVideoInfoTag().getSeason(),
             'episode': lambda: sys.listitem.getVideoInfoTag().getEpisode(),
-            'episode_year': lambda: sys.listitem.getVideoInfoTag().getYear(),
             'ignore_default': 'true'
         }
     },
@@ -65,14 +64,24 @@ ROUTE = {
         'episode': BASIC_EPISODE
     },
     'manage_artwork': {
-        'movie': BASIC_MOVIE,
-        'tvshow': BASIC_TVSHOW,
-        'episode': BASIC_EPISODE
-    },
-    'add_to_library': {
-        'movie': BASIC_MOVIE,
-        'tvshow': BASIC_TVSHOW,
-        'episode': BASIC_EPISODE
+        'movie': {
+            'ftv_type': 'movies',
+            'ftv_id': lambda: sys.listitem.getUniqueID('tmdb'),
+            'tmdb_type': 'movie',
+            'tmdb_id': lambda: sys.listitem.getUniqueID('tmdb'),
+            'imdb_id': lambda: sys.listitem.getUniqueID('imdb'),
+            'query': lambda: sys.listitem.getVideoInfoTag().getTitle() or sys.listitem.getLabel(),
+            'year': lambda: sys.listitem.getVideoInfoTag().getYear()
+        },
+        'tvshow': {
+            'ftv_type': 'tv',
+            'ftv_id': lambda: sys.listitem.getUniqueID('tvdb'),
+            'tmdb_type': 'tv',
+            'tmdb_id': lambda: sys.listitem.getUniqueID('tmdb'),
+            'imdb_id': lambda: sys.listitem.getUniqueID('imdb'),
+            'query': lambda: sys.listitem.getVideoInfoTag().getTitle() or sys.listitem.getLabel(),
+            'year': lambda: sys.listitem.getVideoInfoTag().getYear()
+        }
     }
 }
 

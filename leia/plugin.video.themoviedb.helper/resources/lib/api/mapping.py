@@ -1,4 +1,5 @@
-from tmdbhelper.parser import try_type
+from resources.lib.addon.parser import try_type
+from resources.lib.addon.plugin import viewitems
 
 UPDATE_BASEKEY = 1
 
@@ -14,33 +15,33 @@ def get_empty_item():
         'context_menu': []}
 
 
-def set_show(item, base_item=None, is_season=False):
+def set_show(item, base_item=None):
     if not base_item:
         return item
     item['art'].update(
-        {f'{"" if k.startswith("tvshow.") else "season." if is_season else "tvshow."}{k}': v for k, v in base_item.get('art', {}).items()})
+        {'tvshow.{}'.format(k): v for k, v in viewitems(base_item.get('art', {}))})
     item['unique_ids'].update(
-        {f'{"" if k.startswith("tvshow.") else "season." if is_season else "tvshow."}{k}': v for k, v in base_item.get('unique_ids', {}).items()})
+        {'tvshow.{}'.format(k): v for k, v in viewitems(base_item.get('unique_ids', {}))})
     item['infoproperties'].update(
-        {f'{"" if k.startswith("tvshow.") else "season." if is_season else "tvshow."}{k}': v for k, v in base_item.get('infolabels', {}).items() if type(v) not in [dict, list, tuple]})
-    item['infolabels']['tvshowtitle'] = base_item['infolabels'].get('tvshowtitle') or base_item['infolabels'].get('title')
+        {'tvshow.{}'.format(k): v for k, v in viewitems(base_item.get('infolabels', {})) if type(v) not in [dict, list, tuple]})
+    item['infolabels']['tvshowtitle'] = base_item['infolabels'].get('title')
     item['unique_ids']['tmdb'] = item['unique_ids'].get('tvshow.tmdb')
     return item
 
 
 class _ItemMapper(object):
-    def add_base(self, item, base_item=None, tmdb_type=None, key_blacklist=[], is_season=False):
+    def add_base(self, item, base_item=None, tmdb_type=None, key_blacklist=[]):
         if not base_item:
             return item
         for d in ['infolabels', 'infoproperties', 'art']:
-            for k, v in base_item.get(d, {}).items():
-                if not v or item[d].get(k) is not None:
+            for k, v in viewitems(base_item.get(d, {})):
+                if not v or item[d].get(k):
                     continue
                 if k in key_blacklist:
                     continue
                 item[d][k] = v
         if tmdb_type in ['season', 'episode', 'tv']:
-            return set_show(item, base_item, is_season=is_season)
+            return set_show(item, base_item)
         return item
 
     def map_item(self, item, i):
@@ -48,9 +49,9 @@ class _ItemMapper(object):
         am = self.advanced_map or {}
 
         # Iterate over item retrieved from api list
-        for k, pv in i.items():
+        for k, pv in viewitems(i):
             # Skip empty objects
-            if not pv and pv != 0:
+            if not pv and pv is not 0:
                 continue
             # Skip blacklist values
             if pv in self.blacklist:
@@ -84,7 +85,7 @@ class _ItemMapper(object):
                 if 'func' in d:
                     v = d['func'](v, *d.get('args', []), **d.get('kwargs', {}))
                 # Check not empty
-                if not v and v != 0:
+                if not v and v is not 0:
                     continue
                 # Map value onto item dict parent/child keys
                 for p, c in d['keys']:
