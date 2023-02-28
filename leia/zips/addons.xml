@@ -1408,7 +1408,7 @@ v0.5.9 (2022-03-22)
         <import addon="script.module.futures" version="2.2.0" />
         <import addon="script.module.requests" />
         <import addon="script.module.six" />
-        <import addon="repository.universalscrapers" />
+        <import addon="repository.atom" />
 	<import addon="script.module.resolveurl" version="5.0.00" optional="true" />
 
                 
