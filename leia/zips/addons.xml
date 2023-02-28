@@ -456,143 +456,18 @@
     </assets>
   </extension>
 </addon><addon id="plugin.program.atomwizard" name="Atom Wizard" version="3.6.0" provider-name="soundsofmath">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0" />
-        <import addon="script.module.requests" />
-        <import addon="script.module.six" />
-        <import addon="script.kodi.android.update" optional="true" version="1.1.7" />
-        <import addon="script.speedtester" optional="true" version="1.1.2" />
-    </requires>
-    
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    
-    <extension point="xbmc.service" library="startup.py" start="startup" />
-    
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Atom Wizard</summary>
-        <description lang="en">Atom Wizard offers many maintenance features, selective add-on data saving, and automated build installs.</description>
-        <platform>all</platform>
-        <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/drinfernoo/plugin.program.openwizard/</source>
-        <news>
-1.4.9
- - Fix Error Related to Log
-1.4.8
- - Fix regex for formatting tags
- - Fix theme selection after build install
- - Fix downloading into invalid path
-1.4.7
- - Don't show Matrix builds in previous versions
-1.4.6
- - Use Speed Tester add-on from official repo
-1.4.5
- - Fix bugs with unintended files being cleared
-1.4.4
- - Transfer ownership
-1.4.3
- - Fix missing artwork on items (thanks @xulek)
-1.4.2
- - A few bug fixes
-1.4.1
- - Fix crash on fresh installs
-1.4.0
- - Fix APK Installer
- - Convert official APK downloader to use official script
- - Add scrollbar to Save Data dialog
- - Fix skin path in build info
-1.3.7
- - Fix import lock error
-1.3.6
- - Fix notifications
- - Cleanup log files
-1.3.5
- - Add Fen
- - Add Shadow
- - Fix restoring saved data every boot
-1.3.4
- - Fix bad indent
-1.3.3
- - Fix Unicode characters in notification window
-1.3.2
- - Fix build restore
-1.3.1
- - Fix "Keep Login Info" menu        
-1.3.0
- - Fix formatting of saved restore times
- - Fix local build zip being deleted on restore
- - Add YouTube API saving
- - Remove broken context menus
- - Fix repeating dialogs from shortcuts/favorites
- - Remove "Normal Install" option
- - Add "Logging Tools" menu
- - Add option to save guisettings.xml
- - Add TMDbHelper Fanart.tv saving
- - More fixes for OS X
- - Fix Seren Fanart.tv saving
-1.2.9
- - Fix NuMb3r5 cache clearing
- - Fix hang during repo force check
- - Fix logins being restored every startup
- - Fix some file permission errors
- - Fix OS X backup errors
-1.2.8
- - Add Gaia PM OAuth
- - Fix binary add-on restoration
- - Fix some issues with old settings
- - Fix timing on many startup tasks
-1.2.7
- - Add TheMovieDb Helper
-1.2.6
- - Fix Seren PM OAuth    
-1.2.5
- - Fix typo in debridit.py
-1.2.4
- - Cover more edge cases during binary detection
-1.2.3
- - Fix notification ID bug
-1.2.2
- - Add Seren PM OAuth
- - Add AllDebrid spport for Gaia, Seren, ResolveURL, and URLResolver
-1.2.1
- - General bug fixes
-1.2.0
- - Silence save data notifications on startup
- - Fix Addon Installer menu
- - Convert addons.txt to JSON format
-1.1.1
- - Fix error on advancedsettings categories
-1.1.0
- - Add back advancedsettings area under System Tweaks/Fixes
- - Rudimentary version of advancedsettings editor. Can currently only handle editing pre-existing tags under 'cache' and 'network'.
- - Convert advanced.txt to JSON format
- - Add "built-in" advancedsettings.xml presets
-1.0.3
- - Update artwork
- - Fix rare issues with URLs not working
- - Fix repetitive build prompt (again)
- - Fix builds downloading twice
- - Fix title coloring on notifications
- - Fix auto repo install
- - Fix first run settings not being respected
-1.0.2
- - Fix crash in login menu
- - Fix auto install repo
-1.0.1
- - Fix double startup
- - Fix repetitive build prompt
- - Fix main menu not opening on Krypton
- - Fix notification timeout
- - Fix crash in Trakt menu
-1.0.0
- - Initial Commit
-        </news>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
-        </assets>
-    </extension>
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Atom Wizard</summary>
+    <description lang="en">Atom Wizard allows you to get access to the latest Custom Builds. Thanks whufclee at NaN, GUYS at TI, Brackets for the app installer!! RomanVM for the PyXBMCt libs. Fire TV Guru for the PyXBMCt layout  Also a very special Thanks to Surfacingx for the code used in this add-on.</description>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="plugin.program.autocompletion" name="AutoCompletion for virtual keyboard" version="1.0.1" provider-name="Philipp Temminghoff (phil65)">
     <requires>
         <import addon="xbmc.python" version="2.24.0" />
@@ -990,20 +865,6 @@
 		</assets>
 		<news>- fix issue with unneeded seeking</news>
 	</extension>
-</addon><addon id="script.homelander.artwork" version="1.0.2" name="[COLOR red]Homelander [/COLOR]Artwork" provider-name="Homelander">
-    <requires>
-        
-    </requires>
-    <extension point="xbmc.python.module" library="lib" />
-    <extension point="xbmc.addon.metadata">
-        <summary>Homelander Artwork</summary>
-        <description>Homelander Artwork</description>
-        <platform>all</platform>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
 </addon><addon id="script.image.resource.select" name="Image Resource Select Addon" version="2.0.4" provider-name="ronie">
 	<requires>
 		<import addon="xbmc.python" version="2.25.0" />
@@ -1209,33 +1070,6 @@
         <license>MIT</license>
         <platform>all</platform>
         <source>https://github.com/kurtmckee/feedparser</source>
-    </extension>
-</addon><addon id="script.module.homelanderscrapers" name="[COLOR red]Homelander [/COLOR]Scrapers" version="1.1.1" provider-name="Homelander">
-    <requires>
-        
-        <import addon="script.module.beautifulsoup4" />
-        <import addon="script.module.requests" />
-        <import addon="script.module.six" />
-        <import addon="script.module.kodi-six" />
-        <import addon="script.module.simplejson" />
-        <import addon="script.module.orion" optional="true" />
-    </requires>
-    <extension point="xbmc.python.module" library="lib" />
-    <extension point="xbmc.python.pluginsource" library="lib/default.py">
-        <provides>executable</provides>
-    </extension>
-        <extension point="xbmc.addon.metadata">
-            <platform>all</platform>
-            <summary lang="en">Homelander Scrapers Module</summary>
-            <description>Scrape common video host for URL's to be playable in Kodi, simplifying addon development of video plugins requiring multi video hosts.</description>
-                <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
-    <platform>all</platform>
-    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-    </assets>
-    <news />
     </extension>
 </addon><addon id="script.module.idna" name="idna" version="2.10.0" provider-name="Kim Davies">
   <requires>

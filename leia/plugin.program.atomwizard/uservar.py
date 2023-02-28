@@ -1,124 +1,167 @@
-import xbmcaddon
+import os, xbmc, xbmcaddon
+import binascii
+#########################################################
+### User Edit Variables #################################
+#########################################################
+# Enable/Disable the text file caching with 'Yes' or 'No' and age being how often it rechecks in minutes
+CACHETEXT      = 'Yes'
+CACHEAGE       = 30
 
-import os
-
-#########################################################
-#         Global Variables - DON'T EDIT!!!              #
-#########################################################
-ADDON_ID = xbmcaddon.Addon().getAddonInfo('id')
-PATH = xbmcaddon.Addon().getAddonInfo('path')
-ART = os.path.join(PATH, 'resources', 'media')
-#########################################################
-
-#########################################################
-#        User Edit Variables                            #
-#########################################################
-ADDONTITLE = 'Atom Wizard'
-BUILDERNAME = 'Leia Builds'
-EXCLUDES = [ADDON_ID, 'plugin.program.atomwizard']
-# Text File with build info in it. Please read https://github.com/a4k-openproject/plugin.program.openwizard/wiki/Installing-Builds
-BUILDFILE = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/wizard.txt'
-# How often you would like it to check for build updates in days
-# 0 being every startup of kodi
-UPDATECHECK = 0
-# Text File with apk info in it.  Leave as 'http://' to ignore
-APKFILE = 'http://'
-# Text File with Youtube Videos urls.  Leave as 'http://' to ignore
-YOUTUBETITLE = ''
-YOUTUBEFILE = 'http://'
-# Text File for addon installer.  Leave as 'http://' to ignore
-ADDONFILE = 'http://'
-# Text File for advanced settings.  Leave as 'http://' to ignore
-ADVANCEDFILE = 'http://'
-#########################################################
+ADDON_ID       = xbmcaddon.Addon().getAddonInfo('id')
+ADDONTITLE     = 'Atom Wizard'
+BUILDERNAME    = 'Leia Builds'
+#########################Make sure to change the repo to yours!!!!
+EXCLUDES       = [ADDON_ID, 'plugin.program.atomwizard']
+BUILDFILE      = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/wizard.txt'
+UPDATECHECK    = 0
+APKFILE        = 'http://'
+YOUTUBETITLE   = 'http://'
+YOUTUBEFILE    = 'http://'
+ADDONFILE      = 'http://'
+ADVANCEDFILE   = 'http://'
+ROMPACK        = 'http://'
+EMUAPKS        = 'http://'
+ADDONPACK      = 'http://'
+PATH           = xbmcaddon.Addon().getAddonInfo('path')
+ART            = os.path.join(PATH, 'resources', 'art')
 
 #########################################################
-#        Theming Menu Items                             #
+### THEMING MENU ITEMS ##################################
+#########################################################
+
+##Alway test to see the color combo!!
+
+#### NEW GUI THEME ###################################
+# Choose from the following 
+# Only these colors avalable
+# white , blue , orange , yellow , red , purple , pink , lime , cyan, green
+#Button focus color
+FOCUS_BUTTON_COLOR = 'blue'
+EXIT_BUTTON_COLOR = 'white'
+#Highlight outline for lists
+HIGHLIGHT_LIST = 'white'
+##No TXT file Banner
+NO_TXT_FILE = 'red'
+
+############################################
+############################################
+### The full list of colors for below can found @ https://forum.kodi.tv/showthread.php?tid=210837
+
+#Top Main buttons
+MAIN_BUTTONS_TEXT = 'white'
+#All other buttons
+OTHER_BUTTONS_TEXT = 'blue'
+#all list text color
+##FYI any color placed in the txt file will overide this
+LIST_TEXT = 'blue'
+
+
+#Description text title color
+DES_T_COLOR = 'blue'
+#Description color
+DESCOLOR = 'white'
+
+#Wizard title name and verion color
+WIZTITLE = 'Atom Wizard'
+WIZTITLE_COLOR = 'blue'
+VERTITLE_COLOR = 'white'
+VER_NUMBER_COLOR = 'blue'
+############################################################
+
+## The colors and theme below is still used for the pop up dialogs
+##Alway test to see the color combo
+# You can edit these however you want, just make sure that you have a %s in each of the
+# THEME's so it grabs the text from the menu item
+COLOR1         = 'blue'
+COLOR2         = 'blue'
+COLOR3         = 'red'
+COLOR4         = 'snow'
+COLOR5         = 'lime'
+# Primary menu items   / %s is the menu item and is required
+THEME1         = '[COLOR '+COLOR1+']%s[/COLOR]'
+# Build Names          / %s is the menu item and is required
+THEME2         = '[COLOR '+COLOR1+']%s[/COLOR]'
+# Alternate items      / %s is the menu item and is required
+THEME3         = '[COLOR '+COLOR2+']%s[/COLOR]'
+# Current Build Header / %s is the menu item and is required
+THEME4         = '[COLOR '+COLOR2+']Current Build:[/COLOR] [COLOR '+COLOR2+']%s[/COLOR]'
+# Current Theme Header / %s is the menu item and is required
+THEME5         = '[COLOR '+COLOR2+']Current Theme:[/COLOR] [COLOR '+COLOR2+']%s[/COLOR]'
+THEME6         = '[COLOR '+COLOR3+'][B]%s[/B][/COLOR]'
+
+
+
 #########################################################
 # If you want to use locally stored icons the place them in the Resources/Art/
 # folder of the wizard then use os.path.join(ART, 'imagename.png')
 # do not place quotes around os.path.join
 # Example:  ICONMAINT     = os.path.join(ART, 'mainticon.png')
-#           ICONSETTINGS  = 'https://www.yourhost.com/repo/wizard/settings.png'
+#           ICONSETTINGS  = 'http://aftermathwizard.net/repo/wizard/settings.png'
 # Leave as http:// for default icon
-ICONBUILDS = os.path.join(ART, 'builds.png')
-ICONMAINT = os.path.join(ART, 'maintenance.png')
-ICONSPEED = os.path.join(ART, 'speed.png')
-ICONAPK = os.path.join(ART, 'apkinstaller.png')
-ICONADDONS = os.path.join(ART, 'addoninstaller.png')
-ICONYOUTUBE = os.path.join(ART, 'youtube.png')
-ICONSAVE = os.path.join(ART, 'savedata.png')
-ICONTRAKT = os.path.join(ART, 'keeptrakt.png')
-ICONREAL = os.path.join(ART, 'keepdebrid.png')
-ICONLOGIN = os.path.join(ART, 'keeplogin.png')
-ICONCONTACT = os.path.join(ART, 'information.png')
-ICONSETTINGS = os.path.join(ART, 'settings.png')
-# Hide the section separators 'Yes' or 'No'
-HIDESPACERS = 'No'
-# Character used in separator
-SPACER = '='
-
-# You can edit these however you want, just make sure that you have a %s in each of the
-# THEME's so it grabs the text from the menu item
-COLOR1 = 'limegreen'
-COLOR2 = 'white'
-# Primary menu items   / {0} is the menu item and is required
-THEME1 = u'[COLOR {color1}][I]([COLOR {color1}][B]Atom[/B][/COLOR][COLOR {color2}]Wizard[COLOR {color1}])[/I][/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
-# Build Names          / {0} is the menu item and is required
-THEME2 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
-# Alternate items      / {0} is the menu item and is required
-THEME3 = u'[COLOR {color1}]{{}}[/COLOR]'.format(color1=COLOR1)
-# Current Build Header / {0} is the menu item and is required
-THEME4 = u'[COLOR {color1}]Current Build:[/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
-# Current Theme Header / {0} is the menu item and is required
-THEME5 = u'[COLOR {color1}]Current Theme:[/COLOR] [COLOR {color2}]{{}}[/COLOR]'.format(color1=COLOR1, color2=COLOR2)
+ICONBUILDS     = 'https://i.imgur.com/7CIT93Q.png'
+ICONMAINT      = 'https://i.imgur.com/YFw2062.png'
+ICONAPK        = 'https://i.imgur.com/cGG1z5S.png'
+ICONADDONS     = 'https://i.imgur.com/HlvkAYR.png'
+ICONYOUTUBE    = 'https://i.imgur.com/vXDhnji.png'
+ICONSAVE       = 'https://i.imgur.com/9HVIKLi.png'
+ICONTRAKT      = 'https://i.imgur.com/uqCUoDB.png'
+ICONREAL       = 'https://i.imgur.com/Eby6mRW.png'
+ICONLOGIN      = 'https://i.imgur.com/xRVbX5r.png'
+ICONCONTACT    = 'https://i.imgur.com/Pn7Ctja.png'
+ICONSETTINGS   = 'https://i.imgur.com/kOVekP3.png'
+# Hide the ====== seperators 'Yes' or 'No'
+HIDESPACERS    = 'No'
+# Character used in seperator
+SPACER         = '~'
 
 # Message for Contact Page
 # Enable 'Contact' menu item 'Yes' hide or 'No' dont hide
-HIDECONTACT = 'No'
+HIDECONTACT    = 'No'
 # You can add \n to do line breaks
-CONTACT = 'Thank you for choosing OpenWizard.\n\nContact us on Github at http://www.github.com/drinfernoo/plugin.program.openwizard/'
-# Images used for the contact window.  http:// for default icon and fanart
-CONTACTICON = os.path.join(ART, 'qricon.png')
-CONTACTFANART = 'http://'
+CONTACT        = 'Thank you for choosing Atom Wizard.'
+#Images used for the contact window.  http:// for default icon and fanart
+CONTACTICON    = os.path.join(ART, 'icon.png')
+CONTACTFANART  = 'http://'
 #########################################################
 
 #########################################################
-#        Auto Update For Those With No Repo             #
-#########################################################
+### AUTO UPDATE #########################################
+########## FOR THOSE WITH NO REPO #######################
 # Enable Auto Update 'Yes' or 'No'
-AUTOUPDATE = 'Yes'
+AUTOUPDATE     = 'Yes'
+# Url to wizard version
+WIZARDFILE     = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/wizard.txt'
 #########################################################
 
 #########################################################
-#        Auto Install Repo If Not Installed             #
-#########################################################
+### AUTO INSTALL ########################################
+########## REPO IF NOT INSTALLED ########################
 # Enable Auto Install 'Yes' or 'No'
-AUTOINSTALL = 'Yes'
+AUTOINSTALL    = 'No'
 # Addon ID for the repository
-REPOID = 'repository.atom'
+REPOID         = 'repository.atom'
 # Url to Addons.xml file in your repo folder(this is so we can get the latest version)
-REPOADDONXML = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/repo/repository.atom/addon.xml'
+REPOADDONXML   = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/repo/repository.atom/addon.xml'
 # Url to folder zip is located in
-REPOZIPURL = 'https://github.com/soundsofmath/repository.atom/blob/master/repository.atom-3.6.0.zip'
+REPOZIPURL     =  'https://github.com/soundsofmath/repository.atom/blob/master/repository.atom-3.6.0.zip'
 #########################################################
 
 #########################################################
-#        Notification Window                            #
+### NOTIFICATION WINDOW##################################
 #########################################################
 # Enable Notification screen Yes or No
-ENABLE = 'Yes'
+ENABLE         = 'Yes'
 # Url to notification file
-NOTIFICATION = 'http://'
+NOTIFICATION   = 'http://'
 # Use either 'Text' or 'Image'
-HEADERTYPE = 'Text'
+HEADERTYPE     = 'Text'
 # Font size of header
-FONTHEADER = 'Font14'
-HEADERMESSAGE = 'Atom Wizard'
+FONTHEADER     = 'Font25'
+HEADERMESSAGE  = 'Magnetic Wizard'
 # url to image if using Image 424x180
-HEADERIMAGE = 'http://'
+HEADERIMAGE    = ''
 # Font for Notification Window
-FONTSETTINGS = 'Font13'
+FONTSETTINGS   = 'Font12'
 # Background for Notification Window
-BACKGROUND = 'http://'
-#########################################################
+BACKGROUND     = 'http://'
+############################    #############################
