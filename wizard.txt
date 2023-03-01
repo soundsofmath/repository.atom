@@ -1,3 +1,7 @@
+id="plugin.program.atomwizard"
+version="3.6.0"
+zip="https://raw.githubusercontent.com/soundsofmath/repository.atom/master/plugin.program.atomwizard-3.6.0.zip"
+
 name="Bingie"
 version="1.0"
 url="url.to.build"
@@ -53,5 +57,3 @@ preview="https://"
 adult="no"
 info="url.to.info"
 description="Backwards Engineering."
-
-
