@@ -455,6 +455,19 @@
         <icon>icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="plugin.program.SimpleBuildWizard" name="Simple Build Wizard" version="0.0.2" provider-name="Rohas">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Simple Build Wizard</summary>
+    <description lang="en">Simple Build Wizard.</description>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="plugin.program.atomwizard" name="[COLOR white]Atom[/COLOR]Wizard" version="1.4.9" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
