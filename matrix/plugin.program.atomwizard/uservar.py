@@ -14,7 +14,7 @@ ART = os.path.join(PATH, 'resources', 'media')
 #        User Edit Variables                            #
 #########################################################
 ADDONTITLE = 'Atom Wizard'
-BUILDERNAME = 'Bingie Builds'
+BUILDERNAME = 'Matrix Builds'
 EXCLUDES = [ADDON_ID, 'plugin.program.atomwizard']
 # Text File with build info in it. Please read https://github.com/a4k-openproject/plugin.program.openwizard/wiki/Installing-Builds
 BUILDFILE = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/builds.txt'

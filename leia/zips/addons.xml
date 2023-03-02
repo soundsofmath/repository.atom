@@ -475,20 +475,30 @@
         <description lang="en">Atom Wizard offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/drinfernoo/plugin.program.openwizard/</source>
+        <source>https://www.github.com/a4k-openproject/plugin.program.openwizard/</source>
         <news>
-1.4.9
- - Fix Error Related to Log
-1.4.8
+3.6.0 
+ - Changed name, logo and icon
+2.0.7
+ - Fix Error when using default log settings
+2.0.6
  - Fix regex for formatting tags
  - Fix theme selection after build install
  - Fix downloading into invalid path
-1.4.7
- - Don't show Matrix builds in previous versions
-1.4.6
- - Use Speed Tester add-on from official repo
+2.0.5
+ - Add Enable All Add-ons after Build Install
+2.0.4
+ - Fix leftover broken dialogs
+2.0.3
+ - Don't show previous version builds in Matrix
+2.0.2
+ - Replace remaining occurences of LOGNOTICE
+2.0.1
+ - Add attribution to @slamious
+2.0.0
+ - Initial Matrix support
 1.4.5
- - Fix bugs with unintended files being cleared
+ - Fix bugs with unintended files being cleared`
 1.4.4
  - Transfer ownership
 1.4.3
@@ -611,19 +621,6 @@
         <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
         <source>https://github.com/phil65/plugin.program.autocompletion</source>
     </extension>
-</addon><addon id="plugin.program.magneticwizard" name=" [B][COLOR white][COLOR purple]Magnetic Wizard[COLOR white][/COLOR][/B]" version="1.9" provider-name="[B][COLOR purple]Magnetic[/COLOR][/B]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.service" library="startup.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Magnetic Wizard</summary>
-    <description lang="en">Magnetic Wizard allows you to get access to the latest Custom Builds. Thanks whufclee at NaN, GUYS at TI, Brackets for the app installer!! RomanVM for the PyXBMCt libs. Fire TV Guru for the PyXBMCt layout  Also a very special Thanks to Surfacingx for the code used in this add-on.</description>
-    <platform>all</platform>
-  </extension>
 </addon><addon id="plugin.video.enigma" name="[COLORaqua]Enigma[/COLOR]" version="2.0.5" provider-name="CC/Community">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />

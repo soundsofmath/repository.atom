@@ -1,6 +1,6 @@
-id="plugin.program.magneticwizard"
-version="1.9"
-zip="https://raw.githubusercontent.com/soundsofmath/repository.atom/master/plugin.program.magneticwizard-1.9.zip"
+id="plugin.program.atomwizard"
+version="3.6.0"
+zip="https://raw.githubusercontent.com/soundsofmath/repository.atom/master/plugin.program.atomwizard-3.6.0.zip"
 
 name="Bingie"
 version="1.0"
@@ -46,7 +46,7 @@ description="Backwards Engineering."
 
 name="Horizon"
 version="1.0"
-url="https://www.dropbox.com/s/mr60zqori7jc6jh/Horizon.zip?dl=1"
+url="https://archive.org/download/horizon_202302/Horizon.zip"
 minor="http://"
 gui="url.to.guisettings"
 kodi="18.3"
@@ -57,5 +57,3 @@ preview="https://"
 adult="no"
 info="url.to.info"
 description="Backwards Engineering."
-
-
