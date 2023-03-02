@@ -621,6 +621,19 @@
         <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
         <source>https://github.com/phil65/plugin.program.autocompletion</source>
     </extension>
+</addon><addon id="plugin.video.SimpleKodiWizard" name="Simple Kodi Wizard" version="1.0.0" provider-name="SimpleKodi">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Simple Kodi Wizard</summary>
+    <description lang="en">Best Kodi Tutorials</description>
+	<website>http://SimpleKodi.com</website>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="plugin.video.enigma" name="[COLORaqua]Enigma[/COLOR]" version="2.0.5" provider-name="CC/Community">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
