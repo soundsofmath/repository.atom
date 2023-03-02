@@ -1,3 +1,7 @@
+id="plugin.program.aftermath"
+version="0.2.6"
+zip="https://github.com/soundsofmath/repository.atom/blob/master/plugin.program.aftermath-0.2.6.zip"
+
 name="Bingie"
 version="1.0"
 url="url.to.build"
