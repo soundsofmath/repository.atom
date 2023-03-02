@@ -13,8 +13,8 @@ ART = os.path.join(PATH, 'resources', 'media')
 #########################################################
 #        User Edit Variables                            #
 #########################################################
-ADDONTITLE = 'Atom Wizard'
-BUILDERNAME = 'Leia Builds'
+ADDONTITLE = '[COLOR white][B]Atom[/B][/COLOR]Wizard'
+BUILDERNAME = 'AtomWizard'
 EXCLUDES = [ADDON_ID, 'plugin.program.atomwizard']
 # Text File with build info in it. Please read https://github.com/a4k-openproject/plugin.program.openwizard/wiki/Installing-Builds
 BUILDFILE = 'https://raw.githubusercontent.com/soundsofmath/repository.atom/master/wizard.txt'
@@ -114,7 +114,7 @@ NOTIFICATION = 'http://'
 HEADERTYPE = 'Text'
 # Font size of header
 FONTHEADER = 'Font14'
-HEADERMESSAGE = 'Atom Wizard'
+HEADERMESSAGE = '[COLOR white][B]Atom[/B][/COLOR]Wizard'
 # url to image if using Image 424x180
 HEADERIMAGE = 'http://'
 # Font for Notification Window

@@ -50,7 +50,7 @@ def log(msg, level=xbmc.LOGDEBUG):
     if CONFIG.DEBUGLEVEL == '1':  # Normal Logging
         pass
     if CONFIG.DEBUGLEVEL == '2':  # Full Logging
-        level = xbmc.LOGINFO
+        level = xbmc.LOGNOTICE
     
     xbmc.log('{0}: {1}'.format(CONFIG.ADDONTITLE, msg), level)
     if CONFIG.ENABLEWIZLOG == 'true':
@@ -335,7 +335,7 @@ def show_result(message, url=None):
             except:
                 pass
         except Exception as e:
-            log(str(e), xbmc.LOGINFO)
+            log(str(e), xbmc.LOGNOTICE)
             confirm = dialog.ok(CONFIG.ADDONTITLE, "[COLOR %s]%s[/COLOR]" % (CONFIG.COLOR2, message))
     else:
         confirm = dialog.ok(CONFIG.ADDONTITLE, "[COLOR %s]%s[/COLOR]" % (CONFIG.COLOR2, message))
