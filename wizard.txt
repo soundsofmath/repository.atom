@@ -1,6 +1,6 @@
 name="Bingie Build"
 version="1.0"
-url="url.to.build"
+url="https://archive.org/download/bingie_202303/Bingie.zip"
 minor="http://"
 gui="url.to.guisettings"
 kodi="18.3"
