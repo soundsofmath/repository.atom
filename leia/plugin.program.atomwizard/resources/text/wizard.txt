@@ -1,3 +1,7 @@
+id="plugin.program.atom"
+version="1.4.9"
+zip="https://github.com/soundsofmath/repository.atom/blob/master/plugin.program.atom-1.4.9.zip"
+
 name="Bingie Build"
 version="1.0"
 url="url.to.build"
