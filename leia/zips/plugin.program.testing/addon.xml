@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.testing" name="Testing Wizard" version="1.0.1" provider-name="soundsofmath">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+		<summary lang="en">Welcome to the Testing Wizard</summary>
+		<description lang="en">This Software is designed to keep your KODI device up to date and running smoothly</description>
+		<disclaimer lang="en">For help and support ... WWW.YOURWEBSITE.COM</disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
