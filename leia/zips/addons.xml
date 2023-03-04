@@ -696,6 +696,19 @@
         <website />
         <reuselanguageinvoker>false</reuselanguageinvoker>
     </extension>
+</addon><addon id="plugin.video.rincewind" name="rincewind" version="1.0.0" provider-name="rincewind">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">rincewind</summary>
+    <description lang="en">rincewind</description>
+	<website>http://www.youtube.com/samwich1986</website>
+    <platform>all</platform>
+  </extension>
 </addon><addon id="plugin.video.themoviedb.helper" version="4.2.20" name="TheMovieDb Helper" provider-name="jurialmunkey">
 <requires>
   <import addon="xbmc.python" version="2.26.0" />
