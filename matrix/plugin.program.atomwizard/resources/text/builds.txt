@@ -72,7 +72,7 @@ description="SHOUT-OUT TO G_streamer for helping me."
 
 name="Blue Twilight"
 version="1.0"
-url="https://drive.google.com/open?id=1-6D6kmXEQOBG8sAkZi7fT9u2_2dVtsr2&authuser=piepoint360%40gmail.com&usp=drive_fs"
+url="https://archive.org/download/blue-twilight_202303/BlueTwilight.zip"
 minor="http://"
 gui="url.to.guisettings"
 kodi="19.3"
