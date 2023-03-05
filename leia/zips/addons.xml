@@ -455,34 +455,6 @@
         <icon>icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="plugin.program.GOK-X-Box.Wizard" name="GOK-X-Box.Wizard" version="1.0.1" provider-name="Gods of Kodi">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.service" library="startup.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">GOK-X-Box.Wizard</summary>
-	<description lang="en">Dieser Wizard erlaubt es Schnell und einfach GOK Builds Clean zu installieren.Telegram Gruppe https://t.me/gokmtb</description>
-		<disclaimer lang="en" />
-		<platform>all</platform>
-		<website />
-	</extension>
-</addon><addon id="plugin.program.SimpleBuildWizard" name="Simple Build Wizard" version="0.0.2" provider-name="Rohas">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.service" library="startup.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Simple Build Wizard</summary>
-    <description lang="en">Simple Build Wizard.</description>
-    <platform>all</platform>
-  </extension>
 </addon><addon id="plugin.program.atomwizard" name="[COLOR white]Atom[/COLOR]Wizard" version="1.4.9" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
@@ -639,45 +611,6 @@
         <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
         <source>https://github.com/phil65/plugin.program.autocompletion</source>
     </extension>
-</addon><addon id="plugin.program.breezz_wizard" name="[B][COLORred]Bree[COLORcyan]zzWi[COLORdarkblue]zard[/COLOR][/B]" version="1.5.1" provider-name="breezz">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.service" library="startup.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">breezz wizard</summary>
-    <description lang="en">new wizard for kodi builds</description>
-    <platform>all</platform>
-  </extension>
-</addon><addon id="plugin.program.test" name="Test Wizard" version="1.0.1" provider-name="soundsofmath">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-		<summary lang="en">Welcome to the Test Wizard</summary>
-		<description lang="en">This Software is designed to keep your KODI device up to date and running smoothly</description>
-		<disclaimer lang="en">For help and support ... WWW.YOURWEBSITE.COM</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon><addon id="plugin.program.testing" name="Testing Wizard" version="1.0.1" provider-name="soundsofmath">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-		<summary lang="en">Welcome to the Testing Wizard</summary>
-		<description lang="en">This Software is designed to keep your KODI device up to date and running smoothly</description>
-		<disclaimer lang="en">For help and support ... WWW.YOURWEBSITE.COM</disclaimer>
-		<platform>all</platform>
-	</extension>
 </addon><addon id="plugin.video.enigma" name="[COLORaqua]Enigma[/COLOR]" version="2.0.5" provider-name="CC/Community">
     <requires>
         <import addon="xbmc.python" version="2.19.0" />
@@ -709,19 +642,6 @@
         <website />
         <reuselanguageinvoker>false</reuselanguageinvoker>
     </extension>
-</addon><addon id="plugin.video.rincewind" name="rincewind" version="1.0.0" provider-name="rincewind">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">rincewind</summary>
-    <description lang="en">rincewind</description>
-	<website>http://www.youtube.com/samwich1986</website>
-    <platform>all</platform>
-  </extension>
 </addon><addon id="plugin.video.themoviedb.helper" version="4.2.20" name="TheMovieDb Helper" provider-name="jurialmunkey">
 <requires>
   <import addon="xbmc.python" version="2.26.0" />
