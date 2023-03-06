@@ -455,7 +455,7 @@
         <icon>icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="plugin.program.atomwizard" name="[COLOR white]Atom[/COLOR]Wizard" version="1.4.9" provider-name="soundsofmath">
+</addon><addon id="plugin.program.atomwizard" name="[COLOR white]Atom[/COLOR]Wizard" version="3.6.0" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />

@@ -1,0 +1,24 @@
+[B][COLOR red]Homelander add-on v1.0.6[/COLOR][/B]
+Added 1Clicks Live Tv And Sports Replays.
+
+[B][COLOR red]Homelander add-on v1.0.5[/COLOR][/B]
+Fixed Compatibility For 20.
+Thanks to White.
+
+[B][COLOR red]Homelander add-on v1.0.4[/COLOR][/B]
+New Icon.
+New Fanart.
+
+[B][COLOR red]Homelander add-on v1.0.3[/COLOR][/B]
+Api Keys Added In Settings.
+
+[B][COLOR red]Homelander add-on v1.0.2[/COLOR][/B]
+Some Fixes In The Code.
+New Icon.
+
+[B][COLOR red]Homelander add-on v1.0.1[/COLOR][/B]
+Added Some Debrid Scrapers.
+Fixed Views Type.
+
+[B][COLOR red]Homelander add-on v1.0.0[/COLOR][/B]
+Fixed Some Free Scrapers.
