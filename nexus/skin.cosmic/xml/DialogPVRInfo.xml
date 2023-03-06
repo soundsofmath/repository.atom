@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <onload>SetProperty(infobackground,$ESCINFO[ListItem.Art(fanart)],home)</onload>
+    <onunload>ClearProperty(infobackground,home)</onunload>
+    <controls>
+        <include>DialogBackground</include>
+        <control type="group">
+            <top>160</top>
+            <centerleft>50%</centerleft>
+            <width>1920</width>
+            <include>OpenClose_Animation</include>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <height>780</height>
+                <width>1600</width>
+                <texture colordiffuse="AltPosterBack" border="12">common/box.png</texture>
+                <bordertexture border="40">common/shadow-24.png</bordertexture>
+                <bordersize>24</bordersize>
+            </control>
+            <control type="image">
+                <left>200</left>
+                <top>160</top>
+                <width>640</width>
+                <aspectratio scale="true">keep</aspectratio>
+                <texture fallback="DefaultTVShows.png" diffuse="diffuse/fanart-medium-diffuse.png">$INFO[ListItem.Icon]</texture>
+                <bordersize>24</bordersize>
+            </control>
+            <control type="group">
+                <top>360</top>
+                <left>200</left>
+                <control type="button" id="61">
+                    <left>640</left>
+                    <top>26</top>
+                    <width>6</width>
+                    <height>300</height>
+                    <animation effect="fade" start="0" end="100" time="200">Focus</animation>
+                    <texturefocus colordiffuse="alpha_12" border="6">common/box.png</texturefocus>
+                    <ondown>9000</ondown>
+                    <onup>9000</onup>
+                    <onclick>SetProperty(TextViewer_Header,$LOCALIZE[207],home)</onclick>
+                    <onclick>SetProperty(TextViewer_Text,$ESCINFO[ListItem.Plot],home)</onclick>
+                    <onclick>ActivateWindow(1102)</onclick>
+                </control>
+                <control type="textbox" id="400">
+                    <left>660</left>
+                    <top>20</top>
+                    <width>820</width>
+                    <height>323</height>
+                    <align>justify</align>
+                    <label>$INFO[ListItem.Date,[COLOR grey]$LOCALIZE[552]:[/COLOR] ,][CR]$INFO[ListItem.Rating,[COLOR grey]$LOCALIZE[563]:[/COLOR] ,[CR]]$VAR[ExpirationDateTimeLabel]$INFO[ListItem.Writer,[COLOR grey]$LOCALIZE[20417]:[/COLOR] ,[CR]]$INFO[ListItem.Director,[COLOR grey]$LOCALIZE[20339]:[/COLOR] ,[CR]][CR]$INFO[ListItem.Plot][CR][CR]$VAR[RecordingSizeLabel]</label>
+                    <autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(AutoScroll)</autoscroll>
+                </control>
+            </control>
+            <control type="group">
+                <top>120</top>
+                <control type="grouplist">
+                    <left>100</left>
+                    <right>100</right>
+                    <animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
+                    <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+                    <height>300</height>
+                    <orientation>vertical</orientation>
+                    <control type="label">
+                        <width>100%</width>
+                        <label>[B]$INFO[ListItem.ChannelName,[UPPERCASE],[/UPPERCASE]][/B]</label>
+                        <font>font45_title</font>
+                        <height>65</height>
+                        <align>center</align>
+                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
+                    </control>
+                    <control type="label">
+                        <width>100%</width>
+                        <label>$INFO[ListItem.Title] $INFO[ListItem.Year,([COLOR grey],[/COLOR])]</label>
+                        <font>font45_title</font>
+                        <height>65</height>
+                        <align>center</align>
+                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
+                    </control>
+                    <control type="label">
+                        <width>100%</width>
+                        <label>$VAR[FlagDashLabel][COLOR grey]$VAR[SeasonEpisodeLabel][/COLOR]$INFO[ListItem.EpisodeName,[COLOR white][B],[/B][/COLOR]]</label>
+                        <font>font30_title_upp</font>
+                        <height>65</height>
+                        <align>center</align>
+                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Premiered,[COLOR grey]$LOCALIZE[20416]:[/COLOR] ,]   $INFO[ListItem.Duration,[COLOR grey]$LOCALIZE[180]:[/COLOR] ,]   $INFO[ListItem.Genre,[COLOR grey]$LOCALIZE[515]:[/COLOR] ,[CR]]</label>
+                        <height>65</height>
+                        <align>center</align>
+                        <scroll>true</scroll>
+                        <textcolor>white</textcolor>
+                    </control>
+                    <control type="label" id="$PARAM[id]">
+                        <label></label>
+                        <left>85</left>
+                        <align>center</align>
+                        <height>65</height>
+                        <width>100%</width>
+                        <textcolor>white</textcolor>
+                    </control>
+                </control>
+            </control>
+        </control>
+        <control type="grouplist" id="9000">
+            <bottom>0</bottom>
+            <width>1920</width>
+            <height>64</height>
+            <align>center</align>
+            <itemgap>50</itemgap>
+            <onup>61</onup>
+            <orientation>horizontal</orientation>
+            <control type="group">
+                <control type="image">
+                    <top>0</top>
+                    <left>-1000</left>
+                    <width>4000</width>
+                    <height>64</height>
+                    <texture background="true" colordiffuse="AltPosterBack">common/white.png</texture>
+                </control>
+            </control>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="5"/>
+                <param name="icon" value="special://skin/extras/icons/rocket.png"/>
+                <param name="label" value="$LOCALIZE[19165]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="10"/>
+                <param name="icon" value="special://skin/extras/icons/cinemavision.png"/>
+                <param name="label" value="$LOCALIZE[19190]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="8"/>
+                <param name="icon" value="special://skin/extras/icons/videoplay.png"/>
+                <param name="label" value="$LOCALIZE[19687]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="6"/>
+                <param name="icon" value="special://skin/extras/icons/recent.png"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="9"/>
+                <param name="icon" value="special://skin/extras/icons/clock.png"/>
+                <param name="label" value="$LOCALIZE[19061]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="11"/>
+                <param name="icon" value="icons/infodialogs/bell.png"/>
+                <param name="label" value="$LOCALIZE[826]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo)"/>
+            </include>
+            <include content="AddonDialogButton">
+                <param name="width" value="275"/>
+                <param name="id" value="4"/>
+                <param name="icon" value="special://skin/extras/icons/dependencies.png"/>
+                <param name="label" value="$LOCALIZE[19003]"/>
+                <param name="visible" value="Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo)"/>
+            </include>
+        </control>
+        <include>TopBar</include>
+    </controls>
+</window>

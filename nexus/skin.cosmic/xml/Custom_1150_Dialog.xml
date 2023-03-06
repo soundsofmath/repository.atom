@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="1150">
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <onunload>ClearProperty(CustomDialogWindow.header)</onunload>
+    <onunload>ClearProperty(CustomDialogWindow.items)</onunload>
+    <controls>
+        <control type="group">
+            <height>800</height>
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>915</width>
+            <include content="DialogBackgroundCommons">
+                <param name="width" value="915"/>
+                <param name="height" value="800"/>
+                <param name="header_label" value="$INFO[Window(home).Property(CustomDialogWindow.header)]"/>
+                <param name="header_id" value="1"/>
+            </include>
+            <control type="group">
+                <width>915</width>
+                <height>800</height>
+                <centerleft>50%</centerleft>
+                <control type="grouplist" id="9000">
+                    <onright>61</onright>
+                    <description>Control Area</description>
+                    <width>915</width>
+                    <top>90</top>
+                    <height>800</height>
+                    <itemgap>0</itemgap>
+                    <ondown>1000</ondown>
+                    <pagecontrol>61</pagecontrol>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),LayoutSettings)">Items_SettingsDialog_Layout</include>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),MenuStyle)">Items_SettingsDialog_MenuStyle</include>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),FallbackImage)">Items_SettingsDialog_FallbackImage</include>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),TrailerDelay)">Items_SettingsDialog_TrailerDelay</include>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),IconStyle)">Items_SettingsDialog_IconStyle</include>
+                    <include condition="String.IsEqual(Window(home).Property(CustomDialogWindow.items),OSD_Timeout)">Items_SettingsDialog_OSD_Timeout</include>
+                    <control type="button" id="9999">
+                        <include>DefaultSettingButton</include>
+                        <label>$LOCALIZE[15067]</label>
+                        <onclick>Close</onclick>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>
