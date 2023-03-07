@@ -1,0 +1,1428 @@
+# Addon Name: Shazam
+# Addon id: plugin.video.shazam
+# Addon Provider: Shazam
+# Translators: lambda81
+# Translators: Shazam
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Shazam\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2019-10-11 02:03+0000\n"
+"Last-Translator: Shazam\n"
+"Language-Team:\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+msgctxt "#32001"
+msgid "[COLOR=darkorange]Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32002"
+msgid "[COLOR=darkorange]TV Shows[/COLOR]"
+msgstr ""
+
+msgctxt "#32003"
+msgid "[COLOR=darkorange]My Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32004"
+msgid "[COLOR=darkorange]My TV Shows[/COLOR]"
+msgstr ""
+
+msgctxt "#32005"
+msgid "[COLOR=darkorange]New Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32006"
+msgid "[COLOR=darkorange]New Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32007"
+msgid "[COLOR=darkorange]Channels[/COLOR]"
+msgstr ""
+
+msgctxt "#32008"
+msgid "[COLOR=darkorange]Tools[/COLOR]"
+msgstr ""
+
+msgctxt "#32009"
+msgid "[COLOR=darkorange]Downloads[/COLOR]"
+msgstr ""
+
+msgctxt "#32010"
+msgid "[COLOR=darkorange]Search[/COLOR]"
+msgstr ""
+
+msgctxt "#32011"
+msgid "[COLOR=darkorange]Genres[/COLOR]"
+msgstr ""
+
+msgctxt "#32012"
+msgid "[COLOR=darkorange]Year[/COLOR]"
+msgstr ""
+
+msgctxt "#32013"
+msgid "[COLOR=darkorange]People[/COLOR]"
+msgstr ""
+
+msgctxt "#32014"
+msgid "[COLOR=darkorange]Languages[/COLOR]"
+msgstr ""
+
+msgctxt "#32015"
+msgid "[COLOR=darkorange]Certificates[/COLOR]"
+msgstr ""
+
+msgctxt "#32016"
+msgid "[COLOR=darkorange]Networks[/COLOR]"
+msgstr ""
+
+msgctxt "#32017"
+msgid "[COLOR=darkorange]People Watching[/COLOR]"
+msgstr ""
+
+msgctxt "#32018"
+msgid "[COLOR=darkorange]Most Popular[/COLOR]"
+msgstr ""
+
+msgctxt "#32019"
+msgid "[COLOR=darkorange]Most Voted[/COLOR]"
+msgstr ""
+
+msgctxt "#32020"
+msgid "[COLOR=darkorange]Box Office[/COLOR]"
+msgstr ""
+
+msgctxt "#32021"
+msgid "[COLOR=darkorange]Oscar Winners[/COLOR]"
+msgstr ""
+
+msgctxt "#32022"
+msgid "[COLOR=darkorange]In Theaters[/COLOR]"
+msgstr ""
+
+msgctxt "#32023"
+msgid "[COLOR=darkorange]Highly Rated[/COLOR]"
+msgstr ""
+
+msgctxt "#32024"
+msgid "[COLOR=darkorange]Airing today[/COLOR]"
+msgstr ""
+
+msgctxt "#32025"
+msgid "[COLOR=darkorange]Returning TV Shows[/COLOR]"
+msgstr ""
+
+msgctxt "#32026"
+msgid "[COLOR=darkorange]New TV Shows[/COLOR]"
+msgstr ""
+
+msgctxt "#32027"
+msgid "[COLOR=darkorange]TV Calendar[/COLOR]"
+msgstr ""
+
+msgctxt "#32028"
+msgid "[COLOR=darkorange]People Search[/COLOR]"
+msgstr ""
+
+msgctxt "#32029"
+msgid "[COLOR=darkorange]People (Movies)[/COLOR]"
+msgstr ""
+
+msgctxt "#32030"
+msgid "[COLOR=darkorange]People (TV)[/COLOR]"
+msgstr ""
+
+msgctxt "#32031"
+msgid "[COLOR=darkorange]Discover[/COLOR]"
+msgstr ""
+
+msgctxt "#32032"
+msgid "[COLOR=darkorange]Collection[/COLOR]"
+msgstr ""
+
+msgctxt "#32033"
+msgid "[COLOR=darkorange]Trakt Watchlist[/COLOR]"
+msgstr ""
+
+msgctxt "#32034"
+msgid "[COLOR=darkorange]IMDb Watchlist[/COLOR]"
+msgstr ""
+
+msgctxt "#32035"
+msgid "[COLOR=darkorange]Trakt Recommendations[/COLOR]"
+msgstr ""
+
+msgctxt "#32036"
+msgid "[COLOR=darkorange]History[/COLOR]"
+msgstr ""
+
+msgctxt "#32037"
+msgid "[COLOR=darkorange]Progress[/COLOR]"
+msgstr ""
+
+msgctxt "#32038"
+msgid "[COLOR=darkorange]Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32039"
+msgid "[COLOR=darkorange]Movie Lists[/COLOR]"
+msgstr ""
+
+msgctxt "#32040"
+msgid "[COLOR=darkorange]TV Show Lists[/COLOR]"
+msgstr ""
+
+msgctxt "#32041"
+msgid "[COLOR=darkorange]Episode Lists[/COLOR]"
+msgstr ""
+
+msgctxt "#32042"
+msgid "[COLOR=darkorange]No Trakt or IMDb account found.[/COLOR]"
+msgstr ""
+
+msgctxt "#32043"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32044"
+msgid "[COLOR=darkorange][B]SETTINGS[/B] : Accounts[/COLOR]"
+msgstr ""
+
+msgctxt "#32045"
+msgid "[COLOR=darkorange][B]SETTINGS[/B] : Playback[/COLOR]"
+msgstr ""
+
+msgctxt "#32046"
+msgid "[COLOR=darkorange][B]SETTINGS[/B] : Subtitles[/COLOR]"
+msgstr ""
+
+msgctxt "#32047"
+msgid "[COLOR=darkorange][B]SETTINGS[/B] : Providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32048"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Downloads[/COLOR]"
+msgstr ""
+
+msgctxt "#32049"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Viewtypes[/COLOR]"
+msgstr ""
+
+msgctxt "#32050"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear providers...[/COLOR]"
+msgstr ""
+
+msgctxt "#32051"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear metadata...[/COLOR]"
+msgstr ""
+
+msgctxt "#32052"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear cache...[/COLOR]"
+msgstr ""
+
+msgctxt "#32053"
+msgid "[COLOR=darkorange][I]Next Page[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32054"
+msgid "[COLOR=darkorange]Seasons[/COLOR]"
+msgstr ""
+
+msgctxt "#32055"
+msgid "[COLOR=darkorange]Season[/COLOR]"
+msgstr ""
+
+msgctxt "#32056"
+msgid "[COLOR=darkorange]Are you sure?[/COLOR]"
+msgstr ""
+
+msgctxt "#32057"
+msgid "[COLOR=darkorange]Process Complete[/COLOR]"
+msgstr ""
+
+msgctxt "#32058"
+msgid "[COLOR=darkorange]This will slow down things until they are re-cached![/COLOR]"
+msgstr ""
+
+msgctxt "#32059"
+msgid "[COLOR=darkorange]CLICK HERE TO SAVE VIEW[/COLOR]"
+msgstr ""
+
+msgctxt "#32060"
+msgid "January|February|March|April|May|June|July|August|September|October|November|December"
+msgstr ""
+
+msgctxt "#32061"
+msgid "Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday"
+msgstr ""
+
+msgctxt "#32062"
+msgid "[B]%s[/B] : %s"
+msgstr ""
+
+msgctxt "#32063"
+msgid "[COLOR=darkorange][I]Select source[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32064"
+msgid "[COLOR=darkorange][I]Auto Play[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32065"
+msgid "[COLOR=darkorange][I]Queue item[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32066"
+msgid "[COLOR=darkorange][I]Watched in Shazam[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32067"
+msgid "[COLOR=darkorange][I]Unwatched in Shazam[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32068"
+msgid "[COLOR=darkorange][I]Watched in Trakt[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32069"
+msgid "[COLOR=darkorange][I]Unwatched in Trakt[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32070"
+msgid "[COLOR=darkorange][I]Trakt Manager[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32071"
+msgid "[COLOR=darkorange][I]Browse Series[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32072"
+msgid "[COLOR=darkorange][I]Refresh[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32073"
+msgid "[COLOR=darkorange][B]Shazam Trakt[/B] : Authorise[/COLOR]"
+msgstr ""
+
+msgctxt "#32074"
+msgid "[COLOR=darkorange][B]HELP[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32075"
+msgid "[COLOR=darkorange]Utilise your own Trakt API key (optional):[/COLOR]"
+msgstr ""
+
+msgctxt "#32076"
+msgid "[COLOR=darkorange][B]Shazam ResolveUrl[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32077"
+msgid "[COLOR=darkorange]Trending[/COLOR]"
+msgstr ""
+
+msgctxt "#32078"
+msgid "[COLOR=darkorange][B]LambdaScrapers[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32079"
+msgid "[COLOR=darkorange][B]Shazam Scrapers[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32080"
+msgid "[COLOR=darkorange][B]Orion[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32081"
+msgid "[COLOR=darkorange][I]Clear Providers[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32082"
+msgid "[COLOR=darkorange][B]OpenScrapers[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32083"
+msgid "[COLOR=darkorange]Choose Provider Source(s)[/COLOR]"
+msgstr ""
+
+msgctxt "#32084"
+msgid "[COLOR=darkorange]Provider Source:[/COLOR]"
+msgstr ""
+
+msgctxt "#32085"
+msgid "[COLOR=darkorange]Shazam Scrapers Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32086"
+msgid "[COLOR=darkorange]Open Openscrapers Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32087"
+msgid "[COLOR=darkorange]Clear Providers Cache (recommended after provider source change)[/COLOR]"
+msgstr ""
+
+msgctxt "#32088"
+msgid "[COLOR=darkorange]Built-in Providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32089"
+msgid "[COLOR=darkorange]{0} duplicate links removed[/COLOR]"
+msgstr ""
+
+msgctxt "#32090"
+msgid "[COLOR=darkorange]Filter-out duplicate links[/COLOR]"
+msgstr ""
+
+msgctxt "#32091"
+msgid "[COLOR=darkorange]Sync with Trakt watched status on add-on startup[/COLOR]"
+msgstr ""
+
+msgctxt "#32092"
+msgid [COLOR=darkorange]"Shazam <=> Trakt Synced[/COLOR]"
+msgstr ""
+
+msgctxt "#32093"
+msgid "[COLOR=darkorange][B]TRAKT[/B] : Sync Watched Status[/COLOR]"
+msgstr ""
+
+msgctxt "#32094"
+msgid "[COLOR=darkorange]Continue watching...[/COLOR]"
+msgstr ""
+
+msgctxt "#32095"
+msgid "[COLOR=darkorange]Resume Point source:[/COLOR]"
+msgstr ""
+
+msgctxt "#32096"
+msgid "[COLOR=darkorange]Trakt scrobbles[/COLOR]"
+msgstr ""
+
+msgctxt "#32097"
+msgid "[COLOR=darkorange]Enable scrobbling[/COLOR]"
+msgstr ""
+
+msgctxt "#32098"
+msgid "[COLOR=darkorange]NOTE: Do Not enable this if you scrobble through the Trakt add-on.[CR]Also note that only scrobble on Stop currently works.[/COLOR]"
+msgstr ""
+
+msgctxt "#32099"
+msgid "[COLOR=darkorange]Show notification on scrobble[/COLOR]"
+msgstr ""
+
+msgctxt "#32100"
+msgid "[COLOR=darkorange][I]Find similar[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32101"
+msgid "[COLOR=darkorange][I]Information[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32102"
+msgid "[COLOR=darkorange]To use this you must install and configure an add-on: Orion.[CR]    Account required.[/COLOR]"
+msgstr ""
+
+msgctxt "#32103"
+msgid "[COLOR=darkorange]Open Orion module settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32104"
+msgid "[COLOR=darkorange]Stream Type:[/COLOR]"
+msgstr ""
+
+msgctxt "#32105"
+msgid "[COLOR=darkorange]Extra stream info (popularity, age)[/COLOR]"
+msgstr ""
+
+msgctxt "#32106"
+msgid "[COLOR=darkorange]Extra stream info (filename)[/COLOR]"
+msgstr ""
+
+msgctxt "#32107"
+msgid "[COLOR=darkorange]Orion label color:[/COLOR]"
+msgstr ""
+
+msgctxt "#32108"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clean Settings file[/COLOR]"
+msgstr ""
+
+msgctxt "#32109"
+msgid "[B]Shazam scrapers[/B] : Clean Settings file[/COLOR]"
+msgstr ""
+
+msgctxt "#32110"
+msgid "{} Obsolete Settings Entries Removed"
+msgstr ""
+
+msgctxt "#32111"
+msgid "[COLOR=darkorange]No Obselete Settings to Remove[/COLOR]"
+msgstr ""
+
+msgctxt "#32112"
+msgid "[COLOR=darkorange]Enable metadata on source list[/COLOR]"
+msgstr ""
+
+msgctxt "#32113"
+msgid "[COLOR=darkorange]Sort by size if available[/COLOR]"
+msgstr ""
+
+msgctxt "#32114"
+msgid "[COLOR=darkorange]Verify torrents cache[/COLOR]"
+msgstr ""
+
+msgctxt "#32115"
+msgid "[COLOR=darkorange]Supported services: Real-Debrid, AllDebrid,[CR]   Premiumize, Debrid-Link[/COLOR]"
+msgstr ""
+
+msgctxt "#32116"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear debrid checks...[/COLOR]"
+msgstr ""
+
+msgctxt "#32117"
+msgid "[COLOR=darkorange]Username[/COLOR]"
+msgstr ""
+
+msgctxt "#32118"
+msgid "[COLOR=darkorange]Enter your Opensubtitles.org log-in credentials on 'Accounts' tab[/COLOR]"
+msgstr ""
+
+msgctxt "#32119"
+msgid "[COLOR=darkorange]Select[/COLOR]"
+msgstr ""
+
+msgctxt "#32120"
+msgid "[COLOR=darkorange]Choose on season/episode level[/COLOR]"
+msgstr ""
+
+msgctxt "#32121"
+msgid "Related videos (%s):"
+msgstr ""
+
+msgctxt "#32122"
+msgid "[COLOR=darkorange]Remove CAM/SCR results[/COLOR]"
+msgstr ""
+
+msgctxt "#32123"
+msgid "[COLOR=darkorange]Decade[/COLOR]"
+msgstr ""
+
+msgctxt "#32124"
+msgid "[COLOR=darkorange]IMDb keyword searches[/COLOR]"
+msgstr ""
+
+msgctxt "#32125"
+msgid "[COLOR=darkorange]Popular IMDb user lists[/COLOR]"
+msgstr ""
+
+msgctxt "#32126"
+msgid "[COLOR=darkorange]Remove uncached torrents if cached exist[/COLOR]"
+msgstr ""
+
+msgctxt "#32127"
+msgid "[COLOR=darkorange]Min Resolution[/COLOR]"
+msgstr ""
+
+msgctxt "#32128"
+msgid "[COLOR=darkorange]Get episodes ratings from Trakt (slow)[/COLOR]"
+msgstr ""
+
+msgctxt "#32129"
+msgid "[COLOR=darkorange]Enable extra & hq artwork[/COLOR]"
+msgstr ""
+
+msgctxt "#32130"
+msgid "[COLOR=darkorange]Personal Fanart.tv API key required to be entered on Accounts tab[/COLOR]"
+msgstr ""
+
+msgctxt "#32131"
+msgid "[COLOR=darkorange]Filename when available[/COLOR]"
+msgstr ""
+
+msgctxt "#32132"
+msgid "[COLOR=darkorange]Simplified info[/COLOR]"
+msgstr ""
+
+msgctxt "#32133"
+msgid "[COLOR=darkorange]Min size (GB per hour)[/COLOR]"
+msgstr ""
+
+msgctxt "#32134"
+msgid "[COLOR=darkorange]Max size (GB per hour)[/COLOR]"
+msgstr ""
+
+msgctxt "#32135"
+msgid "[COLOR=darkorange]Min episode size (GB)[/COLOR]"
+msgstr ""
+
+msgctxt "#32136"
+msgid "[COLOR=darkorange]Max episode size (GB)[/COLOR]"
+msgstr ""
+
+msgctxt "#32137"
+msgid "[COLOR=darkorange]Enable size filtering[/COLOR]"
+msgstr ""
+
+msgctxt "#32138"
+msgid "[COLOR=darkorange]Items per page[/COLOR]"
+msgstr ""
+
+msgctxt "#32139"
+msgid "[COLOR=darkorange]WARNING: Enable only if you were asked to.[CR]Possible memory leaks.[/COLOR]"
+msgstr ""
+
+msgctxt "#32140"
+msgid "[COLOR=darkorange]Log file is empty.[CR]Please enable debugging in add-on\'s settings,[CR]reproduce the problem and try uploading again.[CR]DISABLE debugging afterwards.[/COLOR]"
+msgstr ""
+
+msgctxt "#32141"
+msgid "Your log file was uploaded to:[CR][CR]    [B]%s[/B]"
+msgstr ""
+
+msgctxt "#32142"
+msgid "[COLOR=darkorange]Sorting Options[/COLOR]"
+msgstr ""
+
+msgctxt "#32143"
+msgid "[COLOR=darkorange]Primal sorting parameter[/COLOR]"
+msgstr ""
+
+msgctxt "#32144"
+msgid "[COLOR=darkorange]Resolution[/COLOR]"
+msgstr ""
+
+msgctxt "#32145"
+msgid "[COLOR=darkorange]Premium[/COLOR]"
+msgstr ""
+
+msgctxt "#32146"
+msgid "Using available {} subtitle"
+msgstr ""
+
+msgctxt "#32147"
+msgid "Preferred {} subtitle already available in-stream"
+msgstr ""
+
+msgctxt "#32148"
+msgid "{} subtitles downloaded"
+msgstr ""
+
+msgctxt "#32200"
+msgid "[COLOR=darkorange]No Color[/COLOR]"
+msgstr ""
+
+msgctxt "#32201"
+msgid "[COLOR=blue]Blue[/COLOR]"
+msgstr ""
+
+msgctxt "#32202"
+msgid "[COLOR=red]Red[/COLOR]"
+msgstr ""
+
+msgctxt "#32203"
+msgid "[COLOR=white]Yellow[/COLOR]"
+msgstr ""
+
+msgctxt "#32204"
+msgid "[COLOR=deeppink]Deep Pink[/COLOR]"
+msgstr ""
+
+msgctxt "#32205"
+msgid "[COLOR=cyan]Cyan[/COLOR]"
+msgstr ""
+
+msgctxt "#32206"
+msgid "[COLOR=lawngreen]Lawn Green[/COLOR]"
+msgstr ""
+
+msgctxt "#32207"
+msgid "[COLOR=gold]Gold[/COLOR]"
+msgstr ""
+
+msgctxt "#32208"
+msgid "[COLOR=magenta]Magenta[/COLOR]"
+msgstr ""
+
+msgctxt "#32209"
+msgid "[COLOR=whitegreen]Yellow Green[/COLOR]"
+msgstr ""
+
+msgctxt "#32210"
+msgid "[COLOR=white]White[/COLOR]"
+msgstr ""
+
+msgctxt "#32211"
+msgid "[COLOR=black]Black[/COLOR]"
+msgstr ""
+
+msgctxt "#32212"
+msgid "[COLOR=crimson]Crimson[/COLOR]"
+msgstr ""
+
+msgctxt "#32213"
+msgid "[COLOR=goldenrod]Goldenrod[/COLOR]"
+msgstr ""
+
+msgctxt "#32214"
+msgid "[COLOR=powderblue]Powderblue[/COLOR]"
+msgstr ""
+
+msgctxt "#32215"
+msgid "[COLOR=deepskyblue]Deepsky Blue[/COLOR]"
+msgstr ""
+
+msgctxt "#32216"
+msgid "[COLOR=springgreen]Spring Green[/COLOR]"
+msgstr ""
+
+msgctxt "#32217"
+msgid "[COLOR=darkcyan]Dark Cyan[/COLOR]"
+msgstr ""
+
+msgctxt "#32218"
+msgid "[COLOR=whitemarine]Aquamarine[/COLOR]"
+msgstr ""
+
+msgctxt "#32219"
+msgid "[COLOR=mediumturquoise]Medium Turquoise[/COLOR]"
+msgstr ""
+
+msgctxt "#32220"
+msgid "[COLOR=khaki]Khaki[/COLOR]"
+msgstr ""
+
+msgctxt "#32221"
+msgid "[COLOR=darkorange]Dark Orange[/COLOR]"
+msgstr ""
+
+msgctxt "#32301"
+msgid "[COLOR=darkorange]Enabled[/COLOR]"
+msgstr ""
+
+msgctxt "#32302"
+msgid "[COLOR=darkorange]Disabled[/COLOR]"
+msgstr ""
+
+msgctxt "#32303[/COLOR]"
+msgid "[COLOR=darkorange]User ID[/COLOR]"
+msgstr ""
+
+msgctxt "#32304[/COLOR]"
+msgid "[COLOR=darkorange]Email[/COLOR]"
+msgstr ""
+
+msgctxt "#32305"
+msgid "[COLOR=darkorange]ID[/COLOR]"
+msgstr ""
+
+msgctxt "#32306"
+msgid "[COLOR=darkorange][B]Authorise[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32307"
+msgid "[COLOR=darkorange]Password[/COLOR]"
+msgstr ""
+
+msgctxt "#32308"
+msgid "[COLOR=darkorange]PIN[/COLOR]"
+msgstr ""
+
+msgctxt "#32309"
+msgid "[COLOR=darkorange]API[/COLOR]"
+msgstr ""
+
+msgctxt "#32310"
+msgid "[COLOR=darkorange]General[/COLOR]"
+msgstr ""
+
+msgctxt "#32311"
+msgid "[COLOR=darkorange]Appearance[/COLOR]"
+msgstr ""
+
+msgctxt "#32312"
+msgid "[COLOR=darkorange]Providers Timeout[/COLOR]"
+msgstr ""
+
+msgctxt "#32313"
+msgid "[COLOR=darkorange]Indicators[/COLOR]"
+msgstr ""
+
+msgctxt "#32314"
+msgid "[COLOR=darkorange]Local[/COLOR]"
+msgstr ""
+
+msgctxt "#32315"
+msgid "[COLOR=darkorange]Trakt[/COLOR]"
+msgstr ""
+
+msgctxt "#32316"
+msgid "[COLOR=darkorange]Info Language[/COLOR]"
+msgstr ""
+
+msgctxt "#32317"
+msgid "[COLOR=darkorange]Flatten TV seasons[/COLOR]"
+msgstr ""
+
+msgctxt "#32318"
+msgid "[COLOR=darkorange]Enable Fanart[/COLOR]"
+msgstr ""
+
+msgctxt "#32319"
+msgid "[COLOR=darkorange]Menu[/COLOR]"
+msgstr ""
+
+msgctxt "#32320"
+msgid "[COLOR=darkorange]New Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32321"
+msgid "[COLOR=darkorange]Featured[/COLOR]"
+msgstr ""
+
+msgctxt "#32322"
+msgid "[COLOR=darkorange]People Watching[/COLOR]"
+msgstr ""
+
+msgctxt "#32323"
+msgid "[COLOR=darkorange]Most Popular[/COLOR]"
+msgstr ""
+
+msgctxt "#32324"
+msgid "[COLOR=darkorange]In Theaters[/COLOR]"
+msgstr ""
+
+msgctxt "#32325"
+msgid "[COLOR=darkorange]New Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32326"
+msgid "[COLOR=darkorange]Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32327"
+msgid "[COLOR=darkorange]Trakt Progress[/COLOR]"
+msgstr ""
+
+msgctxt "#32328"
+msgid "[COLOR=darkorange]Trakt Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32329"
+msgid "[COLOR=darkorange]My Lists[/COLOR]"
+msgstr ""
+
+msgctxt "#32330"
+msgid "[COLOR=darkorange]Playback[/COLOR]"
+msgstr ""
+
+msgctxt "#32331"
+msgid "[COLOR=darkorange]Default action[/COLOR]"
+msgstr ""
+
+msgctxt "#32332"
+msgid "[COLOR=darkorange]Dialog[/COLOR]"
+msgstr ""
+
+msgctxt "#32333"
+msgid "[COLOR=darkorange]Directory[/COLOR]"
+msgstr ""
+
+msgctxt "#32334"
+msgid "[COLOR=darkorange]Auto Play[/COLOR]"
+msgstr ""
+
+msgctxt "#32335"
+msgid "[COLOR=darkorange]Progress Dialog[/COLOR]"
+msgstr ""
+
+msgctxt "#32336"
+msgid "[COLOR=darkorange]Foreground[/COLOR]"
+msgstr ""
+
+msgctxt "#32337"
+msgid "[COLOR=darkorange]Background[/COLOR]"
+msgstr ""
+
+msgctxt "#32338"
+msgid "[COLOR=darkorange]Sources Filters[/COLOR]"
+msgstr ""
+
+msgctxt "#32339"
+msgid "[COLOR=darkorange]Max Resolution[/COLOR]"
+msgstr ""
+
+msgctxt "#32340"
+msgid "[COLOR=darkorange]SD Hosters in Auto Play[/COLOR]"
+msgstr ""
+
+msgctxt "#32341"
+msgid "[COLOR=darkorange]Remove pair/captcha hosts[/COLOR]"
+msgstr ""
+
+msgctxt "#32342"
+msgid "[COLOR=darkorange]Sort by Provider[/COLOR]"
+msgstr ""
+
+msgctxt "#32343"
+msgid "[COLOR=darkorange]When playback starts...[/COLOR]"
+msgstr ""
+
+msgctxt "#32344"
+msgid "[COLOR=darkorange]Resume Playback[/COLOR]"
+msgstr ""
+
+msgctxt "#32345"
+msgid "[COLOR=darkorange]Providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32346"
+msgid "[COLOR=darkorange]Accounts[/COLOR]"
+msgstr ""
+
+msgctxt "#32347"
+msgid "[COLOR=darkorange]Downloads[/COLOR]"
+msgstr ""
+
+msgctxt "#32348"
+msgid "[COLOR=darkorange]Enable downloads[/COLOR]"
+msgstr ""
+
+msgctxt "#32349"
+msgid "[COLOR=darkorange]Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32350"
+msgid "[COLOR=darkorange]TV[/COLOR]"
+msgstr ""
+
+msgctxt "#32351"
+msgid "[COLOR=darkorange]Downloading features are disabled by default.[/COLOR]"
+msgstr ""
+
+msgctxt "#32352"
+msgid "[COLOR=darkorange]Set up your download folders in order to enable them.[/COLOR]"
+msgstr ""
+
+msgctxt "#32353"
+msgid "[COLOR=darkorange]Subtitles[/COLOR]"
+msgstr ""
+
+msgctxt "#32354"
+msgid "[COLOR=darkorange]Enable subtitles[/COLOR]"
+msgstr ""
+
+msgctxt "#32355"
+msgid "[COLOR=darkorange]Convert subtitles to UTF-8[/COLOR]"
+msgstr ""
+
+msgctxt "#32356"
+msgid "[COLOR=darkorange]Primary Language[/COLOR]"
+msgstr ""
+
+msgctxt "#32357"
+msgid "[COLOR=darkorange]Secondary Language[/COLOR]"
+msgstr ""
+
+msgctxt "#32358"
+msgid "[COLOR=darkorange]Subtitles could be unavailable or out of sync.[/COLOR]"
+msgstr ""
+
+msgctxt "#32359"
+msgid "[COLOR=darkorange]In that case use your own subtitles.[/COLOR]"
+msgstr ""
+
+msgctxt "#32360"
+msgid "[COLOR=darkorange]Providers Language[/COLOR]"
+msgstr ""
+
+msgctxt "#32361"
+msgid "[COLOR=darkorange]Show notification[/COLOR]"
+msgstr ""
+
+msgctxt "#32362"
+msgid "[COLOR=darkorange]Disable CloudFlare protected providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32363"
+msgid "[COLOR=darkorange]Remove HEVC streams[/COLOR]"
+msgstr ""
+
+msgctxt "#32364"
+msgid "[COLOR=darkorange]Remove Dolby-Vision streams[/COLOR]"
+msgstr ""
+
+msgctxt "#32372"
+msgid "[COLOR=darkorange]When playback ends...[/COLOR]"
+msgstr ""
+
+msgctxt "#32373"
+msgid "[COLOR=darkorange]Refresh watched status[/COLOR]"
+msgstr ""
+
+msgctxt "#32401"
+msgid "[COLOR=darkorange]No stream available[/COLOR]"
+msgstr ""
+
+msgctxt "#32402"
+msgid "[COLOR=darkorange]Playback outside Shazam is not allowed[/COLOR]"
+msgstr ""
+
+msgctxt "#32403"
+msgid "[COLOR=darkorange][I]Download[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32404"
+msgid "Time elapsed: %s seconds"
+msgstr ""
+
+msgctxt "#32405"
+msgid "%s seconds"
+msgstr ""
+
+msgctxt "#32406"
+msgid "Remaining providers: %s"
+msgstr ""
+
+msgctxt "#32407"
+msgid "[COLOR=darkorange]Are you sure?[/COLOR]"
+msgstr ""
+
+msgctxt "#32408"
+msgid "[COLOR=darkorange]Process Complete[/COLOR]"
+msgstr ""
+
+msgctxt "#32501"
+msgid "[COLOR=darkorange]Start from beginning[/COLOR]"
+msgstr ""
+
+msgctxt "#32502"
+msgid "Resume from %s"
+msgstr ""
+
+msgctxt "#32503"
+msgid "[COLOR=darkorange]Resume[/COLOR]"
+msgstr ""
+
+msgctxt "#32511"
+msgid "[COLOR=darkorange]An account already exists.[/COLOR]"
+msgstr ""
+
+msgctxt "#32512"
+msgid "[COLOR=darkorange]Do you want to reset?[/COLOR]"
+msgstr ""
+
+msgctxt "#32513"
+msgid "1) Visit : [COLOR skyblue]%s[/COLOR]"
+msgstr ""
+
+msgctxt "#32514"
+msgid "2) When prompted enter : [COLOR skyblue]%s[/COLOR]"
+msgstr ""
+
+msgctxt "#32515"
+msgid "[COLOR=darkorange]Trakt Manager[/COLOR]"
+msgstr ""
+
+msgctxt "#32516"
+msgid "[COLOR=darkorange]Add to [B]Collection[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32517"
+msgid "[COLOR=darkorange]Remove from [B]Collection[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32518"
+msgid "[COLOR=darkorange]Add to [B]Watchlist[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32519"
+msgid "[COLOR=darkorange]Remove from [B]Watchlist[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32520"
+msgid "[COLOR=darkorange]Add to [B]new List[/B][/COLOR]"
+msgstr ""
+
+msgctxt "#32521"
+msgid "Add to [B]%s[/B]"
+msgstr ""
+
+msgctxt "#32522"
+msgid "Remove from [B]%s[/B]"
+msgstr ""
+
+msgctxt "#32531"
+msgid "[COLOR=darkorange]An account already exists.[/COLOR]"
+msgstr ""
+
+msgctxt "#32532"
+msgid "[COLOR=darkorange]Do you want to reset?[/COLOR]"
+msgstr ""
+
+msgctxt "#32533"
+msgid "1) Visit : [COLOR skyblue]%s[/COLOR]"
+msgstr ""
+
+msgctxt "#32534"
+msgid "2) When prompted enter : [COLOR skyblue]%s[/COLOR]"
+msgstr ""
+
+msgctxt "#32535"
+msgid "[COLOR=darkorange][I]Play Random[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32536"
+msgid "[COLOR=darkorange]Playing[/COLOR]"
+msgstr ""
+
+msgctxt "#32537"
+msgid "[COLOR=darkorange]Nothing found to play[/COLOR]"
+msgstr ""
+
+msgctxt "#32538"
+msgid "[COLOR=darkorange]DEBRID-SERVICE[/COLOR]"
+msgstr ""
+
+msgctxt "#32539"
+msgid "[COLOR=darkorange]Configure Debrid Services in ResolveURL Settings.[/COLOR]"
+msgstr ""
+
+msgctxt "#32540"
+msgid "[COLOR=darkorange]ResolveURL Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32541"
+msgid "[COLOR=darkorange]Shazam Library[/COLOR]"
+msgstr ""
+
+msgctxt "#32542"
+msgid "[COLOR=darkorange]Shazam folders will be imported to library if they are added to media sources.[/COLOR]"
+msgstr ""
+
+msgctxt "#32543"
+msgid "[COLOR=darkorange]Movies[/COLOR]"
+msgstr ""
+
+msgctxt "#32544"
+msgid "[COLOR=darkorange]TV[/COLOR]"
+msgstr ""
+
+msgctxt "#32545"
+msgid "[COLOR=darkorange]Auto update TV Shows[/COLOR]"
+msgstr ""
+
+msgctxt "#32546"
+msgid "[COLOR=darkorange]Show notifications during update[/COLOR]"
+msgstr ""
+
+msgctxt "#32547"
+msgid "[COLOR=darkorange]Update library after adding content[/COLOR]"
+msgstr ""
+
+msgctxt "#32548"
+msgid "[COLOR=darkorange]Avoid creating duplicate content[/COLOR]"
+msgstr ""
+
+msgctxt "#32549"
+msgid "[COLOR=darkorange]Check movie before adding it[/COLOR]"
+msgstr ""
+
+msgctxt "#32550"
+msgid "[COLOR=darkorange]Check first episode of season before adding it[/COLOR]"
+msgstr ""
+
+msgctxt "#32551"
+msgid "[COLOR=darkorange][I]Add to Library[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32552"
+msgid "[COLOR=darkorange]Adding to library...[/COLOR]"
+msgstr ""
+
+msgctxt "#32553"
+msgid "[COLOR=darkorange]Updating TV shows...[/COLOR]"
+msgstr ""
+
+msgctxt "#32554"
+msgid "[COLOR=darkorange]Process Complete[/COLOR]"
+msgstr ""
+
+msgctxt "#32555"
+msgid "[COLOR=darkorange]Are you sure?[/COLOR]"
+msgstr ""
+
+msgctxt "#32556"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Library[/COLOR]"
+msgstr ""
+
+msgctxt "#32557"
+msgid "[COLOR=darkorange][B]Shazam Library[/B] : Settings[/COLOR]"
+msgstr ""
+
+msgctxt "#32558"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Update library...[/COLOR]"
+msgstr ""
+
+msgctxt "#32559"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Movie folder...[/COLOR]"
+msgstr ""
+
+msgctxt "#32560"
+msgid "[COLOR=darkorange][B]Shazam[/B] : TV folder...[/COLOR]"
+msgstr ""
+
+msgctxt "#32561"
+msgid "[COLOR=darkorange][B]TRAKT[/B] : Import Collection...[/COLOR]"
+msgstr ""
+
+msgctxt "#32562"
+msgid "[COLOR=darkorange][B]TRAKT[/B] : Import Watchlist...[/COLOR]"
+msgstr ""
+
+msgctxt "#32563"
+msgid "[COLOR=darkorange][B]TRAKT[/B] : Import TV Collection...[/COLOR]"
+msgstr ""
+
+msgctxt "#32564"
+msgid "[COLOR=darkorange][B]TRAKT[/B] : Import TV Watchlist...[/COLOR]"
+msgstr ""
+
+msgctxt "#32565"
+msgid "[COLOR=darkorange]Include episodes with unknown air dates[/COLOR]"
+msgstr ""
+
+msgctxt "#32566"
+msgid "[COLOR=darkorange]Include special episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32567"
+msgid "[COLOR=darkorange]IMDb watchlist/user lists sort by:[/COLOR]"
+msgstr ""
+
+msgctxt "#32568"
+msgid "[COLOR=darkorange]Recently added[/COLOR]"
+msgstr ""
+
+msgctxt "#32569"
+msgid "[COLOR=darkorange]Title[/COLOR]"
+msgstr ""
+
+msgctxt "#32570"
+msgid "[COLOR=darkorange]Show unaired seasons/episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32571"
+msgid "[COLOR=darkorange]Hide movies in cinema[/COLOR]"
+msgstr ""
+
+msgctxt "#32572"
+msgid "[COLOR=darkorange]Protected Link. Please enter account credentials in the settings.[/COLOR]"
+msgstr ""
+
+msgctxt "#32580"
+msgid "[COLOR=darkorange]Recently Released[/COLOR]"
+msgstr ""
+
+msgctxt "#32581"
+msgid "[COLOR=darkorange]Results Limit[/COLOR]"
+msgstr ""
+
+msgctxt "#32582"
+msgid "[COLOR=darkorange]Personal API keys provide quicker API responses.[CR]Please support the metadata sites however you can (tmdb, tvdb, trakt, fanart.tv)[/COLOR]"
+msgstr ""
+
+msgctxt "#32583"
+msgid "[COLOR=darkorange]Become a VIP member for many benefits at: https://fanart.tv/vip[/COLOR]"
+msgstr ""
+
+msgctxt "#32584"
+msgid "[COLOR=darkorange]Sort order for Trakt Watched Progress[/COLOR]"
+msgstr ""
+
+msgctxt "#32585"
+msgid "[COLOR=darkorange]Recently aired[/COLOR]"
+msgstr ""
+
+msgctxt "#32586"
+msgid "[COLOR=darkorange]Recently watched[/COLOR]"
+msgstr ""
+
+msgctxt "#32587"
+msgid "[COLOR=darkorange]Extra source info[/COLOR]"
+msgstr ""
+
+msgctxt "#32588"
+msgid "[COLOR=darkorange]Premium Source Identifier Color[/COLOR]"
+msgstr ""
+
+msgctxt "#32599"
+msgid "[COLOR=darkorange]Getting genre information from Trakt[/COLOR]"
+msgstr ""
+
+msgctxt "#32600"
+msgid "[COLOR=darkorange]Preparing sources[/COLOR]"
+msgstr ""
+
+msgctxt "#32601"
+msgid "[COLOR=darkorange]Total[/COLOR]"
+msgstr ""
+
+msgctxt "#32602"
+msgid "[COLOR=darkorange]Waiting for[/COLOR]"
+msgstr ""
+
+msgctxt "#32603"
+msgid "[COLOR=darkorange][I]New search...[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32604"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear search history...[/COLOR]"
+msgstr ""
+
+msgctxt "#32605"
+msgid "[COLOR=darkorange][I]Clear search history...[/I][/COLOR]"
+msgstr ""
+
+msgctxt "#32606"
+msgid "[COLOR=darkorange]Prem[/COLOR]"
+msgstr ""
+
+msgctxt "#32607"
+msgid "[COLOR=darkorange]Norm[/COLOR]"
+msgstr ""
+
+msgctxt "#32608"
+msgid "[COLOR=darkorange]Auto Syncing Trakt Library[/COLOR]"
+msgstr ""
+
+msgctxt "#32609"
+msgid "[COLOR=darkorange]Client ID[/COLOR]"
+msgstr ""
+
+msgctxt "#32610"
+msgid "[COLOR=darkorange]Client Secret[/COLOR]"
+msgstr ""
+
+msgctxt "#32611"
+msgid "[COLOR=darkorange][B]Shazam[/B] : Clear all cache...[/COLOR]"
+msgstr ""
+
+msgctxt "#32612"
+msgid "[COLOR=darkorange]24HR delay before import[/COLOR]"
+msgstr ""
+
+msgctxt "#32613"
+msgid "[COLOR=darkorange]Show Special Episodes[/COLOR]"
+msgstr ""
+
+msgctxt "#32614"
+msgid "[COLOR=darkorange]Auto Trakt Collections Syncing[/COLOR]"
+msgstr ""
+
+msgctxt "#32615"
+msgid "[COLOR=darkorange]Sync on Kodi Start[/COLOR]"
+msgstr ""
+
+msgctxt "#32616"
+msgid "[COLOR=darkorange]Schedule Updates Every _ Hour/s[/COLOR]"
+msgstr ""
+
+msgctxt "#32617"
+msgid "[COLOR=darkorange]0 Value Disables Scheduling[/COLOR]"
+msgstr ""
+
+msgctxt "#32618"
+msgid "[COLOR=darkorange]Pre-emptive Termination[/COLOR]"
+msgstr ""
+
+msgctxt "#32619"
+msgid "[COLOR=darkorange]Pre-emptive Limit[/COLOR]"
+msgstr ""
+
+msgctxt "#32620"
+msgid "[COLOR=darkorange]Autoplay SD Quality only[/COLOR]"
+msgstr ""
+
+msgctxt "#32621"
+msgid "[COLOR=darkorange]Debrid Sources Only[/COLOR]"
+msgstr ""
+
+msgctxt "#32622"
+msgid "[COLOR=darkorange]Trakt Bookmarks[/COLOR]"
+msgstr ""
+
+msgctxt "#32623"
+msgid "[COLOR=darkorange]Auto Resume[/COLOR]"
+msgstr ""
+
+msgctxt "#32624"
+msgid "[COLOR=darkorange]FANART.TV[/COLOR]"
+msgstr ""
+
+msgctxt "#32625"
+msgid "[COLOR=darkorange]TMDb[/COLOR]"
+msgstr ""
+
+msgctxt "#32626"
+msgid "[COLOR=darkorange]Secondary Color[/COLOR]"
+msgstr ""
+
+msgctxt "#32627"
+msgid "[COLOR=darkorange]IMDb[/COLOR]"
+msgstr ""
+
+msgctxt "#32628"
+msgid "[COLOR=darkorange]Source selection appearance[/COLOR]"
+msgstr ""
+
+msgctxt "#32629"
+msgid "[COLOR=darkorange]Single line[/COLOR]"
+msgstr ""
+
+msgctxt "#32630"
+msgid "[COLOR=darkorange]Double line[/COLOR]"
+msgstr ""
+
+msgctxt "#32631"
+msgid "[COLOR=darkorange]Simple[/COLOR]"
+msgstr ""
+
+msgctxt "#32632"
+msgid "[COLOR=darkorange]Official Source Identifier Color[/COLOR]"
+msgstr ""
+
+msgctxt "#32633"
+msgid "[COLOR=darkorange]Official Providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32634"
+msgid "[COLOR=darkorange]For these scrapers to work, their equivalent[CR]  Kodi add-on is required to be installed and configured.[/COLOR]"
+msgstr ""
+
+msgctxt "#32635"
+msgid "[COLOR=darkorange]Country code[/COLOR]"
+msgstr ""
+
+msgctxt "#32636"
+msgid "[COLOR=darkorange]External Providers[/COLOR]"
+msgstr ""
+
+msgctxt "#32637"
+msgid "[COLOR=darkorange]Enable external providers (Shazam scrapers)[/COLOR]"
+msgstr ""

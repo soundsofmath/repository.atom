@@ -994,6 +994,41 @@
             Debrid account status now visible from Seren settings
         </news>
     </extension>
+</addon><addon id="plugin.video.shazam" name="[COLOR=darkorange]Shazam[/COLOR]" provider-name="Patriot and Narcacist" version="0.0.3">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.shazam.artwork" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.shazamscrapers" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+		<import addon="script.module.metahandler" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+    </requires>
+    <extension library="shazam.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="service.py" point="xbmc.service" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en_GB">[COLOR=darkorange]Shazam Kodi 19+ (Wizard: And say my name so my powers may flow through you. I open my heart to you, Billy Batson. And in so doing, choose you as champion.)[/COLOR]</summary>
+        <description lang="en_GB" />
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en_GB">The author of this add-on does not host any of the content which is found and has no affiliation with any of the content providers. This add-on simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <news>
+        See Changelog in the Tools menu
+        </news>
+    </extension>
 </addon><addon id="plugin.video.thecrew" version="1.1.7" name="[COLOR orchid]THE CREW[/COLOR]" provider-name="The Crew">
     <requires>
         
@@ -1724,6 +1759,36 @@ v0.5.9 (2022-03-22)
     <news>0.1.3:
 - Fix non-UTF-8 byte string decoding in Python 2.</news>
   </extension>
+</addon><addon id="script.module.metahandler" name="metahandler" version="5.0.1" provider-name="Eldorado">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.six" version="1.14.0+matrix.2" />
+		<import addon="script.module.simplejson" version="3.17.0+matrix.2" />
+		<import addon="script.module.myconnpy" version="8.0.18+matrix.1" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.python.pluginsource" library="lib/default.py" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Downloads Artwork for TV shows, Movies and Music videos for addons and stores them in a local SQLITE database</summary>
+		<description lang="en">Queries, stores, and returns metadata for TV shows, Movies and Musicvideos. [CR]Sources:[CR]www.thetvdb.com[CR]www.themoviedb.org[CR]www.imdb.com[CR]www.omdbapi.com[CR]This product uses the TMDb API but is not endorsed or certified by TMDb.</description>
+		<disclaimer lang="en" />
+		<language />
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum />
+		<website />
+		<email />
+		<source />
+		<assets>
+			<icon>icon.png</icon>
+			<fanart />
+			<screenshot />
+		</assets>
+		<news>
+[B]Version 5.0.1[/B]
+- Fixed settings.xml version preventing setting UI from showing in Kodiunder Matrix
+		</news>
+	</extension>
 </addon><addon id="script.module.moriascrapers" name="MoriaScrapers Module" version="1.03.05" provider-name="Moria">
     <requires>
         
@@ -1838,6 +1903,32 @@ v0.5.9 (2022-03-22)
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>
         </assets>
+    </extension>
+</addon><addon id="script.module.shazamscrapers" name="[COLOR=darkorange]Shazam Scrapers[/COLOR]" version="0.0.1" provider-name="Patriot">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.beautifulsoup4" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.python.pluginsource" library="lib/default.py">
+        <provides>executable</provides>
+    </extension>
+        <extension point="xbmc.addon.metadata">
+            <platform>all</platform>
+            <summary lang="en">Shazam Scrapers Module</summary>
+            <description>Shazam Scrapers Module Scrape common video host for URL's to be playable simplifying addon development of video plugins requiring multi video hosts.</description>
+                <disclaimer lang="en" />
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+    <news />
     </extension>
 </addon><addon id="script.module.simpleeval" name="Simple Eval" version="0.9.10" provider-name="Daniel Fairhead">
     <requires>
@@ -2022,6 +2113,20 @@ v0.5.9 (2022-03-22)
 		</assets>
 		<news>- fix crash on timeout</news>
 	</extension>
+</addon><addon id="script.shazam.artwork" version="0.0.1" name="[COLOR=darkorange]Shazam Artwork[/COLOR]" provider-name="Patriot">
+    <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Shazam Artwork</summary>
+        <description>Provides Shazam Artwork</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="script.skinhelper" name="SkinHelper" version="0.0.3" provider-name="heppen">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
