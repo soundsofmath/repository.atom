@@ -302,6 +302,60 @@
             <fanart>fanart.png</fanart>
         </assets>
     </extension>
+</addon><addon id="plugin.program.orderfavourites" name="Order Favourites" version="99.2.3" provider-name="doko">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <news>
+[COLOR lavender][B]Order Favourites[/B][/COLOR]
+[B]1.2.3:[/B]
+- Add-on metadata update with an icon fix.
+
+[B]1.2.2:[/B]
+- Ported the improvements from the Leia version to the Matrix version.
+
+[B]1.2.1:[/B]
+- Renamed "Save and exit" to "Save and reload", makes it clearer.
+- Added "Save and exit". Use this when save + reload happens to crash your Kodi. After saving, restart Kodi manually to see the changes.
+- Experimental Matrix version now available.
+
+[B]1.2.0:[/B]
+- Fixed a case when the add-on failed to read the favourites file because of Unicode strings.
+(Thanks to [I]msauers[/I] for the report.)
+- Changed the label and description of the 'Restart...' button to 'Restore...', which is
+clearer.
+
+[B]1.1.1:[/B]
+- Added menu items for a more traditional add-on UX.
+- Improved the profile reloading process.
+
+[B]1.1.0:[/B]
+- Improved the profile reloading process, it was crashing on Kodi 17.6.
+
+[B]1.0.4:[/B]
+- Safer handling of unicode text.
+- Optimizations, simplified the code even more.
+
+[B]1.0.3:[/B]
+- Added a proper custom dialog interface.
+- Greatly simplified the code, much faster to use.
+
+[B]1.0.2:[/B]
+- Fix for when the favorite item has unicode text.
+    </news>
+    <description lang="en">
+Lets you reorder the entries in your Favourites.
+Use this to organize your Favourites.
+    </description>
+    <platform>all</platform>
+    <assets>
+        <icon>icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="plugin.video.ezra" name="Ezra" provider-name="Ezra Hubbard" version="0.2.5d">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -412,6 +466,53 @@
         See Changelog on Tools menu
         </news>
     </extension>
+</addon><addon id="plugin.video.imdb.trailers" name="IMDb Trailers" version="2.1.17+matrix.1" provider-name="gujal">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.common.plugin.cache" version="2.6.0" />
+    <import addon="script.module.beautifulsoup4" version="4.0.0" />
+    <import addon="script.module.six" version="1.12.0" />
+    <import addon="script.module.kodi-six" version="0.0.1" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">IMDb Trailers video add-on</summary>
+    <summary lang="tr_TR">IMDb Fragmanları video eklentisi</summary>
+    <summary lang="es_ES">IMDb Trailers video añadido</summary>
+    <summary lang="de_DE">IMDb Trailers Video-Add-On</summary>
+    <summary lang="fr_FR">Module vidéo IMDb Trailers</summary>
+    <description lang="en_GB">Watch movie trailers available on IMDb</description>
+    <description lang="tr_TR">IMDb'de bulunan film fragmanlarını izle</description>
+    <description lang="es_ES">Ver trailers de películas disponibles en IMDb</description>
+    <description lang="de_DE">Filmtrailer auf IMDb ansehen</description>
+    <description lang="fr_FR">Regarder les bandes-annonces disponibles sur IMDb</description>
+    <disclaimer lang="en_GB">This third party addon is not in any way commissioned or endorsed by Amazon or IMDb</disclaimer>
+    <disclaimer lang="tr_TR">Bu üçüncü taraf eklentisi, Amazon veya IMDb tarafından hiçbir şekilde görevlendirilmemiştir veya onaylanmamıştır.</disclaimer>
+    <disclaimer lang="es_ES">Este complemento de terceros no está en modo alguno comisionado o respaldado por Amazon o IMDb</disclaimer>
+    <disclaimer lang="de_DE">Dieses Drittanbieter-Addon wird in keiner Weise von Amazon oder IMDb in Auftrag gegeben oder unterstützt</disclaimer>
+    <disclaimer lang="fr_FR">Cet additif tiers n'est en aucun cas commandé ou approuvé par Amazon ou IMDb</disclaimer>
+    <language />
+    <platform>all</platform>
+    <license>GPL-2.0</license>
+    <forum>https://forum.kodi.tv/showthread.php?tid=352127</forum>
+    <website>https://www.imdb.com/trailers/</website>
+    <email>gujal at protonmail dot com</email>
+    <news>v2.1.17 (20230103)
+      [fix] Coming soon
+      [fix] Recently added
+      [new] Kodi Nexus compliance
+    </news>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+      <screenshot>resources/images/screenshot-01.jpg</screenshot>
+      <screenshot>resources/images/screenshot-02.jpg</screenshot>
+      <screenshot>resources/images/screenshot-03.jpg</screenshot>
+      <screenshot>resources/images/screenshot-04.jpg</screenshot>
+    </assets>
+  </extension>
 </addon><addon id="plugin.video.moria" name="[COLORff58c1e0][B]MORIA[/B][/COLOR]" provider-name="CC" version="4.11.10">
     <requires>
         
@@ -1094,6 +1195,44 @@
     <screenshot>resources/screenshot-02.jpg</screenshot>
   </assets>
 </extension>
+</addon><addon id="plugin.video.thepromise" name="ThePromise" version="22.7.31" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        <import addon="script.thepromise.artwork" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.promisescrapers" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+        <import addon="plugin.video.usgotv" optional="true" />
+        <import addon="plugin.video.swifttv" optional="true" />
+        <import addon="plugin.video.taptv" optional="true" />
+        <import addon="plugin.video.lntv" optional="true" />
+        <import addon="plugin.video.rbtv" optional="true" />
+        <import addon="plugin.video.youtube" optional="true" />
+    </requires>
+    <extension library="thepromise.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en_GB">ThePromise</summary>
+        <description lang="en_GB">Multi-source add-on</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en_GB">The author of this add-on does not host any of the content which is found and has no affiliation with any of the content providers. This add-on simply searches websites for content. Use at your own risk![CR]This project uses the TMDb, Trakt, Fanart.tv APIs, but is not affiliated nor endorsed by any of their respective ogranisations.[CR]Please support these ogranisations however you can.</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <news>
+- See Changelog on Tools menu
+        </news>
+    </extension>
 </addon><addon id="plugin.video.youtube" name="YouTube" version="7.0.0" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="3.0.1" />
@@ -1429,6 +1568,46 @@ v.3.3.3
 		<description lang="sv_SE">Tillägg för att ladda ner bilder och tilläggsinformation från fanart.tv och theaudiodb.com om artisten som spelas för tillfället. Bilderna, tillsammans med lokala artistbilder och information, kan användas av skinnet för att skapa ett bildspel av artisten man lyssnar på.</description>
 		<description lang="zh_CN">从fanart.tv和theaudiodb.com下载当前播放艺人的图片和附加信息的插件。这此图片可以和本地艺人图片及信息一起，被皮肤用来创建正收听的艺人的幻灯片。</description>
 	</extension>
+</addon><addon id="script.autoruns" name="Autoruns" version="99.0.4" provider-name="fight night, Jon Bovi">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" /> 
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>image</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+		<source>https://github.com/fightnight/fightnight-addons/tree/master/script.autoruns</source>
+		<summary lang="en">Disable startup services on Kodi</summary>
+		<summary lang="pt">Desactive serviços do arranque no Kodi</summary>
+		<description lang="en">You can disable startup services, improving Kodi internal speed.</description>
+		<description lang="pt">Pode desactivar serviços do arranque, melhorando a velocidade interna do Kodi.</description>
+		<disclaimer lang="en">Opensource addon not endorsed with Team Kodi.</disclaimer>
+		<disclaimer lang="pt">Addon opensource não afliado com a Equipa Kodi.</disclaimer>
+		<assets>
+				<icon>icon.png</icon>
+		</assets>
+    </extension>
+</addon><addon id="script.common.plugin.cache" name="Common plugin cache" provider-name="anxdpanic, TheCollective" version="3.0.0">
+    <requires>
+        <import addon="xbmc.python" version="3.0.1" />
+    </requires>
+    <extension point="xbmc.service" library="resources/lib/entry_point.py" />
+    <extension point="xbmc.python.module" library="resources/lib/storage_server/" />
+    <extension point="xbmc.addon.metadata">
+        <news>
+[fix] use xbmcvfs.translatePath when available, xbmc.translatePath deprecated(Matrix) and removed(Nexus) |contrib: Gujal00|
+        </news>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+        <platform>all</platform>
+        <license>GPL-3.0-only</license>
+        <source>https://github.com/anxdpanic/script.common.plugin.cache</source>
+        <summary lang="en_GB">A common caching API for Kodi add-ons.</summary>
+        <description lang="en_GB">A common caching API for Kodi add-ons.</description>
+    </extension>
 </addon><addon id="script.homelander.artwork" version="1.0.2" name="[COLOR red]Homelander [/COLOR]Artwork" provider-name="Homelander">
     <requires>
         
@@ -1857,6 +2036,33 @@ v0.5.9 (2022-03-22)
 		<website>http://dev.mysql.com/doc/connector-python/en/index.html</website>
 		<source>http://dev.mysql.com/downloads/connector/python/</source>
 	</extension>
+</addon><addon id="script.module.promisescrapers" name="PromiseScrapers Module" version="22.6.30" provider-name="[COLORpurple]• [COLORorchid]Sh[COLORdarkorchid]in[COLORplum]ks[COLORpurple]•[/COLOR]">
+    <requires>
+        
+        <import addon="script.module.beautifulsoup4" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+        <import addon="script.module.orion" optional="true" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.python.pluginsource" library="lib/default.py">
+        <provides>executable</provides>
+    </extension>
+        <extension point="xbmc.addon.metadata">
+            <platform>all</platform>
+            <summary lang="en">PromiseScrapers Module</summary>
+            <description>Scrape common video host for URL's to be playable in Kodi, simplifying addon development of video plugins requiring multi video hosts.</description>
+                <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+    <news />
+    </extension>
 </addon><addon id="script.module.requests" name="requests" version="2.27.1+matrix.1" provider-name="Python Software Foundation">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -2304,6 +2510,20 @@ v1.0.1 (2019-08-06)
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="script.thepromise.artwork" name="ThePromise Artwork" version="22.7.31" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>ThePromise Artwork</summary>
+        <description>ThePromise Artwork</description>
+        <platform>all</platform>
         <assets>
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>
