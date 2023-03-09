@@ -430,6 +430,59 @@ Use this to organize your Favourites.
         </assets>
         <news>INFO: For latest changes see Changelog within Tools of add-on.</news>
     </extension>
+</addon><addon id="plugin.video.fen" name="Fen" provider-name="Tikipeter" version="3.0.52">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.requests" version="2.19.1" />
+        <import addon="script.module.cocoscrapers" version="0.0.1" />
+    </requires>
+    <extension library="resources/lib/fen.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="resources/lib/service.py" point="xbmc.service" />
+    <extension library="resources/lib/" point="xbmc.python.module" />
+    <extension point="kodi.context.item">
+        <menu id="kodi.core.main">
+            <item library="resources/contextmenu/refresh_widgets.py">
+                <label>40001</label>
+                <visible>String.IsEqual(ListItem.Property(fen.widget),true) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+            <item library="resources/contextmenu/mark_watched.py">
+                <label>40003</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen.widget),true) + String.IsEqual(ListItem.Property(fen.playcount),0) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+            <item library="resources/contextmenu/mark_unwatched.py">
+                <label>40004</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen.widget),true) + String.IsEqual(ListItem.Property(fen.playcount),1) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+            <item library="resources/contextmenu/clear_progress.py">
+                <label>40009</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen.widget),true) + String.IsEqual(ListItem.Property(fen.in_progress),true) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+            <item library="resources/contextmenu/options.py">
+                <label>40007</label>
+                <visible>String.IsEqual(ListItem.Property(fen.widget),true) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+            <item library="resources/contextmenu/extras.py">
+                <label>40006</label>
+                <visible>String.IsEqual(ListItem.Property(fen.widget),true) + !String.StartsWith(Window(home).Property(fen.kodi_version),20)</visible>
+            </item>
+        </menu>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+        <summary lang="en">Mainly used for Furk and Easynews.</summary>
+        <description lang="en">This add-on is intended for advanced Kodi users only. Mainly used for Furk and Easynews(web) account access. An External Scraper package may be used. You must own the content of any media you play through this addon.</description>
+        <platform>all</platform>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and has no affiliation with any of the content providers. This addon simply searches websites for content.</disclaimer>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <assets>
+            <icon>resources/media/fen_icon.png</icon>
+            <fanart>resources/media/fen_fanart.png</fanart>
+            <clearlogo>resources/media/fen_clearlogo.png</clearlogo>
+        </assets>
+        <news>INFO: For latest changes see Changelog within Tools of add-on.</news>
+    </extension>
 </addon><addon id="plugin.video.homelander" name="[COLOR red]Homelander[/COLOR]" provider-name="Homelander" version="1.0.6">
     <requires>
         
@@ -1233,6 +1286,160 @@ Use this to organize your Favourites.
 - See Changelog on Tools menu
         </news>
     </extension>
+</addon><addon id="plugin.video.umbrella" name="Umbrella" provider-name="Umbrella" version="6.6.18">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.cocoscrapers" version="1.0.10" />
+		<import addon="script.module.requests" />
+		<import addon="script.module.beautifulsoup4" />
+		<import addon="script.module.metahandler" version="5.0.1a" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="umbrella.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="resources\lib\context\addtoLibrary.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Add to Library</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.addtoLibrary)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\traktManager.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Trakt Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.traktManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearProviders.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Clear Providers</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.clearProviders)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]] |
+					[String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearBookmark.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Clear Item Bookmark</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.clearBookmark)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					ListItem.IsResumable +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\rescrape.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Rescrape Item</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.rescrape)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libRescrape.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Rescrape Lib Item</label>
+				<visible>
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playFromHere.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Play from here</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.playFromHere)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+			<item library="resources\lib\context\autoPlay.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Auto Play</label>
+				<visible>
+					String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.autoPlay)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\sourceSelect.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Source Select</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.sourceSelect)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\findSimilar.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Find Similar</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.findSimilar)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseSeries.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Browse Series</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseSeries)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseEpisodes.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Browse Episodes</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseEpisodes)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.python.module" library="resources/lib/" />
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>true</reuselanguageinvoker>
+		<summary lang="en">[B]Umbrella[/B] - We do not host any of the contents streamed</summary>
+		<description lang="en">[B]Umbrella[/B][CR] This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.[CR]The author does not host any of the content in this addon and takes no responsibility for content found. We do not know anything about a lab under Raccoon City.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum />
+		<website>https://umbrellaplug.github.io</website>
+		<source>https://raw.githubusercontent.com/umbrellaplug/umbrellaplug.github.io/</source>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
+		</assets>
+		<news>
+[B][COLOR black]Update - v6.6.18 - Feb 21th, 2023[/COLOR][/B]
+--[FIX][I] Fixed issue with playlist creation for playnext from widgets.[/I]
+		</news>
+	</extension>
+
 </addon><addon id="plugin.video.youtube" name="YouTube" version="7.0.0" provider-name="anxdpanic, bromix">
     <requires>
         <import addon="xbmc.python" version="3.0.1" />
@@ -1736,6 +1943,33 @@ v.3.3.3
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.module.cocoscrapers" name="CocoScrapers Module" version="1.0.10" provider-name="CocoJoe">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="lib/default.py">
+		<provides>executable</provides>
+	</extension> 
+	<extension point="xbmc.service" library="lib/service.py" start="startup" />
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker>
+		<summary lang="en">CocoScrapers Module</summary>
+		<description>A module that can be used to provide site scrapers.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum />
+		<website />
+		<source />
+		<disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.png</fanart>
+			<screenshot />
+		</assets>
+		<news />
+	</extension>
 </addon><addon id="script.module.dateutil" name="python-dateutil" version="2.8.2" provider-name="Paul Ganssle, Gustavo Niemeyer, Tomi Pieviläinen, Yaron de Leeuw">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
