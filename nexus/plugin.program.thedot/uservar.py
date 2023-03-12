@@ -77,7 +77,7 @@ THEME5 = u'[COLOR {color1}]Current Theme:[/COLOR] [COLOR {color2}]{{}}[/COLOR]'.
 # Enable 'Contact' menu item 'Yes' hide or 'No' dont hide
 HIDECONTACT = 'No'
 # You can add \n to do line breaks
-CONTACT = 'Thank you for choosing TheDot.\n\nContact us on Github at http://www.github.com/drinfernoo/plugin.program.openwizard/'
+CONTACT = 'Thank you for choosing TheDot.\n\nContact us on Github at http://www.github.com/soundsofmath/plugin.program.thedot/'
 # Images used for the contact window.  http:// for default icon and fanart
 CONTACTICON = os.path.join(ART, 'qricon.png')
 CONTACTFANART = 'http://'

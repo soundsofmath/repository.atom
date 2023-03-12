@@ -40,7 +40,7 @@
         <setting id="wizlog" type="bool" label="Include Wizard Logs" default="false"/>
         <setting id="crashlog" type="bool" label="Include Kodi Crash Logs" default="false"/>
         <setting type="lsep" label="Maintenance Menu: "/>
-        <setting id="path" type="folder" label="Choose Backup Storage Location" default="/storage/emulated/0/BingieBuilds/"/>
+        <setting id="path" type="folder" label="Choose Backup Storage Location" default="/storage/emulated/0/Builds/"/>
         <setting type="lsep" label="Auto Clean On Startup:"/>
         <setting id="autoclean" type="bool" label="Enable Auto Clean" default="false"/>
         <setting id="clearcache" type="bool" label="Clear Cache on Startup" default="false" enable="!eq(-1,false)"/>
@@ -156,7 +156,7 @@
 
     <category label="Install Settings">
         <setting type="lsep" label="APKs" />
-        <setting type="action" label="Open Kodi Android Updater Settings" action="RunPlugin(plugin://plugin.program.openwizard/?mode=fmchoose)" option="close" />
+        <setting type="action" label="Open Kodi Android Updater Settings" action="RunPlugin(plugin://plugin.program.thedot/?mode=fmchoose)" option="close" />
         <setting id="apk_path" type="folder" label="Choose Download Location" default="/storage/emulated/0/Download/"/>
         <setting type="lsep" label="Save Data When Installing Build:"/>
         <setting id="keeptrakt" type="bool" label="Keep My Trakt Data" default="true"/>
