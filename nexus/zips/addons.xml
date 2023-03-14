@@ -390,7 +390,7 @@ Use this to organize your Favourites.
         <icon>icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="plugin.program.thedot" name="TheDot" version="3.6.0" provider-name="soundsofmath">
+</addon><addon id="plugin.program.thedot" name="TheDot" version="0.3.60" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
         <import addon="script.module.requests" />
@@ -406,13 +406,13 @@ Use this to organize your Favourites.
     <extension point="xbmc.service" library="startup.py" start="startup" />
     
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">Atom Wizard</summary>
-        <description lang="en">Atom Wizard offers many maintenance features, selective add-on data saving, and automated build installs.</description>
+        <summary lang="en">TheDot</summary>
+        <description lang="en">TheDot offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
         <source>https://www.github.com/a4k-openproject/plugin.program.openwizard/</source>
         <news>
-3.6.0 
+0.3.60 
  - Changed name, logo and icon
 2.0.7
  - Fix Error when using default log settings

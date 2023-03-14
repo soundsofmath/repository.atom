@@ -361,7 +361,7 @@
 				<screenshot />
 		</assets>
 	</extension>
-</addon><addon id="plugin.program.thedot" name="TheDot" version="3.6.0" provider-name="soundsofmath">
+</addon><addon id="plugin.program.thedot" name="TheDot" version="0.3.60" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
         <import addon="script.module.requests" />
@@ -383,7 +383,7 @@
         <reuselanguageinvoker>false</reuselanguageinvoker>
         <source>https://www.github.com/a4k-openproject/plugin.program.openwizard/</source>
         <news>
-3.6.0 
+0.3.60 
  - Changed name, logo and icon
 2.0.7
  - Fix Error when using default log settings

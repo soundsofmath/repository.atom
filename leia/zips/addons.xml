@@ -611,7 +611,7 @@
         <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
         <source>https://github.com/phil65/plugin.program.autocompletion</source>
     </extension>
-</addon><addon id="plugin.program.thedot" name="[COLOR white]The[/COLOR]Dot" version="3.6.0" provider-name="soundsofmath">
+</addon><addon id="plugin.program.thedot" name="TheDot" version="0.3.60" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="script.module.requests" />
@@ -627,14 +627,12 @@
     <extension point="xbmc.service" library="startup.py" start="startup" />
     
     <extension point="xbmc.addon.metadata">
-        <summary lang="en">[COLOR white]The[/COLOR]Dot</summary>
-        <description lang="en">[COLOR white]The[/COLOR]Dot offers many maintenance features, selective add-on data saving, and automated build installs.</description>
+        <summary lang="en">TheDot</summary>
+        <description lang="en">TheDot offers many maintenance features, selective add-on data saving, and automated build installs.</description>
         <platform>all</platform>
         <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://www.github.com/drinfernoo/plugin.program.thedot/</source>
+        <source>https://www.github.com/drinfernoo/plugin.program.atomwizard/</source>
         <news>
-3.6.0
- - Changed Name, Fanart and Icon
 1.4.9
  - Fix Error Related to Log
 1.4.8
