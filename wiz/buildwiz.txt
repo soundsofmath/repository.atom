@@ -1,6 +1,6 @@
 name="Arctic Horizon 2 Build"
 version="1.0"
-url="https://archive.org/download/arctic-horizon-2-nexus_20230309/ArcticHorizon2Nexus.zip"
+url="https://archive.org/download/arctic-horizon-2-nexus_20230315/ArcticHorizon2Nexus.zip"
 minor="http://"
 gui="https://"
 kodi="20.0"
