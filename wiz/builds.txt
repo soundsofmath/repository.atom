@@ -1,6 +1,6 @@
 name="Arctic Horizon 2 Build"
 version="1.0"
-url="https://archive.org/download/arctic-horizon-2_202303/ArcticHorizon2.zip"
+url="https://archive.org/download/arctic-horizon-2_20230315/ArcticHorizon2.zip"
 minor="http://"
 gui="url.to.guisettings"
 kodi="19.3"
