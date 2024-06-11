@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1162">
+    <defaultcontrol always="true">450</defaultcontrol>
+    <!-- <onload>SetProperty(Path,videodb://movies/titles)</onload>
+    <onload>SetProperty(Target,videos)</onload>
+    <onload>SetProperty(Header,Titles)</onload> -->
+    <onunload>ClearProperty(Path,1162)</onunload>
+    <onunload>ClearProperty(Target,1162)</onunload>
+    <onunload>ClearProperty(Header,1162)</onunload>
+    <controls>
+
+        <include content="DialogCustom1162_Main" condition="String.IsEmpty(Window(Home).Property(CustomDialog1162.Expanded))">
+            <param name="include_artwork">false</param>
+            <param name="lines_right">0</param>
+            <param name="dialog_size">Dimension_DialogSideMenu</param>
+        </include>
+
+        <include condition="!String.IsEmpty(Window(Home).Property(CustomDialog1162.Expanded))">DialogCustom1162_Main</include>
+
+
+        <control type="group">
+            <right>90</right>
+            <centertop>100</centertop>
+            <height>40</height>
+            <width>40</width>
+            <visible>Container(450).IsUpdating</visible>
+            <include content="Animation_Fade_In">
+                <param name="type">visible</param>
+                <param name="delay">400</param>
+            </include>
+            <include content="Furniture_Busy_Icon">
+                <param name="hasspinner">true</param>
+                <param name="spinspinner">true</param>
+            </include>
+        </control>
+
+    </controls>
+</window>
