@@ -1,0 +1,47 @@
+<dir>
+    <title>[COLOR aquamarine]• [/COLOR][COLORaquamarine]Artist[COLORlightgrey] Chart[/COLOR]</title>
+    <lastfm>chart/artists</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLOR aquamarine]• [/COLOR][COLORaquamarine]Track[/COLOR][COLORlightgrey] Chart[/COLOR]</title>
+    <lastfm>chart/tracks</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLOR aquamarine]• [/COLOR][COLORaquamarine]Tag[/COLOR][COLORlightgrey] Chart[/COLOR]</title>
+    <lastfm>chart/tags</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLOR turquoise]• [/COLOR][COLORturquoise]Metal [/COLOR][COLORlightgrey]Tracks[/COLOR]</title>
+    <lastfm>tag/metal/tracks</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLOR turquoise]• [/COLOR][COLORturquoise]Metal [/COLOR][COLORlightgrey]Artists[/COLOR]</title>
+    <lastfm>tag/metal/artists</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLOR turquoise]• [/COLOR][COLORturquoise]Metal [/COLOR][COLORlightgrey]Albums[/COLOR]</title>
+    <lastfm>tag/metal/albums</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/m.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLORcrimson]Search[/COLOR] [COLORlightgrey]Artist[/COLOR][COLORmediumturquoise] › [/COLOR]</title>
+    <lastfm>search/artist</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/searchuse.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLORcrimson]Search[/COLOR] [COLORlightgrey]Album[/COLOR][COLORmediumturquoise] › [/COLOR]</title>
+    <lastfm>search/album</lastfm>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/searchuse.gif</thumbnail>
+</dir>

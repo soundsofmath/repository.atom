@@ -1,0 +1,73 @@
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]Mo[/COLOR][COLORlightgrey]vies[/COLOR]</title>
+	<link>http://elekta.info/enigma2/movies.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]TV[/COLOR] [COLORlightgrey]Shows[/COLOR]</title>
+	<link>http://elekta.info/enigma2/shows.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]Doc[/COLOR][COLORlightgrey]um[COLORlightgrey]ent[/COLOR]ar[COLORlightgrey]ies[/COLOR]</title>
+	<link>file://docs/docs.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]T[/COLOR][COLORlightgrey]oons[/COLOR] [COLORblue]/[/COLOR] [COLORlightgrey]A[/COLOR][COLORlightgrey]nime[/COLOR]</title>
+	<link>http://elekta.info/enigma2/toons.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]Co[/COLOR][COLORlightgrey]medy[/COLOR]</title>
+	<link>http://elekta.info/enigma2/comedy.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]Cl[/COLOR][COLORlightgrey]assics[/COLOR]</title>
+	<link>http://elekta.info/enigma2/classic.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+	<title>[COLORblue]• [/COLOR][COLORlightgrey]M[/COLOR][COLORlightgrey]usic[/COLOR]</title>
+	<link>http://elekta.info/enigma2/music.xml</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<dir>
+    <title>[COLORblue]• [/COLOR][COLORlightgrey]A[/COLOR][COLORlightgrey]mbient[/COLOR]</title>
+    <link>http://elekta.info/enigma2/ambient.xml</link>
+    <thumbnail>special://home/addons/plugin.video.enigma/images/en1.gif</thumbnail>
+</dir>
+
+<plugin>
+	<title>[COLORblue]• [/COLOR][COLORblue]Settings[/COLOR]</title>
+	<meta>
+		<summary>Open the Settings for this addon.</summary>
+	</meta>
+	<mysettings>0/0</mysettings>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/eman.gif</thumbnail>
+</plugin>
+
+
+<plugin>
+	<name>[COLORblue]• [/COLOR][COLORblue]Pair[/COLOR][COLORlightgrey] / [/COLOR][COLORblue]Authorize[/COLOR]</name>
+	<link>plugin://script.EleKtaPair/?action=RunAddon</link>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/pair2c.png</thumbnail>
+	<summary>Pair your device with sites such as Openload, plus Authorize Real Debrid/Trakt.</summary>
+</plugin>
+
+
+
+<dir>
+	<title>[COLOR blue]• [/COLOR][COLORcyan]Search ›[/COLOR]</title>
+	<tmdb>search</tmdb>
+	<thumbnail>special://home/addons/plugin.video.enigma/images/searchuse.gif</thumbnail>
+</dir>
+
