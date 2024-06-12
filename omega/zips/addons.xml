@@ -1165,6 +1165,19 @@
 		<description lang="en">White Weather Icons</description>
 		<platform>all</platform>
 	</extension>
+</addon><addon id="resource.uisounds.arctifuse" version="1.0.1" name="Arctic Fuse UI Sounds" provider-name="Team Arctic Fuse">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0" />
+  </requires>
+  <extension point="kodi.resource.uisounds" />
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">Arctic Fuse GUI sounds</summary>
+    <description lang="en">Arctic Fuse GUI sounds</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.elementum.burst" name="Elementum [COLOR FFFF6B00]Burst[/COLOR]" version="0.0.88" provider-name="elgatito">
     <requires>
         <import addon="xbmc.addon" version="16.0.0" />
