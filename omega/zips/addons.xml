@@ -2455,6 +2455,16 @@ v0.5.9 (2022-03-22)
 			<fanart>fanart.png</fanart>
 		</assets>
 	</extension>
+</addon><addon id="script.module.myauth" name="myauthact" version="99.0.2" provider-name="Zaxxon709">
+    <extension point="xbmc.python.pluginsource" library="default.py">
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Authorize Debrid Accounts</summary>
+        <description lang="en">Debrid Accounts Manager</description>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <source>https://</source>
+    </extension>
 </addon><addon id="script.module.promisescrapers" name="PromiseScrapers Module" version="22.6.30" provider-name="[COLORpurple]• [COLORorchid]Sh[COLORdarkorchid]in[COLORplum]ks[COLORpurple]•[/COLOR]">
     <requires>
         
