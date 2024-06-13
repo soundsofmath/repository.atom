@@ -24,120 +24,120 @@
         <!-- Title fonts -->
         <font>
             <name>font_info_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>128</size>
         </font>
         <font>
             <name>font_title_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>74</size>
         </font>
 
         <!-- Black Fonts -->
         <font>
             <name>font_huge_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>49</size>
         </font>
         <font>
             <name>font_head_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>37</size>
         </font>
         <font>
             <name>font_main_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_black</name>
             <style>uppercase</style>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Black.ttf</filename>
             <size>18</size>
         </font>
 
         <!-- Bold Fonts -->
         <font>
             <name>font_huge_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>49</size>
         </font>
         <font>
             <name>font_head_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>37</size>
         </font>
         <font>
             <name>font_main_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>18</size>
         </font>
 
         <!-- Standard Fonts -->
         <font>
             <name>font_midi</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>35</size>
         </font>
         <font>
             <name>font_main</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>30</size>
         </font>
         <font>
             <name>font_mini</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>font_hint</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>16</size>
             <linespacing>0.8</linespacing>
         </font>
         <font>
             <name>font_hint_button</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>16</size>
             <linespacing>1.15</linespacing>
         </font>
@@ -145,37 +145,37 @@
         <!-- Textbox Fonts -->
         <font>
             <name>font_huge_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>1.46</linespacing>
             <size>47</size>
         </font>
         <font>
             <name>font_midi_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>1.46</linespacing>
             <size>35</size>
         </font>
         <font>
             <name>font_main_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>1.14</linespacing>
             <size>30</size>
         </font>
         <font>
             <name>font_mini_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>1.24</linespacing>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>1.14</linespacing>
             <size>22</size>
         </font>
         <font>
             <name>font_mini_cond</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <linespacing>0.96</linespacing>
             <size>26</size>
         </font>
@@ -183,43 +183,43 @@
         <!-- Font for codec flag -->
         <font>
             <name>font_videocodec_bold</name>
-            <filename>junegull.ttf</filename>
-            <size>33</size>
+            <filename>Nick-Titling.ttf</filename>
+            <size>22</size>
         </font>
         <font>
             <name>font_infotag_bold</name>
-            <filename>junegull.ttf</filename>
-            <size>33</size>
+            <filename>LeagueSpartan-ExtraBold.ttf</filename>
+            <size>22</size>
             <style>uppercase</style>
         </font>
         <font>
             <name>font_infotag</name>
-            <filename>junegull.ttf</filename>
-            <size>33</size>
+            <filename>LeagueSpartan-SemiBold.ttf</filename>
+            <size>22</size>
             <style>uppercase</style>
         </font>
 
         <!-- Music visualisation scrolling text -->
         <font>
             <name>font_musicvis_biggest</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Light.ttf</filename>
             <size>230</size>
         </font>
         <font>
             <name>font_musicvis_bigger</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Light.ttf</filename>
             <size>130</size>
         </font>
         <font>
             <name>font_musicvis_big</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Light.ttf</filename>
             <size>80</size>
         </font>
 
         <!-- Arial font -->
         <font>
             <name>font_mini_arial</name>
-            <filename>junegull.ttf</filename>
+            <filename>Arial.ttf</filename>
             <size>25</size>
             <aspect>0.8</aspect>
         </font>
@@ -227,38 +227,48 @@
         <!-- Keyboard Symbol Font -->
         <font>
             <name>font_main_iconic</name>
-            <filename>junegull.ttf</filename>
+            <filename>iconmonstr-iconic-font.ttf</filename>
             <size>30</size>
+        </font>
+        <font>
+            <name>font_mini_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>26</size>
+        </font>
+        <font>
+            <name>font_tiny_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>22</size>
         </font>
 
         <!-- Kodi Logo Font -->
         <font>
             <name>font_logo</name>
-            <filename>junegull.ttf</filename>
-            <size>30</size>
+            <filename>Questrial-Regular.ttf</filename>
+            <size>24</size>
         </font>
         <font>
             <name>font_logo_large</name>
-            <filename>junegull.ttf</filename>
+            <filename>Questrial-Regular.ttf</filename>
             <size>44</size>
         </font>
 
         <!-- Required for system -->
         <font>
             <name>font13</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>30</size>
         </font>
         <font>
             <name>Clock</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoCondensed-Bold.ttf</filename>
             <size>130</size>
         </font>
 
         <!-- Testing Fonts -->
         <font>
             <name>font_debug</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoMono-Light.ttf</filename>
             <size>24</size>
             <aspect>0.8</aspect>
         </font>
@@ -269,120 +279,120 @@
         <!-- Title fonts -->
         <font>
             <name>font_info_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>128</size>
         </font>
         <font>
             <name>font_title_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>74</size>
         </font>
 
         <!-- Black Fonts -->
         <font>
             <name>font_huge_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>49</size>
         </font>
         <font>
             <name>font_head_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>37</size>
         </font>
         <font>
             <name>font_main_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_black</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_black</name>
             <style>uppercase</style>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Black.ttf</filename>
             <size>18</size>
         </font>
 
         <!-- Bold Fonts -->
         <font>
             <name>font_huge_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>49</size>
         </font>
         <font>
             <name>font_head_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>37</size>
         </font>
         <font>
             <name>font_main_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>18</size>
         </font>
 
         <!-- Standard Fonts -->
         <font>
             <name>font_midi</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>35</size>
         </font>
         <font>
             <name>font_main</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>30</size>
         </font>
         <font>
             <name>font_mini</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>font_hint</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>16</size>
             <linespacing>0.9</linespacing>
         </font>
         <font>
             <name>font_hint_button</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>16</size>
             <linespacing>1.15</linespacing>
         </font>
@@ -390,37 +400,37 @@
         <!-- Textbox Fonts -->
         <font>
             <name>font_huge_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>1.46</linespacing>
             <size>47</size>
         </font>
         <font>
             <name>font_midi_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>1.46</linespacing>
             <size>35</size>
         </font>
         <font>
             <name>font_main_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>1.14</linespacing>
             <size>30</size>
         </font>
         <font>
             <name>font_mini_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>1.24</linespacing>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny_plot</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>1.14</linespacing>
             <size>22</size>
         </font>
         <font>
             <name>font_mini_cond</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <linespacing>0.96</linespacing>
             <size>26</size>
         </font>
@@ -428,18 +438,18 @@
         <!-- Font for codec flag -->
         <font>
             <name>font_videocodec_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>Nick-Titling.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>font_infotag_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>LeagueSpartan-ExtraBold.ttf</filename>
             <size>22</size>
             <style>uppercase</style>
         </font>
         <font>
             <name>font_infotag</name>
-            <filename>junegull.ttf</filename>
+            <filename>LeagueSpartan-SemiBold.ttf</filename>
             <size>22</size>
             <style>uppercase</style>
         </font>
@@ -447,24 +457,24 @@
         <!-- Music visualisation scrolling text -->
         <font>
             <name>font_musicvis_biggest</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Light.ttf</filename>
             <size>230</size>
         </font>
         <font>
             <name>font_musicvis_bigger</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Light.ttf</filename>
             <size>130</size>
         </font>
         <font>
             <name>font_musicvis_big</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Light.ttf</filename>
             <size>80</size>
         </font>
 
         <!-- Arial font -->
         <font>
             <name>font_mini_arial</name>
-            <filename>junegull.ttf</filename>
+            <filename>Arial.ttf</filename>
             <size>25</size>
             <aspect>0.8</aspect>
         </font>
@@ -472,38 +482,48 @@
         <!-- Keyboard Symbol Font -->
         <font>
             <name>font_main_iconic</name>
-            <filename>junegull.ttf</filename>
+            <filename>iconmonstr-iconic-font.ttf</filename>
             <size>30</size>
+        </font>
+        <font>
+            <name>font_mini_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>26</size>
+        </font>
+        <font>
+            <name>font_tiny_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>22</size>
         </font>
 
         <!-- Kodi Logo Font -->
         <font>
             <name>font_logo</name>
-            <filename>junegull.ttf</filename>
-            <size>30</size>
+            <filename>Questrial-Regular.ttf</filename>
+            <size>24</size>
         </font>
         <font>
             <name>font_logo_large</name>
-            <filename>junegull.ttf</filename>
+            <filename>Questrial-Regular.ttf</filename>
             <size>44</size>
         </font>
 
         <!-- Required for system -->
         <font>
             <name>font13</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Regular.ttf</filename>
             <size>30</size>
         </font>
         <font>
             <name>Clock</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoNotoCondensed-Bold.ttf</filename>
             <size>130</size>
         </font>
 
         <!-- Testing Fonts -->
         <font>
             <name>font_debug</name>
-            <filename>junegull.ttf</filename>
+            <filename>RobotoMono-Light.ttf</filename>
             <size>24</size>
             <aspect>0.8</aspect>
         </font>
@@ -514,13 +534,13 @@
         <!-- Title fonts -->
         <font>
             <name>font_info_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>128</size>
         </font>
         <font>
             <name>font_title_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>74</size>
         </font>
@@ -528,44 +548,44 @@
         <!-- Black Fonts -->
         <font>
             <name>font_huge_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>49</size>
         </font>
         <font>
             <name>font_head_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>37</size>
         </font>
         <font>
             <name>font_main_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_black</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_black</name>
             <style>uppercase</style>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>18</size>
         </font>
@@ -573,43 +593,43 @@
         <!-- Bold Fonts -->
         <font>
             <name>font_huge_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>49</size>
         </font>
         <font>
             <name>font_head_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>42</size>
         </font>
         <font>
             <name>font_midi_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>37</size>
         </font>
         <font>
             <name>font_main_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>32</size>
         </font>
         <font>
             <name>font_mini_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>28</size>
         </font>
         <font>
             <name>font_tiny_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>24</size>
         </font>
         <font>
             <name>font_hint_bold</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</filename>
             <aspect>0.89</aspect>
             <size>18</size>
         </font>
@@ -617,38 +637,38 @@
         <!-- Standard Fonts -->
         <font>
             <name>font_midi</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>35</size>
         </font>
         <font>
             <name>font_main</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>30</size>
         </font>
         <font>
             <name>font_mini</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>22</size>
         </font>
         <font>
             <name>font_hint</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>16</size>
             <linespacing>0.9</linespacing>
         </font>
         <font>
             <name>font_hint_button</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <size>16</size>
             <linespacing>1.15</linespacing>
@@ -657,42 +677,42 @@
         <!-- Textbox Fonts -->
         <font>
             <name>font_huge_plot</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>1.46</linespacing>
             <size>47</size>
         </font>
         <font>
             <name>font_midi_plot</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>1.46</linespacing>
             <size>35</size>
         </font>
         <font>
             <name>font_main_plot</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>1.14</linespacing>
             <size>30</size>
         </font>
         <font>
             <name>font_mini_plot</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>1.24</linespacing>
             <size>26</size>
         </font>
         <font>
             <name>font_tiny_plot</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>1.14</linespacing>
             <size>22</size>
         </font>
         <font>
             <name>font_mini_cond</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</filename>
             <aspect>0.89</aspect>
             <linespacing>0.96</linespacing>
             <size>26</size>
@@ -701,18 +721,18 @@
         <!-- Font for codec flag -->
         <font>
             <name>font_videocodec_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>Nick-Titling.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>font_infotag_bold</name>
-            <filename>junegull.ttf</filename>
+            <filename>LeagueSpartan-ExtraBold.ttf</filename>
             <size>22</size>
             <style>uppercase</style>
         </font>
         <font>
             <name>font_infotag</name>
-            <filename>junegull.ttf</filename>
+            <filename>LeagueSpartan-SemiBold.ttf</filename>
             <size>22</size>
             <style>uppercase</style>
         </font>
@@ -720,76 +740,19 @@
         <!-- Music visualisation scrolling text -->
         <font>
             <name>font_musicvis_biggest</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Light.ttf</filename>
             <aspect>0.89</aspect>
             <size>230</size>
         </font>
         <font>
             <name>font_musicvis_bigger</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Light.ttf</filename>
             <aspect>0.89</aspect>
             <size>130</size>
         </font>
         <font>
             <name>font_musicvis_big</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
-            <aspect>0.89</aspect>
-            <size>80</size>
-        </font>
-
-        <!-- Arial font -->
-        <font>
-            <name>font_mini_arial</name>
-            <filename>junegull.ttf</filename>
-            <size>25</size>
-            <aspect>0.8</aspect>
-        </font>
-
-        <!-- Keyboard Symbol Font -->
-        <font>
-            <name>font_main_iconic</name>
-            <filename>junegull.ttf</filename>
-            <size>30</size>
-        </font>
-
-        <!-- Kodi Logo Font -->
-        <font>
-            <name>font_logo</name>
-            <filename>junegull.ttf</filename>
-            <size>30</size>
-        </font>
-        <font>
-            <name>font_logo_large</name>
-            <filename>junegull.ttf</filename>
-            <size>44</size>
-        </font>
-
-        <!-- Required for system -->
-        <font>
-            <name>font13</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
-            <aspect>0.89</aspect>
-            <size>30</size>
-        </font>
-        <font>
-            <name>Clock</name>
-            <filename>resource://resource.font.robotocjksc/junegull.ttf</filename>
-            <aspect>0.89</aspect>
-            <size>130</size>
-        </font>
-
-        <!-- Testing Fonts -->
-        <font>
-            <name>font_debug</name>
-            <filename>junegull.ttf</filename>
-            <size>24</size>
-            <aspect>0.8</aspect>
-        </font>
-    </fontset>
-
-</fonts>
-
-C-Light.ttf</filename>
+            <filename>resource://resource.font.robotocjksc/RobotoCJKSC-Light.ttf</filename>
             <aspect>0.89</aspect>
             <size>80</size>
         </font>
@@ -808,12 +771,22 @@ C-Light.ttf</filename>
             <filename>iconmonstr-iconic-font.ttf</filename>
             <size>30</size>
         </font>
+        <font>
+            <name>font_mini_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>26</size>
+        </font>
+        <font>
+            <name>font_tiny_iconic</name>
+            <filename>iconmonstr-iconic-font.ttf</filename>
+            <size>22</size>
+        </font>
 
-        <!-- Arctic Fuse Logo Font -->
+        <!-- Kodi Logo Font -->
         <font>
             <name>font_logo</name>
             <filename>Questrial-Regular.ttf</filename>
-            <size>30</size>
+            <size>24</size>
         </font>
         <font>
             <name>font_logo_large</name>

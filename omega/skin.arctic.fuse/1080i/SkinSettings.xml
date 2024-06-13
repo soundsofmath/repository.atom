@@ -169,10 +169,21 @@
                             <selected>Skin.HasSetting(SideMenu.EnableSearchAndOptions)</selected>
                             <visible>Container(3).HasFocus(1)</visible>
                         </include>
+                        <include content="Settings_Button" description="Replace search with discover">
+                            <param name="dialog">true</param>
+                            <param name="id">1006</param>
+                            <param name="dialog">false</param>
+                            <param name="control">radiobutton</param>
+                            <label>$LOCALIZE[31416] > $LOCALIZE[31445]</label>
+                            <onclick>Skin.ToggleSetting(SideMenu.SwapSearchForDiscover)</onclick>
+                            <selected>Skin.HasSetting(SideMenu.SwapSearchForDiscover)</selected>
+                            <visible>Skin.HasSetting(SideMenu.EnableSearchAndOptions)</visible>
+                            <visible>Container(3).HasFocus(1)</visible>
+                        </include>
 
                         <include content="Settings_Button" description="Home group indicator">
                             <param name="dialog">true</param>
-                            <param name="id">1006</param>
+                            <param name="id">1007</param>
                             <param name="dialog">false</param>
                             <param name="control">radiobutton</param>
                             <label>$LOCALIZE[31416] > $LOCALIZE[31347]</label>
@@ -183,15 +194,27 @@
 
                         <include content="Settings_Button" description="Expanded menu">
                             <param name="dialog">true</param>
-                            <param name="id">1007</param>
+                            <param name="id">1008</param>
                             <param name="dialog">false</param>
                             <param name="control">radiobutton</param>
                             <label>$LOCALIZE[31416] > $LOCALIZE[31444]</label>
                             <onclick>Skin.ToggleSetting(Navigation.OnBack.ExpandMenu)</onclick>
                             <selected>Skin.HasSetting(Navigation.OnBack.ExpandMenu)</selected>
                             <visible>Container(3).HasFocus(1)</visible>
-                            <visible>!Skin.String(Home.SideMenuCollapse,Topbar)</visible>
+                            <visible>!$EXP[Exp_HomeMenu_IsTopBar]</visible>
                             <visible>!Skin.String(Home.SideMenuCollapse,Never)</visible>
+                        </include>
+
+                        <include content="Settings_Button" description="Info dialog position">
+                            <param name="dialog">true</param>
+                            <param name="id">1009</param>
+                            <param name="dialog">false</param>
+                            <param name="control">button</param>
+                            <label>$LOCALIZE[31416] > $LOCALIZE[14116]</label>
+                            <label2>$VAR[Label_Setting_SideMenuInfoPosition]</label2>
+                            <onclick>Skin.ToggleSetting(Sidemenu.SwapInfoPosition)</onclick>
+                            <selected>!Skin.HasSetting(Sidemenu.SwapInfoPosition)</selected>
+                            <visible>Container(3).HasFocus(1)</visible>
                         </include>
 
                         <!-- Appearance -->
@@ -453,7 +476,7 @@
                             <label>$LOCALIZE[31324] > $LOCALIZE[31008]</label>
                             <label2>$INFO[Skin.String(Navigation.Global.OnDown)]</label2>
                             <visible>Container(3).HasFocus(4)</visible>
-                            <onclick>RunScript(script.skinvariables,run_dialog=select,preselect=$VAR[Path_PreSelect_Nav_OnDown],heading=$LOCALIZE[31324] > $LOCALIZE[31008],separator=||,list=Options||Search||Explore||Filter||Discover||Bump,"executebuiltin_0=Skin.SetString(Navigation.Global.OnDown,Options)","executebuiltin_1=Skin.SetString(Navigation.Global.OnDown,Search)","executebuiltin_2=Skin.SetString(Navigation.Global.OnDown,Explore)","executebuiltin_3=Skin.SetString(Navigation.Global.OnDown,Filter)","executebuiltin_4=Skin.SetString(Navigation.Global.OnDown,Discover)","executebuiltin_5=Skin.SetString(Navigation.Global.OnDown,Bump)")</onclick>
+                            <onclick>RunScript(script.skinvariables,run_dialog=select,preselect=$VAR[Path_PreSelect_Nav_OnDown],heading=$LOCALIZE[31324] > $LOCALIZE[31008],separator=||,list=$LOCALIZE[33063]||$LOCALIZE[31148]||$LOCALIZE[587]||$LOCALIZE[31446],"executebuiltin_0=Skin.SetString(Navigation.Global.OnDown,Options)","executebuiltin_1=Skin.SetString(Navigation.Global.OnDown,Explore)","executebuiltin_2=Skin.SetString(Navigation.Global.OnDown,Filter)","executebuiltin_3=Skin.SetString(Navigation.Global.OnDown,Bump)")</onclick>
                         </include>
                         <include content="Settings_Button" description="Menu options on left">
                             <param name="dialog">true</param>
@@ -462,7 +485,7 @@
                             <label>$LOCALIZE[33061] > $LOCALIZE[39162]</label>
                             <label2>$VAR[Label_Settings_NavigationMenuLeft]</label2>
                             <visible>Container(3).HasFocus(4)</visible>
-                            <visible>[Skin.String(Home.SideMenuCollapse,Library) | Skin.String(Home.SideMenuCollapse,Topbar) | Skin.String(Home.SideMenuCollapse,Hubs) | Skin.String(Home.SideMenuCollapse,Never)]</visible>
+                            <visible>[Skin.String(Home.SideMenuCollapse,Library) | $EXP[Exp_HomeMenu_IsTopBar] | Skin.String(Home.SideMenuCollapse,Hubs) | Skin.String(Home.SideMenuCollapse,Never)]</visible>
                             <onclick>Skin.ToggleSetting(Navigation.DisableOptionsOnLeft)</onclick>
                         </include>
                         <include content="Settings_Button" description="Menu options on left">
@@ -1306,7 +1329,7 @@
                             <top>20</top>
                             <height>600</height>
                             <autoscroll delay="6000" time="3000" repeat="10000">true</autoscroll>
-                            <label>To all my amazing supporters on Ko-fi, thank-you![CR][CR]A special thanks to this month's (and last month's because I missed an update!) supporters[CR]eesdil(x2) Bindou Rinicko booyakafoo(x2) Aemstel celiofk Omars-Comin Ivan Adamosborne83(x2) Bilyzaou[CR][CR]And to all my supporters over the years[CR]Blurayx Anthrax DanielSanchez Leo meesterexx roidy manfeed PizzaPino dolbel Tobby Kagz DrFireStarterBilly Qirat77 Darkmantom TomH richieNZ99 Brambo onlytanmoy reddituser aemstel mash2k3 chopp8 Homeslixe Rimma JacopoV ray2301 stelcodes eengert alARCTIC FUSEque Tee77 Ch3dd4rGoblin silentscreamiong Jshn Ian JP RZ daviddia5 Jathlon77 SteveF George sito1961 devolute f39 nevermind Shone TechXXX c0ncr3t0 tim Tiago IG Spork lhimo DROIDsheild Blacky Bindou Velimir ronaldoA8ff Omar_alhajlh pferreira1906 Andrea1998 Mr-7mdan pakraider Nipius Nathan valleycake adamosborne83 AdamNo2 realcopacetic Mardup 666jones AliasAllison916 Rara Omars-Comin abaillargeon Caretaker BigRedJim Blaire Zeplumber Timmyrocks jasongrey rien333 Tsweazy booyakafoo DROIDshield ambulancepilot ludovik35 SJ10 JS Ivan Subin Binky dstealth Dml2023 Campos anon Mongoose18 william_teele Mike Tjoe70s simcheftv xpeiro[CR][CR]If I've forgotten anyone please let me know!</label>
+                            <label>To all my amazing supporters on Ko-fi, thank-you![CR][CR]A special thanks to this month's (and last month's because I missed an update!) supporters[CR]eesdil(x2) Bindou Rinicko booyakafoo(x2) Aemstel celiofk Omars-Comin Ivan Adamosborne83(x2) Bilyzaou[CR][CR]And to all my supporters over the years[CR]Blurayx Anthrax DanielSanchez Leo meesterexx roidy manfeed PizzaPino dolbel Tobby Kagz DrFireStarterBilly Qirat77 Darkmantom TomH richieNZ99 Brambo onlytanmoy reddituser aemstel mash2k3 chopp8 Homeslixe Rimma JacopoV ray2301 stelcodes eengert alKODIque Tee77 Ch3dd4rGoblin silentscreamiong Jshn Ian JP RZ daviddia5 Jathlon77 SteveF George sito1961 devolute f39 nevermind Shone TechXXX c0ncr3t0 tim Tiago IG Spork lhimo DROIDsheild Blacky Bindou Velimir ronaldoA8ff Omar_alhajlh pferreira1906 Andrea1998 Mr-7mdan pakraider Nipius Nathan valleycake adamosborne83 AdamNo2 realcopacetic Mardup 666jones AliasAllison916 Rara Omars-Comin abaillargeon Caretaker BigRedJim Blaire Zeplumber Timmyrocks jasongrey rien333 Tsweazy booyakafoo DROIDshield ambulancepilot ludovik35 SJ10 JS Ivan Subin Binky dstealth Dml2023 Campos anon Mongoose18 william_teele Mike Tjoe70s simcheftv xpeiro[CR][CR]If I've forgotten anyone please let me know!</label>
                             <visible>Container(3).HasFocus(9)</visible>
                             <left>40</left>
                             <right>40</right>
@@ -1324,7 +1347,7 @@
                 <!-- <control type="group">
                     <left>80</left>
                     <bottom>80</bottom>
-                    <include>Settings_Arctic FuseVersion</include>
+                    <include>Settings_KodiVersion</include>
                 </control> -->
                 <control type="group">
                     <left>80</left>

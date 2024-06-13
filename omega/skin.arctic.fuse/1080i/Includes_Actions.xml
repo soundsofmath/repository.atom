@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Action_ActivateSearchDiscover">
+        <value condition="Skin.HasSetting(SideMenu.SwapSearchForDiscover)">ActivateWindow(1105)</value>
+        <value condition="!Window.IsVisible(1185)">ActivateWindow(1185)</value>
+        <value>SetFocus(9098)</value>
+    </variable>
+
     <include name="Action_ButtonMenu_Onload">
         <onload condition="String.IsEmpty(Skin.String(OptionsTiles.Layout))">Skin.SetString(OptionsTiles.Layout,$NUMBER[3])</onload>
 
@@ -26,6 +32,18 @@
         <value condition="$EXP[Exp_View_502]">503</value>
         <value condition="$EXP[Exp_View_52]">52</value>
         <value condition="$EXP[Exp_View_51]">51</value>
+        <value>50</value>
+    </variable>
+
+    <variable name="Action_View_ContainerID">
+        <value condition="$EXP[Exp_View_51]">51</value>
+        <value condition="$EXP[Exp_View_52]">52</value>
+        <value condition="$EXP[Exp_View_56]">56</value>
+        <value condition="$EXP[Exp_View_516]">516</value>
+        <value condition="$EXP[Exp_View_500]">500</value>
+        <value condition="$EXP[Exp_View_502]">502</value>
+        <value condition="$EXP[Exp_View_512]">512</value>
+        <value condition="$EXP[Exp_View_522]">522</value>
         <value>50</value>
     </variable>
 
@@ -188,6 +206,12 @@
         <value>SetFocus($VAR[Action_Hubs_MenuID])</value>
     </variable>
 
+    <variable name="Action_Hubs_Complex_SetFocus">
+        <value condition="Control.IsVisible(300) + !Integer.IsEqual(Container(300).NumItems,0)">SetFocus(300)</value>
+        <!-- <value>SetFocus(311)</value> -->
+        <value>$VAR[Action_Hubs_Menu_SetFocus]</value>
+    </variable>
+
     <variable name="Action_Hubs_Classic_SetFocus">
         <value condition="Control.IsVisible(100601) + !Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),100601) + !Control.HasFocus(100601)">SetFocus(100601)</value>
         <value>Action(PreviousMenu)</value>
@@ -238,11 +262,7 @@
     <include name="Action_View_Movement_OnUp">
         <param name="id">50</param>
         <definition>
-            <include content="Action_Widget_Top">
-                <param name="id">$PARAM[id]</param>
-                <param name="condition">[Skin.String(Navigation.Global.OnDown,Options) | Skin.String(Navigation.Global.OnDown,Filter) | Skin.String(Navigation.Global.OnDown,Bump)]</param>
-            </include>
-            <onup condition="![Skin.String(Navigation.Global.OnDown,Options) | Skin.String(Navigation.Global.OnDown,Filter) | Skin.String(Navigation.Global.OnDown,Bump)]">SetFocus(64)</onup>
+            <onup>SetFocus(9094)</onup>
         </definition>
     </include>
 
@@ -250,21 +270,13 @@
         <param name="condition">true</param>
         <param name="bump_id">330</param>
         <definition>
-            <!-- EndRow Hack: Bump focus back up to widget first -->
-            <!-- <ondown condition="$PARAM[condition] + !String.IsEmpty(Window.Property(EndRow.HasFocus))">Action(Up)</ondown> -->
 
             <!-- Options -->
             <ondown condition="$PARAM[condition] + String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Options)">ActivateWindow(1171)</ondown>
 
-            <!-- Search -->
-            <ondown condition="$PARAM[condition] + [[String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Search)] | Skin.String(Navigation.Hub.$PARAM[window_id].OnDown,Search)]">ActivateWindow(1185)</ondown>
-
             <!-- Filter -->
             <ondown condition="$PARAM[condition] + String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Filter)">SetProperty(List.ViewContainer,$INFO[System.CurrentControlId])</ondown>
             <ondown condition="$PARAM[condition] + String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Filter)">SetFocus(330)</ondown>
-
-            <!-- Discover -->
-            <ondown condition="$PARAM[condition] + String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Discover)">ActivateWindow(1105)</ondown>
 
             <!-- Bump -->
             <ondown condition="$PARAM[condition] + String.IsEmpty(Skin.String(Navigation.Hub.$PARAM[window_id].OnDown)) + Skin.String(Navigation.Global.OnDown,Bump)">SetProperty(List.ViewContainer,$INFO[System.CurrentControlId])</ondown>
@@ -283,12 +295,6 @@
             </include>
 
         </definition>
-    </include>
-
-    <include name="Action_UpdateSearchTerm">
-        <onclick>AlarmClock(SetSearchTerm,SetProperty(SearchTerm,$INFO[Control.GetLabel(9099).index(1)]),00:01,silent)</onclick>
-        <onfocus>AlarmClock(SetSearchTerm,SetProperty(SearchTerm,$INFO[Control.GetLabel(9099).index(1)]),00:01,silent)</onfocus>
-        <onunfocus>AlarmClock(SetSearchTerm,SetProperty(SearchTerm,$INFO[Control.GetLabel(9099).index(1)]),00:01,silent)</onunfocus>
     </include>
 
     <include name="Action_Recommendations_OnClick">
@@ -346,7 +352,8 @@
             <ondown>ClearProperty(List.ViewContainer.Left)</ondown>
             <ondown>ClearProperty(List.ViewContainer.Bump)</ondown>
 
-            <onleft condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">ActivateWindow(1185)</onleft>
+            <onleft condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">SetProperty(SearchDiscover.FocusFilter,True,Home)</onleft>
+            <onleft condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">$VAR[Action_ActivateSearchDiscover]</onleft>
             <onright condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">ActivateWindow(1170)</onright>
 
         </definition>
@@ -389,9 +396,8 @@
             <onback>ClearProperty(MediaFilterBase)</onback>
             <onback>ClearProperty(MediaFilterWall)</onback>
 
-            <onup condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions) + !Window.IsVisible(1185)">ActivateWindow(1185)</onup>
-            <onup condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions) + Window.IsVisible(1185)">SetFocus(9097)</onup>
-            <ondown condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">ActivateWindow(1170)</ondown>
+            <onup condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">SetFocus(309)</onup>
+            <ondown condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">SetFocus(308)</ondown>
 
         </definition>
     </include>
@@ -610,14 +616,22 @@
         </definition>
     </include>
 
+    <variable name="Action_Var_Search_ToMediaFilter_ReturnID">
+        <value>8000</value>
+    </variable>
+
     <variable name="Action_Var_Search_ToMediaFilter">
-        <value condition="!Skin.HasSetting(Navigation.MediaFilterWall) | Skin.HasSetting(Views.DisableItemPeek)">Runscript(script.skinvariables,"run_executebuiltin=special://skin/shortcuts/builtins/skinvariables-mediafilter-setfocus.json",use_rules,id=$VAR[Action_Search_ContentID],focus_id=9502,clear_prop_one=Null,clear_prop_two=Null)</value>
-        <value>Runscript(script.skinvariables,$VAR[MediaWall_Search_ScriptTypeDef],use_rules,id=$VAR[Action_Search_ContentID],use_mediafilter=True,win_prop=WallSlideIn,focus_id=9502,clear_prop_one=Null,clear_prop_two=Null)</value>
+        <value condition="!Skin.HasSetting(Navigation.MediaFilterWall) | Skin.HasSetting(Views.DisableItemPeek)">Runscript(script.skinvariables,"run_executebuiltin=special://skin/shortcuts/builtins/skinvariables-mediafilter-setfocus.json",use_rules,id=$VAR[Action_Search_ContentID],focus_id=$VAR[Action_Var_Search_ToMediaFilter_ReturnID],clear_prop_one=Null,clear_prop_two=Null)</value>
+        <value>Runscript(script.skinvariables,$VAR[MediaWall_Search_ScriptTypeDef],use_rules,id=$VAR[Action_Search_ContentID],use_mediafilter=True,win_prop=WallSlideIn,focus_id=$VAR[Action_Var_Search_ToMediaFilter_ReturnID],clear_prop_one=Null,clear_prop_two=Null)</value>
+    </variable>
+
+    <variable name="Action_Var_ToMediaFilter_ReturnID">
+        <value>9012</value>
     </variable>
 
     <variable name="Action_Var_ToMediaFilter">
-        <value condition="Window.IsVisible(MyPlaylist.xml) | !$EXP[Exp_FilterWall_IsViewtype] | !Skin.HasSetting(Navigation.MediaFilterWall) | Skin.HasSetting(Views.DisableItemPeek)">Runscript(script.skinvariables,"run_executebuiltin=special://skin/shortcuts/builtins/skinvariables-mediafilter-setfocus.json",use_rules,id=$VAR[Action_View_ContentID],focus_id=9012,clear_prop_one=Null,clear_prop_two=Null)</value>
-        <value>Runscript(script.skinvariables,$VAR[MediaWall_ScriptTypeDef],use_rules,id=$VAR[Action_View_ContentID],use_mediafilter=True,win_prop=WallSlideIn,focus_id=9012,clear_prop_one=Null,clear_prop_two=Null)</value>
+        <value condition="Window.IsVisible(MyPlaylist.xml) | !$EXP[Exp_FilterWall_IsViewtype] | !Skin.HasSetting(Navigation.MediaFilterWall) | Skin.HasSetting(Views.DisableItemPeek)">Runscript(script.skinvariables,"run_executebuiltin=special://skin/shortcuts/builtins/skinvariables-mediafilter-setfocus.json",use_rules,id=$VAR[Action_View_ContentID],focus_id=$VAR[Action_Var_ToMediaFilter_ReturnID],clear_prop_one=Null,clear_prop_two=Null)</value>
+        <value>Runscript(script.skinvariables,$VAR[MediaWall_ScriptTypeDef],use_rules,id=$VAR[Action_View_ContentID],use_mediafilter=True,win_prop=WallSlideIn,focus_id=$VAR[Action_Var_ToMediaFilter_ReturnID],clear_prop_one=Null,clear_prop_two=Null)</value>
     </variable>
 
 
@@ -631,20 +645,13 @@
             <!-- Filter -->
             <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Filter)">SetFocus(64)</ondown>
 
-            <!-- Discover -->
-            <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Discover) + !Window.IsVisible(1105)">ActivateWindow(1105)</ondown>
-            <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Discover) + Window.IsVisible(1105)">SetFocus(64)</ondown>
-
             <!-- Options -->
             <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Options)">ActivateWindow(1171)</ondown>
-
-            <!-- Search -->
-            <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Search) + Window.IsVisible(1105)">SetProperty(CustomSearchTerm,$ESCINFO[Control.GetLabel(9099).index(1)],Home)</ondown>
-            <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Search)">ActivateWindow(1185)</ondown>
 
             <!-- Bump -->
             <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Bump)">SetProperty(List.ViewContainer,$INFO[System.CurrentControlId])</ondown>
             <ondown condition="$PARAM[condition] + Skin.String(Navigation.Global.OnDown,Bump)">SetFocus(330)</ondown>
+
         </definition>
     </include>
 

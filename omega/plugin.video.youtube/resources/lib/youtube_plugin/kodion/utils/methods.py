@@ -18,12 +18,11 @@ import shutil
 from datetime import timedelta
 from math import floor, log
 
-from ..compatibility import byte_string_type, quote, string_type, xbmc, xbmcvfs
+from ..compatibility import byte_string_type, string_type, xbmc, xbmcvfs
 from ..logger import log_error
 
 
 __all__ = (
-    'create_path',
     'duration_to_seconds',
     'find_best_fit',
     'find_video_id',
@@ -85,13 +84,14 @@ def select_stream(context,
                   stream_data_list,
                   quality_map_override=None,
                   ask_for_quality=None,
-                  audio_only=None):
+                  audio_only=None,
+                  use_adaptive_formats=True):
     # sort - best stream first
     def _sort_stream_data(_stream_data):
         return _stream_data.get('sort', (0, 0))
 
     settings = context.get_settings()
-    use_adaptive = context.use_inputstream_adaptive()
+    use_adaptive = use_adaptive_formats and context.use_inputstream_adaptive()
     if ask_for_quality is None:
         ask_for_quality = context.get_settings().ask_for_video_quality()
     video_quality = settings.get_video_quality(quality_map_override)
@@ -173,24 +173,6 @@ def select_stream(context,
         context.log_debug('selected stream: %s' % log_data)
 
     return selected_stream_data
-
-
-def create_path(*args, **kwargs):
-    path = '/'.join([
-        part
-        for part in [
-            str(arg).strip('/').replace('\\', '/').replace('//', '/')
-            for arg in args
-        ] if part
-    ])
-    if path:
-        path = path.join(('/', '/'))
-    else:
-        return '/'
-
-    if kwargs.get('is_uri', False):
-        return quote(path)
-    return path
 
 
 def strip_html_from_text(text):
@@ -359,7 +341,7 @@ def jsonrpc(batch=None, **kwargs):
         return None
 
     do_response = False
-    for request_id, kwargs in enumerate(batch or (kwargs, )):
+    for request_id, kwargs in enumerate(batch or (kwargs,)):
         do_response = (not kwargs.pop('no_response', False)) or do_response
         if do_response and 'id' not in kwargs:
             kwargs['id'] = request_id

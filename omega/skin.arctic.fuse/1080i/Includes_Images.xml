@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Image_SearchDiscover">
+        <value condition="Skin.HasSetting(SideMenu.SwapSearchForDiscover)">special://skin/extras/icons/binoculars.png</value>
+        <value>special://skin/extras/icons/search.png</value>
+    </variable>
+
     <variable name="Image_Reviews">
         <value condition="!String.IsEmpty(ListItem.Property(special_icon))">$INFO[ListItem.Property(special_icon)]</value>
         <value>special://skin/extras/icons/comment.png</value>
@@ -36,15 +41,6 @@
         <value condition="Window.IsVisible(1107) + Skin.String(Navigation.Hub.1107.OnDown,Explore)">special://skin/extras/icons/arrow-down.png</value>
         <value condition="Window.IsVisible(1108) + Skin.String(Navigation.Hub.1108.OnDown,Explore)">special://skin/extras/icons/arrow-down.png</value>
         <value condition="Window.IsVisible(1109) + Skin.String(Navigation.Hub.1109.OnDown,Explore)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(Home) + Skin.String(Navigation.Hub.Home.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1101) + Skin.String(Navigation.Hub.1101.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1102) + Skin.String(Navigation.Hub.1102.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1103) + Skin.String(Navigation.Hub.1103.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1104) + Skin.String(Navigation.Hub.1104.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1106) + Skin.String(Navigation.Hub.1106.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1107) + Skin.String(Navigation.Hub.1107.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1108) + Skin.String(Navigation.Hub.1108.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
-        <value condition="Window.IsVisible(1109) + Skin.String(Navigation.Hub.1109.OnDown,Search)">special://skin/extras/icons/arrow-down.png</value>
         <value>$VAR[Image_NextMedia]</value>
     </variable>
 
@@ -53,11 +49,6 @@
         <value condition="String.IsEqual(Control.GetLabel(20),$LOCALIZE[10038])">special://skin/extras/icons/settings-advanced.png</value>
         <value condition="String.IsEqual(Control.GetLabel(20),$LOCALIZE[10037])">special://skin/extras/icons/settings-standard.png</value>
         <value condition="String.IsEqual(Control.GetLabel(20),$LOCALIZE[10036])">special://skin/extras/icons/settings-basic.png</value>
-    </variable>
-
-    <variable name="Image_Search_FilterClear">
-        <value condition="!Skin.HasSetting(Search.DisableDiscover)">special://skin/extras/icons/filter-small.png</value>
-        <value>special://skin/extras/icons/triangle-exclamation.png</value>
     </variable>
 
     <variable name="Image_SkinVariables_FilterName">

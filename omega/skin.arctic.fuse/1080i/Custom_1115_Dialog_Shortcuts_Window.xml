@@ -40,8 +40,7 @@
             <param name="spinnervisible">Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</param>
             <param name="visible_delay">1200</param>
             <param name="windowopen_condition">False</param>
-            <visible>!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</visible>
-            <visible>[[Container(300).IsUpdating | [Container(302).IsUpdating + Control.IsVisible(302)]] + !$EXP[Shortcuts_Window_Exp_WidgetsOnly]] | Container(303).IsUpdating | Container(304).IsUpdating</visible>
+            <param name="visible">[!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]] + [[[Container(300).IsUpdating | [Container(302).IsUpdating + Control.IsVisible(302)]] + !$EXP[Shortcuts_Window_Exp_WidgetsOnly]] | Container(303).IsUpdating | Container(304).IsUpdating]</param>
         </include>
 
     </controls>

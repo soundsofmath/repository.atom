@@ -1,3 +1,231 @@
+## v7.0.7
+### Fixed
+- Fixed not being able to re-refresh a directory listing that has already been refreshed
+- Fixed various window and history nagivation issues
+- Fixed http server idle shutdown not restarting if plugin is run but GUI is still idle
+- Additional improvements to busy dialog crash workaround
+- Workaround for new settings interface not updated correctly
+- Fix bookmarks icon background colour
+- Fix adding channel items directly to bookmarks
+- Fixes for player monitoring preventing item being marked as watched #746
+- Fix invalid pageToken error by removing jump from unsupported listings #715
+- Fix issues with post play refresh possibly causing loss of window history
+- Fix bug that could lead to plugin continuously reloading #608
+- Attempted fix for socket error 98 on Linux #746
+  - For error 10013 on Windows try either of the following:
+    - Start-Process powershell -Verb runAs -ArgumentList "net stop winnat; net start winnat"
+    - Start-Process powershell -Verb runAs -ArgumentList "net stop hns; net start hns"
+- Fix changing fanart type on My Subscriptions #751
+- Fix not using thumbnail fanart for channels/subscriptions/playlists when enabled #751
+- Fix My Subscriptions threading issues #529
+- Fix failing to login #759
+- Improve resource usage
+- Fix adding video to playlist #764
+- Fix plugin settings raising exception in Kodi 19-20 #769
+- Fix location icon background colour
+
+### Changed
+- Removed Settings > Advanced > Views > Show channel fanart
+  - Now included as option in Settings > Advanced > Views > Show fanart
+- MPEG-DASH for live streams only enabled by default in Kodi v21
+- Make better use of reuselanguageinvoker and various memory usage improvements
+- Use internal Kodi resume enable/disable for all playback #693
+  - For playback where Kodi does not prompt to resume, the plugin will also no longer resume
+  - For playback where Kodi does prompt to resume, the plugin will follow whatever is selected
+- Cached data for My Subscriptions and Related Videos will be replaced due to changes in cached data
+- Use channel fanart as backup to thumbnail fanart for channel items without thumbnails #751
+
+### New
+- Improvements to plugin page navigation #715
+  - Refresh added to context menu of Next page item
+  - Jump to page added to context menu of Next page item
+    - Can also be used in plugin url: plugin://plugin.video.youtube/goto_page/<PAGE>/<PATH> #317
+  - Home added to context menu of Next page item
+  - Quick search added to context menu of Next page item
+  - Next page item added to last page of directory list to go back to first page
+- Add option to use channel name as studio and/or cast #717
+  - Settings > Advanced > Views > Use channel name as
+- Add option to use best available thumbnail quality
+  - Settings > Advanced > Views > Thumbnail size
+- Added option to use video thumbnail as fanart in Settings > Advanced > Views > Show fanart #716
+  - Also added plugin url query parameter fanart_type to override settings
+    - Can be used to set fanart for specific widgets only: plugin://plugin.video.youtube/<PATH>?fanart_type=<0/1/2/3>
+    - Allowable values are the same as the setting:
+      - 0: No fanart
+      - 1: Default
+      - 2: Channel
+      - 3: Thumbnail
+- Enable syncing of plugin watched state with Kodi watched state when using Kodi mark as (un)watched #709
+- Add website link to video descriptions #721
+- Update video filtering for live streams #755
+  - Add options to filter/hide the following types of videos
+    - shorts
+    - upcoming videos (either live streams or premieres)
+    - upcoming live streams
+    - currently live streams
+    - upcoming premieres
+    - completed videos (previously either live or premieres)
+  - No currently live streams will be shown in searches, only in the Live subfolder
+  - No currently live or upcoming live streams will be shown in channels, only in the Live subfolder
+    - Should also be much faster
+  - Completed stream will continue to be shown in listings unless filtered out
+  - Live subfolders will not be filtered by default
+  - Filter selection dialog has option to also filter the Live subfolder
+  - Most other listings will be filtered using whatever options have been set
+
+## v7.0.7+beta.3
+### Fixed
+- Fix plugin settings raising exception in Kodi 19-20 #769
+
+## v7.0.7+beta.2
+### Fixed
+- Fix invalid pageToken error by removing jump from unsupported listings #715
+- Fix issues with post play refresh possibly causing loss of window history
+- Fix bug that could lead to plugin continuously reloading #608
+- Attempted fix for socket error 98 on Linux #746
+  - For error 10013 on Windows try either of the following:
+    - Start-Process powershell -Verb runAs -ArgumentList "net stop winnat; net start winnat"
+    - Start-Process powershell -Verb runAs -ArgumentList "net stop hns; net start hns"
+- Fix changing fanart type on My Subscriptions #751
+- Fix not using thumbnail fanart for channels/subscriptions/playlists when enabled #751
+- Fix My Subscriptions threading issues #529
+- Fix failing to login #759
+- Improve resource usage
+- Fix adding video to playlist #764
+
+### Changed
+- Use internal Kodi resume enable/disable for all playback #693
+  - For playback where Kodi does not prompt to resume, the plugin will also no longer resume
+  - For playback where Kodi does prompt to resume, the plugin will follow whatever is selected
+- Cached data for My Subscriptions and Related Videos will be replaced due to changes in cached data
+- Use channel fanart as backup to thumbnail fanart for channel items without thumbnails #751
+
+### New
+- Enable syncing of plugin watched state with Kodi watched state when using Kodi mark as (un)watched #709
+- Add website link to video descriptions #721
+- Update video filtering for live streams #755
+  - Add options to filter/hide the following types of videos
+    - shorts
+    - upcoming videos (either live streams or premieres)
+    - upcoming live streams
+    - currently live streams
+    - upcoming premieres
+    - completed videos (previously either live or premieres)
+  - No currently live streams will be shown in searches, only in the Live subfolder
+  - No currently live or upcoming live streams will be shown in channels, only in the Live subfolder
+    - Should also be much faster
+  - Completed stream will continue to be shown in listings unless filtered out
+  - Live subfolders will not be filtered by default
+  - Filter selection dialog has option to also filter the Live subfolder
+  - Most other listings will be filtered using whatever options have been set
+
+## v7.0.7+beta.1
+### Fixed
+- Fixed not being able to re-refresh a directory listing that has already been refreshed
+- Fixed various window and history nagivation issues
+- Fixed http server idle shutdown not restarting if plugin is run but GUI is still idle
+- Additional improvements to busy dialog crash workaround
+- Workaround for new settings interface not updated correctly
+- Fix bookmarks icon background colour
+- Fix adding channel items directly to bookmarks
+- Fixes for player monitoring preventing item being marked as watched #746
+
+### Changed
+- Removed Settings > Advanced > Views > Show channel fanart
+  - Now included as option in Settings > Advanced > Views > Show fanart
+- MPEG-DASH for live streams only enabled by default in Kodi v21
+- Make better use of reuselanguageinvoker and various memory usage improvements
+
+### New
+- Improvements to plugin page navigation #715
+  - Refresh added to context menu of Next page item
+  - Jump to page added to context menu of Next page item
+    - Can also be used in plugin url: plugin://plugin.video.youtube/goto_page/<PAGE>/<PATH> #317
+  - Home added to context menu of Next page item
+  - Quick search added to context menu of Next page item
+  - Next page item added to last page of directory list to go back to first page
+- Add option to use channel name as studio and/or cast #717
+  - Settings > Advanced > Views > Use channel name as
+- Add option to use best available thumbnail quality
+  - Settings > Advanced > Views > Thumbnail size
+- Added option to use video thumbnail as fanart in Settings > Advanced > Views > Show fanart #716
+  - Also added plugin url query parameter fanart_type to override settings
+    - Can be used to set fanart for specific widgets only: plugin://plugin.video.youtube/<PATH>?fanart_type=<0/1/2/3>
+    - Allowable values are the same as the setting:
+      - 0: No fanart
+      - 1: Default
+      - 2: Channel
+      - 3: Thumbnail
+
+## v7.0.6.3
+### Fixed
+- Improve updating containers and (re)loading windows #681
+- Fix refreshing video listing also forcing next pages to refresh when loaded
+- Fix overflow error resulting from parsing hashtags as episode numbers
+- Fix 6s delay on video playback start
+- Further fixes for multiple busy dialog crash workaround
+  - Possibly fix issues reported in comments of #704
+- Update error checks to avoid unnecessary retries of player requests
+- Fix adding and viewing items to internal bookmarks and watchlater list #720
+- Fix error checks to prevent prematurely stopping retries of player requests #730
+- Disable using android client player request by default #737
+
+### Changed
+- Setup Wizard default settings now disable pre-downloading subtitles if MPEG-DASH is enabled
+- Ask for quality, Play with subtitles, Play audio only context menu items only displayed if associated setting is not already enabled
+- Only make extra request for subtitles for Android client when all subtitle languages are enabled
+- Overhaul alternative player support due to Kodi changes and also improve external player support
+- Make "Support alternative player" and "Use YouTube website urls with default player" mutually exclusive options #692
+- Enable OPUS audio by default #537
+- Enable MPEG-DASH for live streams by default #680
+- Setup Wizard will prompt to run when plugin first opens after updating, in order to update default settings
+- http server will shutdown on idle timeout #699
+- Update client details used for player requests
+
+### New
+- Add recommended settings in Setup Wizard for Raspberry Pi 1/2 class devices #688
+- Added Bookmarks
+  - Save videos, channels, playlists to Bookmarks
+  - Bookmarked channels will be checked for updates in My Subscriptions
+  - Data is stored locally, without needing to be logged in
+
+## v7.0.6+beta.3
+### Fixed
+- Fix adding and viewing items to internal bookmarks and watchlater list #720
+
+## v7.0.6+beta.2
+### Fixed
+- Further fixes for multiple busy dialog crash workaround
+  - Possibly fix issues reported in comments of #704
+- Update error checks to avoid unnecessary retries of player requests
+
+### Changed
+- Make "Support alternative player" and "Use YouTube website urls with default player" mutually exclusive options #692
+- Enable OPUS audio by default #537
+- Enable MPEG-DASH for live streams by default #680
+- Setup Wizard will prompt to run when plugin first opens after updating, in order to update default settings
+- http server will shutdown on idle timeout #699
+
+## v7.0.6+beta.1
+### Fixed
+- Improve updating containers and (re)loading windows #681
+- Fix refreshing video listing also forcing next pages to refresh when loaded
+- Fix overflow error resulting from parsing hashtags as episode numbers
+- Fix 6s delay on video playback start
+
+### Changed
+- Setup Wizard default settings now disable pre-downloading subtitles if MPEG-DASH is enabled
+- Ask for quality, Play with subtitles, Play audio only context menu items only displayed if associated setting is not already enabled
+- Only make extra request for subtitles for Android client when all subtitle languages are enabled
+- Overhaul alternative player support due to Kodi changes and also improve external player support
+
+### New
+- Add recommended settings in Setup Wizard for Raspberry Pi 1/2 class devices #688
+- Added Bookmarks
+  - Save videos, channels, playlists to Bookmarks
+  - Bookmarked channels will be checked for updates in My Subscriptions
+  - Data is stored locally, without needing to be logged in
+
 ## v7.0.5
 ### Fixed
 - Fix typo causing no fractional frame rate hinting to fail #679

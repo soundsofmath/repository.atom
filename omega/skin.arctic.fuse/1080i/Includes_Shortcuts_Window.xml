@@ -543,7 +543,7 @@
                 <textoffsetx>40</textoffsetx>
                 <textoffsety>17</textoffsety>
                 <font>font_main</font>
-                <onclick>RunScript(script.skinvariables,run_dialog=select,heading=$LOCALIZE[31324] > $LOCALIZE[31008],separator=||,list=Default||Search||Explore,"executebuiltin_0=Skin.Reset(Navigation.$INFO[Container(2804).ListItem.Property(value)].OnDown)","executebuiltin_1=Skin.SetString(Navigation.$INFO[Container(2804).ListItem.Property(value)].OnDown,Search)","executebuiltin_2=Skin.SetString(Navigation.$INFO[Container(2804).ListItem.Property(value)].OnDown,Explore)")</onclick>
+                <onclick>RunScript(script.skinvariables,run_dialog=select,heading=$LOCALIZE[31324] > $LOCALIZE[31008],separator=||,list=$LOCALIZE[571]||$LOCALIZE[31148],"executebuiltin_0=Skin.Reset(Navigation.$INFO[Container(2804).ListItem.Property(value)].OnDown)","executebuiltin_1=Skin.SetString(Navigation.$INFO[Container(2804).ListItem.Property(value)].OnDown,Explore)")</onclick>
                 <texturenofocus />
             </control>
 

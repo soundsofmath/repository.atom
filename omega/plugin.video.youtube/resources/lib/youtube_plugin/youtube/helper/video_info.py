@@ -19,6 +19,7 @@ from traceback import format_stack
 from .ratebypass import ratebypass
 from .signature.cipher import Cipher
 from .subtitles import Subtitles
+from .utils import THUMB_TYPES
 from ..client.request_client import YouTubeRequestClient
 from ..youtube_exceptions import InvalidJSON, YouTubeException
 from ...kodion.compatibility import (
@@ -756,7 +757,8 @@ class VideoInfo(YouTubeRequestClient):
         # Manually configured cookies to avoid cookie consent redirect
         cookies = {'SOCS': 'CAISAiAD'}
 
-        client = self.build_client(client_name)
+        client_data = {'json': {'videoId': self.video_id}}
+        client = self.build_client(client_name, client_data)
 
         result = self.request(
             url,
@@ -839,7 +841,8 @@ class VideoInfo(YouTubeRequestClient):
             return cached
 
         client_name = 'web'
-        client = self.build_client(client_name)
+        client_data = {'json': {'videoId': self.video_id}}
+        client = self.build_client(client_name, client_data)
 
         result = self.request(
             js_url,
@@ -896,7 +899,8 @@ class VideoInfo(YouTubeRequestClient):
                 del headers['Authorization']
         else:
             client_name = 'web'
-            headers = self.build_client(client_name)['headers']
+            client_data = {'json': {'videoId': self.video_id}}
+            headers = self.build_client(client_name, client_data)['headers']
         curl_headers = self._make_curl_headers(headers, cookies=None)
 
         result = self.request(
@@ -917,7 +921,7 @@ class VideoInfo(YouTubeRequestClient):
         if meta_info is None:
             meta_info = {'video': {},
                          'channel': {},
-                         'images': {},
+                         'thumbnails': {},
                          'subtitles': []}
 
         if playback_stats is None:
@@ -954,7 +958,8 @@ class VideoInfo(YouTubeRequestClient):
 
             yt_format = self.FORMAT.get(itag)
             if not yt_format:
-                self._context.log_debug('Unknown itag: {0}'.format(itag))
+                self._context.log_debug('Unknown itag: {itag}\n{stream}'
+                                        .format(itag=itag, stream=match[0]))
                 continue
 
             stream = {'url': playlist_url,
@@ -975,13 +980,15 @@ class VideoInfo(YouTubeRequestClient):
             if 'Authorization' in headers:
                 del headers['Authorization']
         else:
-            headers = self.build_client('web')['headers']
+            client_name = 'web'
+            client_data = {'json': {'videoId': self.video_id}}
+            headers = self.build_client(client_name, client_data)['headers']
         curl_headers = self._make_curl_headers(headers, cookies=None)
 
         if meta_info is None:
             meta_info = {'video': {},
                          'channel': {},
-                         'images': {},
+                         'thumbnails': {},
                          'subtitles': []}
         if playback_stats is None:
             playback_stats = {}
@@ -998,13 +1005,14 @@ class VideoInfo(YouTubeRequestClient):
 
             if not url:
                 continue
-            url = self._process_url_params(url)
+            url, _ = self._process_url_params(url)
 
             itag = str(stream_map['itag'])
             stream_map['itag'] = itag
             yt_format = self.FORMAT.get(itag)
             if not yt_format:
-                self._context.log_debug('Unknown itag: {0}'.format(itag))
+                self._context.log_debug('Unknown itag: {itag}\n{stream}'
+                                        .format(itag=itag, stream=stream_map))
                 continue
             if (yt_format.get('discontinued') or yt_format.get('unsupported')
                     or (yt_format.get('dash/video')
@@ -1065,12 +1073,12 @@ class VideoInfo(YouTubeRequestClient):
 
     def _process_url_params(self, url):
         if not url:
-            return url
+            return url, None
 
         parts = urlsplit(url)
         query = parse_qs(parts.query)
         new_query = {}
-        update_url = False
+        update_url = {}
 
         if self._calculate_n and 'n' in query:
             self._player_js = self._player_js or self._get_player_js()
@@ -1091,12 +1099,35 @@ class VideoInfo(YouTubeRequestClient):
             content_length = query.get('clen', [''])[0]
             new_query['range'] = '0-{0}'.format(content_length)
 
+        if 'mn' in query and 'fvip' in query:
+            fvip = query['fvip'][0]
+            primary, _, secondary = query['mn'][0].partition(',')
+            prefix, separator, server = parts.netloc.partition('---')
+            if primary and secondary:
+                update_url = {
+                    'netloc': separator.join((
+                        re.sub(r'\d+', fvip, prefix),
+                        server.replace(primary, secondary),
+                    )),
+                }
+
         if new_query:
             query.update(new_query)
-        elif not update_url:
-            return url
+            query = urlencode(query, doseq=True)
+        elif update_url:
+            query = parts.query
+        else:
+            return url, None
 
-        return parts._replace(query=urlencode(query, doseq=True)).geturl()
+        if update_url:
+            return (
+                parts._replace(query=query).geturl(),
+                parts._replace(query=query, **update_url).geturl(),
+            )
+        return (
+            parts._replace(query=query).geturl(),
+            None,
+        )
 
     def _get_error_details(self, playability_status, details=None):
         if not playability_status:
@@ -1140,15 +1171,22 @@ class VideoInfo(YouTubeRequestClient):
         client_name = reason = status = None
         client = playability_status = result = None
 
+        reasons = (
+            self._context.localize(574, 'country').lower(),
+            # not available error appears to vary by language/region/video type
+            # disable this check for now
+            # self._context.localize(10005, 'not available').lower(),
+        )
+
         client_data = {'json': {'videoId': video_id}}
         if self._access_token:
             client_data['_access_token'] = self._access_token
 
-        for _ in range(2):
+        while 1:
             for client_name in self._prioritised_clients:
                 if status and status != 'OK':
                     self._context.log_warning(
-                        'Failed to retrieved video info - '
+                        'Failed to retrieve video info - '
                         'video_id: {0}, client: {1}, auth: {2},\n'
                         'status: {3}, reason: {4}'.format(
                             video_id,
@@ -1159,6 +1197,8 @@ class VideoInfo(YouTubeRequestClient):
                         )
                     )
                 client = self.build_client(client_name, client_data)
+                if not client:
+                    continue
 
                 result = self.request(
                     video_info_url,
@@ -1188,14 +1228,18 @@ class VideoInfo(YouTubeRequestClient):
                     # Geo-blocked video with error reasons like:
                     # "This video contains content from XXX, who has blocked it in your country on copyright grounds"
                     # "The uploader has not made this video available in your country"
-                    if status == 'UNPLAYABLE' and 'country' in reason:
+                    # Reason language will vary based on Accept-Language and
+                    # client hl, Kodi localised language is used for comparison
+                    # but may not match reason language
+                    if (status == 'UNPLAYABLE'
+                            and any(why in reason for why in reasons)):
                         break
                     if status != 'ERROR':
                         continue
                     # This is used to check for error like:
                     # "The following content is not available on this app."
-                    # Text will vary depending on Accept-Language and client hl
-                    # YouTube support url is checked instead
+                    # Reason language will vary based on Accept-Language and
+                    # client hl, so YouTube support url is checked instead
                     url = self._get_error_details(
                         playability_status,
                         details=(
@@ -1211,9 +1255,9 @@ class VideoInfo(YouTubeRequestClient):
                     if url and url.startswith('//support.google.com/youtube/answer/12318250'):
                         status = 'CONTENT_NOT_AVAILABLE_IN_THIS_APP'
                         continue
-                if video_id != video_details.get('videoId'):
+                if video_details and video_id != video_details.get('videoId'):
                     status = 'CONTENT_NOT_AVAILABLE_IN_THIS_APP'
-                    reason = 'WATCH_ON_LATEST_VERSION_OF_YOUTUBE'
+                    reason = 'Watch on the latest version of YouTube'
                     continue
                 break
             # Only attempt to remove Authorization header if clients iterable
@@ -1293,15 +1337,13 @@ class VideoInfo(YouTubeRequestClient):
                                    .encode('raw_unicode_escape')
                                    .decode('raw_unicode_escape')),
             },
-            'images': {
-                'high': ('https://i.ytimg.com/vi/{0}/hqdefault{1}.jpg'
-                         .format(video_id, thumb_suffix)),
-                'medium': ('https://i.ytimg.com/vi/{0}/mqdefault{1}.jpg'
-                           .format(video_id, thumb_suffix)),
-                'standard': ('https://i.ytimg.com/vi/{0}/sddefault{1}.jpg'
-                             .format(video_id, thumb_suffix)),
-                'default': ('https://i.ytimg.com/vi/{0}/default{1}.jpg'
-                            .format(video_id, thumb_suffix)),
+            'thumbnails': {
+                thumb_type: {
+                    'url': thumb['url'].format(video_id, thumb_suffix),
+                    'size': thumb['size'],
+                    'ratio': thumb['ratio'],
+                }
+                for thumb_type, thumb in THUMB_TYPES.items()
             },
             'subtitles': None,
         }
@@ -1327,7 +1369,7 @@ class VideoInfo(YouTubeRequestClient):
             }
 
         use_mpd_vod = _settings.use_mpd_videos()
-        httpd_running = _settings.use_isa() and httpd_status()
+        httpd_running = _settings.use_isa() and httpd_status(self._context)
 
         pa_li_info = streaming_data.get('licenseInfos', [])
         if any(pa_li_info) and not httpd_running:
@@ -1340,7 +1382,7 @@ class VideoInfo(YouTubeRequestClient):
                 continue
             self._context.log_debug('Found widevine license url: {0}'
                                     .format(url))
-            address, port = get_connect_address()
+            address, port = get_connect_address(self._context)
             license_info = {
                 'url': url,
                 'proxy': 'http://{address}:{port}{path}||R{{SSM}}|'.format(
@@ -1372,7 +1414,7 @@ class VideoInfo(YouTubeRequestClient):
             self._player_js = self._get_player_js()
             self._cipher = Cipher(self._context, javascript=self._player_js)
 
-        manifest_url = main_stream = None
+        manifest_url = None
 
         if live_type == 'isa_mpd' and 'dashManifestUrl' in streaming_data:
             manifest_url = streaming_data['dashManifestUrl']
@@ -1401,9 +1443,16 @@ class VideoInfo(YouTubeRequestClient):
         else:
             live_type = None
 
-        if not live_type and client.get('_query_subtitles'):
+        subtitles = Subtitles(self._context, video_id)
+        query_subtitles = client.get('_query_subtitles')
+        if (not live_type or live_dvr) and (
+                query_subtitles is True
+                or (query_subtitles
+                    and subtitles.sub_selection == subtitles.LANG_ALL)):
             for client_name in ('smarttv_embedded', 'web', 'android'):
                 caption_client = self.build_client(client_name, client_data)
+                if not caption_client:
+                    continue
                 result = self.request(
                     video_info_url,
                     'POST',
@@ -1424,15 +1473,10 @@ class VideoInfo(YouTubeRequestClient):
             captions = result.get('captions')
             caption_client = client
         if captions:
-            captions = Subtitles(
-                self._context,
-                video_id,
-                captions,
-                caption_client['headers']
-            )
-            default_lang = captions.get_lang_details()
-            subs_data = captions.get_subtitles()
-            if subs_data and (not use_mpd_vod or captions.pre_download):
+            subtitles.load(captions, caption_client['headers'])
+            default_lang = subtitles.get_lang_details()
+            subs_data = subtitles.get_subtitles()
+            if subs_data and (not use_mpd_vod or subtitles.pre_download):
                 meta_info['subtitles'] = [
                     subtitle['url'] for subtitle in subs_data.values()
                 ]
@@ -1607,11 +1651,11 @@ class VideoInfo(YouTubeRequestClient):
                     mime_group = '{0}_{1}.{2}'.format(
                         mime_type, language_code, role_type
                     )
-                    if (language_code == self._language_base and (
+                    if language_code == self._language_base and (
                             not preferred_audio['id']
                             or role == 'main'
                             or role_type > preferred_audio['role_type']
-                    )):
+                    ):
                         preferred_audio = {
                             'id': '_{0}.{1}'.format(language_code, role_type),
                             'language_code': language_code,
@@ -1698,15 +1742,15 @@ class VideoInfo(YouTubeRequestClient):
                 data[quality_group] = {}
 
             url = unquote(url)
-            url = self._process_url_params(url)
-            url = (url.replace("&", "&amp;")
-                   .replace('"', "&quot;")
-                   .replace("<", "&lt;")
-                   .replace(">", "&gt;"))
+            primary_url, secondary_url = self._process_url_params(url)
+            primary_url = (primary_url.replace("&", "&amp;")
+                           .replace('"', "&quot;")
+                           .replace("<", "&lt;")
+                           .replace(">", "&gt;"))
 
             details = {
                 'mimeType': mime_type,
-                'baseUrl': url,
+                'baseUrl': primary_url,
                 'mediaType': media_type,
                 'container': container,
                 'codecs': codecs,
@@ -1731,6 +1775,12 @@ class VideoInfo(YouTubeRequestClient):
                 'sampleRate': sample_rate,
                 'channels': channels,
             }
+            if secondary_url:
+                secondary_url = (secondary_url.replace("&", "&amp;")
+                                 .replace('"', "&quot;")
+                                 .replace("<", "&lt;")
+                                 .replace(">", "&gt;"))
+                details['baseUrlSecondary'] = secondary_url
             data[mime_group][itag] = data[quality_group][itag] = details
 
         if not video_data:
@@ -1810,7 +1860,7 @@ class VideoInfo(YouTubeRequestClient):
 
                 skip_group = (
                     new_stream['height'] <= previous_stream['height']
-                ) if media_type == 'video' else (
+                    if media_type == 'video' else
                     new_stream['channels'] <= previous_stream['channels']
                 )
             else:
@@ -1819,7 +1869,7 @@ class VideoInfo(YouTubeRequestClient):
 
                 skip_group = (
                     new_stream['height'] == previous_stream['height']
-                ) if media_type == 'video' else (
+                    if media_type == 'video' else
                     2 == new_stream['channels'] == previous_stream['channels']
                 )
 
@@ -1827,7 +1877,7 @@ class VideoInfo(YouTubeRequestClient):
                 skip_group
                 and new_stream['fps'] == previous_stream['fps']
                 and new_stream['hdr'] == previous_stream['hdr']
-            ) if media_type == 'video' else (
+                if media_type == 'video' else
                 skip_group
                 and new_stream['langCode'] == previous_stream['langCode']
                 and new_stream['role'] == previous_stream['role']
@@ -1881,7 +1931,7 @@ class VideoInfo(YouTubeRequestClient):
             if group.startswith(mime_type) and 'auto' in stream_select:
                 label = '{0} [{1}]'.format(
                     stream['langName']
-                        or self._context.localize('stream.automatic'),
+                    or self._context.localize('stream.automatic'),
                     stream['label']
                 )
                 if stream == main_stream[media_type]:
@@ -1972,7 +2022,9 @@ class VideoInfo(YouTubeRequestClient):
                         '/>\n'
                     # Representation Label element is not used by ISA
                     '\t\t\t\t<Label>{label}</Label>\n'
-                    '\t\t\t\t<BaseURL>{baseUrl}</BaseURL>\n'
+                    '\t\t\t\t<BaseURL>{baseUrl}</BaseURL>\n' +
+                    ('\t\t\t\t<BaseURL>{baseUrlSecondary}</BaseURL>\n'
+                     if 'baseUrlSecondary' in stream else '') +
                     '\t\t\t\t<SegmentBase indexRange="{indexRange}">\n'
                     '\t\t\t\t\t<Initialization range="{initRange}"/>\n'
                     '\t\t\t\t</SegmentBase>\n'
@@ -1996,7 +2048,9 @@ class VideoInfo(YouTubeRequestClient):
                         '>\n'
                     # Representation Label element is not used by ISA
                     '\t\t\t\t<Label>{label}</Label>\n'
-                    '\t\t\t\t<BaseURL>{baseUrl}</BaseURL>\n'
+                    '\t\t\t\t<BaseURL>{baseUrl}</BaseURL>\n' +
+                    ('\t\t\t\t<BaseURL>{baseUrlSecondary}</BaseURL>\n'
+                     if 'baseUrlSecondary' in stream else '') +
                     '\t\t\t\t<SegmentBase indexRange="{indexRange}">\n'
                     '\t\t\t\t\t<Initialization range="{initRange}"/>\n'
                     '\t\t\t\t</SegmentBase>\n'
@@ -2075,7 +2129,7 @@ class VideoInfo(YouTubeRequestClient):
                                     .format(file=filepath))
             success = False
         if success:
-            address, port = get_connect_address()
+            address, port = get_connect_address(self._context)
             return 'http://{address}:{port}{path}{file}'.format(
                 address=address,
                 port=port,

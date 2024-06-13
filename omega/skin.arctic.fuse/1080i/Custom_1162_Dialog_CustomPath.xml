@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="1162">
     <defaultcontrol always="true">450</defaultcontrol>
-    <!-- <onload>SetProperty(Path,videodb://movies/titles)</onload>
-    <onload>SetProperty(Target,videos)</onload>
-    <onload>SetProperty(Header,Titles)</onload> -->
     <onunload>ClearProperty(Path,1162)</onunload>
     <onunload>ClearProperty(Target,1162)</onunload>
     <onunload>ClearProperty(Header,1162)</onunload>
@@ -17,22 +14,17 @@
 
         <include condition="!String.IsEmpty(Window(Home).Property(CustomDialog1162.Expanded))">DialogCustom1162_Main</include>
 
-
-        <control type="group">
-            <right>90</right>
-            <centertop>100</centertop>
-            <height>40</height>
-            <width>40</width>
-            <visible>Container(450).IsUpdating</visible>
-            <include content="Animation_Fade_In">
-                <param name="type">visible</param>
-                <param name="delay">400</param>
-            </include>
-            <include content="Furniture_Busy_Icon">
-                <param name="hasspinner">true</param>
-                <param name="spinspinner">true</param>
-            </include>
-        </control>
+        <include content="Furniture_Busy">
+            <param name="hasspinner">true</param>
+            <param name="spinspinner">true</param>
+            <param name="icon">special://skin/extras/icons/kodi.png</param>
+            <param name="hasbackground">Skin.HasSetting(ToastNotifications.Tabbed)</param>
+            <param name="haslabel">Skin.HasSetting(ToastNotifications.Tabbed)</param>
+            <param name="spinnervisible">Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</param>
+            <param name="visible_delay">400</param>
+            <param name="windowopen_condition">False</param>
+            <param name="visible">[Container(450).IsUpdating]</param>
+        </include>
 
     </controls>
 </window>

@@ -10,8 +10,9 @@
 
 from __future__ import absolute_import, division, unicode_literals
 
+import atexit
 import sys
-import weakref
+from weakref import proxy
 
 from ..abstract_context import AbstractContext
 from ...compatibility import (
@@ -22,7 +23,7 @@ from ...compatibility import (
     xbmcaddon,
     xbmcplugin,
 )
-from ...constants import ADDON_ID, content, sort
+from ...constants import ABORT_FLAG, ADDON_ID, WAKEUP, content, sort
 from ...player import XbmcPlayer, XbmcPlaylist
 from ...settings import XbmcPluginSettings
 from ...ui import XbmcContextUI
@@ -38,6 +39,8 @@ from ...utils import (
 
 
 class XbmcContext(AbstractContext):
+    _KODI_UI_SUBTITLE_OPTIONS = None
+
     LOCAL_MAP = {
         'api.id': 30202,
         'api.key': 30201,
@@ -48,6 +51,12 @@ class XbmcContext(AbstractContext):
         'archive': 30105,
         'are_you_sure': 30703,
         'auto_remove_watch_later': 30515,
+        'bookmarks': 30100,
+        'bookmarks.add': 30101,
+        'bookmarks.add.channel': 30803,
+        'bookmarks.clear': 30801,
+        'bookmarks.clear.confirm': 30802,
+        'bookmarks.remove': 20404,
         'browse_channels': 30512,
         'cancel': 30615,
         'channels': 30500,
@@ -85,9 +94,6 @@ class XbmcContext(AbstractContext):
         'failed.watch_later.retry': 30614,
         'failed.watch_later.retry.2': 30709,
         'failed.watch_later.retry.3': 30710,
-        'favorites': 30100,
-        'favorites.add': 30101,
-        'favorites.remove': 30108,
         'go_to_channel': 30502,
         'highlights': 30104,
         'history': 30509,
@@ -111,6 +117,7 @@ class XbmcContext(AbstractContext):
         'live': 30539,
         'live.completed': 30647,
         'live.upcoming': 30646,
+        'maintenance.bookmarks': 30800,
         'maintenance.data_cache': 30687,
         'maintenance.function_cache': 30557,
         'maintenance.playback_history': 30673,
@@ -125,8 +132,9 @@ class XbmcContext(AbstractContext):
         'my_subscriptions.filter.remove': 30588,
         'my_subscriptions.filter.removed': 30590,
         'my_subscriptions.filtered': 30584,
-        'next_page': 30106,
         'none': 30561,
+        'page.next': 30106,
+        'page.choose': 30806,
         'playlist.added_to': 30714,
         'playlist.create': 30522,
         'playlist.play.all': 30531,
@@ -167,6 +175,7 @@ class XbmcContext(AbstractContext):
         'setup_wizard': 30526,
         'setup_wizard.capabilities': 30786,
         'setup_wizard.capabilities.720p30': 30787,
+        'setup_wizard.capabilities.1080p30_avc': 30797,
         'setup_wizard.capabilities.1080p30': 30788,
         'setup_wizard.capabilities.1080p60': 30796,
         'setup_wizard.capabilities.4k30': 30789,
@@ -264,68 +273,93 @@ class XbmcContext(AbstractContext):
         'youtube': 30003,
     }
 
+    def __new__(cls, *args, **kwargs):
+        self = super(XbmcContext, cls).__new__(cls)
+
+        if not cls._initialized:
+            addon = xbmcaddon.Addon(ADDON_ID)
+            cls._addon = addon
+            cls._settings = XbmcPluginSettings(addon)
+
+            cls._KODI_UI_SUBTITLE_OPTIONS = {
+                None,                 # No setting value
+                self.localize(231),    # None
+                self.localize(13207),  # Forced only
+                self.localize(308),    # Original language
+                self.localize(309),    # UI language
+            }
+
+            cls._initialized = True
+
+        return self
+
     def __init__(self,
                  path='/',
                  params=None,
-                 plugin_name='',
-                 plugin_id='',
-                 override=True):
-        super(XbmcContext, self).__init__(path, params, plugin_name, plugin_id)
+                 plugin_id=''):
+        super(XbmcContext, self).__init__(path, params, plugin_id)
 
-        self._addon = xbmcaddon.Addon(id=(plugin_id if plugin_id else ADDON_ID))
+        self._plugin_id = plugin_id or ADDON_ID
+        if self._plugin_id != ADDON_ID:
+            addon = xbmcaddon.Addon(ADDON_ID)
+            self._addon = addon
+            self._settings = XbmcPluginSettings(addon)
 
-        """
-        I don't know what xbmc/kodi is doing with a simple uri, but we have to extract the information from the
-        sys parameters and re-build our clean uri.
-        Also we extract the path and parameters - man, that would be so simple with the normal url-parsing routines.
-        """
-        num_args = len(sys.argv)
-        if override and num_args:
-            uri = sys.argv[0]
-            is_plugin_invocation = uri.startswith('plugin://')
-            if is_plugin_invocation:
-                # first the path of the uri
-                parsed_url = urlsplit(uri)
-                self._path = unquote(parsed_url.path)
-
-                # after that try to get the params
-                if num_args > 2:
-                    params = sys.argv[2][1:]
-                    if params:
-                        self.parse_params(dict(parse_qsl(params)))
-
-                # then Kodi resume status
-                if num_args > 3 and sys.argv[3].lower() == 'resume:true':
-                    self._params['resume'] = True
-
-                self._uri = self.create_uri(self._path, self._params)
-        elif num_args:
-            uri = sys.argv[0]
-            is_plugin_invocation = uri.startswith('plugin://')
-        else:
-            is_plugin_invocation = False
+        self._addon_path = make_dirs(self._addon.getAddonInfo('path'))
+        self._data_path = make_dirs(self._addon.getAddonInfo('profile'))
+        self._plugin_name = self._addon.getAddonInfo('name')
+        self._plugin_icon = self._addon.getAddonInfo('icon')
+        self._version = self._addon.getAddonInfo('version')
 
         self._ui = None
         self._video_playlist = None
         self._audio_playlist = None
         self._video_player = None
         self._audio_player = None
-        self._plugin_handle = int(sys.argv[1]) if is_plugin_invocation else -1
-        self._plugin_id = plugin_id or ADDON_ID
-        self._plugin_name = plugin_name or self._addon.getAddonInfo('name')
-        self._version = self._addon.getAddonInfo('version')
-        self._addon_path = make_dirs(self._addon.getAddonInfo('path'))
-        self._data_path = make_dirs(self._addon.getAddonInfo('profile'))
-        self._settings = XbmcPluginSettings(self._addon)
+
+        atexit.register(self.tear_down)
+
+    def init(self):
+        num_args = len(sys.argv)
+        if num_args:
+            uri = sys.argv[0]
+            if uri.startswith('plugin://'):
+                self._plugin_handle = int(sys.argv[1])
+            else:
+                self._plugin_handle = -1
+                return
+        else:
+            self._plugin_handle = -1
+            return
+
+        # first the path of the uri
+        parsed_url = urlsplit(uri)
+        self._path = unquote(parsed_url.path)
+
+        # after that try to get the params
+        self._params = {}
+        if num_args > 2:
+            params = sys.argv[2][1:]
+            if params:
+                self.parse_params(dict(parse_qsl(params)))
+
+        # then Kodi resume status
+        if num_args > 3 and sys.argv[3].lower() == 'resume:true':
+            self._params['resume'] = True
+
+        self._uri = self.create_uri(self._path, self._params)
 
     def get_region(self):
         pass  # implement from abstract
 
-    def addon(self):
-        return self._addon
-
-    def is_plugin_path(self, uri, uri_path=''):
-        return uri.startswith('plugin://%s/%s' % (self.get_id(), uri_path))
+    def is_plugin_path(self, uri, uri_path='', partial=False):
+        uri_path = ('plugin://%s/%s' % (self.get_id(), uri_path)).rstrip('/')
+        if not partial:
+            uri_path = (
+                uri_path + '/',
+                uri_path + '?'
+            )
+        return uri.startswith(uri_path)
 
     @staticmethod
     def format_date_short(date_obj, str_format=None):
@@ -344,14 +378,17 @@ class XbmcContext(AbstractContext):
     @staticmethod
     def get_language():
         language = xbmc.getLanguage(format=xbmc.ISO_639_1, region=True)
-        lang_code, seperator, region = language.partition('-')
+        lang_code, separator, region = language.partition('-')
         if not lang_code:
             language = xbmc.getLanguage(format=xbmc.ISO_639_2, region=False)
-            lang_code, seperator, region = language.partition('-')
+            lang_code, separator, region = language.partition('-')
+            if lang_code != 'fil':
+                lang_code = lang_code[:2]
+            region = region[:2]
         if not lang_code:
             return 'en-US'
         if region:
-            return seperator.join((lang_code.lower(), region.upper()))
+            return separator.join((lang_code.lower(), region.upper()))
         return lang_code
 
     def get_language_name(self, lang_id=None):
@@ -362,11 +399,7 @@ class XbmcContext(AbstractContext):
     def get_subtitle_language(self):
         sub_language = get_kodi_setting_value('locale.subtitlelanguage')
         # https://github.com/xbmc/xbmc/blob/master/xbmc/LangInfo.cpp#L1242
-        if sub_language not in (None,  # No setting value
-                                self.localize(231),  # None
-                                self.localize(13207),  # Forced only
-                                self.localize(308),  # Original language
-                                self.localize(309)):  # UI language
+        if sub_language not in self._KODI_UI_SUBTITLE_OPTIONS:
             sub_language = xbmc.convertLanguage(sub_language, xbmc.ISO_639_1)
         else:
             sub_language = None
@@ -374,31 +407,28 @@ class XbmcContext(AbstractContext):
 
     def get_video_playlist(self):
         if not self._video_playlist:
-            self._video_playlist = XbmcPlaylist('video', weakref.proxy(self))
+            self._video_playlist = XbmcPlaylist('video', proxy(self))
         return self._video_playlist
 
     def get_audio_playlist(self):
         if not self._audio_playlist:
-            self._audio_playlist = XbmcPlaylist('audio', weakref.proxy(self))
+            self._audio_playlist = XbmcPlaylist('audio', proxy(self))
         return self._audio_playlist
 
     def get_video_player(self):
         if not self._video_player:
-            self._video_player = XbmcPlayer('video', weakref.proxy(self))
+            self._video_player = XbmcPlayer('video', proxy(self))
         return self._video_player
 
     def get_audio_player(self):
         if not self._audio_player:
-            self._audio_player = XbmcPlayer('audio', weakref.proxy(self))
+            self._audio_player = XbmcPlayer('audio', proxy(self))
         return self._audio_player
 
     def get_ui(self):
         if not self._ui:
-            self._ui = XbmcContextUI(self._addon, weakref.proxy(self))
+            self._ui = XbmcContextUI(proxy(self))
         return self._ui
-
-    def get_handle(self):
-        return self._plugin_handle
 
     def get_data_path(self):
         return self._data_path
@@ -406,7 +436,22 @@ class XbmcContext(AbstractContext):
     def get_addon_path(self):
         return self._addon_path
 
-    def get_settings(self):
+    def clear_settings(self):
+        if self._plugin_id != ADDON_ID and self._settings:
+            self._settings.flush()
+        if self.__class__._settings:
+            self.__class__._settings.flush()
+
+    def get_settings(self, refresh=False):
+        if refresh or not self._settings:
+            if self._plugin_id != ADDON_ID:
+                addon = xbmcaddon.Addon(self._plugin_id)
+                self._addon = addon
+                self._settings = XbmcPluginSettings(addon)
+            else:
+                addon = xbmcaddon.Addon(ADDON_ID)
+                self.__class__._addon = addon
+                self.__class__._settings = XbmcPluginSettings(addon)
         return self._settings
 
     def localize(self, text_id, default_text=None):
@@ -500,12 +545,10 @@ class XbmcContext(AbstractContext):
 
         new_context = XbmcContext(path=new_path,
                                   params=new_params,
-                                  plugin_name=self._plugin_name,
-                                  plugin_id=self._plugin_id,
-                                  override=False)
+                                  plugin_id=self._plugin_id)
         new_context._function_cache = self._function_cache
         new_context._search_history = self._search_history
-        new_context._favorite_list = self._favorite_list
+        new_context._bookmarks_list = self._bookmarks_list
         new_context._watch_later_list = self._watch_later_list
         new_context._access_manager = self._access_manager
         new_context._ui = self._ui
@@ -526,7 +569,7 @@ class XbmcContext(AbstractContext):
 
     @staticmethod
     def sleep(timeout=None):
-        wait(timeout)
+        return wait(timeout)
 
     def addon_enabled(self, addon_id):
         response = jsonrpc(method='Addons.GetAddonDetails',
@@ -559,15 +602,14 @@ class XbmcContext(AbstractContext):
         jsonrpc(method='JSONRPC.NotifyAll',
                 params={'sender': ADDON_ID,
                         'message': method,
-                        'data': data},
-                no_response=True)
+                        'data': data})
 
     def use_inputstream_adaptive(self):
         if self._settings.use_isa():
             if self.addon_enabled('inputstream.adaptive'):
                 success = True
             elif self.get_ui().on_yes_no_input(
-                self.get_name(), self.localize('isa.enable.confirm')
+                    self.get_name(), self.localize('isa.enable.confirm')
             ):
                 success = self.set_addon_enabled('inputstream.adaptive')
             else:
@@ -587,8 +629,8 @@ class XbmcContext(AbstractContext):
         'ttml': loose_version('20.0.0'),
         # audio codecs
         'vorbis': loose_version('2.3.14'),
-        # unknown when Opus audio support was implemented
-        'opus': loose_version('19.0.0'),
+        # Opus audio enabled in Kodi v21+ which fixes stalls after seek
+        'opus': loose_version('21.0.0'),
         'mp4a': True,
         'ac-3': loose_version('2.1.15'),
         'ec-3': loose_version('2.1.15'),
@@ -635,21 +677,54 @@ class XbmcContext(AbstractContext):
             return False
 
     def abort_requested(self):
-        return self.get_ui().get_property('abort_requested').lower() == 'true'
+        return self.get_ui().get_property(ABORT_FLAG).lower() == 'true'
+
+    @staticmethod
+    def get_infobool(name):
+        return xbmc.getCondVisibility(name)
 
     @staticmethod
     def get_infolabel(name):
         return xbmc.getInfoLabel(name)
 
     @staticmethod
-    def get_listitem_detail(detail_name, attr=False):
-        return xbmc.getInfoLabel(
-            'Container.ListItem(0).{0}'.format(detail_name)
-            if attr else
-            'Container.ListItem(0).Property({0})'.format(detail_name)
-        )
+    def get_listitem_detail(detail_name):
+        return xbmc.getInfoLabel('Container.ListItem(0).Property({0})'
+                                 .format(detail_name))
+
+    @staticmethod
+    def get_listitem_info(detail_name):
+        return xbmc.getInfoLabel('Container.ListItem(0).' + detail_name)
 
     def tear_down(self):
-        self._settings.flush()
-        del self._addon
-        self._addon = None
+        self.clear_settings()
+        attrs = (
+            '_addon',
+            '_settings',
+        )
+        for attr in attrs:
+            try:
+                if self._plugin_id != ADDON_ID:
+                    delattr(self, attr)
+                delattr(self.__class__, attr)
+                setattr(self.__class__, attr, None)
+            except AttributeError:
+                pass
+
+        attrs = (
+            '_ui',
+            '_video_playlist',
+            '_audio_playlist',
+            '_video_player',
+            '_audio_player',
+        )
+        for attr in attrs:
+            try:
+                delattr(self, attr)
+                setattr(self, attr, None)
+            except AttributeError:
+                pass
+
+    def wakeup(self):
+        self.get_ui().set_property(WAKEUP)
+        self.send_notification(WAKEUP, True)

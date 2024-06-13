@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Label_Setting_SideMenuInfoPosition">
+        <value condition="$EXP[Exp_HomeMenu_Info_IsHorizontal]">$LOCALIZE[31164]</value>
+        <value>$LOCALIZE[31163]</value>
+    </variable>
+
     <variable name="Label_ColorPicker_Type">
         <value condition="String.IsEqual(Window(Home).Property(ColorPicker_Type),Highlight)">$LOCALIZE[31250]</value>
         <value condition="String.IsEqual(Window(Home).Property(ColorPicker_Type),Gradient)">$LOCALIZE[31232]</value>
@@ -32,14 +37,12 @@
 
     <variable name="Label_NextBump">
         <value condition="Window.IsMedia">$LOCALIZE[31135]$INFO[Container.CurrentPage, , $LOCALIZE[20163] ]$INFO[Container.NumPages]</value>
-        <value>Arctic Fuse$INFO[System.BuildVersionCode, v,]</value>
+        <value>Kodi$INFO[System.BuildVersionCode, v,]</value>
     </variable>
 
     <variable name="Label_NextMedia">
         <value condition="Skin.String(Navigation.Global.OnDown,Explore)">$LOCALIZE[31148]</value>
         <value condition="Skin.String(Navigation.Global.OnDown,Options)">$LOCALIZE[33063]</value>
-        <value condition="Skin.String(Navigation.Global.OnDown,Discover)">$LOCALIZE[31066]</value>
-        <value condition="Skin.String(Navigation.Global.OnDown,Search)">$LOCALIZE[137]</value>
         <value>$VAR[Label_NextBump]</value>
     </variable>
 
@@ -53,21 +56,7 @@
         <value condition="Window.IsVisible(1107) + Skin.String(Navigation.Hub.1107.OnDown,Explore)">$LOCALIZE[31148]</value>
         <value condition="Window.IsVisible(1108) + Skin.String(Navigation.Hub.1108.OnDown,Explore)">$LOCALIZE[31148]</value>
         <value condition="Window.IsVisible(1109) + Skin.String(Navigation.Hub.1109.OnDown,Explore)">$LOCALIZE[31148]</value>
-        <value condition="Window.IsVisible(Home) + Skin.String(Navigation.Hub.Home.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1101) + Skin.String(Navigation.Hub.1101.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1102) + Skin.String(Navigation.Hub.1102.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1103) + Skin.String(Navigation.Hub.1103.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1104) + Skin.String(Navigation.Hub.1104.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1106) + Skin.String(Navigation.Hub.1106.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1107) + Skin.String(Navigation.Hub.1107.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1108) + Skin.String(Navigation.Hub.1108.OnDown,Search)">$LOCALIZE[137]</value>
-        <value condition="Window.IsVisible(1109) + Skin.String(Navigation.Hub.1109.OnDown,Search)">$LOCALIZE[137]</value>
         <value>$VAR[Label_NextMedia]</value>
-    </variable>
-
-    <variable name="Label_Search_FilterClear">
-        <value condition="!Skin.HasSetting(Search.DisableDiscover)">$LOCALIZE[587]</value>
-        <value>$LOCALIZE[192]</value>
     </variable>
 
     <variable name="Label_SkinVariables_FilterPath">
@@ -106,7 +95,7 @@
     </variable>
 
     <variable name="Label_Settings_SideMenuCollapse">
-        <value condition="Skin.String(Home.SideMenuCollapse,Topbar)">$LOCALIZE[31352]</value>
+        <value condition="$EXP[Exp_HomeMenu_IsTopBar]">$LOCALIZE[31352]</value>
         <value condition="Skin.String(Home.SideMenuCollapse,Always)">$LOCALIZE[34122]</value>
         <value condition="Skin.String(Home.SideMenuCollapse,Library)">$LOCALIZE[14211]</value>
         <value condition="Skin.String(Home.SideMenuCollapse,Hubs)">$LOCALIZE[14022]</value>
@@ -131,10 +120,10 @@
     </variable>
 
     <variable name="Label_Settings_InfoText_Sub">
-        <value condition="System.HasVisibleModalDialog | ControlGroup(30030).HasFocus() | ControlGroup(30000).HasFocus() | ControlGroup(30040).HasFocus() | ControlGroup(30700).HasFocus() | Control.HasFocus(60)">$INFO[System.BuildVersion,Arctic Fuse ,]</value>
+        <value condition="System.HasVisibleModalDialog | ControlGroup(30030).HasFocus() | ControlGroup(30000).HasFocus() | ControlGroup(30040).HasFocus() | ControlGroup(30700).HasFocus() | Control.HasFocus(60)">$INFO[System.BuildVersion,Kodi ,]</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) + [ControlGroup(3).HasFocus() | ControlGroup(5).HasFocus()]">$INFO[Control.GetLabel(6)]</value>
         <value condition="Window.IsVisible(addonbrowser) + Control.HasFocus(50)">$INFO[Container(50).ListItem.AddonVersion,v,]$INFO[Container(50).ListItem.AddonOrigin, • ,]$INFO[Container(50).ListItem.AddonCreator, • ,]$INFO[Container(50).ListItem.AddonDescription,[CR],]</value>
-        <value>$INFO[System.BuildVersion,Arctic Fuse ,]</value>
+        <value>$INFO[System.BuildVersion,Kodi ,]</value>
     </variable>
 
     <variable name="Label_Scrollbar_Content">
@@ -373,8 +362,8 @@
     </variable>
 
     <variable name="Label_Search_HeadingFilter">
-        <value condition="Skin.HasSetting(Search.DisableDiscover)">$INFO[Control.GetLabel(9099).index(1), , ]</value>
-        <value>$INFO[Control.GetLabel(9099).index(1), , ]$INFO[Window.Property(SearchDiscover.GenreLabel),, ]$INFO[Window.Property(SearchDiscover.ProviderLabel),, ]$INFO[Window.Property(SearchDiscover.PeopleLabel),, ]$INFO[Window.Property(SearchDiscover.KeywordLabel),, ]$INFO[Window.Property(SearchDiscover.YearLow),&gt;=, ]$INFO[Window.Property(SearchDiscover.YearHigh),&lt;=, ]$INFO[Window.Property(SearchDiscover.RatingLow),&gt;=, ]$INFO[Skin.String(SearchDiscover.VoteLow),&gt;=, ]</value>
+        <value condition="Window.IsVisible(1185)">$VAR[Path_SearchTerm, , ]</value>
+        <value>$VAR[Path_SearchTerm, , ]$INFO[Window.Property(SearchDiscover.GenreLabel),, ]$INFO[Window.Property(SearchDiscover.ProviderLabel),, ]$INFO[Window.Property(SearchDiscover.PeopleLabel),, ]$INFO[Window.Property(SearchDiscover.KeywordLabel),, ]$INFO[Window.Property(SearchDiscover.YearLow),&gt;=, ]$INFO[Window.Property(SearchDiscover.YearHigh),&lt;=, ]$INFO[Window.Property(SearchDiscover.RatingLow),&gt;=, ]$INFO[Skin.String(SearchDiscover.VoteLow),&gt;=, ]</value>
     </variable>
 
     <variable name="Label_VideoInfo_CastAge">
@@ -533,6 +522,19 @@
         <value>$LOCALIZE[31484]</value>
     </variable>
 
+    <variable name="Label_OSD_PausePlay">
+        <value condition="Player.Playing">$LOCALIZE[31484]</value>
+        <value>$LOCALIZE[208]</value>
+    </variable>
+
+    <variable name="Label_OSD_PlayPause">
+        <value condition="Window.IsActive(musicosd) | Window.IsActive(videoosd)">$VAR[Image_OSD_PausePlay]</value>
+        <value condition="Player.Paused">$LOCALIZE[31484]</value>
+        <value condition="Player.Forwarding">FF</value>
+        <value condition="Player.Rewinding">RW</value>
+        <value>$LOCALIZE[208]</value>
+    </variable>
+
     <variable name="Label_Setting_SeekbarPauseBehaviour">
         <value condition="Skin.HasSetting(OSD.AutoHideOnPause)">$LOCALIZE[31162]</value>
         <value condition="Skin.HasSetting(OSD.AutoInfoOnPause)">$LOCALIZE[29915]</value>
@@ -556,8 +558,9 @@
     </variable>
 
     <variable name="Label_Setting_SearchStyle">
-        <value condition="Skin.HasSetting(Search.DisableDiscover)">$LOCALIZE[137]</value>
-        <value>$LOCALIZE[31066]</value>
+        <value condition="Window.IsVisible(1185)">$LOCALIZE[137]</value>
+        <value condition="Window.IsVisible(1105)">$LOCALIZE[31066]</value>
+        <value>$LOCALIZE[587]</value>
     </variable>
 
     <variable name="Label_Setting_BackgroundVideo">
@@ -1246,7 +1249,7 @@
 
     <variable name="Label_Header_Main_Home">
         <!-- <value condition="!Skin.HasSetting(Hub.Home.DisableSubmenu) + !String.IsEmpty(Container(300).ListItem.Label) + !Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) + !Integer.IsEqual(Window.Property(Slide.WidgetContainer),300)">$INFO[Container(300).ListItem.Label]</value> -->
-        <!-- <value condition="!Skin.HasSetting(Home.SideMenu.DisableIndicator) + Skin.String(Home.SideMenuCollapse,Topbar) + Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301)">$LOCALIZE[10000]</value> -->
+        <!-- <value condition="!Skin.HasSetting(Home.SideMenu.DisableIndicator) + $EXP[Exp_HomeMenu_IsTopBar] + Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301)">$LOCALIZE[10000]</value> -->
         <value condition="[$EXP[Exp_Hubs_Spotlight_IsDisabled]]">$LOCALIZE[10000]</value>
         <value condition="!String.IsEmpty(Window.Property(SideMenu.CurrentName)) + !Skin.HasSetting(Home.SideMenu.DisableIndicator)">$INFO[Window.Property(SideMenu.CurrentName)]</value>
         <value condition="!String.IsEmpty(Skin.String(Home.Label))">$INFO[Skin.String(Home.Label)]</value>
@@ -1303,7 +1306,7 @@
         <value condition="Window.IsVisible(filemanager)">$LOCALIZE[7]</value>
         <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml)">$LOCALIZE[10503]</value>
         <value condition="Window.IsMedia + String.IsEqual(Container.FolderName,Skin Variables) + !String.IsEmpty(Window.Property(MediaFilter.BaseDir.Name))">$LOCALIZE[587]</value>
-        <value condition="Window.IsMedia + !String.IsEmpty(Control.GetLabel(19).index(1))">$LOCALIZE[587]: $INFO[Control.GetLabel(19).index(1)]</value>
+        <value condition="Window.IsMedia + !String.IsEmpty(Control.GetLabel(19).index(1))">$VAR[Label_Setting_SearchStyle]$VAR[Path_SearchTerm, [COLOR=main_fg_30]›[/COLOR] ,]</value>
         <value condition="[Window.IsVisible(10025) | Window.IsVisible(10502)] + [Container.Content(addons) | !String.IsEmpty(Container.PluginName)]">$LOCALIZE[24000]</value>
         <value condition="[Window.IsVisible(10025) | Window.IsVisible(10502)] + Container.Content(files)">$LOCALIZE[744]</value>
         <value condition="[Window.IsVisible(10025) | Window.IsVisible(10502)]">$LOCALIZE[14022]</value>

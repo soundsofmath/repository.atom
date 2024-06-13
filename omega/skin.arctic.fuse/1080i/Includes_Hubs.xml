@@ -396,7 +396,7 @@
             <control type="group">
 
                 <visible>!$EXP[Exp_InfoDialogs] | ![$PARAM[include_conditionalfade]]</visible>
-                <!-- <include condition="$PARAM[include_conditionalfade]">Animation_Transition_InfoPanel_Hide</include> -->
+                <include condition="$PARAM[include_conditionalfade]">Animation_Transition_InfoPanel_Hide</include>
 
                 <control type="group">
                     <include content="Animation_Fade_In">
@@ -446,10 +446,10 @@
             <param name="backid">320</param>
         </include>
 
-        <include content="Action_Widget_Top" condition="!Skin.String(Home.SideMenuCollapse,Topbar) + $EXP[Exp_Hubs_Spotlight_IsDisabled]">
+        <include content="Action_Widget_Top" condition="!$EXP[Exp_HomeMenu_IsTopBar] + $EXP[Exp_Hubs_Spotlight_IsDisabled]">
             <param name="id">300</param>
         </include>
-        <onup condition="Skin.String(Home.SideMenuCollapse,Topbar) + $EXP[Exp_Hubs_Spotlight_IsDisabled]">SetFocus(303)</onup>
+        <onup condition="$EXP[Exp_HomeMenu_IsTopBar] + $EXP[Exp_Hubs_Spotlight_IsDisabled]">SetFocus(303)</onup>
         <onup condition="!$EXP[Exp_Hubs_Spotlight_IsDisabled]">311</onup>
 
         <ondown>302</ondown>
@@ -730,7 +730,6 @@
             <control type="group">
                 <visible>!Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) | $EXP[Exp_Hubs_Spotlight_IsFanart]</visible>
                 <visible>!Integer.IsEqual(Container($PARAM[id]).NumItems,0)</visible>
-                <visible>!$EXP[Exp_InfoDialogs]</visible>
                 <include>Furniture_Bottom_WidgetGroups</include>
             </control>
         </control>
@@ -763,9 +762,9 @@
     </include>
 
     <include name="Hub_Widgets_Grouplist__Def_Layout_Basic">
-        <include content="Action_Widget_Top" condition="![Window.IsVisible(Home) + Skin.String(Home.SideMenuCollapse,Topbar)]">
+        <include content="Action_Widget_Top" condition="![Window.IsVisible(Home) + $EXP[Exp_HomeMenu_IsTopBar]]">
             <param name="id">$PARAM[id]</param>
         </include>
-        <onup condition="Window.IsVisible(Home) + Skin.String(Home.SideMenuCollapse,Topbar)">SetFocus(303)</onup>
+        <onup condition="Window.IsVisible(Home) + $EXP[Exp_HomeMenu_IsTopBar]">SetFocus(303)</onup>
     </include>
 </includes>

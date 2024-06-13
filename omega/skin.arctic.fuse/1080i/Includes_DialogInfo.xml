@@ -7,22 +7,20 @@
 
     <include name="DialogInfo_Body_Group">
         <include>Dimension_Info</include>
-        <include>Animation_Transition_InfoPanel_Open</include>
     </include>
 
     <include name="DialogInfo_InfoDetails_Group">
         <top>390</top>
         <left>-200</left>
         <right>-80</right>
-        <include content="Animation_Fade_In">
-            <param name="type">WindowOpen</param>
-        </include>
+        <include>Animation_Transition_InfoPanel_Open_Fade</include>
         <visible>![Window.IsActive(1120) | Window.IsActive(1121) | Window.IsActive(1122)]</visible>
     </include>
 
     <include name="DialogInfo_InfoPanel_Group">
-        <visible>!String.IsEqual(Window.Property(DetailsView),Artwork) | Skin.String(Home.SideMenuCollapse,Topbar)</visible>
-        <include content="Animation_Fade_In" condition="!Skin.String(Home.SideMenuCollapse,Topbar)">
+        <visible>!String.IsEqual(Window.Property(DetailsView),Artwork) | $EXP[Exp_HomeMenu_IsTopBar]</visible>
+        <include>Animation_Transition_InfoPanel_Open</include>
+        <include content="Animation_Fade_In" condition="!$EXP[Exp_HomeMenu_IsTopBar]">
             <param name="type">Visible</param>
             <param name="delay">400</param>
         </include>
@@ -41,17 +39,16 @@
         <control type="group">
             <include>Animation_View_SlideOver</include>
             <control type="group">
-                <control type="group">
-                    <!-- <include condition="Skin.String(Home.SideMenuCollapse,Topbar)">Animation_View_Topbar</include> -->
-                    <!-- <include>Animation_Transition_InfoPanel_Open</include> -->
-                    <include content="Furniture_Top">
-                        <param name="include_topbar_animation">False</param>
-                    </include>
-                </control>
-                <control type="group">
-                    <include condition="Skin.String(Home.SideMenuCollapse,Topbar)">Animation_View_Topbar</include>
-                    <include>Furniture_Bottom_Left</include>
-                </control>
+                <include>Animation_Transition_InfoPanel_Open</include>
+                <include content="Furniture_Top">
+                    <param name="include_topbar_animation">False</param>
+                </include>
+            </control>
+            <control type="group">
+                <include condition="$EXP[Exp_HomeMenu_IsTopBar]">Animation_View_Topbar</include>
+                <include condition="$EXP[Exp_Footer_BottomLeft_IsVisible]">Animation_Transition_InfoPanel_Open</include>
+                <include condition="!$EXP[Exp_Footer_BottomLeft_IsVisible]">Animation_Transition_InfoPanel_Open_Fade</include>
+                <include>Furniture_Bottom_Left</include>
             </control>
         </control>
         <control type="group">
@@ -62,6 +59,14 @@
     </include>
 
     <include name="DialogInfo_Onload">
+
+        <onload>SetProperty(SideMenu.HasFocus.Prev,$INFO[Window(Home).Property(SideMenu.HasFocus)],Home)</onload>
+        <onload condition="!$EXP[Exp_HomeMenu_IsTopBar]">SetProperty(SideMenu.HasFocus,True,Home)</onload>
+        <onload condition="$EXP[Exp_HomeMenu_IsTopBar]">ClearProperty(SideMenu.HasFocus,Home)</onload>
+        <onunload>SetProperty(SideMenu.HasFocus,$INFO[Window(Home).Property(SideMenu.HasFocus.Prev)],Home)</onunload>
+        <onunload>ClearProperty(SideMenu.HasFocus.Prev,Home)</onunload>
+
+
         <onload>ClearProperty(TMDbHelper.WidgetContainer)</onload>
         <onload>SetProperty(TMDbHelper.Blur.SourceImage,$INFO[Window(home).Property(TMDbHelper.Blur.SourceImage)])</onload>
         <onload>ClearProperty(CropImage,Home)</onload>
@@ -86,18 +91,13 @@
         <onunload>ClearProperty(BlurImage,Home)</onunload>
         <onunload>ClearProperty(BlurImage.Original,Home)</onunload>
         <onunload>ClearProperty(TMDbHelper.Image.Override,Home)</onunload>
-
-        <onload>SetProperty(SideMenu.HasFocus.Prev,$INFO[Window(Home).Property(SideMenu.HasFocus)],Home)</onload>
-        <onload>SetProperty(SideMenu.HasFocus,True,Home)</onload>
-        <onunload>SetProperty(SideMenu.HasFocus,$INFO[Window(Home).Property(SideMenu.HasFocus.Prev)],Home)</onunload>
-        <onunload>ClearProperty(SideMenu.HasFocus.Prev,Home)</onunload>
     </include>
 
     <include name="DialogInfo_List_Movement">
-        <param name="onright_condition">!Skin.String(Home.SideMenuCollapse,Topbar)</param>
+        <param name="onright_condition">!$EXP[Exp_HomeMenu_IsTopBar]</param>
         <param name="onup_condition">true</param>
         <param name="ondown_condition">true</param>
-        <param name="onleft_condition">!Skin.String(Home.SideMenuCollapse,Topbar)</param>
+        <param name="onleft_condition">!$EXP[Exp_HomeMenu_IsTopBar]</param>
         <definition>
             <onright condition="$PARAM[onright_condition]">SetFocus($PARAM[id],0,absolute)</onright>
             <onright condition="$PARAM[onright_condition]">4000</onright>
@@ -355,10 +355,12 @@
                 <bottom>0</bottom>
                 <right>240</right>
                 <left>1020</left>
-                <include content="Dialog_Background_Blur">
+                <control type="group">
+                    <include content="Dialog_Background_Blur">
+                    </include>
                     <animation effect="fade" end="90" condition="true">Conditional</animation>
                     <param name="diffuse">diffuse/card_w800_h294.png</param>
-                </include>
+                </control>
                 <control type="image">
                     <texture colordiffuse="panel_fg_12" border="20">common/dialog.png</texture>
                 </control>
@@ -564,8 +566,8 @@
                     <onclick>SetProperty(Item_Label,$INFO[Container(5003).ListItem.Label],1122)</onclick>
                     <onclick>SetProperty(Item_Label2,$VAR[Label_VideoInfo_CastAge],1122)</onclick>
 
-                    <ondown condition="Skin.String(Home.SideMenuCollapse,Topbar)">4000</ondown>
-                    <onup condition="Skin.String(Home.SideMenuCollapse,Topbar)">4000</onup>
+                    <ondown condition="$EXP[Exp_HomeMenu_IsTopBar]">4000</ondown>
+                    <onup condition="$EXP[Exp_HomeMenu_IsTopBar]">4000</onup>
 
 
                     <!-- <onclick>SetProperty(CustomDialogSettingsTitle,$INFO[Container(5003).ListItem.Label],Home)</onclick>
@@ -796,6 +798,7 @@
         <param name="id">4000</param>
         <param name="dim_visible">true</param>
         <param name="vertical">true</param>
+        <param name="visible">true</param>
         <definition>
             <control type="grouplist" id="$PARAM[id]">
                 <include content="Object_Orientation" condition="$PARAM[vertical]">
@@ -816,9 +819,48 @@
                     <param name="itemgap">$PARAM[itemgap]</param>
                 </include>
 
-                <nested />
+                <include>$PARAM[include_def]</include>
+                <visible>$PARAM[visible]</visible>
             </control>
         </definition>
+    </include>
+    <include name="DialogInfo_ButtonGroup_Recommendations">
+        <control type="group">
+            <include condition="$EXP[Exp_HomeMenu_IsTopBar]">Animation_Home_Topbar</include>
+            <include condition="!$EXP[Exp_HomeMenu_IsTopBar]">Animation_Home_SlideOver</include>
+            <include condition="!$EXP[Exp_HomeMenu_IsTopBar] + Skin.HasSetting(SideMenu.EnableSearchAndOptions)">Home_Menu_SearchAndOptions</include>
+            <include content="DialogInfo_ButtonGroup_Basic" condition="!$EXP[Exp_HomeMenu_IsTopBar]">
+                <param name="include">Items_PersonCredits_MenuBar</param>
+                <param name="vertical">true</param>
+                <param name="id">303</param>
+                <param name="include_def">DialogInfo_ButtonGroup_Basic__Def_Recommendations_Vert</param>
+            </include>
+            <include content="DialogInfo_ButtonGroup_Basic" condition="$EXP[Exp_HomeMenu_IsTopBar]">
+                <param name="include">Items_PersonCredits_MenuBar</param>
+                <param name="vertical">false</param>
+                <param name="id">303</param>
+                <param name="itemgap">0</param>
+                <param name="include_def">DialogInfo_ButtonGroup_Basic__Def_Recommendations_Horz</param>
+            </include>
+        </control>
+    </include>
+    <include name="DialogInfo_ButtonGroup_Basic__Def_Recommendations_Vert">
+        <onleft>61</onleft>
+        <onright>5000</onright>
+        <onup condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">SetFocus(61)</onup>
+        <ondown condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">SetFocus(61)</ondown>
+    </include>
+    <include name="DialogInfo_ButtonGroup_Basic__Def_Recommendations_Horz">
+        <ondown>330</ondown>
+        <onup>5000</onup>
+    </include>
+    <include name="DialogInfo_ButtonGroup_Basic__Def_1183_Person">
+        <include content="Action_HomeMenu_OnRightLeft">
+            <param name="onlist">5000</param>
+        </include>
+    </include>
+    <include name="DialogInfo_ButtonGroup_Basic__Def_MyMusicPlaylistEdit">
+        <onright>50</onright>
     </include>
 
     <include name="DialogInfo_ButtonGroup_OnRight">
@@ -1451,8 +1493,10 @@
                     </include>
 
                     <!-- Content -->
-                    <include content="Dialog_Body">
-                        <include content="Dialog_Body_Group">
+                    <control type="group">
+                        <include>Dimension_Dialog_Body</include>
+                        <control type="group">
+                            <include>Dimension_Dialog_Body_Group</include>
                             <include content="DialogInfo_PlotBox_Artwork">
                                 <param name="poster_visible">$PARAM[poster_visible]</param>
                                 <param name="poster_icon">$PARAM[poster_icon]</param>
@@ -1472,7 +1516,7 @@
                                     <param name="pad">20</param>
                                 </include>
                             </control>
-                        </include>
+                        </control>
                         <control type="scrollbar" id="61">
                             <centerright>-20</centerright>
                             <width>scrollbar_w</width>
@@ -1481,7 +1525,7 @@
                             <include>$PARAM[include_movement]</include>
                             <include>Texture_Scrollbar_SliderBar_V</include>
                         </control>
-                    </include>
+                    </control>
                 </include>
 
             </control>
@@ -1658,7 +1702,7 @@
                         </include>
                     </control>
                     <control type="group">
-                        <include condition="Skin.String(Home.SideMenuCollapse,Topbar)">Animation_View_Topbar</include>
+                        <include condition="$EXP[Exp_HomeMenu_IsTopBar]">Animation_View_Topbar</include>
                         <include content="Hub_Widgets_Group_Furniture">
                             <param name="visible">true</param>
                             <param name="include_conditionalfade">false</param>
@@ -1677,19 +1721,25 @@
         </definition>
     </include>
 
+    <include name="DialogInfo_Recommendations_Widgets_Animation_Half_WindowChange">
+        <include content="Animation_Half_WindowChange">
+            <param name="windowopen_up">!$EXP[Exp_SettingsDialogs_Prev] + $EXP[Exp_ReverseTransition]</param>
+            <param name="windowopen_down">!$EXP[Exp_SettingsDialogs_Prev] + !$EXP[Exp_ReverseTransition]</param>
+            <param name="windowclose_up">!$EXP[Exp_SettingsDialogs_Next] + $EXP[Exp_ReverseTransition]</param>
+            <param name="windowclose_down">!$EXP[Exp_SettingsDialogs_Next] + !$EXP[Exp_ReverseTransition]</param>
+        </include>
+    </include>
+
     <include name="DialogInfo_Recommendations_Widgets_Grouplist">
         <param name="onup">PreviousMenu</param>
         <param name="ondown">330</param>
+        <param name="widget_windowchange_animation">true</param>
         <definition>
             <control type="grouplist" id="5000">
                 <onup>$PARAM[onup]</onup>
                 <ondown>$PARAM[ondown]</ondown>
-                <include content="Animation_Half_WindowChange">
-                    <param name="windowopen_up">!$EXP[Exp_SettingsDialogs_Prev] + !String.IsEmpty(Window(Home).Property(ReverseTransition))</param>
-                    <param name="windowopen_down">!$EXP[Exp_SettingsDialogs_Prev] + String.IsEmpty(Window(Home).Property(ReverseTransition))</param>
-                    <param name="windowclose_up">!$EXP[Exp_SettingsDialogs_Next] + !String.IsEmpty(Window(Home).Property(ReverseTransition))</param>
-                    <param name="windowclose_down">!$EXP[Exp_SettingsDialogs_Next] + String.IsEmpty(Window(Home).Property(ReverseTransition))</param>
-                </include>
+                <include condition="![$PARAM[widget_windowchange_animation]]">Animation_Half_WindowChange_UpDown</include>
+                <include condition="$PARAM[widget_windowchange_animation]">DialogInfo_Recommendations_Widgets_Animation_Half_WindowChange</include>
                 <orientation>vertical</orientation>
                 <control type="group" id="5999">
                     <height>widget_tbump_h</height>

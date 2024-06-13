@@ -233,6 +233,7 @@
                 <param name="selected">$PARAM[selected]</param>
                 <param name="visible">$PARAM[visible]</param>
                 <param name="include_animation">$PARAM[include_animation]</param>
+                <param name="alt_slide">$PARAM[alt_slide]</param>
                 <param name="use_alternate">$PARAM[use_alternate]</param>
                 <param name="use_alternate_condition_prefix">!</param>
             </include>
@@ -820,12 +821,10 @@
             <include content="Animation_Fade_Out">
                 <param name="condition">![$PARAM[visible]] + $PARAM[hidden]</param>
                 <param name="delay">200</param>
-                <!-- <param name="posy">120</param> -->
             </include>
             <include content="Animation_Fade_In">
                 <param name="condition">$PARAM[visible] | ![$PARAM[hidden]]</param>
-                <!-- <param name="posy">320</param> -->
-                <param name="delay">200</param>
+                <param name="delay">0</param>
             </include>
         </definition>
     </include>

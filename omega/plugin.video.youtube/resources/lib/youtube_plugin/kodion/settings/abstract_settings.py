@@ -22,15 +22,9 @@ class AbstractSettings(object):
         _vars[name] = value
     del _vars
 
-    VALUE_FROM_STR = {
-        'false': False,
-        'true': True,
-    }
-
     _echo = False
     _cache = {}
     _check_set = True
-    _instance = None
 
     @classmethod
     def flush(cls, xbmc_addon):
@@ -88,8 +82,8 @@ class AbstractSettings(object):
         return (self.get_bool(settings.VIDEO_QUALITY_ASK, False)
                 or self.get_int(settings.MPD_STREAM_SELECT) == 4)
 
-    def show_fanart(self):
-        return self.get_bool(settings.SHOW_FANART, True)
+    def fanart_selection(self):
+        return self.get_int(settings.FANART_SELECTION, 2)
 
     def cache_size(self, value=None):
         if value is not None:
@@ -99,12 +93,21 @@ class AbstractSettings(object):
     def get_search_history_size(self):
         return self.get_int(settings.SEARCH_SIZE, 10)
 
-    def is_setup_wizard_enabled(self):
+    def setup_wizard_enabled(self, value=None):
         # Increment min_required on new release to enable oneshot on first run
-        min_required = 2
-        forced_runs = self.get_int(settings.SETUP_WIZARD_RUNS, min_required - 1)
+        min_required = 4
+
+        if value is False:
+            self.set_int(settings.SETUP_WIZARD_RUNS, min_required)
+            return self.set_bool(settings.SETUP_WIZARD, False)
+        if value is True:
+            self.set_int(settings.SETUP_WIZARD_RUNS, 0)
+            return self.set_bool(settings.SETUP_WIZARD, True)
+
+        forced_runs = self.get_int(settings.SETUP_WIZARD_RUNS, 0)
         if forced_runs < min_required:
             self.set_int(settings.SETUP_WIZARD_RUNS, min_required)
+            self.set_bool(settings.SETTINGS_END, True)
             return True
         return self.get_bool(settings.SETUP_WIZARD, False)
 
@@ -113,10 +116,27 @@ class AbstractSettings(object):
             return self.set_bool(settings.SUPPORT_ALTERNATIVE_PLAYER, value)
         return self.get_bool(settings.SUPPORT_ALTERNATIVE_PLAYER, False)
 
+    def default_player_web_urls(self, value=None):
+        if value is not None:
+            return self.set_bool(settings.DEFAULT_PLAYER_WEB_URLS, value)
+        if self.support_alternative_player():
+            return False
+        return self.get_bool(settings.DEFAULT_PLAYER_WEB_URLS, False)
+
     def alternative_player_web_urls(self, value=None):
         if value is not None:
             return self.set_bool(settings.ALTERNATIVE_PLAYER_WEB_URLS, value)
-        return self.get_bool(settings.ALTERNATIVE_PLAYER_WEB_URLS, False)
+        if (self.support_alternative_player()
+                and not self.alternative_player_adaptive()):
+            return self.get_bool(settings.ALTERNATIVE_PLAYER_WEB_URLS, False)
+        return False
+
+    def alternative_player_adaptive(self, value=None):
+        if value is not None:
+            return self.set_bool(settings.ALTERNATIVE_PLAYER_ADAPTIVE, value)
+        if self.support_alternative_player():
+            return self.get_bool(settings.ALTERNATIVE_PLAYER_ADAPTIVE, False)
+        return False
 
     def use_isa(self, value=None):
         if value is not None:
@@ -138,10 +158,28 @@ class AbstractSettings(object):
     def set_subtitle_download(self, value):
         return self.set_bool(settings.SUBTITLE_DOWNLOAD, value)
 
-    def use_thumbnail_size(self):
-        size = self.get_int(settings.THUMB_SIZE, 0)
-        sizes = {0: 'medium', 1: 'high'}
-        return sizes[size]
+    _THUMB_SIZES = {
+        0: {  # Medium (16:9)
+            'size': 320 * 180,
+            'ratio': 320 / 180,
+        },
+        1: {  # High (4:3)
+            'size': 480 * 360,
+            'ratio': 480 / 360,
+        },
+        2: {  # Best available
+            'size': 0,
+            'ratio': 0,
+        },
+    }
+
+    def get_thumbnail_size(self, value=None):
+        default = 1
+        if value is None:
+            value = self.get_int(settings.THUMB_SIZE, default)
+        if value in self._THUMB_SIZES:
+            return self._THUMB_SIZES[value]
+        return self._THUMB_SIZES[default]
 
     def safe_search(self):
         index = self.get_int(settings.SAFE_SEARCH, 0)
@@ -347,8 +385,35 @@ class AbstractSettings(object):
             return self._STREAM_SELECT[value]
         return self._STREAM_SELECT[default]
 
-    def hide_short_videos(self):
-        return self.get_bool(settings.HIDE_SHORT_VIDEOS, False)
+    _DEFAULT_FILTER = {
+        'shorts': True,
+        'upcoming': True,
+        'upcoming_live': True,
+        'live': True,
+        'premieres': True,
+        'completed': True,
+        'vod': True,
+    }
+
+    def item_filter(self, update=None):
+        types = dict.fromkeys(self.get_string_list(settings.HIDE_VIDEOS), False)
+        types = dict(self._DEFAULT_FILTER, **types)
+        if update:
+            if 'live_folder' in update:
+                if 'live_folder' in types:
+                    types.update(update)
+                else:
+                    types.update({
+                        'upcoming': True,
+                        'upcoming_live': True,
+                        'live': True,
+                        'premieres': True,
+                        'completed': True,
+                    })
+                types['vod'] = False
+            else:
+                types.update(update)
+        return types
 
     def client_selection(self, value=None):
         if value is not None:
@@ -368,8 +433,14 @@ class AbstractSettings(object):
     def get_language(self):
         return self.get_string(settings.LANGUAGE, 'en_US').replace('_', '-')
 
+    def set_language(self, language_id):
+        return self.set_string(settings.LANGUAGE, language_id)
+
     def get_region(self):
         return self.get_string(settings.REGION, 'US')
+
+    def set_region(self, region_id):
+        return self.set_string(settings.REGION, region_id)
 
     def get_watch_later_playlist(self):
         return self.get_string(settings.WATCH_LATER_PLAYLIST, '').strip()
@@ -397,3 +468,6 @@ class AbstractSettings(object):
 
         def get_label_color(self, label_part):
             return self._COLOR_MAP.get(label_part, 'white')
+
+    def get_channel_name_aliases(self):
+        return frozenset(self.get_string_list(settings.CHANNEL_NAME_ALIASES))

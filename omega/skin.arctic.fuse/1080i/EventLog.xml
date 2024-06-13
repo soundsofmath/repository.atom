@@ -97,7 +97,7 @@
                 <!-- <control type="group">
                     <left>80</left>
                     <bottom>80</bottom>
-                    <include>Settings_Arctic FuseVersion</include>
+                    <include>Settings_KodiVersion</include>
                 </control> -->
             </include>
             <include content="Settings_Changer">

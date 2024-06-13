@@ -190,6 +190,7 @@
     <include name="Layout_OptionTray">
         <param name="selected">false</param>
         <param name="detailed">Skin.HasSetting(Options.EnableTrayLabels)</param>
+        <param name="variation">Skin.HasSetting(Home.SideMenu.DisableIndicator)</param>
         <param name="color">main_fg</param>
         <definition>
             <control type="group">
@@ -209,7 +210,7 @@
                         <include content="Object_ColorDiffuse" condition="$PARAM[selected]">
                             <param name="colordiffuse">$VAR[ColorSelected]</param>
                         </include>
-                        <include content="Object_ColorDiffuse" condition="![$PARAM[selected]] + [Skin.HasSetting(Home.SideMenu.DisableIndicator) | Window.IsVisible(1170)]">
+                        <include content="Object_ColorDiffuse" condition="![$PARAM[selected]] + [$PARAM[variation]]">
                             <param name="colordiffuse">$PARAM[color]_70</param>
                         </include>
                         <colordiffuse>$PARAM[color]_30</colordiffuse>
@@ -218,8 +219,8 @@
                     </control>
 
                     <control type="group">
-                        <top>-10</top>
-                        <bottom>10</bottom>
+                        <top>-8</top>
+                        <bottom>8</bottom>
                         <visible>$PARAM[detailed]</visible>
                         <control type="image">
                             <bordersize>icon_home_bordersize</bordersize>
@@ -230,7 +231,7 @@
                             <texture diffuse="diffuse/circle_120.png">$INFO[ListItem.Icon]</texture>
                         </control>
                         <control type="label">
-                            <top>35</top>
+                            <top>33</top>
                             <height>10</height>
                             <label>$INFO[ListItem.Label]</label>
                             <include condition="$PARAM[selected]">Color_SelectedText</include>
@@ -273,6 +274,7 @@
                         <videofilter>$INFO[ListItem.Property(game.videofilter)]</videofilter>
                         <stretchmode>$INFO[ListItem.Property(game.stretchmode)]</stretchmode>
                         <rotation>$INFO[ListItem.Property(game.videorotation)]</rotation>
+                        <visible>String.IsEmpty(ListItem.Art(screenshot))</visible>
                     </control>
                     <control type="image">
                         <aspectratio>scale</aspectratio>
@@ -316,8 +318,6 @@
                     <height>30</height>
                 </control>
             </control>
-
-
         </definition>
     </include>
 
@@ -1498,6 +1498,7 @@
                         <param name="icon">$VAR[Image_Foreground_Cheater]</param>
                         <param name="listitem">$PARAM[listitem]</param>
                         <param name="aspectratio">scale</param>
+                        <param name="selected">$PARAM[selected]</param>
                     </include>
 
 
@@ -1548,6 +1549,7 @@
                         <param name="icon">$VAR[Image_Banner$PARAM[affix]]</param>
                         <param name="listitem">$PARAM[listitem]</param>
                         <param name="aspectratio">scale</param>
+                        <param name="selected">$PARAM[selected]</param>
                     </include>
                     <control type="image">
                         <texture background="true" diffuse="$PARAM[diffuse]">$VAR[Image_Clearlogo$PARAM[affix]]</texture>
@@ -1612,6 +1614,7 @@
                         <param name="icon">$PARAM[icon]</param>
                         <param name="listitem">$PARAM[listitem]</param>
                         <param name="aspectratio">scale</param>
+                        <param name="selected">$PARAM[selected]</param>
                     </include>
                 </control>
                 <control type="group">
@@ -2234,6 +2237,7 @@
                     </include>
 
                     <include content="Object_SquareIcon">
+                        <param name="selected">$PARAM[selected]</param>
                         <param name="diffuse">$PARAM[diffuse]</param>
                         <param name="icon">$PARAM[icon]</param>
                         <param name="listitem">$PARAM[listitem]</param>
@@ -2299,6 +2303,7 @@
                     </include>
 
                     <include content="Object_SquareIcon">
+                        <param name="selected">$PARAM[selected]</param>
                         <param name="diffuse">diffuse/$PARAM[diffuse].png</param>
                         <param name="include_discart">true</param>
                         <param name="icon">$PARAM[icon]</param>
@@ -2679,6 +2684,7 @@
                                 <texture colordiffuse="main_bg_30">diffuse/circle_120.png</texture>
                             </control>
                             <include content="Object_SquareIcon">
+                                <param name="selected">$PARAM[selected]</param>
                                 <param name="diffuse">diffuse/circle_120.png</param>
                                 <param name="icon">$PARAM[icon]</param>
                                 <param name="listitem">$PARAM[listitem]</param>
@@ -2767,6 +2773,7 @@
                     <param name="diffuse">$PARAM[diffuse]</param>
                     <param name="icon">$PARAM[icon]</param>
                     <param name="listitem">$PARAM[listitem]</param>
+                    <param name="selected">$PARAM[selected]</param>
                 </include>
 
                 <include content="Object_ClearLogo_WithShadow">

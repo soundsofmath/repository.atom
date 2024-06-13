@@ -397,8 +397,8 @@
     <include name="Items_Dialog_RatingType">
         <include content="Items_Dialog_RatingType_Template">
             <param name="id">8001</param>
-            <param name="label">Arctic Fuse</param>
-            <param name="type">Arctic Fuse</param>
+            <param name="label">Kodi</param>
+            <param name="type">Kodi</param>
             <param name="item">$PARAM[item]</param>
             <param name="content">$PARAM[content]</param>
         </include>
@@ -751,6 +751,57 @@
         </include>
     </include>
 
+    <include name="Items_MusicPlaylistEditor_MenuBar">
+        <param name="vertical">true</param>
+        <param name="itemgap">10</param>
+        <definition>
+            <include content="Dialog_Side_Button">
+                <param name="id">01</param>
+                <param name="label">$LOCALIZE[15067]</param>
+                <param name="icon">special://skin/extras/icons/circle-xmark.png</param>
+                <param name="vertical">$PARAM[vertical]</param>
+                <param name="itemgap">$PARAM[itemgap]</param>
+                <onclick>PreviousMenu</onclick>
+            </include>
+            <include content="DialogInfo_Button">
+                <param name="id">6</param>
+                <param name="groupid">9106</param>
+                <param name="sliceid">9206</param>
+                <param name="label">$LOCALIZE[502]</param>
+                <param name="icon">special://skin/extras/icons/folder.png</param>
+                <param name="vertical">$PARAM[vertical]</param>
+                <param name="itemgap">$PARAM[itemgap]</param>
+                <include content="DialogInfo_Button_HintLabel">
+                    <param name="label">$LOCALIZE[502]</param>
+                </include>
+            </include>
+            <include content="DialogInfo_Button">
+                <param name="id">7</param>
+                <param name="groupid">9107</param>
+                <param name="sliceid">9207</param>
+                <param name="label">$LOCALIZE[190]</param>
+                <param name="icon">special://skin/extras/icons/floppy-disk.png</param>
+                <param name="vertical">$PARAM[vertical]</param>
+                <param name="itemgap">$PARAM[itemgap]</param>
+                <include content="DialogInfo_Button_HintLabel">
+                    <param name="label">$LOCALIZE[190]</param>
+                </include>
+            </include>
+            <include content="DialogInfo_Button">
+                <param name="id">8</param>
+                <param name="groupid">9108</param>
+                <param name="sliceid">9208</param>
+                <param name="label">$LOCALIZE[192]</param>
+                <param name="icon">special://skin/extras/icons/triangle-exclamation.png</param>
+                <param name="vertical">$PARAM[vertical]</param>
+                <param name="itemgap">$PARAM[itemgap]</param>
+                <include content="DialogInfo_Button_HintLabel">
+                    <param name="label">$LOCALIZE[192]</param>
+                </include>
+            </include>
+        </definition>
+    </include>
+
     <include name="Items_PersonCredits_MenuBar">
         <param name="vertical">true</param>
         <param name="itemgap">10</param>
@@ -936,9 +987,9 @@
                 <param name="zoom_in_include">$PARAM[zoom_in_include]</param>
                 <param name="include_slide">true</param>
                 <param name="itemgap">$PARAM[itemgap]</param>
-                <onleft condition="!Skin.String(Home.SideMenuCollapse,Topbar)">Control.Move(7003,-1)</onleft>
-                <onright condition="!Skin.String(Home.SideMenuCollapse,Topbar)">Control.Move(7003,1)</onright>
-                <onup condition="Skin.String(Home.SideMenuCollapse,Topbar)">5009</onup>
+                <onleft condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,-1)</onleft>
+                <onright condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,1)</onright>
+                <onup condition="$EXP[Exp_HomeMenu_IsTopBar]">5009</onup>
                 <onclick condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)">SendClick(10)</onclick>
                 <onfocus>SetProperty(DetailsView,Artwork)</onfocus>
                 <onfocus>ClearProperty(ReviewsActive)</onfocus>
@@ -1065,9 +1116,9 @@
                 <include content="DialogInfo_Button_HintLabel">
                     <param name="label">$LOCALIZE[39123]</param>
                 </include>
-                <onleft condition="!Skin.String(Home.SideMenuCollapse,Topbar)">Control.Move(7003,-1)</onleft>
-                <onright condition="!Skin.String(Home.SideMenuCollapse,Topbar)">Control.Move(7003,1)</onright>
-                <ondown condition="Skin.String(Home.SideMenuCollapse,Topbar)">5009</ondown>
+                <onleft condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,-1)</onleft>
+                <onright condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,1)</onright>
+                <ondown condition="$EXP[Exp_HomeMenu_IsTopBar]">5009</ondown>
                 <onclick condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)">SendClick(10)</onclick>
                 <onfocus>SetProperty(DetailsView,Artwork)</onfocus>
             </include>

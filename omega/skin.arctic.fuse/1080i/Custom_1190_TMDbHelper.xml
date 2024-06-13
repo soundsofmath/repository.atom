@@ -19,8 +19,7 @@
                 <param name="hasbackground">Skin.HasSetting(ToastNotifications.Tabbed)</param>
                 <param name="haslabel">Skin.HasSetting(ToastNotifications.Tabbed)</param>
                 <param name="spinnervisible">Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</param>
-                <visible>!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</visible>
-                <visible>!Window.IsVisible(DialogBusy.xml)</visible>
+                <param name="visible">[!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]] + !Window.IsVisible(DialogBusy.xml)</param>
             </include>
 
             <include>Furniture_Top</include>

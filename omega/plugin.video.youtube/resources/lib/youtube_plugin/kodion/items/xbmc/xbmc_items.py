@@ -10,12 +10,15 @@
 
 from __future__ import absolute_import, division, unicode_literals
 
-from .. import AudioItem, DirectoryItem, ImageItem, UriItem, VideoItem
-from ...compatibility import xbmc, xbmcgui
+from json import dumps
+
+from .. import AudioItem, DirectoryItem, ImageItem, VideoItem
+from ...compatibility import to_str, xbmc, xbmcgui
+from ...constants import PLAY_COUNT, SWITCH_PLAYER_FLAG
 from ...utils import current_system_version, datetime_parser
 
 
-def set_info(list_item, item, properties):
+def set_info(list_item, item, properties, set_play_count=True, resume=True):
     is_video = False
     if not current_system_version.compatible(20, 0):
         if isinstance(item, VideoItem):
@@ -29,6 +32,11 @@ def set_info(list_item, item, properties):
             value = item.get_artists()
             if value is not None:
                 info_labels['artist'] = value
+
+            value = item.get_cast()
+            if value is not None:
+                info_labels['castandrole'] = [(member['name'], member['role'])
+                                              for member in value]
 
             value = item.get_code()
             if value is not None:
@@ -64,7 +72,9 @@ def set_info(list_item, item, properties):
 
             value = item.get_play_count()
             if value is not None:
-                info_labels['playcount'] = value
+                if set_play_count:
+                    info_labels['playcount'] = value
+                properties[PLAY_COUNT] = value
 
             value = item.get_plot()
             if value is not None:
@@ -94,13 +104,26 @@ def set_info(list_item, item, properties):
             if value is not None:
                 info_labels['year'] = value
 
+            value = item.get_studios()
+            if value is not None:
+                info_labels['studio'] = value
+
             if info_labels:
                 list_item.setInfo('video', info_labels)
 
         elif isinstance(item, DirectoryItem):
+            info_labels = {}
+
+            value = item.get_name()
+            if value is not None:
+                info_labels['title'] = value
+
             value = item.get_plot()
             if value is not None:
-                list_item.setInfo('picture', {'plot': value})
+                info_labels['plot'] = value
+
+            if info_labels:
+                list_item.setInfo('video', info_labels)
 
             if properties:
                 list_item.setProperties(properties)
@@ -149,7 +172,7 @@ def set_info(list_item, item, properties):
                 list_item.setProperties(properties)
             return
 
-        resume_time = item.get_start_time()
+        resume_time = resume and item.get_start_time()
         if resume_time:
             properties['ResumeTime'] = str(resume_time)
         duration = item.get_duration()
@@ -157,12 +180,10 @@ def set_info(list_item, item, properties):
             properties['TotalTime'] = str(duration)
             if is_video:
                 list_item.addStreamInfo('video', {'duration': duration})
+
         if properties:
             list_item.setProperties(properties)
         return
-
-    if properties:
-        list_item.setProperties(properties)
 
     value = item.get_date(as_info_label=True)
     if value is not None:
@@ -174,6 +195,10 @@ def set_info(list_item, item, properties):
         is_video = True
         info_tag = list_item.getVideoInfoTag()
 
+        value = item.get_aired(as_info_label=True)
+        if value is not None:
+            info_tag.setFirstAired(value)
+
         value = item.get_dateadded(as_info_label=True)
         if value is not None:
             info_tag.setDateAdded(value)
@@ -182,26 +207,16 @@ def set_info(list_item, item, properties):
         if value is not None:
             info_tag.setLastPlayed(value)
 
-        value = item.get_aired(as_info_label=True)
-        if value is not None:
-            info_tag.setFirstAired(value)
-
         value = item.get_premiered(as_info_label=True)
         if value is not None:
             info_tag.setPremiered(value)
 
-        # count: int
-        # eg. 12
-        # Can be used to store an id for later, or for sorting purposes
-        # Used for Youtube video view count
-        value = item.get_count()
-        if value is not None:
-            list_item.setInfo('video', {'count': value})
-
         # cast: list[xbmc.Actor]
         # From list[{member: str, role: str, order: int, thumbnail: str}]
-        # Currently unused
-        # info_tag.setCast(xbmc.Actor(**member) for member in item.get_cast())
+        # Used as alias for channel name if enabled
+        value = item.get_cast()
+        if value is not None:
+            info_tag.setCast([xbmc.Actor(**member) for member in value])
 
         # code: str
         # eg. "466K | 3.9K | 312"
@@ -210,6 +225,14 @@ def set_info(list_item, item, properties):
         value = item.get_code()
         if value is not None:
             info_tag.setProductionCode(value)
+
+        # count: int
+        # eg. 12
+        # Can be used to store an id for later, or for sorting purposes
+        # Used for Youtube video view count
+        value = item.get_count()
+        if value is not None:
+            list_item.setInfo('video', {'count': value})
 
         # director: list[str]
         # eg. "Steven Spielberg"
@@ -234,7 +257,9 @@ def set_info(list_item, item, properties):
         # playcount: int
         value = item.get_play_count()
         if value is not None:
-            info_tag.setPlaycount(value)
+            if set_play_count:
+                info_tag.setPlaycount(value)
+            properties[PLAY_COUNT] = value
 
         # plot: str
         value = item.get_plot()
@@ -247,21 +272,35 @@ def set_info(list_item, item, properties):
             info_tag.setSeason(value)
 
         # studio: list[str]
-        # Currently unused
-        # info_tag.setStudios(item.get_studios())
+        # Used as alias for channel name if enabled
+        value = item.get_studios()
+        if value is not None:
+            info_tag.setStudios(value)
 
     elif isinstance(item, DirectoryItem):
         info_tag = list_item.getVideoInfoTag()
 
+        value = item.get_name()
+        if value is not None:
+            info_tag.setTitle(value)
+
         value = item.get_plot()
         if value is not None:
             info_tag.setPlot(value)
+
+        if properties:
+            list_item.setProperties(properties)
         return
 
     elif isinstance(item, ImageItem):
+        info_tag = list_item.getPictureInfoTag()
+
         value = item.get_title()
         if value is not None:
-            list_item.setInfo('picture', {'title': value})
+            info_tag.setTitle(value)
+
+        if properties:
+            list_item.setProperties(properties)
         return
 
     elif isinstance(item, AudioItem):
@@ -273,7 +312,7 @@ def set_info(list_item, item, properties):
         if value is not None:
             info_tag.setAlbum(value)
 
-    resume_time = item.get_start_time()
+    resume_time = resume and item.get_start_time()
     duration = item.get_duration()
     if resume_time and duration:
         info_tag.setResumePoint(resume_time, float(duration))
@@ -284,6 +323,7 @@ def set_info(list_item, item, properties):
 
     # artist: list[str]
     # eg. ["Angerfist"]
+    # Used as alias for channel name
     value = item.get_artists()
     if value is not None:
         info_tag.setArtists(value)
@@ -321,15 +361,18 @@ def set_info(list_item, item, properties):
     if value is not None:
         info_tag.setYear(value)
 
+    if properties:
+        list_item.setProperties(properties)
 
-def video_playback_item(context, video_item, show_fanart=None):
+
+def video_playback_item(context, video_item, show_fanart=None, **_kwargs):
     uri = video_item.get_uri()
     context.log_debug('Converting VideoItem |%s|' % uri)
 
     settings = context.get_settings()
     headers = video_item.get_headers()
     license_key = video_item.get_license_key()
-    alternative_player = settings.support_alternative_player()
+    is_external = context.get_ui().get_property(SWITCH_PLAYER_FLAG)
     is_strm = context.get_param('strm')
     mime_type = None
 
@@ -350,13 +393,7 @@ def video_playback_item(context, video_item, show_fanart=None):
             'isPlayable': str(video_item.playable).lower(),
         }
 
-    if (alternative_player
-            and settings.alternative_player_web_urls()
-            and not license_key):
-        video_item.set_uri('https://www.youtube.com/watch?v={video_id}'.format(
-            video_id=video_item.video_id
-        ))
-    elif (video_item.use_isa_video()
+    if (video_item.use_isa_video()
             and context.addon_enabled('inputstream.adaptive')):
         if video_item.use_mpd_video():
             manifest_type = 'mpd'
@@ -371,7 +408,14 @@ def video_playback_item(context, video_item, show_fanart=None):
                                 if current_system_version.compatible(19, 0) else
                                 'inputstreamaddon')
         props[inputstream_property] = 'inputstream.adaptive'
-        props['inputstream.adaptive.manifest_type'] = manifest_type
+
+        if current_system_version.compatible(21, 0):
+            if video_item.live:
+                props['inputstream.adaptive.manifest_config'] = dumps({
+                    'timeshift_bufferlimit': 4 * 60 * 60,
+                })
+        else:
+            props['inputstream.adaptive.manifest_type'] = manifest_type
 
         if headers:
             props['inputstream.adaptive.manifest_headers'] = headers
@@ -386,21 +430,24 @@ def video_playback_item(context, video_item, show_fanart=None):
             mime_type = uri.split('mime=', 1)[1].split('&', 1)[0]
             mime_type = mime_type.replace('%2F', '/')
 
-        if not alternative_player and headers and uri.startswith('http'):
-            video_item.set_uri('|'.join((uri, headers)))
+        if (headers and uri.startswith('http') and not (
+                settings.default_player_web_urls()
+                or (is_external and settings.alternative_player_web_urls())
+        )):
+            kwargs['path'] = '|'.join((uri, headers))
 
     list_item = xbmcgui.ListItem(**kwargs)
 
-    if mime_type:
+    if mime_type or is_external:
         list_item.setContentLookup(False)
-        list_item.setMimeType(mime_type)
+        list_item.setMimeType(mime_type or '*/*')
 
     if is_strm:
         list_item.setProperties(props)
         return list_item
 
     if show_fanart is None:
-        show_fanart = settings.show_fanart()
+        show_fanart = settings.fanart_selection()
     image = video_item.get_image()
     list_item.setArt({
         'icon': image or 'DefaultVideo.png',
@@ -411,12 +458,17 @@ def video_playback_item(context, video_item, show_fanart=None):
     if video_item.subtitles:
         list_item.setSubtitles(video_item.subtitles)
 
-    set_info(list_item, video_item, props)
+    resume = context.get_param('resume')
+    set_info(list_item, video_item, props, resume=resume)
 
     return list_item
 
 
-def audio_listitem(context, audio_item, show_fanart=None):
+def audio_listitem(context,
+                   audio_item,
+                   show_fanart=None,
+                   for_playback=False,
+                   **_kwargs):
     uri = audio_item.get_uri()
     context.log_debug('Converting AudioItem |%s|' % uri)
 
@@ -434,7 +486,7 @@ def audio_listitem(context, audio_item, show_fanart=None):
     list_item = xbmcgui.ListItem(**kwargs)
 
     if show_fanart is None:
-        show_fanart = context.get_settings().show_fanart()
+        show_fanart = context.get_settings().fanart_selection()
     image = audio_item.get_image() or 'DefaultAudio.png'
     list_item.setArt({
         'icon': image,
@@ -442,18 +494,19 @@ def audio_listitem(context, audio_item, show_fanart=None):
         'thumb': image,
     })
 
-    set_info(list_item, audio_item, props)
+    resume = context.get_param('resume') or not for_playback
+    set_info(list_item, audio_item, props, resume=resume)
 
     context_menu = audio_item.get_context_menu()
     if context_menu:
-        list_item.addContextMenuItems(
-            context_menu, replaceItems=audio_item.replace_context_menu()
-        )
+        list_item.addContextMenuItems(context_menu)
 
+    if for_playback:
+        return list_item
     return uri, list_item, False
 
 
-def directory_listitem(context, directory_item, show_fanart=None):
+def directory_listitem(context, directory_item, show_fanart=None, **_kwargs):
     uri = directory_item.get_uri()
     context.log_debug('Converting DirectoryItem |%s|' % uri)
 
@@ -463,19 +516,26 @@ def directory_listitem(context, directory_item, show_fanart=None):
         'offscreen': True,
     }
     props = {
-        'specialSort': 'bottom' if directory_item.next_page else 'top',
         'ForceResolvePlugin': 'true',
     }
 
     list_item = xbmcgui.ListItem(**kwargs)
 
-    # make channel_subscription_id property available for keymapping
-    prop_value = directory_item.get_channel_subscription_id()
-    if prop_value:
-        props['channel_subscription_id'] = prop_value
+    if directory_item.next_page:
+        props['specialSort'] = 'bottom'
+    else:
+        prop_value = directory_item.get_subscription_id()
+        if prop_value:
+            props['channel_subscription_id'] = prop_value
+        elif directory_item.get_channel_id():
+            pass
+        elif directory_item.get_playlist_id():
+            pass
+        else:
+            props['specialSort'] = 'top'
 
     if show_fanart is None:
-        show_fanart = context.get_settings().show_fanart()
+        show_fanart = context.get_settings().fanart_selection()
     image = directory_item.get_image() or 'DefaultFolder.png'
     list_item.setArt({
         'icon': image,
@@ -498,14 +558,12 @@ def directory_listitem(context, directory_item, show_fanart=None):
 
     context_menu = directory_item.get_context_menu()
     if context_menu is not None:
-        list_item.addContextMenuItems(
-            context_menu, replaceItems=directory_item.replace_context_menu()
-        )
+        list_item.addContextMenuItems(context_menu)
 
     return uri, list_item, is_folder
 
 
-def image_listitem(context, image_item, show_fanart=None):
+def image_listitem(context, image_item, show_fanart=None, **_kwargs):
     uri = image_item.get_uri()
     context.log_debug('Converting ImageItem |%s|' % uri)
 
@@ -522,7 +580,7 @@ def image_listitem(context, image_item, show_fanart=None):
     list_item = xbmcgui.ListItem(**kwargs)
 
     if show_fanart is None:
-        show_fanart = context.get_settings().show_fanart()
+        show_fanart = context.get_settings().fanart_selection()
     image = image_item.get_image() or 'DefaultPicture.png'
     list_item.setArt({
         'icon': image,
@@ -534,14 +592,12 @@ def image_listitem(context, image_item, show_fanart=None):
 
     context_menu = image_item.get_context_menu()
     if context_menu is not None:
-        list_item.addContextMenuItems(
-            context_menu, replaceItems=image_item.replace_context_menu()
-        )
+        list_item.addContextMenuItems(context_menu)
 
     return uri, list_item, False
 
 
-def uri_listitem(context, uri_item):
+def uri_listitem(context, uri_item, **_kwargs):
     uri = uri_item.get_uri()
     context.log_debug('Converting UriItem |%s|' % uri)
 
@@ -560,7 +616,11 @@ def uri_listitem(context, uri_item):
     return list_item
 
 
-def video_listitem(context, video_item, show_fanart=None):
+def video_listitem(context,
+                   video_item,
+                   show_fanart=None,
+                   focused=None,
+                   **_kwargs):
     uri = video_item.get_uri()
     context.log_debug('Converting VideoItem |%s|' % uri)
 
@@ -583,13 +643,22 @@ def video_listitem(context, video_item, show_fanart=None):
     local_datetime = None
     if datetime:
         local_datetime = datetime_parser.utc_to_local(datetime)
-        props['PublishedLocal'] = str(local_datetime)
+        props['PublishedLocal'] = to_str(local_datetime)
     if video_item.live:
         props['PublishedSince'] = context.localize('live')
     elif local_datetime:
-        props['PublishedSince'] = str(datetime_parser.datetime_to_since(
+        props['PublishedSince'] = to_str(datetime_parser.datetime_to_since(
             context, local_datetime
         ))
+
+    set_play_count = True
+    resume = True
+    prop_value = video_item.video_id
+    if prop_value:
+        if focused and focused == prop_value:
+            set_play_count = False
+            resume = False
+        props['video_id'] = prop_value
 
     # make channel_id property available for keymapping
     prop_value = video_item.get_channel_id()
@@ -612,7 +681,7 @@ def video_listitem(context, video_item, show_fanart=None):
         props['playlist_item_id'] = prop_value
 
     if show_fanart is None:
-        show_fanart = context.get_settings().show_fanart()
+        show_fanart = context.get_settings().fanart_selection()
     image = video_item.get_image()
     list_item.setArt({
         'icon': image or 'DefaultVideo.png',
@@ -623,26 +692,14 @@ def video_listitem(context, video_item, show_fanart=None):
     if video_item.subtitles:
         list_item.setSubtitles(video_item.subtitles)
 
-    set_info(list_item, video_item, props)
+    set_info(list_item,
+             video_item,
+             props,
+             set_play_count=set_play_count,
+             resume=resume)
 
     context_menu = video_item.get_context_menu()
     if context_menu:
-        list_item.addContextMenuItems(
-            context_menu, replaceItems=video_item.replace_context_menu()
-        )
+        list_item.addContextMenuItems(context_menu)
 
     return uri, list_item, False
-
-
-def playback_item(context, base_item, show_fanart=None):
-    if isinstance(base_item, UriItem):
-        return uri_listitem(context, base_item)
-
-    if isinstance(base_item, AudioItem):
-        _, item, _ = audio_listitem(context, base_item, show_fanart)
-        return item
-
-    if isinstance(base_item, VideoItem):
-        return video_playback_item(context, base_item, show_fanart)
-
-    return None

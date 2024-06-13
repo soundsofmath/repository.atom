@@ -46,7 +46,7 @@
                         <bottom>80</bottom>
                         <left>80</left>
                         <height>80</height>
-                        <include>Settings_Arctic FuseVersion</include>
+                        <include>Settings_KodiVersion</include>
                     </control> -->
                     <include content="Settings_InfoText">
                         <param name="id">9930</param>

@@ -145,7 +145,7 @@
                 </control>
                 <control type="group">
                     <width>50</width>
-                    <include>Info_Arctic FuseLogo_Image</include>
+                    <include>Info_KodiLogo_Image</include>
                 </control>
 
                 <control type="group">
@@ -178,8 +178,7 @@
             <param name="hasbackground">Skin.HasSetting(ToastNotifications.Tabbed)</param>
             <param name="haslabel">Skin.HasSetting(ToastNotifications.Tabbed)</param>
             <param name="spinnervisible">Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</param>
-            <visible>!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]</visible>
-            <visible>!Weather.IsFetched</visible>
+            <param name="visible">[!Skin.HasSetting(ToastNotifications.Tabbed) | [!Window.IsActive(DialogVolumeBar.xml) | Player.Muted]] + !Weather.IsFetched</param>
         </include>
 
     </controls>

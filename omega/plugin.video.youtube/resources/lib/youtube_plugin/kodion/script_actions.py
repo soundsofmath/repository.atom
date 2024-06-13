@@ -13,7 +13,7 @@ import os
 import socket
 
 from .compatibility import parse_qsl, urlsplit, xbmc, xbmcaddon, xbmcvfs
-from .constants import DATA_PATH, TEMP_PATH, WAIT_FLAG
+from .constants import DATA_PATH, SWITCH_PLAYER_FLAG, TEMP_PATH, WAIT_FLAG
 from .context import XbmcContext
 from .network import get_client_ip_address, httpd_status
 from .utils import rm_dir, validate_ip_address
@@ -29,9 +29,9 @@ def _config_actions(context, action, *_args):
 
     elif action == 'isa':
         if context.use_inputstream_adaptive():
-            xbmcaddon.Addon(id='inputstream.adaptive').openSettings()
+            xbmcaddon.Addon('inputstream.adaptive').openSettings()
         else:
-            settings.set_bool('kodion.video.quality.isa', False)
+            settings.use_isa(False)
 
     elif action == 'inputstreamhelper':
         try:
@@ -41,16 +41,16 @@ def _config_actions(context, action, *_args):
             xbmc.executebuiltin('InstallAddon(script.module.inputstreamhelper)')
 
     elif action == 'subtitles':
-        sub_lang = context.get_subtitle_language()
+        kodi_sub_lang = context.get_subtitle_language()
         plugin_lang = settings.get_language()
         sub_selection = settings.get_subtitle_selection()
 
-        if not sub_lang:
+        if not kodi_sub_lang:
             preferred = (plugin_lang,)
-        elif sub_lang.partition('-')[0] != plugin_lang.partition('-')[0]:
-            preferred = (sub_lang, plugin_lang)
+        elif kodi_sub_lang.partition('-')[0] != plugin_lang.partition('-')[0]:
+            preferred = (kodi_sub_lang, plugin_lang)
         else:
-            preferred = (sub_lang,)
+            preferred = (kodi_sub_lang,)
 
         fallback = ('ASR' if preferred[0].startswith('en') else
                     context.get_language_name('en'))
@@ -111,8 +111,8 @@ def _config_actions(context, action, *_args):
             settings.httpd_listen(addresses[selected_address])
 
     elif action == 'show_client_ip':
-        if httpd_status():
-            client_ip = get_client_ip_address()
+        if httpd_status(context):
+            client_ip = get_client_ip_address(context)
             if client_ip:
                 ui.on_ok(context.get_name(),
                          context.localize('client.ip') % client_ip)
@@ -130,6 +130,7 @@ def _maintenance_actions(context, action, params):
 
     if action == 'clear':
         targets = {
+            'bookmarks': context.get_bookmarks_list,
             'data_cache': context.get_data_cache,
             'function_cache': context.get_function_cache,
             'playback_history': context.get_playback_history,
@@ -148,6 +149,7 @@ def _maintenance_actions(context, action, params):
     elif action == 'delete':
         path = params.get('path')
         targets = {
+            'bookmarks': 'bookmarks.sqlite',
             'data_cache': 'data_cache.sqlite',
             'function_cache': 'cache.sqlite',
             'playback_history': 'history.sqlite',
@@ -237,7 +239,7 @@ def _user_actions(context, action, params):
             localize('user.changed') % access_manager.get_username(user),
             localize('user.switch')
         )
-        if context.get_param('refresh') is not False:
+        if context.get_param('refresh') != 0:
             ui.refresh_container()
 
     if action == 'switch':
@@ -309,7 +311,7 @@ def _user_actions(context, action, params):
 def run(argv):
     context = XbmcContext()
     ui = context.get_ui()
-    ui.set_property(WAIT_FLAG, 'true')
+    ui.set_property(WAIT_FLAG)
     try:
         category = action = params = None
         args = argv[1:]
@@ -331,8 +333,9 @@ def run(argv):
             xbmcaddon.Addon().openSettings()
             return
 
-        if action == 'refresh':
-            xbmc.executebuiltin('Container.Refresh')
+        if action == 'play_with':
+            ui.set_property(SWITCH_PLAYER_FLAG)
+            xbmc.executebuiltin('Action(Play)')
             return
 
         if category == 'config':
@@ -347,5 +350,4 @@ def run(argv):
             _user_actions(context, action, params)
             return
     finally:
-        context.tear_down()
         ui.clear_property(WAIT_FLAG)
