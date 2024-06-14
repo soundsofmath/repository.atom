@@ -1,6 +1,6 @@
 name="Arctic Fuse Build"
 version="1.0"
-url="https://archive.org/download/arctic-horizon-2-nexus_20230315/ArcticFuse.zip"
+url="https://archive.org/download/arctic-fuse-omega/ArcticFuseOmega.zip"
 minor="http://"
 gui="https://"
 kodi="21.0"
