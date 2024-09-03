@@ -99,28 +99,13 @@
                             </focusedlayout>
                         </control>
                     </include>
-
-                    <!-- <control type="group">
-                        <left>40</left>
-                        <bottom>-80</bottom>
-                        <include content="Settings_InfoText">
-                            <param name="id">6</param>
-                        </include>
-                    </control> -->
                 </include>
-                <!-- <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include>Settings_KodiVersion</include>
-                </control> -->
-                <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include content="Settings_InfoText">
-                        <param name="id">6</param>
-                        <param name="dialog">true</param>
-                    </include>
-                </control>
+                <include content="Settings_InfoText">
+                    <param name="id">6</param>
+                    <param name="dialog">true</param>
+                    <param name="left">80</param>
+                    <param name="bottom">60</param>
+                </include>
             </include>
             <include content="Settings_Changer">
                 <onup>3</onup>

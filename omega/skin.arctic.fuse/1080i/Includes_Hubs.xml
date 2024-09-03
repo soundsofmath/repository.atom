@@ -9,8 +9,8 @@
     <include name="Hub_Widgets_Grouplist__Def_Layout_Expanded_OnCategories">
         <animation effect="slide" time="400" end="0" start="0,-120" tween="quadratic" easing="out" reversible="false" condition="![Integer.IsEqual(Container(300).NumItems,0) + $EXP[Exp_Hubs_Categories_SlideDown]]">Conditional</animation>
         <animation effect="slide" time="400" end="0,-120" start="0" tween="quadratic" easing="out" reversible="false" condition="Integer.IsEqual(Container(300).NumItems,0) + $EXP[Exp_Hubs_Categories_SlideDown]">Conditional</animation>
-        <animation effect="slide" time="400" end="0" start="0,-40" tween="quadratic" easing="out" reversible="false" condition="![[Integer.IsEqual(Container(302).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Categories_SlideDown]]">Conditional</animation>
-        <animation effect="slide" time="400" end="0,-40" start="0" tween="quadratic" easing="out" reversible="false" condition="[Integer.IsEqual(Container(302).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Categories_SlideDown]">Conditional</animation>
+        <animation effect="slide" time="400" end="0" start="0,-40" tween="quadratic" easing="out" reversible="false" condition="![[Integer.IsEqual(Container(3002).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Categories_SlideDown]]">Conditional</animation>
+        <animation effect="slide" time="400" end="0,-40" start="0" tween="quadratic" easing="out" reversible="false" condition="[Integer.IsEqual(Container(3002).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Categories_SlideDown]">Conditional</animation>
     </include>
 
     <!-- SlideUp Categories = Disabled -->
@@ -21,8 +21,8 @@
     <include name="Hub_Widgets_Grouplist__Def_Layout_Expanded_OnWidgets">
         <animation effect="slide" time="400" end="0" start="0,-120" tween="quadratic" easing="out" reversible="false" condition="![Integer.IsEqual(Container(300).NumItems,0) + $EXP[Exp_Hubs_Widgets_SlideDown]]">Conditional</animation>
         <animation effect="slide" time="400" end="0,-120" start="0" tween="quadratic" easing="out" reversible="false" condition="Integer.IsEqual(Container(300).NumItems,0) + $EXP[Exp_Hubs_Widgets_SlideDown]">Conditional</animation>
-        <animation effect="slide" time="400" end="0" start="0,-40" tween="quadratic" easing="out" reversible="false" condition="![[Integer.IsEqual(Container(302).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Widgets_SlideDown]]">Conditional</animation>
-        <animation effect="slide" time="400" end="0,-40" start="0" tween="quadratic" easing="out" reversible="false" condition="[Integer.IsEqual(Container(302).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Widgets_SlideDown]">Conditional</animation>
+        <animation effect="slide" time="400" end="0" start="0,-40" tween="quadratic" easing="out" reversible="false" condition="![[Integer.IsEqual(Container(3002).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Widgets_SlideDown]]">Conditional</animation>
+        <animation effect="slide" time="400" end="0,-40" start="0" tween="quadratic" easing="out" reversible="false" condition="[Integer.IsEqual(Container(3002).NumItems,0) | Integer.IsEqual(Container(300).NumItems,0)] + $EXP[Exp_Hubs_Widgets_SlideDown]">Conditional</animation>
     </include>
 
     <!-- Fanart Spotlight = Enabled -->
@@ -33,16 +33,7 @@
         <animation effect="slide" end="0" start="0,-hub_group_fanartspotlight_s" time="400" tween="quadratic" reversible="false" condition="$EXP[Exp_Hubs_Spotlight_SlideDown]">WindowOpen</animation>
     </include>
 
-    <variable name="Hub_Submenu_Highlight">
-        <value condition="!String.IsEmpty(Container(302).ListItem.Property(useWidgetList)) + [!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) | !String.IsEmpty(Container(302).ListItem.Property(list))]">main_fg_90</value>
-        <value condition="String.IsEmpty(Container(300).ListItem.Property(useWidgetList)) + String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEmpty(Container(302).ListItem.Property(list)) + !String.IsEmpty(Container(302).ListItem.FolderPath)">main_fg_90</value>
-        <value>main_fg_30</value>
-    </variable>
-
     <include name="Hub_Submenu_List_Definition_Content">
-        <onup>300</onup>
-        <ondown>$PARAM[ondown]</ondown>
-
         <onfocus condition="![$PARAM[submenu_widget_highlight]]">SetProperty(TMDbHelper.WidgetContainer,301,$PARAM[window_id])</onfocus>
         <onfocus condition="$PARAM[submenu_widget_highlight]">SetProperty(TMDbHelper.WidgetContainer,$PARAM[submenu_widget_id],$PARAM[window_id])</onfocus>
 
@@ -71,6 +62,8 @@
         </include>
 
         <include>Hub_Categories_FadeIn</include>
+
+        <visible>Container($PARAM[id]).IsUpdating | !Integer.IsEqual(Container($PARAM[id]).NumItems,0)</visible>
     </include>
 
     <include name="Hub_Categories_Spotlight_Slide_Animation">
@@ -86,7 +79,6 @@
     </include>
 
     <include name="Hub_Submenu_List">
-        <param name="ondown">340</param>
         <param name="hidden_button">List_ButtonMenu_Row_HiddenButton_View</param>
         <param name="submenu_widget_highlight">false</param>
         <definition>
@@ -94,13 +86,14 @@
                 <param name="id">$PARAM[id]</param>
                 <param name="window_id">$PARAM[window_id]</param>
                 <param name="font">font_mini</param>
-                <param name="color_fo">$VAR[Hub_Submenu_Highlight]</param>
+                <param name="color_fo">main_fg_30</param>
                 <param name="color_nf">main_fg_30</param>
                 <param name="hidden_button">$PARAM[hidden_button]</param>
                 <param name="hidden_button_prefix">$PARAM[hidden_button_prefix]</param>
                 <param name="submenu_widget_highlight">$PARAM[submenu_widget_highlight]</param>
                 <param name="submenu_widget_id">$PARAM[submenu_widget_id]</param>
                 <param name="slide">True</param>
+                <param name="slide_id">3002</param>
                 <param name="hitrect_x">20</param>
                 <param name="hitrect_y">20</param>
                 <param name="hitrect_w">1080</param>
@@ -110,7 +103,6 @@
                     <param name="submenu_widget_highlight">$PARAM[submenu_widget_highlight]</param>
                     <param name="submenu_widget_id">$PARAM[submenu_widget_id]</param>
                     <param name="window_id">$PARAM[window_id]</param>
-                    <param name="ondown">$PARAM[ondown]</param>
                     <param name="id">$PARAM[id]</param>
                 </include>
                 <width>1700</width>
@@ -127,24 +119,23 @@
                 <param name="id">$PARAM[id]</param>
                 <param name="window_id">$PARAM[window_id]</param>
                 <param name="font">font_mini</param>
-                <param name="color_fo">$VAR[Hub_Submenu_Highlight]</param>
+                <param name="color_fo">main_fg_30</param>
                 <param name="color_nf">main_fg_30</param>
                 <param name="hidden_button">$PARAM[hidden_button]</param>
                 <param name="hidden_button_prefix">$PARAM[hidden_button_prefix]</param>
                 <param name="submenu_widget_highlight">$PARAM[submenu_widget_highlight]</param>
                 <param name="submenu_widget_id">$PARAM[submenu_widget_id]</param>
                 <param name="slide">True</param>
+                <param name="slide_id">3002</param>
                 <param name="hitrect_x">20</param>
                 <param name="hitrect_y">70</param>
                 <param name="hitrect_w">1080</param>
                 <param name="hitrect_h">100</param>
                 <param name="large">$EXP[Exp_Hubs_Spotlight_IsSlide]</param>
-                <!-- <param name="small">$EXP[Exp_Hubs_Spotlight_IsSlide]</param> -->
                 <include content="Hub_Submenu_List_Definition_Content">
                     <param name="submenu_widget_highlight">$PARAM[submenu_widget_highlight]</param>
                     <param name="submenu_widget_id">$PARAM[submenu_widget_id]</param>
                     <param name="window_id">$PARAM[window_id]</param>
-                    <param name="ondown">$PARAM[ondown]</param>
                     <param name="id">$PARAM[id]</param>
                 </include>
                 <include content="Hub_Categories_Spotlight_Slide" condition="$EXP[Exp_Hubs_Spotlight_IsDisabled]">
@@ -158,16 +149,15 @@
     </include>
 
     <include name="Hub_Submenu_Group">
-        <control type="group" id="3000">
+        <control type="grouplist" id="3002">
             <include>Transitions_Lower_Visibility</include>
             <top>hub_submenuwidget_t</top>
             <height>hub_submenuwidget_h</height>
             <left>160</left>
-            <orientation>vertical</orientation>
-
-
+            <orientation>horizontal</orientation>
+            <onup>300</onup>
+            <ondown>400</ondown>
             <nested />
-
         </control>
     </include>
 
@@ -306,7 +296,12 @@
                     <include>Animation_View_SlideOver</include>
                     <include>Animation_View_WindowChange</include>
                     <include>Hub_Widgets_Group_Furniture</include>
-                    <include>Furniture_Top</include>
+                    <control type="group">
+                        <include condition="$EXP[Exp_HomeMenu_Info_IsHorizontal]" content="Animation_ConditionalFade">
+                            <param name="condition">$EXP[Exp_InfoDialogs]</param>
+                        </include>
+                        <include>Furniture_Top</include>
+                    </control>
                 </control>
                 <include>Furniture_Bottom_Right</include>
             </control>
@@ -329,7 +324,7 @@
 
     <include name="Hub_Widgets_Only">
         <include>Background_Transition</include>
-        <include content="Hub_Widgets_Group">
+        <control type="group" id="340">
             <include content="Hub_Widgets_Infopanel">
                 <include content="Info_Panel">
                     <param name="container">Container.</param>
@@ -341,7 +336,7 @@
                 <bottom>hub_group_widgetup_s</bottom>
                 <include>$PARAM[widgets_include]-selector</include>
             </include>
-        </include>
+        </control>
     </include>
 
     <variable name="Hub_Submenu_Content">
@@ -363,22 +358,15 @@
         <include content="Hub_Menu_Group">
             <include content="Hub_Submenu_Group">
                 <include>skinvariables-$PARAM[categories]-submenu</include>
-                <include content="Hub_Submenu_List">
-                    <param name="id">302</param>
-                    <param name="ondown">400</param>
-                    <param name="window_id">$PARAM[window_id]</param>
-                    <param name="submenu_widget_highlight">False</param>
-                    <visible>False</visible>
-                </include>
             </include>
         </include>
 
         <include condition="Window.IsVisible(Home)">skinvariables-sidemenu-spotlight</include>
         <include>skinvariables-$PARAM[categories]-spotlight</include>
 
-        <include content="Hub_Widgets_Group">
+        <control type="group" id="340">
             <include>skinvariables-$PARAM[categories]-widgets</include>
-        </include>
+        </control>
 
         <include content="Hub_Widgets_Infopanel">
             <include content="Info_Panel">
@@ -415,12 +403,6 @@
         </definition>
     </include>
 
-    <include name="Hub_Widgets_Group">
-        <control type="group" id="340">
-            <nested />
-        </control>
-    </include>
-
     <include name="Hub_Categories_Definition_Content">
 
         <!-- Reset Widget Group Position -->
@@ -452,7 +434,7 @@
         <onup condition="$EXP[Exp_HomeMenu_IsTopBar] + $EXP[Exp_Hubs_Spotlight_IsDisabled]">SetFocus(303)</onup>
         <onup condition="!$EXP[Exp_Hubs_Spotlight_IsDisabled]">311</onup>
 
-        <ondown>302</ondown>
+        <ondown>3002</ondown>
 
         <onfocus>SetProperty(TMDbHelper.WidgetContainer,301,$PARAM[window_id])</onfocus>
 
@@ -469,7 +451,7 @@
             <param name="hitrect_w">1080</param>
             <param name="hitrect_h">120</param>
             <param name="shorten">True</param>
-            <param name="hidden_button_prefix">Item.$INFO[Container(300).ListItem.Property(item)]302.</param>
+            <param name="hidden_button_prefix">$INFO[Container(300).ListItem.Property(item)]302</param>
             <param name="hidden_button">List_ButtonMenu_Row_HiddenButton_Home_Categories</param>
             <param name="slide">True</param>
             <include content="Hub_Categories_Definition_Content">
@@ -498,8 +480,7 @@
             <param name="hitrect_w">1080</param>
             <param name="hitrect_h">100</param>
             <param name="large">True</param>
-            <!-- <param name="small">True</param> -->
-            <param name="hidden_button_prefix">Item.$INFO[Container(300).ListItem.Property(item)]302.</param>
+            <param name="hidden_button_prefix">$INFO[Container(300).ListItem.Property(item)]302</param>
             <param name="hidden_button">List_ButtonMenu_Row_HiddenButton_Home_Categories</param>
             <param name="slide">True</param>
             <include content="Hub_Categories_Definition_Content">
@@ -756,7 +737,7 @@
 
 
     <include name="Hub_Widgets_Grouplist__Def_Layout_Expanded">
-        <onup>302</onup>
+        <onup>3002</onup>
         <include condition="!$EXP[Exp_Hubs_Spotlight_IsSlide]">Hub_Widgets_Grouplist__Def_Layout_Expanded_OnWidgets</include>
         <include condition="$EXP[Exp_Hubs_Spotlight_IsSlide]">Hub_Widgets_Grouplist__Def_Layout_Expanded_OnCategories</include>
     </include>

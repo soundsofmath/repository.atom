@@ -32,19 +32,19 @@
                             <param name="label">$LOCALIZE[192]</param>
                             <param name="icon">special://skin/extras/icons/triangle-exclamation.png</param>
 
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item01) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item01)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item02) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item02)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item03) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item03)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item04) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item04)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item05) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item05)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item06) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.Reset(CustomRating.Movies.Item06)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item01) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item01,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item02) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item02,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item03) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item03,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item04) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item04,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item05) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item05,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item06) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),Movies)">Skin.SetString(CustomRating.Movies.Item06,None)</onclick>
 
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item01) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item01)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item02) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item02)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item03) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item03)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item04) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item04)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item05) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item05)</onclick>
-                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item06) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.Reset(CustomRating.TVShows.Item06)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item01) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item01,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item02) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item02,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item03) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item03,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item04) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item04,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item05) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item05,None)</onclick>
+                            <onclick condition="String.IsEqual(Window(Home).Property(ConfigureRatingItem),Item06) + String.IsEqual(Window(Home).Property(ConfigureRatingContent),TVShows)">Skin.SetString(CustomRating.TVShows.Item06,None)</onclick>
 
                         </include>
                     </control>

@@ -57,7 +57,7 @@
                                 <template>generator/data/parts/basic_template.xmltemplate</template>
                                 <value name="comments">Submenu Widgets for Category {item_menu} {parent_item_x}.{item_x} {parent_item_label} {item_label}</value>
                                 <value name="grouplist_item_x">{parent_item_x}</value>
-                                <value name="widget_category_visible">String.IsEqual(Container(300).ListItem.Property(guid),{parent_item_guid}) + String.IsEqual(Container(302).ListItem.Property(guid),{item_guid})</value>
+                                <value name="widget_category_visible">String.IsEqual(Container(300).ListItem.Property(guid),{parent_item_guid}) + String.IsEqual(Container({parent_item_x}302).ListItem.Property(guid),{item_guid})</value>
                                 <value name="includes_part">
                                     <items menu="{parent_item_menu}" item="{parent_item_x}.{item_x}" mode="widgets">
                                         <item>

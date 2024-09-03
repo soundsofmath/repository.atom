@@ -81,24 +81,12 @@
                         <onright>60</onright>
                         <height>720</height>
                     </include>
-                    <!-- <control type="group">
-                        <left>40</left>
-                        <bottom>-80</bottom>
-                        <include>Settings_InfoText</include>
-                    </control> -->
                 </include>
-                <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include content="Settings_InfoText">
-                        <param name="dialog">true</param>
-                    </include>
-                </control>
-                <!-- <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include>Settings_KodiVersion</include>
-                </control> -->
+                <include content="Settings_InfoText">
+                    <param name="dialog">true</param>
+                    <param name="left">80</param>
+                    <param name="bottom">60</param>
+                </include>
             </include>
             <include content="Settings_Changer">
                 <onup>8000</onup>

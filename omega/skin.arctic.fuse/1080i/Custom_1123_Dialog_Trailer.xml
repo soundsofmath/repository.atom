@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog" id="1123">
     <defaultcontrol always="true">9000</defaultcontrol>
-    <onload condition="String.IsEmpty(Window.Property(Trailer))">Close</onload>
-    <onload condition="!String.IsEmpty(Window.Property(Trailer)) + Player.HasVideo + !String.IsEqual(Window.Property(Trailer),Player.FileNameAndPath)">Action(Stop)</onload>
-    <onload condition="!String.IsEmpty(Window.Property(Trailer)) + [!Player.HasVideo | !String.IsEqual(Window.Property(Trailer),Player.FileNameAndPath)]">PlayMedia($ESCINFO[Window.Property(Trailer)],False,1)</onload>
+    <onload condition="String.IsEmpty(Window(Home).Property(PlayTrailer))">Close</onload>
+    <onload condition="!String.IsEmpty(Window(Home).Property(PlayTrailer)) + Player.HasVideo + !String.IsEqual(Window(Home).Property(PlayTrailer),Player.FileNameAndPath)">Action(Stop)</onload>
+    <onload condition="!String.IsEmpty(Window(Home).Property(PlayTrailer)) + [!Player.HasVideo | !String.IsEqual(Window(Home).Property(PlayTrailer),Player.FileNameAndPath)]">PlayMedia($ESCINFO[Window(Home).Property(PlayTrailer)],False,1)</onload>
     <onunload>ClearProperty(TrailerFullscreen,1123)</onunload>
     <onunload condition="Player.HasVideo + [Skin.HasSetting(Background.DisableVideo) | !Skin.HasSetting(Trailers.EnableAutoPlayback.Info) | !Window.IsVisible(DialogVideoInfo.xml)]">Action(Stop)</onunload>
     <controls>
@@ -46,8 +46,8 @@
                             <param name="id">04</param>
                             <param name="label">$LOCALIZE[31483]</param>
                             <param name="icon">special://skin/extras/icons/repeat2.png</param>
-                            <param name="visible">!String.IsEmpty(Window.Property(Trailer))</param>
-                            <onclick>PlayMedia($ESCINFO[Window.Property(Trailer)],False,1)</onclick>
+                            <param name="visible">!String.IsEmpty(Window(Home).Property(PlayTrailer))</param>
+                            <onclick>PlayMedia($ESCINFO[Window(Home).Property(PlayTrailer)],False,1)</onclick>
                         </include>
                         <include content="Dialog_Side_Button">
                             <param name="id">05</param>

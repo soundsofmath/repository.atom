@@ -459,8 +459,7 @@
                 <param name="secondary_label"> </param>
                 <param name="tvshowtitle">Container(513).ListItem.TVShowTitle</param>
                 <param name="title">Container(513).ListItem.Title</param>
-                <param name="episode">Container(513).ListItem.Episode</param>
-                <param name="season">Container(513).ListItem.Season</param>
+                <param name="seasonepisode_label">$VAR[Label_Plot_Episode_Number_C513,,. ]</param>
                 <param name="year">Container(513).ListItem.Year</param>
                 <param name="rating">Container(513).ListItem.Rating</param>
             </include>

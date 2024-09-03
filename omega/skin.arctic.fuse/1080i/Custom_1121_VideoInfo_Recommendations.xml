@@ -13,12 +13,12 @@
         <include content="DialogInfo_Recommendations_Group">
             <include>DialogInfo_Recommendations_InfoPanel</include>
             <include content="DialogInfo_Recommendations_Widgets_Grouplist">
-                <param name="onup">333</param>
-                <param name="ondown">noop</param>
+                <param name="onup">noop</param>
+                <param name="ondown">330</param>
                 <onleft condition="!$EXP[Exp_HomeMenu_IsTopBar]">303</onleft>
                 <onright condition="!$EXP[Exp_HomeMenu_IsTopBar]">332</onright>
-                <ondown condition="!$EXP[Exp_HomeMenu_IsTopBar]">330</ondown>
-                <ondown condition="$EXP[Exp_HomeMenu_IsTopBar]">303</ondown>
+                <onup condition="!$EXP[Exp_HomeMenu_IsTopBar]">333</onup>
+                <onup condition="$EXP[Exp_HomeMenu_IsTopBar]">303</onup>
                 <control type="button" id="5098">
                     <height>0</height>
                     <texturefocus />

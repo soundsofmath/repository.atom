@@ -7,6 +7,9 @@
     <include name="View_Row_Header">
         <definition>
             <control type="group">
+                <include condition="$EXP[Exp_HomeMenu_Info_IsHorizontal]" content="Animation_ConditionalFade">
+                    <param name="condition">$EXP[Exp_InfoDialogs]</param>
+                </include>
                 <visible>!$EXP[Exp_InfoDialogs]</visible>
                 <include>Animation_Transition_InfoPanel_Hide</include>
                 <visible>!Window.IsVisible(DialogAddonSettings.xml)</visible>
@@ -14,13 +17,13 @@
                 <visible>!Window.IsVisible(DialogPVRChannelManager.xml)</visible>
                 <visible>!Window.IsVisible(DialogPVRGroupManager.xml)</visible>
                 <control type="group">
-                    <visible allowhiddenfocus="true">![Control.HasFocus(19) | ControlGroup(9090).HasFocus() | Control.HasFocus(9992) | Control.HasFocus(9993) | !String.IsEmpty(Window.Property(MediaFilterBase)) | $EXP[Exp_FilterWall_IsActive]]</visible>
+                    <visible allowhiddenfocus="true">![String.IsEmpty(Window.Property(MediaFilterBase)) + [Control.HasFocus(19) | ControlGroup(9090).HasFocus() | Control.HasFocus(9992) | Control.HasFocus(9993)]]</visible>
                     <include content="Furniture_Top">
                         <param name="label">$PARAM[label]</param>
                     </include>
                 </control>
                 <control type="group">
-                    <visible allowhiddenfocus="true">Control.HasFocus(19) | ControlGroup(9090).HasFocus() | Control.HasFocus(9992) | Control.HasFocus(9993) | !String.IsEmpty(Window.Property(MediaFilterBase)) | $EXP[Exp_FilterWall_IsActive]</visible>
+                    <visible allowhiddenfocus="true">String.IsEmpty(Window.Property(MediaFilterBase)) + [Control.HasFocus(19) | ControlGroup(9090).HasFocus() | Control.HasFocus(9992) | Control.HasFocus(9993)]</visible>
                     <include content="Search_View_Edit">
                         <param name="editid">19</param>
                     </include>
@@ -450,6 +453,7 @@
                 <include>View_Row_Items</include>
                 <include>View_Row_Info</include>
             </control>
+
             <include>View_Furniture_Edges</include>
             <include>View_Dialog_VideoPIP</include>
             <include>View_Dialog_Plot</include>

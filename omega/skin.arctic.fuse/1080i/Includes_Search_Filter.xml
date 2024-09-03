@@ -65,31 +65,6 @@
         <onclick condition="Window.IsMedia">SetFocus(64)</onclick>
     </include>
 
-    <include name="Search_Filter_MouseButton">
-        <param name="vertical">false</param>
-        <definition>
-            <control type="button" id="305">
-                <texturenofocus />
-                <include>Texture_KeyboardButton</include>
-                <width>80</width>
-                <height>80</height>
-                <centerleft>50%</centerleft>
-                <centertop>50%</centertop>
-                <include>Search_Filter_MouseButton_OnClick</include>
-            </control>
-            <control type="image">
-                <texture colordiffuse="$VAR[Layout_Home_Menu_Color_NF]">special://skin/extras/icons/filter.png</texture>
-                <bordersize>icon_home_bordersize</bordersize>
-                <visible>!Control.HasFocus(305)</visible>
-            </control>
-            <control type="image">
-                <texture colordiffuse="$VAR[ColorSelected]">special://skin/extras/icons/filter.png</texture>
-                <bordersize>icon_home_bordersize</bordersize>
-                <visible>Control.HasFocus(305)</visible>
-            </control>
-        </definition>
-    </include>
-
     <include name="Search_Filter_ListType">
         <control type="group">
             <include>Dimension_DialogSideMenu</include>
@@ -143,7 +118,7 @@
 
     <include name="Search_Filter_Selector_ContentItems">
         <item>
-            <label>$LOCALIZE[342] &amp; $LOCALIZE[20343] (TMDb)</label>
+            <label>$LOCALIZE[21475] (TMDb)</label>
             <property name="target">videos</property>
             <property name="guid">guid-discoverall</property>
             <property name="listid">$NUMBER[52]</property>
@@ -167,7 +142,7 @@
             <property name="discover">true</property>
         </item>
         <item>
-            <label>$LOCALIZE[342] &amp; $LOCALIZE[20343] ($LOCALIZE[14022])</label>
+            <label>$LOCALIZE[21475] ($LOCALIZE[14022])</label>
             <property name="target">videos</property>
             <property name="guid">guid-libraryall</property>
             <property name="listid">$NUMBER[52]</property>
@@ -194,14 +169,6 @@
     </include>
 
     <include name="Search_Filter_Selector">
-
-        <control type="group">
-            <width>40</width>
-            <height>40</height>
-            <centerright>100</centerright>
-            <centertop>100</centertop>
-            <include>Search_Filter_MouseButton</include>
-        </control>
 
         <control type="button" id="80999">
             <texturenofocus />

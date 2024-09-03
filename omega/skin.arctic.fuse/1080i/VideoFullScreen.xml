@@ -2,6 +2,7 @@
 <window>
     <include>Animation_OSD_Fullscreen_Change</include>
     <onload>ClearProperty(OSDRelaunchFullscreen,Home)</onload>
+    <onload>Dialog.Close(1175,force)</onload>
     <controls>
         <include content="Background_Notification_Overlay" condition="!Skin.HasSetting(ToastNotifications.Tabbed)">
             <param name="colordiffuse">panel_bg_70</param>

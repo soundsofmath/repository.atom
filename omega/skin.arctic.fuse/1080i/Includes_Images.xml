@@ -18,6 +18,11 @@
         <value condition="Skin.String(VideoOSD.PersonCredits.WidgetInfo,shows)">special://skin/extras/icons/tv.png</value>
     </variable>
 
+    <variable name="Image_Discover_TMDbType">
+        <value condition="Skin.String(Discover.TMDbType,movie)">special://skin/extras/icons/film.png</value>
+        <value condition="Skin.String(Discover.TMDbType,tv)">special://skin/extras/icons/tv.png</value>
+    </variable>
+
     <variable name="Image_SkinVariables_FilterPath">
         <value condition="String.IsEqual(Window(Home).Property(Shortcuts.Category),Global)">special://skin/extras/icons/world.png</value>
         <value condition="String.StartsWith(Window(Home).Property(Shortcuts.Category),guid-)">$INFO[Container(29303).Listitem.Icon]</value>
@@ -138,18 +143,6 @@
     <variable name="Image_ContextIcon">
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.base_icon))">$INFO[Window(Home).Property(TMDbHelper.ListItem.base_icon)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(icon))">$INFO[ListItem.Art(icon)]</value>
-    </variable>
-
-    <variable name="Image_Foreground_Cheater_Parent_Divert">
-        <value condition="Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) + Integer.IsEqual(Container(301).NumItems,0) + !Container(301).IsUpdating + !String.IsEmpty(Container(99971).ListItem.PicturePath)">$INFO[Container(99971).ListItem.PicturePath]</value>
-        <value condition="!String.IsEmpty(Control.GetLabel(99973))">$INFO[Control.GetLabel(99973)]</value>
-        <value>$VAR[Image_Foreground_Cheater_Parent]</value>
-    </variable>
-
-    <variable name="Image_Background_Cheater_Parent_Divert">
-        <value condition="Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) + Integer.IsEqual(Container(301).NumItems,0) + !Container(301).IsUpdating + !String.IsEmpty(Container(99971).ListItem.PicturePath)">$INFO[Container(99971).ListItem.PicturePath]</value>
-        <value condition="!String.IsEmpty(Control.GetLabel(99973))">$INFO[Control.GetLabel(99973)]</value>
-        <value>$VAR[Image_Background_Cheater_Parent]</value>
     </variable>
 
     <variable name="Image_ButtonMenu_NowPlayingThumb">
@@ -306,25 +299,36 @@
     </variable>
 
     <variable name="Image_Player_Status">
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Returning Series)">flags/$VAR[Info_Line_Rating_Style]/status/target.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Post Production)">flags/$VAR[Info_Line_Rating_Style]/status/target.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Canceled)">flags/$VAR[Info_Line_Rating_Style]/status/circle-exclamation.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Ended)">flags/$VAR[Info_Line_Rating_Style]/status/circle-check.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Released)">flags/$VAR[Info_Line_Rating_Style]/status/circle-check.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),In Production)">flags/$VAR[Info_Line_Rating_Style]/status/clapperboard.png</value>
-        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Planned)">flags/$VAR[Info_Line_Rating_Style]/status/clipboard-list.png</value>
-        <value>flags/$VAR[Info_Line_Rating_Style]/status/announce.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Returning Series)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Post Production)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Canceled)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-xmark.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Ended)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-check.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Released)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-check.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),In Production)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.Player.Status),Planned)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value>flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
     </variable>
 
     <variable name="Image_ListItem_Status">
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Returning Series) | String.IsEqual(Container(99950).ListItem.Status,Returning Series)">flags/$VAR[Info_Line_Rating_Style]/status/target.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Post Production) | String.IsEqual(Container(99950).ListItem.Status,Post Production)">flags/$VAR[Info_Line_Rating_Style]/status/target.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Canceled) | String.IsEqual(Container(99950).ListItem.Status,Canceled)">flags/$VAR[Info_Line_Rating_Style]/status/circle-exclamation.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Ended) | String.IsEqual(Container(99950).ListItem.Status,Ended)">flags/$VAR[Info_Line_Rating_Style]/status/circle-check.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Released) | String.IsEqual(Container(99950).ListItem.Status,Released)">flags/$VAR[Info_Line_Rating_Style]/status/circle-check.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),In Production) | String.IsEqual(Container(99950).ListItem.Status,In Production)">flags/$VAR[Info_Line_Rating_Style]/status/announce.png</value>
-        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Planned) | String.IsEqual(Container(99950).ListItem.Status,Planned)">flags/$VAR[Info_Line_Rating_Style]/status/clipboard-list.png</value>
-        <value>flags/$VAR[Info_Line_Rating_Style]/status/announce.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Returning Series) | String.IsEqual(Container(99950).ListItem.Status,Returning Series)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Post Production) | String.IsEqual(Container(99950).ListItem.Status,Post Production)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Canceled) | String.IsEqual(Container(99950).ListItem.Status,Canceled)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-xmark.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Ended) | String.IsEqual(Container(99950).ListItem.Status,Ended)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-check.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Released) | String.IsEqual(Container(99950).ListItem.Status,Released)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-check.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),In Production) | String.IsEqual(Container(99950).ListItem.Status,In Production)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Planned) | String.IsEqual(Container(99950).ListItem.Status,Planned)">flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+        <value>flags/$VAR[Info_Line_Rating_Style]/status/calendar-day.png</value>
+    </variable>
+
+    <variable name="Image_DialogInfo_Status">
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Returning Series) | String.IsEqual(Container(99950).ListItem.Status,Returning Series)">special://skin/extras/icons/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Post Production) | String.IsEqual(Container(99950).ListItem.Status,Post Production)">special://skin/extras/icons/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Canceled) | String.IsEqual(Container(99950).ListItem.Status,Canceled)">special://skin/extras/icons/calendar-xmark.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Ended) | String.IsEqual(Container(99950).ListItem.Status,Ended)">special://skin/extras/icons/calendar-check.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Released) | String.IsEqual(Container(99950).ListItem.Status,Released)">special://skin/extras/icons/calendar-check.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),In Production) | String.IsEqual(Container(99950).ListItem.Status,In Production)">special://skin/extras/icons/calendar-day.png</value>
+        <value condition="String.IsEqual(Container(99950).ListItem.Property(Status),Planned) | String.IsEqual(Container(99950).ListItem.Status,Planned)">special://skin/extras/icons/calendar-day.png</value>
+        <value>special://skin/extras/icons/calendar.png</value>
     </variable>
 
     <variable name="Image_SimpleDialogBackground">
@@ -345,15 +349,8 @@
         <value>special://skin/extras/backgrounds/blur/purple_blur.jpg</value>
     </variable>
 
-    <variable name="Image_WidgetBackground">
-        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(base_fanart))">$INFO[Container(99950).ListItem.Property(base_fanart)]</value>
-        <value condition="!String.IsEmpty(Container(99950).ListItem.Art(fanart))">$INFO[Container(99950).ListItem.Art(fanart)]</value>
-        <value condition="!String.IsEmpty(Container(99950).ListItem.Art(tvshow.fanart))">$INFO[Container(99950).ListItem.Art(tvshow.fanart)]</value>
-        <value condition="!String.IsEmpty(Container(99972).ListItem.PicturePath)">$INFO[Container(99972).ListItem.PicturePath]</value>
-    </variable>
-
     <variable name="Image_CropLogo">
-        <value condition="!String.IsEmpty(Window(Home).Property(CropImage)) + String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(CropImage)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(CropImage)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(CropImage)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDBHelper.ListItem.CropImage))">$INFO[Window(Home).Property(TMDBHelper.ListItem.CropImage)]</value>
     </variable>
 
@@ -364,23 +361,24 @@
         <value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
     </variable>
 
-    <variable name="Image_Background_Blur">
-        <value condition="!String.IsEmpty(Window(Home).Property(BlurImage)) + String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(BlurImage)]</value>
+    <variable name="Image_OSD_7000_Poster">
+        <value condition="!String.IsEmpty(Container(7000).ListItem.Art(poster))">$INFO[Container(7000).ListItem.Art(poster)]</value>
+        <value condition="!String.IsEmpty(Container(7000).ListItem.Art(tvshow.poster))">$INFO[Container(7000).ListItem.Art(tvshow.poster)]</value>
+        <value condition="!String.IsEmpty(Container(7000).ListItem.Icon)">$INFO[Container(7000).ListItem.Icon]</value>
+    </variable>
+
+    <variable name="Image_Background">
+        <value condition="!String.IsEmpty(Window(Home).Property(BlurImage)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(BlurImage)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.SimpleBackground.BlurImage)) + $EXP[Exp_SettingsDialogs]">$INFO[Window(Home).Property(TMDbHelper.SimpleBackground.BlurImage)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.FallbackBackground.BlurImage)) + Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) + Integer.IsEqual(Container(301).NumItems,0)">$INFO[Window(Home).Property(TMDbHelper.FallbackBackground.BlurImage)]</value>
         <value>$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage)]</value>
     </variable>
 
-    <variable name="Image_Foreground_FlixArt">
-        <value condition="!String.IsEmpty(Window(Home).Property(BlurImage.Original)) + String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(BlurImage.Original)]</value>
+    <variable name="Image_Foreground">
+        <value condition="!String.IsEmpty(Window(Home).Property(BlurImage.Original)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Image.Override))">$INFO[Window(Home).Property(BlurImage.Original)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.SimpleBackground.BlurImage.Original)) + $EXP[Exp_SettingsDialogs]">$INFO[Window(Home).Property(TMDbHelper.SimpleBackground.BlurImage.Original)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.FallbackBackground.BlurImage.Original)) + Integer.IsEqual(Window.Property(TMDBHelper.WidgetContainer),301) + Integer.IsEqual(Container(301).NumItems,0)">$INFO[Window(Home).Property(TMDbHelper.FallbackBackground.BlurImage.Original)]</value>
         <value>$INFO[Window(Home).Property(TMDbHelper.ListItem.BlurImage.Original)]</value>
-    </variable>
-
-    <variable name="Image_Foreground">
-        <value condition="Skin.HasSetting(TMDbHelper.EnableBlur)">$VAR[Image_Foreground_FlixArt]</value>
-        <value>$VAR[Image_Foreground_Cheater_Parent_Divert]</value>
     </variable>
 
     <variable name="Image_Background_Overlay">
@@ -506,26 +504,30 @@
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.1.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Director.1.job)) + String.IsEqual(Container(99950).ListItem.Property(Director.1.job),Director)">$INFO[Container(99950).ListItem.Property(Director.1.Thumb)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.2.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Director.2.job)) + String.IsEqual(Container(99950).ListItem.Property(Director.2.job),Director)">$INFO[Container(99950).ListItem.Property(Director.2.Thumb)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.3.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Director.3.job)) + String.IsEqual(Container(99950).ListItem.Property(Director.3.job),Director)">$INFO[Container(99950).ListItem.Property(Director.3.Thumb)]</value>
-        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.1.Name))">$INFO[Container(99950).ListItem.Property(Director.1.Thumb)]</value>
+        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.4.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Director.4.job)) + String.IsEqual(Container(99950).ListItem.Property(Director.4.job),Director)">$INFO[Container(99950).ListItem.Property(Director.4.Thumb)]</value>
+        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Director.5.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Director.5.job)) + String.IsEqual(Container(99950).ListItem.Property(Director.5.job),Director)">$INFO[Container(99950).ListItem.Property(Director.5.Thumb)]</value>
     </variable>
     <variable name="Image_OSD_DirectorIcon">
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.1.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.1.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.Director.1.job),Director)">$INFO[Window(Home).Property(TMDbHelper.Player.Director.1.Thumb)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.2.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.2.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.Director.2.job),Director)">$INFO[Window(Home).Property(TMDbHelper.Player.Director.2.Thumb)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.3.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.3.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.Director.3.job),Director)">$INFO[Window(Home).Property(TMDbHelper.Player.Director.3.Thumb)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.1.Name))">$INFO[Window(Home).Property(TMDbHelper.Player.Director.1.Thumb)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.4.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.4.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.Director.4.job),Director)">$INFO[Window(Home).Property(TMDbHelper.Player.Director.4.Thumb)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.5.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Director.5.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.Player.Director.5.job),Director)">$INFO[Window(Home).Property(TMDbHelper.Player.Director.5.Thumb)]</value>
     </variable>
 
     <variable name="Image_WriterIcon">
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.1.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Writer.1.job)) + [String.IsEqual(Container(99950).ListItem.Property(Writer.1.job),Writer) | String.IsEqual(Container(99950).ListItem.Property(Writer.1.job),Screenplay)]">$INFO[Container(99950).ListItem.Property(Writer.1.Thumb)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.2.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Writer.2.job)) + [String.IsEqual(Container(99950).ListItem.Property(Writer.2.job),Writer) | String.IsEqual(Container(99950).ListItem.Property(Writer.2.job),Screenplay)]">$INFO[Container(99950).ListItem.Property(Writer.2.Thumb)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.3.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Writer.3.job)) + [String.IsEqual(Container(99950).ListItem.Property(Writer.3.job),Writer) | String.IsEqual(Container(99950).ListItem.Property(Writer.3.job),Screenplay)]">$INFO[Container(99950).ListItem.Property(Writer.3.Thumb)]</value>
-        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.1.Name))">$INFO[Container(99950).ListItem.Property(Writer.1.Thumb)]</value>
+        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.4.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Writer.4.job)) + [String.IsEqual(Container(99950).ListItem.Property(Writer.4.job),Writer) | String.IsEqual(Container(99950).ListItem.Property(Writer.4.job),Screenplay)]">$INFO[Container(99950).ListItem.Property(Writer.4.Thumb)]</value>
+        <value condition="!String.IsEmpty(Container(99950).ListItem.Property(Writer.5.Name)) + !String.IsEmpty(Container(99950).ListItem.Property(Writer.5.job)) + [String.IsEqual(Container(99950).ListItem.Property(Writer.5.job),Writer) | String.IsEqual(Container(99950).ListItem.Property(Writer.5.job),Screenplay)]">$INFO[Container(99950).ListItem.Property(Writer.5.Thumb)]</value>
     </variable>
     <variable name="Image_OSD_WriterIcon">
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.1.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.1.job)) + [String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.1.job),Writer) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.1.job),Screenplay)]">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.1.Thumb)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.2.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.2.job)) + [String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.2.job),Writer) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.2.job),Screenplay)]">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.2.Thumb)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.3.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.3.job)) + [String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.3.job),Writer) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.3.job),Screenplay)]">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.3.Thumb)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.1.Name))">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.1.Thumb)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.4.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.4.job)) + [String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.4.job),Writer) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.4.job),Screenplay)]">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.4.Thumb)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.5.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.Player.Writer.5.job)) + [String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.5.job),Writer) | String.IsEqual(Window(Home).Property(TMDbHelper.Player.Writer.5.job),Screenplay)]">$INFO[Window(Home).Property(TMDbHelper.Player.Writer.5.Thumb)]</value>
     </variable>
 
     <variable name="Image_CreatorIcon">
@@ -575,6 +577,12 @@
         <value condition="!String.IsEmpty(ListItem.Art(artist.fanart))">$INFO[ListItem.Art(artist.fanart)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Art(fanart))">$INFO[Container(99950).ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(Container(99950).ListItem.Art(tvshow.fanart))">$INFO[Container(99950).ListItem.Art(tvshow.fanart)]</value>
+    </variable>
+
+    <variable name="Image_Card_Fanart">
+        <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.fanart))">$INFO[ListItem.Art(tvshow.fanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(artist.fanart))">$INFO[ListItem.Art(artist.fanart)]</value>
     </variable>
 
     <variable name="Image_PVRGrpMgr_HideGroup">

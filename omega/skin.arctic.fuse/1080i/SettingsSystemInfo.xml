@@ -245,35 +245,17 @@
                                 <textoffsetx>40</textoffsetx>
                                 <height>40</height>
                             </control>
-
                         </control>
                     </control>
-
-                    <!-- <control type="group">
-                        <left>40</left>
-                        <bottom>-80</bottom>
-                        <include content="Settings_InfoText">
-                            <param name="id">9931</param>
-                            <param name="label">$INFO[Control.GetLabel(52),, ]$INFO[Control.GetLabel(53)]</param>
-                            <param name="override">true</param>
-                        </include>
-                    </control> -->
                 </include>
-                <!-- <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include>Settings_KodiVersion</include>
-                </control> -->
-                <control type="group">
-                    <left>80</left>
-                    <bottom>80</bottom>
-                    <include content="Settings_InfoText">
-                        <param name="id">9931</param>
-                        <param name="label">$INFO[Control.GetLabel(52),, ]$INFO[Control.GetLabel(53)]</param>
-                        <param name="override">true</param>
-                        <param name="dialog">true</param>
-                    </include>
-                </control>
+                <include content="Settings_InfoText">
+                    <param name="id">9931</param>
+                    <param name="label">$INFO[Control.GetLabel(52),, ]$INFO[Control.GetLabel(53)]</param>
+                    <param name="override">true</param>
+                    <param name="dialog">true</param>
+                    <param name="left">80</param>
+                    <param name="bottom">60</param>
+                </include>
             </include>
 
             <include content="Settings_Changer">

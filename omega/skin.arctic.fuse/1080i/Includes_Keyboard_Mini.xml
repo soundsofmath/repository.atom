@@ -528,35 +528,35 @@
                                     <include content="Object_Keyboard_Mini_Button" description="Left">
                                         <param name="id">305</param>
                                         <font>font_main_iconic</font>
-                                        <label>&#xe006;</label>
+                                        <label>&#xf0a8;</label>
                                         <onup>304</onup>
                                         <ondown>8000</ondown>
                                     </include>
                                     <include content="Object_Keyboard_Mini_Button" description="Right">
                                         <param name="id">306</param>
                                         <font>font_main_iconic</font>
-                                        <label>&#xe005;</label>
+                                        <label>&#xf0a9;</label>
                                         <onup>304</onup>
                                         <ondown>8000</ondown>
                                     </include>
                                     <include content="Object_Keyboard_Mini_Button" description="Cancel">
                                         <param name="id">301</param>
                                         <font>font_main_iconic</font>
-                                        <label>&#xe08d;</label>
+                                        <label>&#xf05c;</label>
                                         <onup>304</onup>
                                         <ondown>8000</ondown>
                                     </include>
                                     <include content="Object_Keyboard_Mini_Button" description="Done">
                                         <param name="id">300</param>
                                         <font>font_main_iconic</font>
-                                        <label>&#xe024;</label>
+                                        <label>&#xf05d;</label>
                                         <onup>304</onup>
                                         <ondown>8000</ondown>
                                     </include>
                                     <include content="Object_Keyboard_Mini_Button" description="Backspace">
                                         <param name="id">8</param>
                                         <font>font_main_iconic</font>
-                                        <label>&#xe00e;</label>
+                                        <label>&#xf55a;</label>
                                         <onup>304</onup>
                                         <ondown>8000</ondown>
                                     </include>
@@ -759,7 +759,7 @@
                             <height>65</height>
                             <param name="id">21</param>
                             <font>font_main_iconic</font>
-                            <label>&#xe024;</label>
+                            <label>&#xf05d;</label>
                             <onup>16</onup>
                             <ondown>11</ondown>
                         </include>
@@ -767,7 +767,7 @@
                             <height>65</height>
                             <param name="id">9002</param>
                             <font>font_main_iconic</font>
-                            <label>&#xe08d;</label>
+                            <label>&#xf05c;</label>
                             <onclick>Close</onclick>
                             <onup>17</onup>
                             <ondown>12</ondown>
@@ -776,7 +776,7 @@
                             <height>65</height>
                             <param name="id">20</param>
                             <font>font_main_iconic</font>
-                            <label>&#xe006;</label>
+                            <label>&#xf0a8;</label>
                             <onup>18</onup>
                             <ondown>13</ondown>
                         </include>
@@ -784,7 +784,7 @@
                             <height>65</height>
                             <param name="id">22</param>
                             <font>font_main_iconic</font>
-                            <label>&#xe005;</label>
+                            <label>&#xf0a9;</label>
                             <onup>19</onup>
                             <ondown>14</ondown>
                         </include>
@@ -792,7 +792,7 @@
                             <height>65</height>
                             <param name="id">23</param>
                             <font>font_main_iconic</font>
-                            <label>&#xe00e;</label>
+                            <label>&#xf55a;</label>
                             <onup>10</onup>
                             <ondown>15</ondown>
                         </include>

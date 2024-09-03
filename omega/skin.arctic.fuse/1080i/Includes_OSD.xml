@@ -47,8 +47,7 @@
         <param name="secondary_label">$INFO[Window.Property(remaining), ,][COLOR=panel_fg_100] [LOWERCASE]$LOCALIZE[31130][/LOWERCASE]...[/COLOR]</param>
         <param name="tvshowtitle">Window.Property(tvshowtitle)</param>
         <param name="title">Window.Property(title)</param>
-        <param name="episode">Window.Property(episode)</param>
-        <param name="season">Window.Property(season)</param>
+        <param name="seasonepisode_label">$VAR[Label_OSD_UpNext_Plot_Episode_Number,,. ]</param>
         <param name="year">Window.Property(year)</param>
         <param name="rating">Window.Property(rating)</param>
         <definition>
@@ -112,22 +111,12 @@
                                 <visible>!String.ISEmpty($PARAM[tvshowtitle])</visible>
                             </control>
                             <include content="Info_Line_Divider">
-                                <visible>!String.ISEmpty($PARAM[tvshowtitle]) + !String.ISEmpty($PARAM[episode])</visible>
+                                <visible>!String.IsEmpty($PARAM[tvshowtitle]) + !String.IsEmpty($PARAM[title])</visible>
                             </include>
                             <control type="label">
                                 <width>auto</width>
                                 <textcolor>panel_fg_90</textcolor>
-                                <label>$INFO[$PARAM[season],S,]$INFO[$PARAM[episode],E,]</label>
-                                <visible>!String.ISEmpty($PARAM[episode])</visible>
-                            </control>
-
-                            <include content="Info_Line_Divider">
-                                <visible>[!String.ISEmpty($PARAM[tvshowtitle]) | !String.ISEmpty($PARAM[episode])] + !String.ISEmpty($PARAM[title])</visible>
-                            </include>
-                            <control type="label">
-                                <width>auto</width>
-                                <textcolor>panel_fg_90</textcolor>
-                                <label>$INFO[$PARAM[title]]</label>
+                                <label>$PARAM[seasonepisode_label]$INFO[$PARAM[title]]</label>
                                 <visible>!String.ISEmpty($PARAM[title])</visible>
                             </control>
                         </control>
@@ -671,27 +660,15 @@
                     <param name="textcolor">panel_fg_70</param>
                 </include>
 
-                <!-- Season / Episode -->
-                <include content="Info_Line_Item">
-                    <param name="label">$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,0,]</param>
-                    <param name="visible">VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Episode) + Integer.IsLess(VideoPlayer.Episode,10)</param>
-                    <param name="textcolor">panel_fg_70</param>
-                </include>
-                <include content="Info_Line_Item">
-                    <param name="label">$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,]</param>
-                    <param name="visible">VideoPlayer.Content(episodes) + !String.IsEmpty(VideoPlayer.Episode) + !Integer.IsLess(VideoPlayer.Episode,10)</param>
-                    <param name="textcolor">panel_fg_70</param>
-                </include>
-
                 <!-- Year / Premiered -->
                 <include content="Info_Line_Item">
                     <param name="label">$INFO[VideoPlayer.Year]</param>
-                    <param name="visible">!String.IsEmpty(VideoPlayer.Year) + [String.IsEmpty(VideoPlayer.Premiered) | VideoPlayer.Content(movies)]</param>
+                    <param name="visible">!String.IsEmpty(VideoPlayer.Year) + String.IsEmpty(VideoPlayer.Premiered)</param>
                     <param name="textcolor">panel_fg_70</param>
                 </include>
                 <include content="Info_Line_Item">
                     <param name="label">$INFO[VideoPlayer.Premiered]</param>
-                    <param name="visible">!String.IsEmpty(VideoPlayer.Premiered) + !VideoPlayer.Content(movies)</param>
+                    <param name="visible">!String.IsEmpty(VideoPlayer.Premiered)</param>
                     <param name="textcolor">panel_fg_70</param>
                 </include>
 
@@ -1003,7 +980,7 @@
 
             <control type="group">
                 <width>50</width>
-                <include>Info_KodiLogo_Image</include>
+                <include>Info_Arctic FuseLogo_Image</include>
                 <visible>$PARAM[anchor]</visible>
             </control>
 
@@ -1411,7 +1388,7 @@
             <animation effect="fade" start="100" end="0" time="300" condition="!$EXP[Exp_OSD_QuickInfo]">Conditional</animation>
             <control type="textbox">
                 <width>1080</width>
-                <label>$VAR[Label_OSD_SeasonEpisodeLabel,,: ]$INFO[VideoPlayer.Plot]</label>
+                <label>$VAR[Label_Player_Plot]</label>
                 <font>font_mini_plot</font>
                 <textcolor>panel_fg_70</textcolor>
                 <height>80</height>
@@ -1542,7 +1519,7 @@
                             <height>80</height>
                             <label>$INFO[MusicPlayer.Artist]</label>
                             <textcolor>panel_fg_100</textcolor>
-                            <font>font_title_black</font>
+                            <font>font_title_midi</font>
                         </control>
                         <control type="label">
                             <label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Title]</label>
@@ -1566,7 +1543,7 @@
                             <width>1080</width>
                             <label>$INFO[MusicPlayer.Artist]</label>
                             <textcolor>panel_fg_100</textcolor>
-                            <font>font_title_black</font>
+                            <font>font_title_midi</font>
                         </control>
                         <control type="label">
                             <width>1080</width>

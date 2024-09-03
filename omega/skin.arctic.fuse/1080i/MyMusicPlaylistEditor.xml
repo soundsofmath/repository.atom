@@ -48,7 +48,6 @@
                     <include content="Settings_InfoText">
                         <param name="id">9930</param>
                         <param name="label">$INFO[Container.FolderName,,[CR]]$INFO[Control.GetLabel(12)]</param>
-                        <left>0</left>
                     </include>
                 </include>
                 <include content="Settings_Right_Group">
@@ -79,7 +78,6 @@
                     <include content="Settings_InfoText">
                         <param name="id">9931</param>
                         <param name="label">$LOCALIZE[559]$INFO[Control.GetLabel(101),[CR],]</param>
-                        <left>0</left>
                     </include>
                 </include>
             </include>

@@ -62,9 +62,9 @@
 
     <include name="Home_Menu_List_Horz">
         <include content="Object_Left" condition="Skin.HasSetting(SideMenu.EnableSearchAndOptions)">
-            <param name="left">120</param>
+            <param name="left">100</param>
         </include>
-        <left>20</left>
+        <left>0</left>
         <centertop>100</centertop>
         <height>160</height>
         <width>540</width>
@@ -190,7 +190,7 @@
             <onfocus condition="Window.IsVisible(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetProperty(TMDbHelper.WidgetContainer.UpdateLock,$INFO[ListItem.CurrentItem],1198)</onfocus>
 
             <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetFocus(300,0,absolute)</onfocus>
-            <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetFocus(302,0,absolute)</onfocus>
+            <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetFocus($INFO[Container(300).ListItemAbsolute(0).Property(item)]302,0,absolute)</onfocus>
             <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem) + Skin.HasSetting(Hub.Home.WidgetSelector)">SetFocus(419,0,absolute)</onfocus>
             <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetFocus(311)</onfocus>
             <onfocus condition="Window.IsActive(Home) + !Integer.IsEqual(Window(1198).Property(TMDbHelper.WidgetContainer.UpdateLock),ListItem.CurrentItem)">SetFocus($VAR[Action_Hubs_MenuID])</onfocus>
@@ -480,7 +480,7 @@
         <control type="group">
             <width>40</width>
             <height>40</height>
-            <centerleft>120</centerleft>
+            <centerleft>100</centerleft>
             <centertop>100</centertop>
             <include content="Home_Menu_SearchAndOptions_SearchButton">
                 <param name="vertical">false</param>

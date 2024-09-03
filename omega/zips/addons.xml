@@ -3018,12 +3018,12 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="skin.arctic.fuse" name="Arctic Fuse" provider-name="jurialmunkey" version="0.7.17~omega">
+</addon><addon id="skin.arctic.fuse" name="Arctic Fuse" provider-name="jurialmunkey" version="0.7.38~omega">
     <requires>
         <import addon="xbmc.gui" version="5.17.0" />
         <import addon="script.skinvariables" version="2.1.14" />
         <import addon="script.texturemaker" version="0.2.9" />
-        <import addon="plugin.video.themoviedb.helper" version="5.2.17~nexus" />
+        <import addon="plugin.video.themoviedb.helper" version="5.2.31" />
         <import addon="resource.images.weathericons.white" version="0.0.1" />
         <import addon="resource.images.studios.coloured" version="0.0.1" />
         <import addon="resource.font.robotocjksc" version="0.0.1" />

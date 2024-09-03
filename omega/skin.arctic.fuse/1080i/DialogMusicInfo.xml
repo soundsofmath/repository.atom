@@ -28,8 +28,8 @@
                     <include>DialogInfo_InfoDetails_Group</include>
                     <include>DialogInfo_MusicInfo</include>
                 </control>
-                <include condition="!$EXP[Exp_HomeMenu_IsTopBar]">DialogInfo_ArtworkGallery</include>
             </control>
+            <include condition="!$EXP[Exp_HomeMenu_IsTopBar]">DialogInfo_ArtworkGallery</include>
         </control>
 
         <control type="group">

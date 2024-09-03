@@ -884,7 +884,7 @@ msgstr "vezes"
 #: /1080i/Includes_Info.xml
 msgctxt "#31184"
 msgid "Ends"
-msgstr "Termina às"
+msgstr "Termina"
 
 msgctxt "#31185"
 msgid "Autoscroll"
@@ -1156,12 +1156,12 @@ msgstr "Esquema de cores"
 #: /1080i/Includes_Items.xml
 msgctxt "#31242"
 msgid "Blue Slate"
-msgstr "Azul Escuro"
+msgstr "Ardósia Azul"
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31243"
 msgid "Midnight Purple"
-msgstr "Roxo midnight"
+msgstr ""Meia-Noite Roxa"
 
 msgctxt "#31244"
 msgid "Now playing"
@@ -1354,7 +1354,7 @@ msgstr "Classificação Etária"
 
 msgctxt "#31286"
 msgid "Won"
-msgstr "Ganhou"
+msgstr "Vencedor"
 
 msgctxt "#31287"
 msgid "Nominated for"
@@ -1430,7 +1430,7 @@ msgstr "Opções de gerenciamento"
 #: /1080i/SkinSettings.xml
 msgctxt "#31303"
 msgid "Customise fallback image folder"
-msgstr "Personalizar a pasta de imagens reserva"
+msgstr "Pasta de imagem substituta personalizada"
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31304"
@@ -1440,7 +1440,7 @@ msgstr "Etiquetas expandidas em foco"
 #: /1080i/Includes_Items.xml
 msgctxt "#31305"
 msgid "Slide up on focus"
-msgstr "deslizamento para cima em foco"
+msgstr "Deslize para cima no foco"
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31306"
@@ -1733,7 +1733,7 @@ msgstr "Recarregar"
 #: /1080i/DialogContextMenu.xml
 msgctxt "#31365"
 msgid "Node"
-msgstr "Node"
+msgstr "Nó"
 
 #: /1080i/Includes_Labels.xml
 msgctxt "#31366"
@@ -1743,7 +1743,7 @@ msgstr "Não Cortado"
 #: /1080i/SkinSettings.xml
 msgctxt "#31367"
 msgid "Episode thumb for info dialog background"
-msgstr "Plano de fundo da caixa de diálogo de informações do episódio
+msgstr "Plano de fundo da caixa de diálogo de informações do episódio"
 
 #: /1080i/Includes_Search_View.xml
 msgctxt "#31368"
@@ -1753,7 +1753,7 @@ msgstr "Pesquisando por"
 #: /1080i/Includes_Items.xml
 msgctxt "#31369"
 msgid "Video file"
-msgstr "Arquivo de vídeo
+msgstr "Arquivo de vídeo"
 
 #: /1080i/Custom_1172_Dialog_SideMenu.xml
 msgctxt "#31370"
@@ -2052,7 +2052,7 @@ msgstr "Vídeo OSD"
 #: /1080i/SkinSettings.xml
 msgctxt "#31435"
 msgid "TMDbHelper lookups"
-msgstr "Pesquisas no TMDbHelper"
+msgstr "Pesquisas do TMDbHelper"
 
 #: /1080i/Custom_1116_Dialog_Shortcuts.xml
 msgctxt "#31436"
@@ -2061,7 +2061,7 @@ msgstr "Editar widgets de exploração"
 
 msgctxt "#31437"
 msgid "Choose spotlight"
-msgstr "Escolha o destaque"
+msgstr "Escolher o destaque"
 
 #: /1080i/Includes_Labels.xml
 msgctxt "#31438"
@@ -2076,7 +2076,7 @@ msgstr "Grande"
 #: /1080i/Includes_Items.xml
 msgctxt "#31440"
 msgid "Extra Large"
-msgstr "Extra grande"
+msgstr "Extra Grande"
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31441"
@@ -2108,6 +2108,11 @@ msgctxt "#31446"
 msgid "Bump"
 msgstr "Ressalto"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31447"
+msgid "Kodi logo"
+msgstr "Logo do Kodi"
+
 #: /1080i/SkinSettings.xml
 msgctxt "#31448"
 msgid "Show \"More\" item on limited widgets"
@@ -2117,6 +2122,11 @@ msgstr "Mostrar o item \"Mais\" em widgets limitados"
 msgctxt "#31449"
 msgid "Setup wizard"
 msgstr "Assistente de configuração"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31450"
+msgid "Text only"
+msgstr "Somente texto"
 
 #: /1080i/Custom_1180_Wizard.xml
 msgctxt "#31451"
@@ -2149,9 +2159,19 @@ msgid "Prebuilt"
 msgstr "Pré-construído"
 
 #: /1080i/Includes_Labels.xml
+msgctxt "#31457"
+msgid "Navigation Modes"
+msgstr "Modos de Navegação"
+
+#: /1080i/Includes_Labels.xml
 msgctxt "#31458"
 msgid "Monochrome"
 msgstr "Monocromático"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31459"
+msgid "The navigation mode button toggles how widgets are displayed and navigated between on screen."
+msgstr "O botão do modo de navegação alterna a forma como os widgets são exibidos e navegados na tela."
 
 #: /1080i/SkinSettings.xml /1080i/MusicOSD.xml
 msgctxt "#31460"
@@ -2163,10 +2183,30 @@ msgctxt "#31461"
 msgid "Choose preset"
 msgstr "Escolha a predefinição"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31462"
+msgid "Combined mode displays a single widget with a horizontal widget selector underneath. Widgets are changed by navigating left and right through the widget selector."
+msgstr "O modo combinado exibe um único widget com um seletor de widget horizontal abaixo. Os widgets são alterados navegando para a esquerda e para a direita no seletor de widgets."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31463"
+msgid "Stacked mode displays all widgets vertically one after the other. Widgets are changed by navigating up and down through the group."
+msgstr "O modo empilhado exibe todos os widgets verticalmente, um após o outro. Os widgets são alterados navegando para cima e para baixo no grupo."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31464"
+msgid "The side menu is the main menu of shortcuts which appears on the left side of the screen (or top if minimise mode is topbar)."
+msgstr "O menu lateral é o menu principal de atalhos que aparece no lado esquerdo da tela (ou na parte superior se o modo de minimização for a barra superior)."
+
 #: /1080i/Custom_1161_Dialog_Weather.xml
 msgctxt "#31465"
 msgid "Rain chance"
 msgstr "Chance de chuva"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31466"
+msgid "In complex mode, individual home menu category items can be linked to a specific side menu item so that they are only displayed when that side menu item has focus."
+msgstr "No modo complexo, os itens individuais da categoria do menu inicial podem ser vinculados a um item específico do menu lateral para que sejam exibidos apenas quando esse item do menu lateral estiver em foco."
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31467"
@@ -2202,6 +2242,21 @@ msgstr "Chuva desde as 9 da manhã"
 msgctxt "#31473"
 msgid "Radar"
 msgstr "Radar"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31474"
+msgid "Each side menu item can have a separate widget group which is displayed on the home screen when that side menu item has focus."
+msgstr "Cada item do menu lateral pode ter um grupo de widgets separado que é exibido na tela inicial quando esse item do menu lateral está em foco."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31475"
+msgid "The spotlight is a special type of widget which is designed to showcase one item from the widget at a time."
+msgstr "O destaque é um tipo especial de widget projetado para mostrar um item do widget por vez."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31476"
+msgid "The spotlight is displayed at the very top of the widget stack."
+msgstr "O destaque é exibido no topo da pilha de widgets."
 
 #: /1080i/SkinSettings.xml /1080i/Includes_Items.xml
 msgctxt "#31477"
@@ -2258,6 +2313,21 @@ msgctxt "#31487"
 msgid "Play trailers from information in"
 msgstr "Reproduzir trailers a partir de informações em"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31488"
+msgid "Categories are a horizontal menu of shortcuts which appear underneath the spotlight."
+msgstr "As categorias são um menu horizontal de atalhos que aparecem abaixo do destaque."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31489"
+msgid "Each category has its own individual submenu and widgets group. Submenus are either filled dynamically from a list or defined with individual static items. Each static submenu item can further define its own additional widget subgroup."
+msgstr "Cada categoria possui seu próprio submenu individual e grupo de widgets. Os submenus são preenchidos dinamicamente a partir de uma lista ou definidos com itens estáticos individuais. Cada item do submenu estático pode definir ainda mais seu próprio subgrupo de widgets adicional."
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31490"
+msgid "Cancelled"
+msgstr "Cancelado"
+
 #: /1080i/SkinSettings.xml
 msgctxt "#31491"
 msgid "Miscellaneous"
@@ -2267,6 +2337,11 @@ msgstr "Diversos"
 msgctxt "#31492"
 msgid "Add-ons hub"
 msgstr "Centro de addons"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31493"
+msgid "Ended"
+msgstr "Terminado"
 
 #: /1080i/Custom_1115_Dialog_Shortcuts.xml
 msgctxt "#31494"
@@ -2288,6 +2363,16 @@ msgctxt "#31497"
 msgid "Minimise menu"
 msgstr "Minimizar menu"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31498"
+msgid "Released"
+msgstr "Lançado"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31499"
+msgid "In-Production"
+msgstr "Em produção"
+
 #: /1080i/Includes_Search.xml
 msgctxt "#31500"
 msgid "There were no [LOWERCASE]$VAR[Label_Setting_SearchStyle][/LOWERCASE] results found for"
@@ -2307,6 +2392,11 @@ msgstr "Mais opções"
 msgctxt "#31503"
 msgid "Extras"
 msgstr "Extras"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31504"
+msgid "Planned"
+msgstr "Planejado"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31505"
@@ -2446,7 +2536,7 @@ msgstr "Widgets dentro do $INFO[Container(22001).ListItem.Label,[LOWERCASE],[/LO
 #: /1080i/Custom_1115_Dialog_Shortcuts.xml
 msgctxt "#31532"
 msgid "Disables hub spotlight and categories"
-msgstr "Desativa o destaque e as categorias do hub"
+msgstr "Desativam os destaques e as categorias do hub"
 
 #: /1080i/Custom_1115_Dialog_Shortcuts.xml
 msgctxt "#31533"
@@ -2487,3 +2577,63 @@ msgstr "Permitir empilhamento"
 msgctxt "#31540"
 msgid "Submenu lists always allow stacking"
 msgstr "As listas de submenu sempre permitem empilhamento"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31541"
+msgid "Next episode"
+msgstr "Próximo episódio"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31542"
+msgid "Last episode"
+msgstr "Último episódio"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31543"
+msgid "Anticipated"
+msgstr "Antecipado"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31544"
+msgid "Airing"
+msgstr "Em Exibição"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31545"
+msgid "Premiering"
+msgstr "Estreia"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31546"
+msgid "TBC"
+msgstr "TBC"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31547"
+msgid "Yesterday"
+msgstr "Ontem"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31548"
+msgid "No widgets configured"
+msgstr "Nenhum widget configurado"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31549"
+msgid "Widgets for $INFO[Container(302).ListItem.Label] submenu"
+msgstr "Widgets para o submenu $INFO[Container(302).ListItem.Label]"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31550"
+msgid "Widgets for $INFO[Container(300).ListItem.Label] category"
+msgstr "Widgets para a categoria $INFO[Container(300).ListItem.Label]"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31551"
+msgid "Widgets for $INFO[Container(303).ListItem.Label] side menu"
+msgstr "Widgets para o menu lateral $INFO[Container(303).ListItem.Label]"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31552"
+msgid "Widgets for $INFO[Window.Property(hub_prefix)] hub"
+msgstr "Widgets para o hub $INFO[Window.Property(hub_prefix)]"

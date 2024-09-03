@@ -27,8 +27,7 @@
         <control type="group">
             <include>Dimension_DialogSideMenu</include>
             <include>Animation_Right</include>
-            <visible>ControlGroup(9000).HasFocus() | ControlGroup(6000).HasFocus() | Control.HasFocus(6000) | Contorl.HasFocus(60) | Control.HasFocus(6099)</visible>
-            <!-- <visible>!String.IsEmpty(Window.Property(MediaFilterBase)) | $EXP[Exp_FilterWall_IsActive]</visible> -->
+            <visible>$EXP[Exp_ViewDialog_HasFocus]</visible>
             <include content="Dialog_Dim_Side">
                 <param name="slide_animation">False</param>
             </include>

@@ -472,7 +472,7 @@ msgstr "للتراجع عن التغير استخدم زر /إضافة قائم�
 #: /1080i/Includes_Labels.xml
 msgctxt "#31096"
 msgid "The hub layout button toggles the window layout of the current hub."
-msgstr ""
+msgstr "زر تغير مخطط الواجهة"
 
 #: /1080i/Includes_Labels.xml
 msgctxt "#31097"
@@ -515,7 +515,7 @@ msgstr "إعادة بناء XML"
 
 msgctxt "#31105"
 msgid "Spotlight"
-msgstr "منطقة عرض معلومات الوسائط Spotlight"
+msgstr تخصيص Spotlight"
 
 #: /1080i/Includes_Labels.xml
 msgctxt "#31106"
@@ -703,12 +703,12 @@ msgstr "جارِ تجهيز المظهر"
 #: /1080i/Includes_Defaults.xml
 msgctxt "#31146"
 msgid "The $VAR[Label_TraktStats_Recent_0_Type,[LOWERCASE],[/LOWERCASE]] $INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Episode.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Show.Title), from the show [COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Year), released in [COLOR=main_fg_90][B],[/B][/COLOR]] was most recently watched."
-msgstr "$VAR[Label_TraktStats_Recent_0_Type,[LOWERCASE],[/LOWERCASE]] $INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Episode.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Show.Title), من مسلسل [COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Year), أصدر عام [COLOR=main_fg_90][B],[/B][/COLOR]] تم مشاهدته حديثا."
+msgstr "وشاهدت مؤخرا $VAR[Label_TraktStats_Recent_0_Type,[LOWERCASE],[/LOWERCASE]] $INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Episode.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Show.Title ), من مسلسل [COLOR=main_fg_90][B],[/B][/COLOR]]  $INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(TMDbHelper.TraktStats.Recent.0.Movie.Year), أصدر عام [COLOR=main_fg_90][B],[/B][/COLOR]] "
 
 #: /1080i/Includes_Defaults.xml
 msgctxt "#31147"
 msgid "You have watched $INFO[Window(Home).Property(TMDbHelper.TraktStats.Movies.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]] movies and $INFO[Window(Home).Property(TMDbHelper.TraktStats.Shows.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]] shows."
-msgstr "لقد شاهدت$INFO[Window(Home).Property(TMDbHelper.TraktStats.Movies.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]]افلام و$INFO[Window(Home).Property(TMDbHelper.TraktStats.Shows.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]]مسلسلات"
+msgstr "لقد شاهدت $INFO[Window(Home).Property(TMDbHelper.TraktStats.Movies.Watched ),[COLOR=main_fg_90][B],[/B][/COLOR]]فيلم  و$INFO[Window(Home).Property(TMDbHelper.TraktStats.Shows.Watched ),[COLOR=main_fg_90][B],[/B][/COLOR]]مسلسل  "
 
 #: /1080i/Includes_DialogInfo.xml
 msgctxt "#31148"
@@ -843,7 +843,7 @@ msgstr "التنقل"
 #: /1080i/Includes_Defaults.xml
 msgctxt "#31175"
 msgid "You have watched $INFO[Window(Home).Property(Movies.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]] of $INFO[Window(Home).Property(Movies.Count),[COLOR=main_fg_90][B],[/B][/COLOR]] movies in your library.[CR]The movie $INFO[Window(Home).Property(LatestMovie.1.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(LatestMovie.1.Year), released in [COLOR=main_fg_90][B],[/B][/COLOR]] was recently added."
-msgstr "لقد شاهدت $INFO[Window(Home).Property(Movies.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]]  من $INFO[Window(Home).Property(Movies.Count),[COLOR=main_fg_90][B],[/B][/COLOR]] أفلام في مكتبتك.[CR]افلام $INFO[Window(Home).Property(LatestMovie.1.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(LatestMovie.1.Year), تم اصداره"
+msgstr "لقد شاهدت  $INFO[Window(Home).Property(Movies.Watched),[COLOR=main_fg_90][B],[/B][/COLOR]]  من $INFO[Window(Home).Property(Movies.Count),[COLOR=main_fg_90][B],[/B][/COLOR]] أفلام في مكتبتك.[CR]فلم  $INFO[Window(Home).Property(LatestMovie.1.Title),[COLOR=main_fg_90][B],[/B][/COLOR]]$INFO[Window(Home).Property(LatestMovie.1.Year), تم اصداره"
 
 #: /1080i/Includes_Defaults.xml
 msgctxt "#31176"
@@ -1650,7 +1650,7 @@ msgstr "اضغط للأسفل لرؤية مزيدا من أعمال الممثل
 #: /1080i/Includes_Items.xml
 msgctxt "#31347"
 msgid "Group focus indicator"
-msgstr ""
+msgstr "وضع مؤشر على القائمة المختارة"
 
 msgctxt "#31348"
 msgid "Press down for channel EPG"
@@ -1673,7 +1673,7 @@ msgstr "محاور hubs"
 #: /1080i/Includes_Labels.xml
 msgctxt "#31352"
 msgid "Topbar"
-msgstr "البار العلوي"
+msgstr "الشريط العلوي"
 
 #: /1080i/Includes_Labels.xml
 msgctxt "#31353"
@@ -1774,7 +1774,7 @@ msgstr "خيارات قائمة الشريط السفلى"
 #: /1080i/Includes_Shortcuts_Window.xml
 msgctxt "#31373"
 msgid "Stacked"
-msgstr "غير مجمعة"
+msgstr "Stacked"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31374"
@@ -1783,7 +1783,7 @@ msgstr "فورمات المظهر"
 
 msgctxt "#31375"
 msgid "Install zip"
-msgstr "تثبيت من ملف مضغوط"
+msgstr "تثبيت من zip"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31376"
@@ -1810,7 +1810,7 @@ msgstr "متوقع"
 
 msgctxt "#31381"
 msgid "Returning"
-msgstr "عائد"
+msgstr "موسم جديد"
 
 msgctxt "#31382"
 msgid "All items"
@@ -2094,12 +2094,22 @@ msgstr "الاقسام الرئيسية"
 #: /1080i/Custom_1116_Dialog_Shortcuts.xml
 msgctxt "#31443"
 msgid "Open path in dialog"
-msgstr """
+msgstr "Open path in dialog"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31446"
 msgid "Bump"
 msgstr "لا شئ"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31447"
+msgid "Kodi logo"
+msgstr "لوجو كودي"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31450"
+msgid "Text only"
+msgstr "كتابي"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31448"
@@ -2142,9 +2152,19 @@ msgid "Prebuilt"
 msgstr "بناء مسبق"
 
 #: /1080i/Includes_Labels.xml
+msgctxt "#31457"
+msgid "Navigation Modes"
+msgstr "اوضاع التنقل"
+
+#: /1080i/Includes_Labels.xml
 msgctxt "#31458"
 msgid "Monochrome"
 msgstr "غير ملون"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31459"
+msgid "The navigation mode button toggles how widgets are displayed and navigated between on screen."
+msgstr "يقوم زر وضع التنقل بتبديل كيفية عرض الأدوات والتنقل بين الشاشة"
 
 #: /1080i/MusicOSD.xml
 msgctxt "#31460"
@@ -2156,10 +2176,30 @@ msgctxt "#31461"
 msgid "Choose preset"
 msgstr "اختار نموذج"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31462"
+msgid "Combined mode displays a single widget with a horizontal widget selector underneath. Widgets are changed by navigating left and right through the widget selector."
+msgstr "يعرض الوضع المشترك أداة واحدة مع تفعيل widget افقي وتحته يتم تغيير الأدوات عن طريق التنقل يسارا ويمينا من خلال التفعيل"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31463"
+msgid "Stacked mode displays all widgets vertically one after the other. Widgets are changed by navigating up and down through the group."
+msgstr "يعرض الوضع Stacked جميع الأدوات عموديا واحدة تلو الأخرى. يتم تغيير الأدوات عن طريق التنقل لأعلى ولأسفل عبر المجموعة"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31464"
+msgid "The side menu is the main menu of shortcuts which appears on the left side of the screen (or top if minimise mode is topbar)."
+msgstr "القائمة الجانبية هي القائمة الرئيسية للاختصارات التي تظهر على الجانب الأيسر من الشاشة (أو أعلى إذا كان وضع التصغير هو الشريط العلوي)"
+
 #: /1080i/Custom_1161_Dialog_Weather.xml
 msgctxt "#31465"
 msgid "Rain chance"
 msgstr "فرصة هطول مطر"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31466"
+msgid "In complex mode, individual home menu category items can be linked to a specific side menu item so that they are only displayed when that side menu item has focus."
+msgstr "في الوضع متقدم، يمكن ربط عناصر فئة القائمة الرئيسية الفردية بعنصر قائمة جانبية معين بحيث يتم عرضها فقط عندما يكون عنصر القائمة الجانبية هذا عليه المؤشر"
 
 #: /1080i/Includes_Items.xml
 msgctxt "#31467"
@@ -2195,6 +2235,21 @@ msgstr "مطر منذ التاسعة"
 msgctxt "#31473"
 msgid "Radar"
 msgstr "رادار"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31474"
+msgid "Each side menu item can have a separate widget group which is displayed on the home screen when that side menu item has focus."
+msgstr "يمكن أن يحتوي كل عنصر من عناصر القائمة الجانبية على مجموعة عناصر واجهة مستخدم منفصلة يتم عرضها على الشاشة الرئيسية عندما يكون لعنصر القائمة الجانبية هذا عليه الموشر"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31475"
+msgid "The spotlight is a special type of widget which is designed to showcase one item from the widget at a time."
+msgstr "نوع خاص من ال widget يعرض widget في كل مرة "
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31476"
+msgid "The spotlight is displayed at the very top of the widget stack."
+msgstr "يتم عرض spotlight في الجزء العلوي من widget التي يقع عليها الموشر"
 
 #: /1080i/SkinSettings.xml
 
@@ -2254,6 +2309,21 @@ msgctxt "#31487"
 msgid "Play trailers from information in"
 msgstr "تشغيل الفيديوهات الدعائية في"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31488"
+msgid "Categories are a horizontal menu of shortcuts which appear underneath the spotlight."
+msgstr "الفئات هي قائمة أفقية من الاختصارات الظاهرة تحت spotlight"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31489"
+msgid "Each category has its own individual submenu and widgets group. Submenus are either filled dynamically from a list or defined with individual static items. Each static submenu item can further define its own additional widget subgroup."
+msgstr "كل فئة لها قائم فرعية فردية ومجموعة أدوات خاصة بها. يتم ملء القوائم الفرعية إما ديناميكيا من قائمة أو يتم تعريفها بعناصر ثابتة فردية. يمكن لكل عنصر من عناصر القائمة الفرعية الثابتة تحديد المجموعة الفرعية الإضافية الخاصة به"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31490"
+msgid "Cancelled"
+msgstr "ملغي"
+
 #: /1080i/SkinSettings.xml
 msgctxt "#31491"
 msgid "Miscellaneous"
@@ -2263,6 +2333,11 @@ msgstr "متنوع"
 msgctxt "#31492"
 msgid "Add-ons hub"
 msgstr "صفحة الإضافات"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31493"
+msgid "Ended"
+msgstr "مكتمل"
 
 #: /1080i/Custom_1115_Dialog_Shortcuts.xml
 msgctxt "#31494"
@@ -2284,6 +2359,16 @@ msgctxt "#31497"
 msgid "Minimise menu"
 msgstr "تصغير القائمة"
 
+#: /1080i/Includes_Labels.xml
+msgctxt "#31498"
+msgid "Released"
+msgstr "تم اصداره"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31499"
+msgid "In-Production"
+msgstr "جاري تصويره"
+
 #: /1080i/Includes_Search.xml
 msgctxt "#31500"
 msgid "There were no [LOWERCASE]$VAR[Label_Setting_SearchStyle][/LOWERCASE] results found for"
@@ -2303,6 +2388,11 @@ msgstr "خيارات اضافية"
 msgctxt "#31503"
 msgid "Extras"
 msgstr "إضافات"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31504"
+msgid "Planned"
+msgstr "وضع خطط لانتاجه"
 
 #: /1080i/SkinSettings.xml
 msgctxt "#31505"
@@ -2483,3 +2573,63 @@ msgstr "stacking تمكين ظهور Widget فرعي"
 msgctxt "#31540"
 msgid "Submenu lists always allow stacking"
 msgstr "السماح للقوائم بعمل stacking Widget فرعي"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31541"
+msgid "Next episode"
+msgstr "الحلقة القادمة"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31542"
+msgid "Last episode"
+msgstr "الحلقة السابقة"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31543"
+msgid "Anticipated"
+msgstr "متوقعه"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31544"	
+msgid "Airing"
+msgstr "بدأ عرض الموسم الجديد"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31545"
+msgid "Premiering"
+msgstr "عرض اول"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31546"
+msgid "TBC"
+msgstr "موعده لم يحدد"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31547"
+msgid "Yesterday"
+msgstr "بالامس"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31548"
+msgid "No widgets configured"
+msgstr "لا يوجد widgets تم اعدادها"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31549"
+msgid "Widgets for $INFO[Container(302).ListItem.Label] submenu"
+msgstr "ودجتس ل $INFO[Container(302).ListItem.Label] القائمة الفرعية"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31550"
+msgid "Widgets for $INFO[Container(300).ListItem.Label] category"
+msgstr "ودجتس ل$INFO[Container(300).ListItem.Label] فئة"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31551"
+msgid "Widgets for $INFO[Container(303).ListItem.Label] side menu"
+msgstr "ودجتس ل$INFO[Container(303).ListItem.Label] القائمة الجانبية"
+
+#: /1080i/Includes_Shortcuts_Window.xml
+msgctxt "#31552"
+msgid "Widgets for $INFO[Window.Property(hub_prefix)] hub"
+msgstr "ودجتس ل$INFO[Window.Property(hub_prefix)] hub"

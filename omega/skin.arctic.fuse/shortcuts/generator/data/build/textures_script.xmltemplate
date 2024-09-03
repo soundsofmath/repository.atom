@@ -25,6 +25,9 @@
 <include name="Texture_Highlight_Scrollbar_H">
     <texture border="4">special://profile/addon_data/script.texturemaker/{skindir}/scrollh_h.png</texture>
 </include>
+<include name="Texture_Highlight_Scrollbar_V">
+    <texture border="4">special://profile/addon_data/script.texturemaker/{skindir}/scrollh_v.png</texture>
+</include>
 <include name="Texture_Scrollbar_H">
     <texturesliderbarfocus border="4">special://profile/addon_data/script.texturemaker/{skindir}/scrollh_h.png</texturesliderbarfocus>
 </include>

@@ -39,7 +39,7 @@
                 <texture colordiffuse="main_bg_100">diffuse/circle_50.png</texture>
             </control>
         </control>
-        <include>Info_KodiLogo_Image</include>
+        <include>Info_Arctic FuseLogo_Image</include>
         <include content="View_PVR_GroupSwitcher_Labels">
             <param name="selected">false</param>
             <param name="visible">!Control.HasFocus(28)</param>
@@ -319,7 +319,7 @@
             <include>Dimension_DialogSideMenu</include>
             <include>Animation_Right</include>
 
-            <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus() | Control.HasFocus(6000)</visible>
+            <visible allowhiddenfocus="true">$EXP[Exp_ViewDialog_HasFocus]</visible>
 
             <include content="Dialog_Dim_Side">
                 <param name="slide_animation">False</param>
@@ -557,7 +557,7 @@
                 </itemlayout>
                 <focusedlayout height="$PARAM[channelheight]">
                     <control type="group">
-                        <visible>[Control.HasFocus(11) | $EXP[Exp_HomeMenu_HasFocus] | Control.HasFocus(331) | Control.HasFocus(28) | ControlGroup(9000).HasFocus()]</visible>
+                        <visible>[$EXP[Exp_PVRGuide_NoFocus]]</visible>
                         <include content="Layout_PVRChannel">
                             <param name="channelwidth">$PARAM[channelwidth]</param>
                             <param name="detailed">$PARAM[detailed]</param>
@@ -565,7 +565,7 @@
                         </include>
                     </control>
                     <control type="group">
-                        <visible>![Control.HasFocus(11) | $EXP[Exp_HomeMenu_HasFocus] | Control.HasFocus(331) | Control.HasFocus(28) | ControlGroup(9000).HasFocus()]</visible>
+                        <visible>![$EXP[Exp_PVRGuide_NoFocus]]</visible>
                         <include content="Layout_PVRChannel">
                             <param name="channelwidth">$PARAM[channelwidth]</param>
                             <param name="detailed">$PARAM[detailed]</param>
@@ -697,7 +697,7 @@
                 </control>
                 <control type="label">
                     <height>40</height>
-                    <label>$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E, ]$INFO[ListItem.EpisodeName]</label>
+                    <label>$VAR[Label_OSD_Plot_Episode_Number,,. ]$INFO[ListItem.EpisodeName]</label>
                     <visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
                     <textcolor>main_fg_70</textcolor>
                 </control>

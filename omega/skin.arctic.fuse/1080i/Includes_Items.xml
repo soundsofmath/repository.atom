@@ -397,8 +397,8 @@
     <include name="Items_Dialog_RatingType">
         <include content="Items_Dialog_RatingType_Template">
             <param name="id">8001</param>
-            <param name="label">Kodi</param>
-            <param name="type">Kodi</param>
+            <param name="label">Arctic Fuse</param>
+            <param name="type">Arctic Fuse</param>
             <param name="item">$PARAM[item]</param>
             <param name="content">$PARAM[content]</param>
         </include>
@@ -989,7 +989,7 @@
                 <param name="itemgap">$PARAM[itemgap]</param>
                 <onleft condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,-1)</onleft>
                 <onright condition="!$EXP[Exp_HomeMenu_IsTopBar]">Control.Move(7003,1)</onright>
-                <onup condition="$EXP[Exp_HomeMenu_IsTopBar]">5009</onup>
+                <ondown condition="$EXP[Exp_HomeMenu_IsTopBar]">5009</ondown>
                 <onclick condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)">SendClick(10)</onclick>
                 <onfocus>SetProperty(DetailsView,Artwork)</onfocus>
                 <onfocus>ClearProperty(ReviewsActive)</onfocus>

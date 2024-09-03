@@ -2,22 +2,24 @@
 <includes>
 
     <include name="Settings_Main_Group">
-        <include content="Dialog_Foreground_Side">
-            <param name="dialog_size">Dimension_DialogMainMenu</param>
-            <param name="slide_condition">True</param>
-            <param name="lines_right">0</param>
-            <param name="topline">false</param>
-            <param name="subline">false</param>
-            <!-- Header -->
-            <include content="Dialog_Head">
-                <param name="id">9901</param>
-                <param name="label">$VAR[Label_Header_Mini]</param>
-                <!-- <param name="sublabel">Wikipedia</param>
-                <param name="sublabel_include">true</param> -->
+        <param name="include_heading">true</param>
+        <param name="label">$VAR[Label_Header_Mini]</param>
+        <definition>
+            <include content="Dialog_Foreground_Side">
+                <param name="dialog_size">Dimension_DialogMainMenu</param>
+                <param name="slide_condition">True</param>
+                <param name="lines_right">0</param>
+                <param name="topline">false</param>
+                <param name="subline">false</param>
+                <!-- Header -->
+                <include content="Dialog_Head" condition="$PARAM[include_heading]">
+                    <param name="id">9901</param>
+                    <param name="label">$PARAM[label]</param>
+                </include>
+                <include>Dialog_Head_CloseButton</include>
+                <nested />
             </include>
-            <include>Dialog_Head_CloseButton</include>
-            <nested />
-        </include>
+        </definition>
     </include>
 
     <include name="Settings_Left_Group">
@@ -127,7 +129,7 @@
         </control>
     </include>
 
-    <include name="Settings_KodiVersion_Base">
+    <include name="Settings_Arctic FuseVersion_Base">
         <param name="dialog">false</param>
         <param name="left">0</param>
         <param name="centerbottom">20</param>
@@ -156,7 +158,7 @@
         </definition>
     </include>
 
-    <include name="Settings_KodiVersion_Text">
+    <include name="Settings_Arctic FuseVersion_Text">
         <param name="dialog">false</param>
         <param name="left">0</param>
         <param name="centerbottom">20</param>
@@ -167,7 +169,7 @@
                 <visible>$PARAM[visible]</visible>
                 <centerbottom>$PARAM[centerbottom]</centerbottom>
                 <left>$PARAM[left]</left>
-                <include>Info_KodiLogo_Image</include>
+                <include>Info_Arctic FuseLogo_Image</include>
                 <control type="group">
                     <left>80</left>
                     <include content="Object_InfoCircle_Text_Top">
@@ -188,14 +190,14 @@
         </definition>
     </include>
 
-    <include name="Settings_KodiVersion">
-        <include content="Settings_KodiVersion_Base" condition="Skin.String(Furniture.CodecStyle,Basic)">
+    <include name="Settings_Arctic FuseVersion">
+        <include content="Settings_Arctic FuseVersion_Base" condition="Skin.String(Furniture.CodecStyle,Basic)">
             <param name="left">$PARAM[left]</param>
             <param name="visible">$PARAM[visible]</param>
             <param name="dialog">$PARAM[dialog]</param>
             <param name="centerbottom">$PARAM[centerbottom]</param>
         </include>
-        <include content="Settings_KodiVersion_Text" condition="!Skin.String(Furniture.CodecStyle,Basic)">
+        <include content="Settings_Arctic FuseVersion_Text" condition="!Skin.String(Furniture.CodecStyle,Basic)">
             <param name="left">$PARAM[left]</param>
             <param name="visible">$PARAM[visible]</param>
             <param name="dialog">$PARAM[dialog]</param>
@@ -275,7 +277,7 @@
     <include name="Settings_Landing">
         <control type="group">
             <!-- <include>Animation_View_SlideOver</include> -->
-            <left>-100</left>
+            <left>-120</left>
             <include content="Animation_View_WindowChange">
                 <param name="windowopen_condition">[!$EXP[Exp_SettingsDialogs_Prev]]</param>
                 <param name="windowclose_condition">[!$EXP[Exp_SettingsDialogs_Next]]</param>
@@ -423,7 +425,7 @@
         <control type="group">
             <include>Animation_Group_Bumper</include>
             <!-- <include>Animation_View_SlideOver</include> -->
-            <left>-100</left>
+            <left>-120</left>
             <include content="Animation_View_WindowChange">
                 <param name="windowopen_condition">[!$EXP[Exp_SettingsDialogs_Prev]]</param>
                 <param name="windowclose_condition">[!$EXP[Exp_SettingsDialogs_Next]]</param>
@@ -431,7 +433,24 @@
             <include content="Furniture_Top">
                 <param name="label">$LOCALIZE[5]</param>
             </include>
-            <include>Furniture_Bottom_Left</include>
+            <include condition="Skin.String(Furniture.BottomLeft.Enable,Library) | Skin.String(Furniture.BottomLeft.Enable,Always)">Furniture_Bottom_Left</include>
+            <control type="group">
+                <include>Dimension_Bottombar</include>
+                <visible>!Skin.String(Furniture.BottomLeft.Enable,Library)</visible>
+                <visible>!Skin.String(Furniture.BottomLeft.Enable,Always)</visible>
+                <animation effect="fade" start="100" end="30" condition="true">Conditional</animation>
+                <control type="group">
+                    <height>35</height>
+                    <include content="Info_Viewline">
+                        <param name="library_condition">false</param>
+                        <param name="label">Arctic Fuse$INFO[System.BuildVersionCode, v,]</param>
+                        <param name="custom_icon_condition">Skin.HasSetting(Furniture.EnableViewLineIcons)</param>
+                        <param name="custom_icon">special://skin/extras/icons/kodi.png</param>
+                        <top>0</top>
+                        <left>0</left>
+                    </include>
+                </control>
+            </control>
         </control>
         <control type="group">
             <include>Furniture_Bottom_Right</include>
@@ -439,34 +458,38 @@
     </include>
 
     <include name="Settings_Dialog">
-        <include>Settings_Landing</include>
-        <control type="group">
-            <include>Dimension_DialogMainMenu</include>
-            <!-- <include>Animation_Right</include> -->
-            <include>Animation_Settings_WindowChange</include>
-            <include content="Dialog_Dim_Side">
-                <param name="slide_condition">True</param>
-            </include>
-            <!-- Bottom Layer -->
-            <include content="Dialog_Background_Side">
-                <param name="slide_condition">True</param>
-                <param name="dialog_size">Dimension_DialogMainMenu</param>
-                <!-- Side Buttons -->
-                <control type="group">
-                    <include>Dimension_Dialog_Body</include>
-                    <control type="grouplist" id="30000">
-                        <include>Dialog_Side_Grouplist_Def</include>
-                        <onright condition="!Window.IsVisible(EventLog.xml) + !Window.IsVisible(addonbrowser) + !Window.IsVisible(filemanager)">3</onright>
-                        <onright condition="Window.IsVisible(EventLog.xml)">8000</onright>
-                        <onright condition="Window.IsVisible(addonbrowser)">6000</onright>
-                        <onright condition="Window.IsVisible(filemanager)">20</onright>
-                        <onleft>SetFocus(30040)</onleft>
-                        <include>Settings_Standard_Buttons</include>
+        <param name="side_buttons_include">Settings_Standard_Buttons</param>
+        <definition>
+            <include>Settings_Landing</include>
+            <control type="group">
+                <include>Dimension_DialogMainMenu</include>
+                <!-- <include>Animation_Right</include> -->
+                <include>Animation_Settings_WindowChange</include>
+                <include content="Dialog_Dim_Side">
+                    <param name="slide_condition">True</param>
+                </include>
+                <!-- Bottom Layer -->
+                <include content="Dialog_Background_Side">
+                    <param name="slide_condition">True</param>
+                    <param name="dialog_size">Dimension_DialogMainMenu</param>
+                    <!-- Side Buttons -->
+                    <control type="group">
+                        <include>Dimension_Dialog_Body</include>
+                        <control type="grouplist" id="30000">
+                            <include>Dialog_Side_Grouplist_Def</include>
+                            <onright condition="!Window.IsVisible(EventLog.xml) + !Window.IsVisible(addonbrowser) + !Window.IsVisible(filemanager) + !Window.IsVisible(1115)">3</onright>
+                            <onright condition="Window.IsVisible(EventLog.xml)">8000</onright>
+                            <onright condition="Window.IsVisible(addonbrowser)">6000</onright>
+                            <onright condition="Window.IsVisible(filemanager)">20</onright>
+                            <onright condition="Window.IsVisible(1115)">340</onright>
+                            <onleft>SetFocus(30040)</onleft>
+                            <include>$PARAM[side_buttons_include]</include>
+                        </control>
                     </control>
-                </control>
-            </include>
-            <nested />
-        </control>
+                </include>
+                <nested />
+            </control>
+        </definition>
     </include>
 
     <include name="Settings_Header">
@@ -594,6 +617,8 @@
         <param name="dialog">false</param>
         <param name="enable">true</param>
         <param name="toplabel_font">font_main</param>
+        <param name="toplabel_textcolor">dialog_fg_70</param>
+        <param name="sublabel_textcolor">dialog_fg_70</param>
         <definition>
             <control type="$PARAM[control]" id="$PARAM[id]">
                 <nested />
@@ -618,15 +643,15 @@
                         <font>$PARAM[toplabel_font]</font>
                         <label>$PARAM[toplabel]</label>
                         <textoffsetx>40</textoffsetx>
-                        <textcolor>dialog_fg_70</textcolor>
+                        <textcolor>$PARAM[toplabel_textcolor]</textcolor>
                         <animation effect="slide" start="0" end="0,-16" condition="$PARAM[sublabel_visible]">Conditional</animation>
                     </control>
                     <control type="label">
                         <font>font_tiny</font>
                         <top>24</top>
-                        <label>$PARAM[sublabel]</label>
+                        <label fallback="$PARAM[sublabel_fallback]">$PARAM[sublabel]</label>
                         <textoffsetx>40</textoffsetx>
-                        <textcolor>dialog_fg_70</textcolor>
+                        <textcolor>$PARAM[sublabel_textcolor]</textcolor>
                         <visible>$PARAM[sublabel_visible]</visible>
                     </control>
                 </control>
@@ -642,7 +667,7 @@
                     <control type="label">
                         <font>font_tiny</font>
                         <top>24</top>
-                        <label>$PARAM[sublabel]</label>
+                        <label fallback="$PARAM[sublabel_fallback]">$PARAM[sublabel]</label>
                         <include>Color_SelectedText</include>
                         <textoffsetx>40</textoffsetx>
                         <visible>$PARAM[sublabel_visible]</visible>
@@ -796,12 +821,14 @@
         <param name="override">false</param>
         <param name="heading">$VAR[Label_Settings_InfoText_Top]</param>
         <param name="align">left</param>
+        <param name="left">0</param>
+        <param name="bottom">-20</param>
+        <param name="right">80</param>
         <definition>
             <control type="group">
-                <nested />
-                <bottom>-20</bottom>
-                <left>0</left>
-                <right>320</right>
+                <bottom>$PARAM[bottom]</bottom>
+                <left>$PARAM[left]</left>
+                <right>$PARAM[right]</right>
                 <height>80</height>
                 <animation effect="fade" start="0" end="100" time="400" delay="200">Visible</animation>
                 <animation effect="fade" start="100" end="0" time="400">Hidden</animation>

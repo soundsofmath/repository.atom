@@ -111,7 +111,7 @@
     <expression name="Exp_Hubs_Categories_SlideDown">[[String.IsEmpty(Window.Property(Slide.WidgetContainer)) | $EXP[Exp_Hubs_Categories_HasFocus]] + !$EXP[Exp_Hubs_Spotlight_IsDisabled]]</expression>
 
     <expression name="Exp_Hubs_Categories_HasFocus">[Integer.IsEqual(Window.Property(Slide.WidgetContainer),300) | Control.HasFocus(300)]</expression>
-    <expression name="Exp_Hubs_Submenu_HasFocus">[Integer.IsEqual(Window.Property(Slide.WidgetContainer),302) | Control.HasFocus(302)]</expression>
+    <expression name="Exp_Hubs_Submenu_HasFocus">[Integer.IsEqual(Window.Property(Slide.WidgetContainer),3002) | ControlGroup(3002).HasFocus()]</expression>
 
     <expression name="Exp_Hubs_Spotlight_IsDisabled">[Skin.HasSetting(Background.DisableSpotlight)]</expression>
     <expression name="Exp_Hubs_Spotlight_IsFanart">[!$EXP[Exp_Hubs_Spotlight_IsDisabled] + Skin.HasSetting(Background.EnableSpotlightSlide) + $EXP[Exp_HomeMenu_IsTopBar]]</expression>
@@ -123,6 +123,10 @@
     <!-- ============== -->
 
     <expression name="Exp_IsAlphabetStrip">[String.IsEqual(Container.SortMethod,$LOCALIZE[20376]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[21899]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[578])]</expression>
+
+    <expression name="Exp_PVRGuide_NoFocus">[Control.HasFocus(28) | Control.HasFocus(11) | $EXP[Exp_HomeMenu_HasFocus] | $EXP[Exp_ViewDialog_HasFocus]]</expression>
+
+    <expression name="Exp_AspectRatio_Reduced">[String.IsEqual(Skin.AspectRatio,4:3) | String.IsEqual(Skin.AspectRatio,3:2)]</expression>
 
     <!-- Discover -->
     <expression name="Exp_View_55">[Container.Content(files) + [String.IsEqual(Container.ListItem.Property(param.info),user_discover) | String.IsEqual(Container.Property(param.info),user_discover)]]</expression>
@@ -150,6 +154,7 @@
     <expression name="Exp_BackgroundArtwork_IsHidden">[$EXP[Exp_FilterWall_IsActive] | Window.IsVisible(favouritesbrowser)]</expression>
 
     <expression name="Exp_MediaFilter_IsActive">[!String.IsEmpty(Window.Property(MediaFilterBase))]</expression>
+    <expression name="Exp_ViewDialog_HasFocus">[ControlGroup(9000).HasFocus() | ControlGroup(6000).HasFocus() | Control.HasFocus(6000) | Control.HasFocus(6099)]</expression>
 
     <expression name="Exp_FilterItems_Keyboard">[Window.IsVisible(DialogKeyboard.xml) + Skin.HasSetting(Keyboard.FullSized) + ![$EXP[Exp_FilterWall_IsActive] | $EXP[Exp_DiscoverWall_IsActive]]]</expression>
 
@@ -165,11 +170,11 @@
 
     <expression name="Exp_InfoDialogs">[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</expression>
 
-    <expression name="Exp_SettingsDialogs">[Window.IsVisible(settings) | Window.IsVisible(filemanager) | Window.IsVisible(addonbrowser) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(EventLog.xml) | Window.IsVisible(1180)]</expression>
+    <expression name="Exp_SettingsDialogs">[Window.IsVisible(settings) | Window.IsVisible(filemanager) | Window.IsVisible(addonbrowser) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(1115) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(EventLog.xml) | Window.IsVisible(1180)]</expression>
 
-    <expression name="Exp_SettingsDialogs_Next">[Window.Next(settings) | Window.Next(filemanager) | Window.Next(addonbrowser) | Window.Next(SettingsCategory.xml) | Window.Next(SkinSettings.xml) | Window.Next(SettingsProfile.xml) | Window.Next(SettingsSystemInfo.xml) | Window.Next(EventLog.xml) | Window.Next(1197)]</expression>
+    <expression name="Exp_SettingsDialogs_Next">[Window.Next(settings) | Window.Next(filemanager) | Window.Next(addonbrowser) | Window.Next(SettingsCategory.xml) | Window.Next(SkinSettings.xml) | Window.Next(1115) | Window.Next(SettingsProfile.xml) | Window.Next(SettingsSystemInfo.xml) | Window.Next(EventLog.xml) | Window.Next(1197)]</expression>
 
-    <expression name="Exp_SettingsDialogs_Prev">[Window.Previous(settings) | Window.Previous(filemanager) | Window.Previous(addonbrowser) | Window.Previous(SettingsCategory.xml) | Window.Previous(SkinSettings.xml) | Window.Previous(SettingsProfile.xml) | Window.Previous(SettingsSystemInfo.xml) | Window.Previous(EventLog.xml) | Window.Previous(1197)]</expression>
+    <expression name="Exp_SettingsDialogs_Prev">[Window.Previous(settings) | Window.Previous(filemanager) | Window.Previous(addonbrowser) | Window.Previous(SettingsCategory.xml) | Window.Previous(SkinSettings.xml) | Window.Previous(1115) | Window.Previous(SettingsProfile.xml) | Window.Previous(SettingsSystemInfo.xml) | Window.Previous(EventLog.xml) | Window.Previous(1197)]</expression>
 
     <expression name="Exp_InfoPanelWindows">[Window.IsVisible(Home) | Window.IsVisible(favouritesbrowser) | Window.IsVisible(Programs) | Window.IsVisible(Pictures) | Window.IsVisible(Videos) | Window.IsVisible(Music) | Window.IsVisible(VideoPlaylist) | Window.IsVisible(MusicPlaylist) | Window.IsVisible(Games) | Window.IsVisible(1101) | Window.IsVisible(1102) | Window.IsVisible(1103) | Window.IsVisible(1104) | Window.IsVisible(1105) | Window.IsVisible(1106) | Window.IsVisible(1107) | Window.IsVisible(1108) | Window.IsVisible(1109) | Window.IsVisible(1130) | Window.IsVisible(1131) | Window.IsVisible(1132) | Window.IsVisible(1133) | Window.IsVisible(1181) | Window.IsVisible(1182) | Window.IsVisible(1183) | Window.IsVisible(1185) | [[Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRChannels.xml)] + Skin.HasSetting(Views.UseHalfPVRGuide)] | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]</expression>
 
@@ -194,7 +199,7 @@
 
     <expression name="Exp_IsCountry">[String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.Property(dbtype),country)]</expression>
 
-    <expression name="Exp_HasWatchedProgress">[!Skin.HasSetting(Indicator.DisableProgress) + [[ListItem.IsResumable + !Integer.IsEqual(ListItem.PercentPlayed,0)] | [!String.IsEmpty(ListItem.Property(WatchedProgress)) + !Integer.IsEqual(ListItem.Property(WatchedProgress),0)] | [!Integer.IsEqual(ListItem.Progress,0)]]]</expression>
+    <expression name="Exp_HasWatchedProgress">[!Skin.HasSetting(Indicator.DisableProgress) + [[ListItem.IsResumable + !Integer.IsEqual(ListItem.PercentPlayed,0) + !Integer.IsEqual(ListItem.PercentPlayed,100)] | [!String.IsEmpty(ListItem.Property(WatchedProgress)) + !Integer.IsEqual(ListItem.Property(WatchedProgress),0) + !Integer.IsEqual(ListItem.Property(WatchedProgress),100)] | [!Integer.IsEqual(ListItem.Progress,0) + !Integer.IsEqual(ListItem.Progress,100)]]]</expression>
 
     <expression name="Exp_IsPVRItem">[!String.IsEmpty(ListItem.ChannelNumberLabel) | String.IsEqual(ListItem.Path,pvr://channels/tv/)]</expression>
 

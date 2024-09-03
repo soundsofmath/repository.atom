@@ -1000,6 +1000,12 @@
             "link": "true"
         },
         {
+            "name": "Discover (Dialog)",
+            "path": "ActivateWindow(1175)",
+            "icon": "special://skin/extras/icons/binoculars.png",
+            "link": "true"
+        },
+        {
             "name": "Movies Hub",
             "path": "ActivateWindow(1101)",
             "icon": "special://skin/extras/icons/film.png",

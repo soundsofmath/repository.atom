@@ -541,7 +541,7 @@
                                     <param name="id">301</param>
                                     <include>Texture_KeyboardButton</include>
                                     <font>font_main_iconic</font>
-                                    <label>&#xe08d;</label>
+                                    <label>&#xf05c;</label>
                                     <onup>304</onup>
                                     <ondown>8000</ondown>
                                 </include>
@@ -563,7 +563,7 @@
                                     <param name="id">305</param>
                                     <include>Texture_KeyboardButton</include>
                                     <font>font_main_iconic</font>
-                                    <label>&#xe006;</label>
+                                    <label>&#xf0a8;</label>
                                     <onup>170</onup>
                                     <ondown>8000</ondown>
                                 </include>
@@ -571,7 +571,7 @@
                                     <param name="id">306</param>
                                     <include>Texture_KeyboardButton</include>
                                     <font>font_main_iconic</font>
-                                    <label>&#xe005;</label>
+                                    <label>&#xf0a9;</label>
                                     <onup>171</onup>
                                     <ondown>8000</ondown>
                                 </include>
@@ -698,8 +698,8 @@
                                             <include content="Object_Keyboard_Button" description="Back">
                                                 <param name="id">23</param>
                                                 <width>170</width>
-                                                <include>Texture_KeyboardButton</include>
-                                                <label>&#xe00a;</label>
+                                                <!-- <include>Texture_KeyboardButton</include> -->
+                                                <label>&#xf55a;</label>
                                                 <font>font_main_iconic</font>
                                                 <ondown>21</ondown>
                                             </include>
@@ -734,7 +734,7 @@
                                             <include content="Object_Keyboard_Button" description="Number">
                                                 <param name="id">10</param>
                                                 <width>170</width>
-                                                <include>Texture_KeyboardButton</include>
+                                                <!-- <include>Texture_KeyboardButton</include> -->
                                                 <label>$NUMBER[0]</label>
                                                 <onup>18</onup>
                                             </include>
@@ -770,7 +770,7 @@
                                                 <param name="id">20</param>
                                                 <include>Texture_KeyboardButton</include>
                                                 <font>font_main_iconic</font>
-                                                <label>&#xe006;</label>
+                                                <label>&#xf0a8;</label>
                                                 <onup>19</onup>
                                                 <ondown>9000</ondown>
                                             </include>
@@ -778,7 +778,7 @@
                                                 <param name="id">22</param>
                                                 <include>Texture_KeyboardButton</include>
                                                 <font>font_main_iconic</font>
-                                                <label>&#xe005;</label>
+                                                <label>&#xf0a9;</label>
                                                 <onup>21</onup>
                                                 <ondown>9000</ondown>
                                             </include>

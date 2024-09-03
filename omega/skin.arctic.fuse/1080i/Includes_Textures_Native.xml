@@ -32,6 +32,9 @@
     <include name="Texture_Highlight_Scrollbar_H">
         <texture border="4" colordiffuse="$VAR[ColorHighlight]">common/scrollh.png</texture>
     </include>
+    <include name="Texture_Highlight_Scrollbar_V">
+        <texture border="4" colordiffuse="$VAR[ColorHighlight]">common/scrollh.png</texture>
+    </include>
     <include name="Texture_Scrollbar_H">
         <texturesliderbarfocus border="4" colordiffuse="$VAR[ColorHighlight]">common/scrollh.png</texturesliderbarfocus>
     </include>
