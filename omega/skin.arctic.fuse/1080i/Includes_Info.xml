@@ -11,7 +11,7 @@
         </control>
     </include>
 
-    <include name="Info_Title_LogoLabel_SmallText_Arctic FuseLogo">
+    <include name="Info_Title_LogoLabel_SmallText_KodiLogo">
         <control type="group">
             <centertop>20</centertop>
             <height>40</height>
@@ -71,7 +71,7 @@
     </include>
 
     <include name="Info_Title_LogoLabel_SmallText">
-        <include content="Info_Title_LogoLabel_SmallText_Arctic FuseLogo">
+        <include content="Info_Title_LogoLabel_SmallText_KodiLogo">
             <param name="colordiffuse">$PARAM[colordiffuse]</param>
         </include>
         <control type="label">
@@ -1757,7 +1757,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include content="Info_Arctic FuseLogo_Image">
+                <include content="Info_KodiLogo_Image">
                     <param name="icon">special://skin/extras/icons/justwatch.png</param>
                     <param name="bordersize">5</param>
                 </include>
@@ -1783,7 +1783,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include content="Info_Arctic FuseLogo_Image">
+                <include content="Info_KodiLogo_Image">
                     <param name="icon">special://skin/extras/icons/justwatch.png</param>
                     <param name="bordersize">5</param>
                 </include>
@@ -2073,7 +2073,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
                 <visible>$PARAM[visible]</visible>
                 <visible>$PARAM[anchor]</visible>
             </control>
@@ -2260,7 +2260,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
                 <visible>$PARAM[visible]</visible>
             </control>
 
@@ -2397,12 +2397,12 @@
         </include>
     </include>
 
-    <variable name="Info_Arctic FuseLogo_Color">
+    <variable name="Info_KodiLogo_Color">
         <value condition="!Skin.String(Furniture.CodecStyle,Monochrome)">$VAR[ColorHighlight]</value>
         <value>main_fg_90</value>
     </variable>
 
-    <include name="Info_Arctic FuseLogo_Image">
+    <include name="Info_KodiLogo_Image">
         <param name="bordersize">1</param>
         <param name="icon">special://skin/extras/icons/kodi.png</param>
         <definition>
@@ -2422,7 +2422,7 @@
                 <height>80</height>
                 <centertop>50%</centertop>
                 <visible>$PARAM[visible]</visible>
-                <include content="Info_Arctic FuseLogo_Image">
+                <include content="Info_KodiLogo_Image">
                     <param name="icon">special://skin/extras/icons/database.png</param>
                     <param name="bordersize">5</param>
                 </include>
@@ -2628,7 +2628,7 @@
                 <height>80</height>
                 <centertop>50%</centertop>
                 <visible>$PARAM[visible]</visible>
-                <include content="Info_Arctic FuseLogo_Image">
+                <include content="Info_KodiLogo_Image">
                     <param name="icon">special://skin/extras/icons/database.png</param>
                     <param name="bordersize">5</param>
                 </include>
@@ -2808,7 +2808,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
                 <visible>$PARAM[visible]</visible>
             </control>
 
@@ -2865,7 +2865,7 @@
         <definition>
             <control type="group">
                 <width>50</width>
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
                 <visible>$PARAM[visible]</visible>
             </control>
             <include content="Info_Codecs_StackedText">
@@ -2971,7 +2971,7 @@
 
                 <visible>$PARAM[visible]</visible>
 
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
 
                 <control type="group">
                     <left>80</left>
@@ -3035,7 +3035,7 @@
         </include>
     </include>
 
-    <include name="Info_Arctic FuseLogo">
+    <include name="Info_KodiLogo">
         <param name="visible">true</param>
         <definition>
             <include content="Settings_Arctic FuseVersion" condition="![Window.IsMedia + !$EXP[Exp_InfoDialogs]]">
@@ -3101,7 +3101,7 @@
                     <param name="visible">!$PARAM[info_musiccodecs] + !$PARAM[info_codecs] + !$PARAM[info_providers] + !$PARAM[info_watchedepisodes] + !$PARAM[info_playcount] + $PARAM[info_musicduration]</param>
                 </include>
 
-                <include content="Info_Arctic FuseLogo">
+                <include content="Info_KodiLogo">
                     <param name="container">$PARAM[container]</param>
                     <param name="visible">!$PARAM[info_musiccodecs] + !$PARAM[info_codecs] + !$PARAM[info_providers] + !$PARAM[info_watchedepisodes] + !$PARAM[info_playcount] + !$PARAM[info_musicduration]</param>
                 </include>

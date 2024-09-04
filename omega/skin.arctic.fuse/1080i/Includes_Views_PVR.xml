@@ -39,7 +39,7 @@
                 <texture colordiffuse="main_bg_100">diffuse/circle_50.png</texture>
             </control>
         </control>
-        <include>Info_Arctic FuseLogo_Image</include>
+        <include>Info_KodiLogo_Image</include>
         <include content="View_PVR_GroupSwitcher_Labels">
             <param name="selected">false</param>
             <param name="visible">!Control.HasFocus(28)</param>

@@ -980,7 +980,7 @@
 
             <control type="group">
                 <width>50</width>
-                <include>Info_Arctic FuseLogo_Image</include>
+                <include>Info_KodiLogo_Image</include>
                 <visible>$PARAM[anchor]</visible>
             </control>
 
