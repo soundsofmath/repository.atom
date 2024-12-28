@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-# created by Venom for Fenomscrapers (updated 7-19-2022)
+# created by Venom for Fenomscrapers (updated 2-8-2024)
 """
-	Fenomscrapers Project
+	CocoScrapers Project
 """
 
 import re
 from urllib.parse import quote_plus, unquote_plus
 from cocoscrapers.modules import client
-from cocoscrapers.modules import source_utils
+from cocoscrapers.modules import source_utils, log_utils
 from cocoscrapers.modules import workers
 SERVER_ERROR = ('something went wrong', 'Connection timed out', '521: Web server is down', '503 Service Unavailable')
 
@@ -19,8 +19,8 @@ class source:
 	hasEpisodes = True
 	def __init__(self):
 		self.language = ['en']
-		self.base_link = "https://torrentz2.pics"
-		self.search_link = '/data.php?q=%s'
+		self.base_link = "https://torrentz2.nz"
+		self.search_link = '/search?q=%s'
 		self.min_seeders = 0
 
 	def sources(self, data, hostDict):
@@ -43,7 +43,8 @@ class source:
 			# log_utils.log('url = %s' % url)
 			results = client.request(url, timeout=10)
 			if not results or any(value in results for value in SERVER_ERROR): return sources
-			rows = client.parseDOM(results, 'tr')
+			rows = client.parseDOM(results, 'dl')
+
 			undesirables = source_utils.get_undesirables()
 			check_foreign_audio = source_utils.check_foreign_audio()
 		except:
@@ -52,11 +53,13 @@ class source:
 		for row in rows:
 			try:
 				if 'magnet:' not in row: continue
-				columns = re.findall(r'<td.*?>(.+?)</td>', row, re.DOTALL)
+				columns = re.findall(r'<span.*?>(.+?)</span>', row, re.DOTALL)
 
-				url = unquote_plus(columns[5]).replace('&amp;', '&')
-				try: url = re.search(r'(magnet:.+?)&tr=', url, re.I).group(1).replace(' ', '.')
+				url = unquote_plus(columns[0]).replace('&amp;', '&')
+				url = re.sub(r'(&tr=.+)&dn=', '&dn=', url).replace(' ', '.') # some links on torrentz2 &tr= before &dn=
+				try: url = re.search(r'(magnet:.+?)">', url, re.I).group(1).replace(' ', '.')
 				except: continue
+
 				hash = re.search(r'btih:(.*?)&', url, re.I).group(1)
 				name = source_utils.clean_name(url.split('&dn=')[1])
 
@@ -71,13 +74,13 @@ class source:
 					if any(re.search(item, name_lower) for item in ep_strings): continue
 
 				try:
-					seeders = int(columns[2].replace(',', ''))
+					seeders = int(columns[3].replace(',', ''))
 					if self.min_seeders > seeders: continue
 				except: seeders = 0
 
 				quality, info = source_utils.get_release_quality(name_info, url)
 				try:
-					dsize, isize = source_utils._size(columns[4])
+					dsize, isize = source_utils._size(columns[2])
 					info.insert(0, isize)
 				except: dsize = 0
 				info = ' | '.join(info)
@@ -131,18 +134,21 @@ class source:
 		try:
 			results = client.request(link, timeout=10)
 			if not results or any(value in results for value in SERVER_ERROR): return
-			rows = client.parseDOM(results, 'tr')
+			rows = client.parseDOM(results, 'dl')
 		except:
 			source_utils.scraper_error('TORRENTZ2')
 			return
 		for row in rows:
 			try:
 				if 'magnet:' not in row: continue
-				columns = re.findall(r'<td.*?>(.+?)</td>', row, re.DOTALL)
+				# columns = re.findall(r'<td.*?>(.+?)</td>', row, re.DOTALL)
+				columns = re.findall(r'<span.*?>(.+?)</span>', row, re.DOTALL)
 
-				url = unquote_plus(columns[5]).replace('&amp;', '&')
-				try: url = re.search(r'(magnet:.+?)&tr=', url, re.I).group(1).replace(' ', '.')
+				url = unquote_plus(columns[0]).replace('&amp;', '&')
+				url = re.sub(r'(&tr=.+)&dn=', '&dn=', url).replace(' ', '.') # some links on torrentz2 &tr= before &dn=
+				try: url = re.search(r'(magnet:.+?)">', url, re.I).group(1).replace(' ', '.')
 				except: continue
+
 				hash = re.search(r'btih:(.*?)&', url, re.I).group(1)
 				name = source_utils.clean_name(url.split('&dn=')[1])
 
@@ -165,13 +171,13 @@ class source:
 				if self.undesirables and source_utils.remove_undesirables(name_info, self.undesirables): continue
 
 				try:
-					seeders = int(columns[2].replace(',', ''))
+					seeders = int(columns[3].replace(',', ''))
 					if self.min_seeders > seeders: continue
 				except: seeders = 0
 
 				quality, info = source_utils.get_release_quality(name_info, url)
 				try:
-					dsize, isize = source_utils._size(columns[4])
+					dsize, isize = source_utils._size(columns[2])
 					info.insert(0, isize)
 				except: dsize = 0
 				info = ' | '.join(info)
