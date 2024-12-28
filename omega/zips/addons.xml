@@ -2552,6 +2552,19 @@ Use this to organize your Favourites.
       <icon>icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="resource.uisounds.arctifuse2" version="1.0.1" name="Arctic Fuse 2 UI Sounds" provider-name="Team Arctic Fuse 2">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0" />
+  </requires>
+  <extension point="kodi.resource.uisounds" />
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">Arctic Fuse 2 GUI sounds</summary>
+    <description lang="en">Arctic Fuse 2 GUI sounds</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.absolution.artwork" version="1.0.9" name="[COLORteal]Absolution Artwork[/COLOR]Artwork" provider-name="absolution">
     <requires>
         
