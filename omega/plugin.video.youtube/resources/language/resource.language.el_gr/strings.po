@@ -31,22 +31,22 @@ msgstr "Η παρούσα μικροεφαρμογή δεν έχει υϊοθε�
 
 # msgctxt "Addon Summary"
 # msgid "Plugin for YouTube"
-# msgstr "Πρόσθετο Youtube"
+# msgstr ""
 # msgctxt "Addon Description"
 # msgid "YouTube is a one of the biggest video-sharing websites of the world."
-# msgstr "Το Youtube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο"
+# msgstr ""
 # Kodion Settings
 msgctxt "#30000"
-msgid "General"
-msgstr "Γενικά"
+msgid ""
+msgstr ""
 
 msgctxt "#30001"
-msgid "Username"
-msgstr "Όνομα χρήστη"
+msgid ""
+msgstr ""
 
 msgctxt "#30002"
-msgid "Password"
-msgstr "Κωδικός"
+msgid ""
+msgstr ""
 
 msgctxt "#30003"
 msgid "YouTube"
@@ -54,12 +54,12 @@ msgstr ""
 
 # empty strings from id 30004 to 30006
 msgctxt "#30007"
-msgid "Use InputStream Adaptive"
+msgid "Use InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Configure InputStream Adaptive"
-msgstr "Ρύθμιση πελάτη MPEG-DASH Inputstream"
+msgid "Configure InputStream.Adaptive"
+msgstr ""
 
 msgctxt "#30009"
 msgid "Always ask for the video quality"
@@ -151,8 +151,8 @@ msgid "Configure %s?"
 msgstr ""
 
 msgctxt "#30031"
-msgid "Advanced"
-msgstr "Για προχωρημένους"
+msgid ""
+msgstr ""
 
 msgctxt "#30032"
 msgid "View: TV Shows"
@@ -197,16 +197,16 @@ msgid "Search"
 msgstr "Αναζήτηση"
 
 msgctxt "#30103"
-msgid "Library"
-msgstr "Βιβλιοθήκη"
+msgid ""
+msgstr ""
 
 msgctxt "#30104"
-msgid "Highlights"
-msgstr "Διακεκριμένα"
+msgid ""
+msgstr ""
 
 msgctxt "#30105"
-msgid "Archive"
-msgstr "Αρχείο"
+msgid ""
+msgstr ""
 
 msgctxt "#30106"
 msgid "Next Page (%d)"
@@ -217,12 +217,12 @@ msgid "Watch Later"
 msgstr "Δείτε αργότερα"
 
 msgctxt "#30108"
-msgid "Remove"
-msgstr "Αφαίρεση"
+msgid ""
+msgstr ""
 
 msgctxt "#30109"
-msgid "Latest Videos"
-msgstr "Τελευταία βίντεο"
+msgid ""
+msgstr ""
 
 msgctxt "#30110"
 msgid "New Search"
@@ -237,8 +237,8 @@ msgid "Sign Out"
 msgstr "Έξοδος"
 
 msgctxt "#30113"
-msgid "Rename"
-msgstr "Μετονομασία"
+msgid ""
+msgstr ""
 
 msgctxt "#30114"
 msgid "Confirm delete"
@@ -257,8 +257,8 @@ msgid "Remove \"%s\"?"
 msgstr "Αφαίρεση \"%s\"?"
 
 msgctxt "#30118"
-msgid "Delete"
-msgstr "Διαγραφή"
+msgid ""
+msgstr ""
 
 msgctxt "#30119"
 msgid "Please wait..."
@@ -291,22 +291,22 @@ msgid "API Secret"
 msgstr "Μυστικό API"
 
 msgctxt "#30204"
-msgid "Enable personal API keys"
-msgstr "Ενεργοποίηση προσωπικών κλειδιών API"
+msgid ""
+msgstr ""
 
 msgctxt "#30205"
-msgid "Use preset API key set"
-msgstr "Χρησιμοποίησε το προκαθορισμένο σετ κλειδιών API"
+msgid ""
+msgstr ""
 
 # YouTube
 # empty strings from id 30206 to 30499
 msgctxt "#30500"
-msgid "Channels"
-msgstr "Κανάλια"
+msgid ""
+msgstr ""
 
 msgctxt "#30501"
-msgid "Playlists"
-msgstr "Λίστες αναπαραγωγής"
+msgid ""
+msgstr ""
 
 msgctxt "#30502"
 msgid "Go to %s"
@@ -361,8 +361,8 @@ msgid "Related Videos"
 msgstr "Σχετικά βίντεο"
 
 msgctxt "#30515"
-msgid "Auto-Remove from 'Watch Later'"
-msgstr "Αυτόματη αφαίρεση από την λίστα 'Δείτε αργότερα'"
+msgid "Auto-Remove from Watch Later"
+msgstr ""
 
 msgctxt "#30516"
 msgid "Folders"
@@ -373,8 +373,8 @@ msgid "Subscribe to %s"
 msgstr "Εγγραφή σε %s"
 
 msgctxt "#30518"
-msgid "Go to '%s'"
-msgstr "Πήγαινε σε '%s'"
+msgid ""
+msgstr ""
 
 msgctxt "#30519"
 msgid "and enter the following code:"
@@ -385,16 +385,16 @@ msgid "Add to..."
 msgstr "Προσθέστε στο..."
 
 msgctxt "#30521"
-msgid "Select playlist"
-msgstr "Επιλογή λίστας αναπαραγωγής"
+msgid ""
+msgstr ""
 
 msgctxt "#30522"
-msgid "New playlist..."
-msgstr "Νέα λίστα αναπαραγωγής..."
+msgid ""
+msgstr ""
 
 msgctxt "#30523"
-msgid "Language"
-msgstr "Γλώσσα"
+msgid ""
+msgstr ""
 
 msgctxt "#30524"
 msgid "Select language"
@@ -425,20 +425,20 @@ msgid "I dislike this"
 msgstr "Δεν μου αρέσει αυτό"
 
 msgctxt "#30531"
-msgid "Play all"
-msgstr "Αναπαραγωγή όλων"
+msgid ""
+msgstr ""
 
 msgctxt "#30532"
-msgid "Default"
-msgstr "Προεπιλογή"
+msgid ""
+msgstr ""
 
 msgctxt "#30533"
 msgid "Reverse"
 msgstr "Προς τα πίσω"
 
 msgctxt "#30534"
-msgid "Shuffle"
-msgstr "Τυχαία σειρά"
+msgid ""
+msgstr ""
 
 msgctxt "#30535"
 msgid "Select the order of the playlist"
@@ -457,8 +457,8 @@ msgid "Disliked Videos"
 msgstr "Βίντεο που δεν σας αρέσουν"
 
 msgctxt "#30539"
-msgid "Live"
-msgstr "Ζωντανά"
+msgid ""
+msgstr ""
 
 msgctxt "#30540"
 msgid "Play with..."
@@ -473,8 +473,8 @@ msgid "rtmpe streams are not supported"
 msgstr "Οι ροές rtmpe δεν υποστηρίζονται"
 
 msgctxt "#30543"
-msgid "Refresh"
-msgstr "Ανανέωση"
+msgid ""
+msgstr ""
 
 msgctxt "#30544"
 msgid "More Links from the description"
@@ -485,24 +485,24 @@ msgid "No further links found."
 msgstr "Δεν βρέθηκαν άλλοι σύνδεσμοι."
 
 msgctxt "#30546"
-msgid "Please log in twice!"
-msgstr "Παρακαλώ πραγματοποιήστε είσοδο δύο φορές!"
+msgid "Please complete all login prompts"
+msgstr ""
 
 msgctxt "#30547"
-msgid "You must enable two applications so that YouTube is functioning properly."
-msgstr "Πρέπει να επιτρέψετε δύο εφαρμογές του πρόσθετου Youtube ώστε να λειτουργεί σωστά"
+msgid "You may be prompted to enable two applications so that YouTube is functioning properly."
+msgstr ""
 
 msgctxt "#30548"
-msgid "More..."
-msgstr "Περισσότερα..."
+msgid ""
+msgstr ""
 
 msgctxt "#30549"
 msgid "No videos streams found"
 msgstr "Δεν βρέθηκαν άλλες ροές"
 
 msgctxt "#30550"
-msgid "Region"
-msgstr "Περιοχή"
+msgid ""
+msgstr ""
 
 msgctxt "#30551"
 msgid "Recommendations"
@@ -541,32 +541,32 @@ msgid "Delete settings.xml"
 msgstr "Διαγραφή του settings.xml"
 
 msgctxt "#30560"
-msgid "Subtitle language"
-msgstr "Γλώσσα υποτίτλων"
+msgid ""
+msgstr ""
 
 msgctxt "#30561"
-msgid "None"
-msgstr "Καμία"
+msgid ""
+msgstr ""
 
 msgctxt "#30562"
-msgid "All"
-msgstr "Όλα"
+msgid "View all"
+msgstr ""
 
 msgctxt "#30563"
-msgid "Setting"
-msgstr "Ρύθμιση"
+msgid ""
+msgstr ""
 
 msgctxt "#30564"
-msgid "Setting, English"
-msgstr "Ρύθμιση, Αγγλικά"
+msgid ""
+msgstr ""
 
 msgctxt "#30565"
-msgid "English"
-msgstr "Αγγλικά"
+msgid ""
+msgstr ""
 
 msgctxt "#30566"
-msgid "Prompt"
-msgstr "Ερώτηση"
+msgid ""
+msgstr ""
 
 msgctxt "#30567"
 msgid "Set as Watch Later"
@@ -577,12 +577,12 @@ msgid "Remove as Watch Later"
 msgstr "Αφαίρεση από το Δείτε Αργότερα"
 
 msgctxt "#30569"
-msgid "Are you sure you want to remove '%s' as your Watch Later list?"
-msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε το '%s' από το 'Δείτε Αργότερα'?"
+msgid "Are you sure you want to remove \"%s\" as your Watch Later list?"
+msgstr ""
 
 msgctxt "#30570"
-msgid "Are you sure you want to replace your current Watch Later list with '%s'?"
-msgstr "Είστε βέβαιοι ότι θέλετε να αντικαταστήσετε την τρέχουσα λίστα 'Δείτε Αργότερα' με το '%s'?"
+msgid "Are you sure you want to replace your current Watch Later list with \"%s\"?"
+msgstr ""
 
 msgctxt "#30571"
 msgid "Set as History"
@@ -593,12 +593,12 @@ msgid "Remove as History"
 msgstr "Αφαίρεση από ιστορικό"
 
 msgctxt "#30573"
-msgid "Are you sure you want to remove '%s' as your History list?"
-msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε το '%s' ως την λίστα ιστορικού σας?"
+msgid "Are you sure you want to remove \"%s\" as your History list?"
+msgstr ""
 
 msgctxt "#30574"
-msgid "Are you sure you want to replace your current History list with '%s'?"
-msgstr "Είστε βέβαιοι ότι θέλετε να αντικαταστήσετε την τρέχουσα λίστα ιστορικού με το '%s'?"
+msgid "Are you sure you want to replace your current History list with \"%s\"?"
+msgstr ""
 
 msgctxt "#30575"
 msgid "Succeeded"
@@ -609,15 +609,15 @@ msgid "Failed"
 msgstr "Αποτυχία"
 
 msgctxt "#30577"
-msgid "Settings"
-msgstr "Ρυθμίσεις"
+msgid ""
+msgstr ""
 
 msgctxt "#30578"
 msgid "Force SSL certificate verification"
 msgstr "Επιβολή επιβεβαίωσης πιστοποιητικού SSL"
 
 msgctxt "#30579"
-msgid "InputStream Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream Adaptive now?"
+msgid "InputStream.Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream.Adaptive now?"
 msgstr ""
 
 msgctxt "#30580"
@@ -633,8 +633,8 @@ msgid "Autoplay suggested videos"
 msgstr "Αυτόματη αναπαραγωγή προτεινόμενων βίντεο"
 
 msgctxt "#30583"
-msgid "Automatic"
-msgstr "Αυτόματο"
+msgid ""
+msgstr ""
 
 msgctxt "#30584"
 msgid "My Subscriptions (Filtered)"
@@ -693,15 +693,15 @@ msgid "Updated: %s"
 msgstr "Ενημερωθηκε: %s"
 
 msgctxt "#30598"
-msgid "Personal API keys enabled"
-msgstr "Προσωπικά κλειδιά API ενεργοποιήθηκαν"
+msgid ""
+msgstr ""
 
 msgctxt "#30599"
 msgid "Failed to enable personal API keys. Missing: %s"
 msgstr "Αποτυχία ενεργοποίησης προσωπικών κλειδιών API. Λείπει: %s"
 
 msgctxt "#30600"
-msgid "Subtitles"
+msgid ""
 msgstr ""
 
 msgctxt "#30601"
@@ -753,39 +753,39 @@ msgid "Retry"
 msgstr "Ξαναπροσπάθησε"
 
 msgctxt "#30613"
-msgid "Retrieve Watch Later playlist id"
-msgstr "Ανάκτηση αναγνωριστικού λίστας παρακολούθησης αργότερα"
+msgid ""
+msgstr ""
 
 msgctxt "#30614"
-msgid "Failed to retrieve Watch Later playlist id. Add a few videos to Watch Later via the web/app and retry."
-msgstr "Αποτυχία ανάκτησης αναγνωριστικού λίστας παρακολούθησης αργότερα. Πρόσθεσε μερικά βίντεο σε αυτήν την λίστα μέσω εφαρμογής android ή φυλλομετρητή και ξαναπροσπαθήστε"
+msgid ""
+msgstr ""
 
 msgctxt "#30615"
-msgid "Cancel"
-msgstr "Ακύρωση"
+msgid ""
+msgstr ""
 
 msgctxt "#30616"
-msgid "Must be signed in."
-msgstr "Πρέπει να είστε συνδεδεμένοι"
+msgid ""
+msgstr ""
 
 msgctxt "#30617"
-msgid "InputStream Adaptive"
+msgid "InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30618"
-msgid "Enable MPEG-DASH proxy"
+msgid ""
 msgstr ""
 
 msgctxt "#30619"
-msgid "Port"
-msgstr "Θύρα"
+msgid ""
+msgstr ""
 
 msgctxt "#30620"
 msgid "Port %s already in use. Cannot start http server."
 msgstr "Η θύρα %s χρησιμοποιείται ήδη. Αδυναμία έναρξης εξυπηρετητή http."
 
 msgctxt "#30621"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)"
+msgid ""
 msgstr ""
 
 msgctxt "#30622"
@@ -797,8 +797,8 @@ msgid "Install InputStream Helper"
 msgstr "Εγκατάσταση βοηθού InputStream"
 
 msgctxt "#30624"
-msgid "Requires Kodi 17+"
-msgstr "Απαιτεί Kodi 17+"
+msgid ""
+msgstr ""
 
 msgctxt "#30625"
 msgid "InputStream Helper is already installed."
@@ -821,8 +821,8 @@ msgid "IP whitelist (comma delimited)"
 msgstr "Λίστα επιτρεπομένων IP (διαχωρισμένες με κόμμα)"
 
 msgctxt "#30630"
-msgid "Save"
-msgstr "Αποθήκευση"
+msgid ""
+msgstr ""
 
 msgctxt "#30631"
 msgid "Successfully updated: %s"
@@ -893,16 +893,16 @@ msgid "Completed Live"
 msgstr "Ολοκληρωμένες ζωντανές μεταδόσεις"
 
 msgctxt "#30648"
-msgid "API Key is incorrect. Settings - API - API Key"
-msgstr "Τα κλειδί API είναι λανθασμένο. Ρυθμίσεις - API - Κλειδί API"
+msgid "API Key is incorrect. Settings > API > API Key"
+msgstr ""
 
 msgctxt "#30649"
-msgid "Client Id is incorrect. Settings - API - API Id"
-msgstr "Τα αναγνωριστικό πελάτη είναι λανθασμένο. Ρυθμίσεις - API - Αναγνωριστικό API"
+msgid "Client Id is incorrect. Settings > API > API Id"
+msgstr ""
 
 msgctxt "#30650"
-msgid "Client Secret is incorrect. Settings - API - API Secret"
-msgstr "Τα μυστικό πελάτη είναι λανθασμένο. Ρυθμίσεις - API - Μυστικό API"
+msgid "Client Secret is incorrect. Settings > API > API Secret"
+msgstr ""
 
 msgctxt "#30651"
 msgid "Location"
@@ -937,8 +937,8 @@ msgid "Enter a name for this user"
 msgstr "Εισαγωγή ονόματος για αυτόν τον χρήστη"
 
 msgctxt "#30659"
-msgid "User is now '%s'"
-msgstr "Τωρινός χρήστης '%s'"
+msgid "User is now \"%s\""
+msgstr ""
 
 msgctxt "#30660"
 msgid "Users"
@@ -961,16 +961,16 @@ msgid "Switch user"
 msgstr "Αλλαγή χρήστη"
 
 msgctxt "#30665"
-msgid "Switch to '%s' now?"
-msgstr "Αλλαγή στον/στην '%s' τώρα;"
+msgid "Switch to \"%s\" now?"
+msgstr ""
 
 msgctxt "#30666"
-msgid "Removed '%s'"
-msgstr "Αφαίρεση '%s'"
+msgid "\"%s\" removed"
+msgstr ""
 
 msgctxt "#30667"
-msgid "Renamed '%s' to '%s'"
-msgstr "Αλλαγή '%s' σε '%s'"
+msgid "Renamed \"%s\" to \"%s\""
+msgstr ""
 
 msgctxt "#30668"
 msgid "Play count minimum percent"
@@ -1061,7 +1061,7 @@ msgid "Use for live streams"
 msgstr "Κάνε χρήση για ζωντανές ροές"
 
 msgctxt "#30690"
-msgid "InputStream Adaptive >= 2.0.12 is required for adaptive live streams"
+msgid "InputStream.Adaptive >= 2.0.12 is required for adaptive live streams"
 msgstr ""
 
 msgctxt "#30691"
@@ -1113,8 +1113,8 @@ msgid "Play with subtitles"
 msgstr "Αναπαραγωγή με υπότιτλους"
 
 msgctxt "#30703"
-msgid "Are you sure?"
-msgstr "Είστε σίγουροι;"
+msgid ""
+msgstr ""
 
 msgctxt "#30704"
 msgid "Use YouTube website urls with default player"
@@ -1137,16 +1137,16 @@ msgid "Play audio only"
 msgstr "Αναπαραγωγή μόνο του ήχου"
 
 msgctxt "#30709"
-msgid "Failed to retrieve Watch Later playlist id. To increase the chances of retrieval add 8-10 videos to Watch Later via the web/app and retry."
-msgstr "Αποτυχία λήψης αναγνωριστικού λίστας 'Παρακολουθήστε αργότερα'. Για να διευκολυνθεί η λήψη της προσθέστε 8-10 βίντεο σε αυτήν μέσω ιστοσελίδας ή εφαρμογής και ξαναπροσπαθήστε."
+msgid ""
+msgstr ""
 
 msgctxt "#30710"
-msgid "Failed to retrieve Watch Later playlist id. Try again tomorrow without removing any of the videos."
-msgstr "Αποτυχία λήψης αναγνωριστικού λίστας 'Παρακολουθήστε αργότερα'. Ξαναπροσπαθήστε αύριο χωρίς να αφαιρέστε κάποιο από τα βίντεο."
+msgid ""
+msgstr ""
 
 msgctxt "#30711"
-msgid "Searching for Watch Later... Page %s"
-msgstr "Αναζήτηση λίστας 'Παρακολουθήστε αργότερα'... Σελίδα %s"
+msgid ""
+msgstr ""
 
 msgctxt "#30712"
 msgid "Rate videos in playlists"
@@ -1185,15 +1185,15 @@ msgid "Unsubscribed from channel"
 msgstr "Έγινε διαγραφή από το κανάλι"
 
 msgctxt "#30721"
-msgid "Default to WEBM adaptation set (4K)"
-msgstr "Εξ ορισμού σε σετ προσαρμογής WEBM (4Κ)"
+msgid ""
+msgstr ""
 
 msgctxt "#30722"
 msgid "Enable HDR video"
 msgstr ""
 
 msgctxt "#30723"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream Adaptive >= 2.3.14"
+msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream.Adaptive >= 2.3.14"
 msgstr ""
 
 msgctxt "#30724"
@@ -1249,15 +1249,15 @@ msgid "Shorts (1 minute or less)"
 msgstr ""
 
 msgctxt "#30737"
-msgid "Use alternate client details"
+msgid ""
 msgstr ""
 
 msgctxt "#30738"
-msgid "Alternate #1"
+msgid ""
 msgstr ""
 
 msgctxt "#30739"
-msgid "Alternate #2"
+msgid "Subscribers"
 msgstr ""
 
 msgctxt "#30740"
@@ -1477,11 +1477,11 @@ msgid "Views count display colour"
 msgstr ""
 
 msgctxt "#30794"
-msgid "Likes count display colour"
+msgid "Subscriber/Likes count display colour"
 msgstr ""
 
 msgctxt "#30795"
-msgid "Comments count display colour"
+msgid "Videos/Comments count display colour"
 msgstr ""
 
 msgctxt "#30796"
@@ -1547,6 +1547,303 @@ msgstr ""
 msgctxt "#30811"
 msgid "Filter Live folders"
 msgstr ""
+
+msgctxt "#30812"
+msgid "Clear subscription feed history"
+msgstr ""
+
+msgctxt "#30813"
+msgid "Delete subscription feed history database"
+msgstr ""
+
+msgctxt "#30814"
+msgid "feed history"
+msgstr ""
+
+msgctxt "#30815"
+msgid "Go back..."
+msgstr ""
+
+msgctxt "#30816"
+msgid "List is empty.[CR][CR]Refresh from context menu or try again later."
+msgstr ""
+
+msgctxt "#30817"
+msgid "Refresh settings.xml"
+msgstr ""
+
+msgctxt "#30818"
+msgid "Are you sure you want to refresh settings.xml?"
+msgstr ""
+
+msgctxt "#30819"
+msgid "Play from start"
+msgstr ""
+
+msgctxt "#30820"
+msgid "Podcast"
+msgstr ""
+
+#~ msgctxt "#30515"
+#~ msgid "Auto-Remove from 'Watch Later'"
+#~ msgstr "Αυτόματη αφαίρεση από την λίστα 'Δείτε αργότερα'"
+
+#~ msgctxt "#30569"
+#~ msgid "Are you sure you want to remove '%s' as your Watch Later list?"
+#~ msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε το '%s' από το 'Δείτε Αργότερα'?"
+
+#~ msgctxt "#30570"
+#~ msgid "Are you sure you want to replace your current Watch Later list with '%s'?"
+#~ msgstr "Είστε βέβαιοι ότι θέλετε να αντικαταστήσετε την τρέχουσα λίστα 'Δείτε Αργότερα' με το '%s'?"
+
+#~ msgctxt "#30573"
+#~ msgid "Are you sure you want to remove '%s' as your History list?"
+#~ msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε το '%s' ως την λίστα ιστορικού σας?"
+
+#~ msgctxt "#30574"
+#~ msgid "Are you sure you want to replace your current History list with '%s'?"
+#~ msgstr "Είστε βέβαιοι ότι θέλετε να αντικαταστήσετε την τρέχουσα λίστα ιστορικού με το '%s'?"
+
+#~ msgctxt "#30659"
+#~ msgid "User is now '%s'"
+#~ msgstr "Τωρινός χρήστης '%s'"
+
+#~ msgctxt "#30665"
+#~ msgid "Switch to '%s' now?"
+#~ msgstr "Αλλαγή στον/στην '%s' τώρα;"
+
+#~ msgctxt "#30667"
+#~ msgid "Renamed '%s' to '%s'"
+#~ msgstr "Αλλαγή '%s' σε '%s'"
+
+# msgctxt "Addon Summary"
+# msgid "Plugin for YouTube"
+# msgstr "Πρόσθετο Youtube"
+# msgctxt "Addon Description"
+# msgid "YouTube is a one of the biggest video-sharing websites of the world."
+# msgstr "Το Youtube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο"
+# Kodion Settings
+#~ msgctxt "#30000"
+#~ msgid "General"
+#~ msgstr "Γενικά"
+
+#~ msgctxt "#30031"
+#~ msgid "Advanced"
+#~ msgstr "Για προχωρημένους"
+
+#~ msgctxt "#30108"
+#~ msgid "Remove"
+#~ msgstr "Αφαίρεση"
+
+#~ msgctxt "#30113"
+#~ msgid "Rename"
+#~ msgstr "Μετονομασία"
+
+#~ msgctxt "#30118"
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+# YouTube
+# empty strings from id 30206 to 30499
+#~ msgctxt "#30500"
+#~ msgid "Channels"
+#~ msgstr "Κανάλια"
+
+#~ msgctxt "#30501"
+#~ msgid "Playlists"
+#~ msgstr "Λίστες αναπαραγωγής"
+
+#~ msgctxt "#30521"
+#~ msgid "Select playlist"
+#~ msgstr "Επιλογή λίστας αναπαραγωγής"
+
+#~ msgctxt "#30522"
+#~ msgid "New playlist..."
+#~ msgstr "Νέα λίστα αναπαραγωγής..."
+
+#~ msgctxt "#30523"
+#~ msgid "Language"
+#~ msgstr "Γλώσσα"
+
+#~ msgctxt "#30531"
+#~ msgid "Play all"
+#~ msgstr "Αναπαραγωγή όλων"
+
+#~ msgctxt "#30532"
+#~ msgid "Default"
+#~ msgstr "Προεπιλογή"
+
+#~ msgctxt "#30534"
+#~ msgid "Shuffle"
+#~ msgstr "Τυχαία σειρά"
+
+#~ msgctxt "#30539"
+#~ msgid "Live"
+#~ msgstr "Ζωντανά"
+
+#~ msgctxt "#30543"
+#~ msgid "Refresh"
+#~ msgstr "Ανανέωση"
+
+#~ msgctxt "#30548"
+#~ msgid "More..."
+#~ msgstr "Περισσότερα..."
+
+#~ msgctxt "#30550"
+#~ msgid "Region"
+#~ msgstr "Περιοχή"
+
+#~ msgctxt "#30560"
+#~ msgid "Subtitle language"
+#~ msgstr "Γλώσσα υποτίτλων"
+
+#~ msgctxt "#30561"
+#~ msgid "None"
+#~ msgstr "Καμία"
+
+#~ msgctxt "#30566"
+#~ msgid "Prompt"
+#~ msgstr "Ερώτηση"
+
+#~ msgctxt "#30577"
+#~ msgid "Settings"
+#~ msgstr "Ρυθμίσεις"
+
+#~ msgctxt "#30583"
+#~ msgid "Automatic"
+#~ msgstr "Αυτόματο"
+
+#~ msgctxt "#30598"
+#~ msgid "Personal API keys enabled"
+#~ msgstr "Προσωπικά κλειδιά API ενεργοποιήθηκαν"
+
+#~ msgctxt "#30615"
+#~ msgid "Cancel"
+#~ msgstr "Ακύρωση"
+
+#~ msgctxt "#30619"
+#~ msgid "Port"
+#~ msgstr "Θύρα"
+
+#~ msgctxt "#30630"
+#~ msgid "Save"
+#~ msgstr "Αποθήκευση"
+
+#~ msgctxt "#30703"
+#~ msgid "Are you sure?"
+#~ msgstr "Είστε σίγουροι;"
+
+#~ msgctxt "#30546"
+#~ msgid "Please log in twice!"
+#~ msgstr "Παρακαλώ πραγματοποιήστε είσοδο δύο φορές!"
+
+#~ msgctxt "#30547"
+#~ msgid "You must enable two applications so that YouTube is functioning properly."
+#~ msgstr "Πρέπει να επιτρέψετε δύο εφαρμογές του πρόσθετου Youtube ώστε να λειτουργεί σωστά"
+
+#~ msgctxt "#30001"
+#~ msgid "Username"
+#~ msgstr "Όνομα χρήστη"
+
+#~ msgctxt "#30002"
+#~ msgid "Password"
+#~ msgstr "Κωδικός"
+
+#~ msgctxt "#30008"
+#~ msgid "Configure InputStream Adaptive"
+#~ msgstr "Ρύθμιση πελάτη MPEG-DASH Inputstream"
+
+#~ msgctxt "#30103"
+#~ msgid "Library"
+#~ msgstr "Βιβλιοθήκη"
+
+#~ msgctxt "#30104"
+#~ msgid "Highlights"
+#~ msgstr "Διακεκριμένα"
+
+#~ msgctxt "#30105"
+#~ msgid "Archive"
+#~ msgstr "Αρχείο"
+
+#~ msgctxt "#30109"
+#~ msgid "Latest Videos"
+#~ msgstr "Τελευταία βίντεο"
+
+#~ msgctxt "#30204"
+#~ msgid "Enable personal API keys"
+#~ msgstr "Ενεργοποίηση προσωπικών κλειδιών API"
+
+#~ msgctxt "#30205"
+#~ msgid "Use preset API key set"
+#~ msgstr "Χρησιμοποίησε το προκαθορισμένο σετ κλειδιών API"
+
+#~ msgctxt "#30518"
+#~ msgid "Go to '%s'"
+#~ msgstr "Πήγαινε σε '%s'"
+
+#~ msgctxt "#30562"
+#~ msgid "All"
+#~ msgstr "Όλα"
+
+#~ msgctxt "#30563"
+#~ msgid "Setting"
+#~ msgstr "Ρύθμιση"
+
+#~ msgctxt "#30564"
+#~ msgid "Setting, English"
+#~ msgstr "Ρύθμιση, Αγγλικά"
+
+#~ msgctxt "#30565"
+#~ msgid "English"
+#~ msgstr "Αγγλικά"
+
+#~ msgctxt "#30613"
+#~ msgid "Retrieve Watch Later playlist id"
+#~ msgstr "Ανάκτηση αναγνωριστικού λίστας παρακολούθησης αργότερα"
+
+#~ msgctxt "#30614"
+#~ msgid "Failed to retrieve Watch Later playlist id. Add a few videos to Watch Later via the web/app and retry."
+#~ msgstr "Αποτυχία ανάκτησης αναγνωριστικού λίστας παρακολούθησης αργότερα. Πρόσθεσε μερικά βίντεο σε αυτήν την λίστα μέσω εφαρμογής android ή φυλλομετρητή και ξαναπροσπαθήστε"
+
+#~ msgctxt "#30616"
+#~ msgid "Must be signed in."
+#~ msgstr "Πρέπει να είστε συνδεδεμένοι"
+
+#~ msgctxt "#30624"
+#~ msgid "Requires Kodi 17+"
+#~ msgstr "Απαιτεί Kodi 17+"
+
+#~ msgctxt "#30648"
+#~ msgid "API Key is incorrect. Settings - API - API Key"
+#~ msgstr "Τα κλειδί API είναι λανθασμένο. Ρυθμίσεις - API - Κλειδί API"
+
+#~ msgctxt "#30649"
+#~ msgid "Client Id is incorrect. Settings - API - API Id"
+#~ msgstr "Τα αναγνωριστικό πελάτη είναι λανθασμένο. Ρυθμίσεις - API - Αναγνωριστικό API"
+
+#~ msgctxt "#30650"
+#~ msgid "Client Secret is incorrect. Settings - API - API Secret"
+#~ msgstr "Τα μυστικό πελάτη είναι λανθασμένο. Ρυθμίσεις - API - Μυστικό API"
+
+#~ msgctxt "#30709"
+#~ msgid "Failed to retrieve Watch Later playlist id. To increase the chances of retrieval add 8-10 videos to Watch Later via the web/app and retry."
+#~ msgstr "Αποτυχία λήψης αναγνωριστικού λίστας 'Παρακολουθήστε αργότερα'. Για να διευκολυνθεί η λήψη της προσθέστε 8-10 βίντεο σε αυτήν μέσω ιστοσελίδας ή εφαρμογής και ξαναπροσπαθήστε."
+
+#~ msgctxt "#30710"
+#~ msgid "Failed to retrieve Watch Later playlist id. Try again tomorrow without removing any of the videos."
+#~ msgstr "Αποτυχία λήψης αναγνωριστικού λίστας 'Παρακολουθήστε αργότερα'. Ξαναπροσπαθήστε αύριο χωρίς να αφαιρέστε κάποιο από τα βίντεο."
+
+#~ msgctxt "#30711"
+#~ msgid "Searching for Watch Later... Page %s"
+#~ msgstr "Αναζήτηση λίστας 'Παρακολουθήστε αργότερα'... Σελίδα %s"
+
+#~ msgctxt "#30721"
+#~ msgid "Default to WEBM adaptation set (4K)"
+#~ msgstr "Εξ ορισμού σε σετ προσαρμογής WEBM (4Κ)"
+
+#~ msgctxt "#30666"
+#~ msgid "Removed '%s'"
+#~ msgstr "Αφαίρεση '%s'"
 
 #~ msgctxt "#30503"
 #~ msgid "Show channel fanart"

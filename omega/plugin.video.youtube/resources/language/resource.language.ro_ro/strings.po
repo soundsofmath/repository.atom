@@ -7,27 +7,27 @@ msgstr ""
 "Project-Id-Version: XBMC-Addons\n"
 "Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
 "POT-Creation-Date: 2015-09-21 11:01+0000\n"
-"PO-Revision-Date: 2024-04-12 14:59+0000\n"
-"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"PO-Revision-Date: 2024-08-06 06:27+0000\n"
+"Last-Translator: Daniel <danny3@tutanota.com>\n"
 "Language-Team: Romanian <https://kodi.weblate.cloud/projects/kodi-add-ons-video/plugin-video-youtube/ro_ro/>\n"
 "Language: ro_ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4.3\n"
+"X-Generator: Weblate 5.6.2\n"
 
 msgctxt "Addon Summary"
 msgid "Plugin for YouTube"
-msgstr ""
+msgstr "Modul pentru YouTube"
 
 msgctxt "Addon Description"
 msgid "YouTube is one of the biggest video-sharing websites of the world."
-msgstr ""
+msgstr "YouTube este unul dintre cele mai mari saituri de distribuire de videoclipuri din lume."
 
 msgctxt "Addon Disclaimer"
 msgid "This plugin is not endorsed by Google"
-msgstr ""
+msgstr "Acest modul nu este susținut de Google"
 
 # msgctxt "Addon Summary"
 # msgid "Plugin for YouTube"
@@ -35,29 +35,31 @@ msgstr ""
 # msgctxt "Addon Description"
 # msgid "YouTube is a one of the biggest video-sharing websites of the world."
 # msgstr ""
+# Kodion Settings
 msgctxt "#30000"
-msgid "General"
-msgstr "Generale"
+msgid ""
+msgstr ""
 
 msgctxt "#30001"
-msgid "Username"
-msgstr "Nume utilizator"
+msgid ""
+msgstr ""
 
 msgctxt "#30002"
-msgid "Password"
-msgstr "Parolă"
+msgid ""
+msgstr ""
 
+#, fuzzy
 msgctxt "#30003"
 msgid "YouTube"
-msgstr ""
+msgstr "YouTube"
 
 # empty strings from id 30004 to 30006
 msgctxt "#30007"
-msgid "Use InputStream Adaptive"
+msgid "Use InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Configure InputStream Adaptive"
+msgid "Configure InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30009"
@@ -149,8 +151,8 @@ msgid "Configure %s?"
 msgstr ""
 
 msgctxt "#30031"
-msgid "Advanced"
-msgstr "Avansat"
+msgid ""
+msgstr ""
 
 msgctxt "#30032"
 msgid "View: TV Shows"
@@ -195,16 +197,16 @@ msgid "Search"
 msgstr "Căutare"
 
 msgctxt "#30103"
-msgid "Library"
-msgstr "Bibliotecă"
+msgid ""
+msgstr ""
 
 msgctxt "#30104"
-msgid "Highlights"
-msgstr "Highlights"
+msgid ""
+msgstr ""
 
 msgctxt "#30105"
-msgid "Archive"
-msgstr "Arhivă"
+msgid ""
+msgstr ""
 
 msgctxt "#30106"
 msgid "Next Page (%d)"
@@ -215,12 +217,12 @@ msgid "Watch Later"
 msgstr "Privesc mai târziu"
 
 msgctxt "#30108"
-msgid "Remove"
-msgstr "Elimină"
+msgid ""
+msgstr ""
 
 msgctxt "#30109"
-msgid "Latest Videos"
-msgstr "Ultimele videoclipri"
+msgid ""
+msgstr ""
 
 msgctxt "#30110"
 msgid "New Search"
@@ -235,8 +237,8 @@ msgid "Sign Out"
 msgstr "Deautentificare"
 
 msgctxt "#30113"
-msgid "Rename"
-msgstr "Redenumire"
+msgid ""
+msgstr ""
 
 msgctxt "#30114"
 msgid "Confirm delete"
@@ -255,8 +257,8 @@ msgid "Remove \"%s\"?"
 msgstr "Eliminați „%s”?"
 
 msgctxt "#30118"
-msgid "Delete"
-msgstr "Șterge"
+msgid ""
+msgstr ""
 
 msgctxt "#30119"
 msgid "Please wait..."
@@ -289,22 +291,22 @@ msgid "API Secret"
 msgstr ""
 
 msgctxt "#30204"
-msgid "Enable personal API keys"
+msgid ""
 msgstr ""
 
 msgctxt "#30205"
-msgid "Use preset API key set"
+msgid ""
 msgstr ""
 
 # YouTube
 # empty strings from id 30206 to 30499
 msgctxt "#30500"
-msgid "Channels"
-msgstr "Canale"
+msgid ""
+msgstr ""
 
 msgctxt "#30501"
-msgid "Playlists"
-msgstr "Liste de redare"
+msgid ""
+msgstr ""
 
 msgctxt "#30502"
 msgid "Go to %s"
@@ -359,8 +361,8 @@ msgid "Related Videos"
 msgstr "Videoclipuri similare"
 
 msgctxt "#30515"
-msgid "Auto-Remove from 'Watch Later'"
-msgstr "Eliminare automată din „Privesc mai târziu”"
+msgid "Auto-Remove from Watch Later"
+msgstr ""
 
 msgctxt "#30516"
 msgid "Folders"
@@ -371,8 +373,8 @@ msgid "Subscribe to %s"
 msgstr "Abonează la %s"
 
 msgctxt "#30518"
-msgid "Go to '%s'"
-msgstr "Mergeți la '%s'"
+msgid ""
+msgstr ""
 
 msgctxt "#30519"
 msgid "and enter the following code:"
@@ -383,16 +385,16 @@ msgid "Add to..."
 msgstr "Adaugă la..."
 
 msgctxt "#30521"
-msgid "Select playlist"
-msgstr "Selectați listă de redare"
+msgid ""
+msgstr ""
 
 msgctxt "#30522"
-msgid "New playlist..."
-msgstr "Listă de redare nouă..."
+msgid ""
+msgstr ""
 
 msgctxt "#30523"
-msgid "Language"
-msgstr "Limbă"
+msgid ""
+msgstr ""
 
 msgctxt "#30524"
 msgid "Select language"
@@ -423,20 +425,20 @@ msgid "I dislike this"
 msgstr "Nu-mi place"
 
 msgctxt "#30531"
-msgid "Play all"
-msgstr "Redă toate"
+msgid ""
+msgstr ""
 
 msgctxt "#30532"
-msgid "Default"
-msgstr "Implicit"
+msgid ""
+msgstr ""
 
 msgctxt "#30533"
 msgid "Reverse"
 msgstr "Invers"
 
 msgctxt "#30534"
-msgid "Shuffle"
-msgstr "Amestecă"
+msgid ""
+msgstr ""
 
 msgctxt "#30535"
 msgid "Select the order of the playlist"
@@ -455,8 +457,8 @@ msgid "Disliked Videos"
 msgstr "Videoclipuri care nu-mi plac"
 
 msgctxt "#30539"
-msgid "Live"
-msgstr "În direct"
+msgid ""
+msgstr ""
 
 msgctxt "#30540"
 msgid "Play with..."
@@ -471,8 +473,8 @@ msgid "rtmpe streams are not supported"
 msgstr "Fluxurile rtmpe nu sunt suportate"
 
 msgctxt "#30543"
-msgid "Refresh"
-msgstr "Reîmprospătează"
+msgid ""
+msgstr ""
 
 msgctxt "#30544"
 msgid "More Links from the description"
@@ -483,24 +485,24 @@ msgid "No further links found."
 msgstr "Nu mai sunt alte legături."
 
 msgctxt "#30546"
-msgid "Please log in twice!"
-msgstr "Vă rugăm să vă autentificați de două ori!"
+msgid "Please complete all login prompts"
+msgstr ""
 
 msgctxt "#30547"
-msgid "You must enable two applications so that YouTube is functioning properly."
-msgstr "Trebuie să activați două aplicații ca YouTube să funcționeze cum trebuie."
+msgid "You may be prompted to enable two applications so that YouTube is functioning properly."
+msgstr ""
 
 msgctxt "#30548"
-msgid "More..."
-msgstr "Mai multe..."
+msgid ""
+msgstr ""
 
 msgctxt "#30549"
 msgid "No videos streams found"
 msgstr "Nu a fost găsit niciun flux video"
 
 msgctxt "#30550"
-msgid "Region"
-msgstr "Regiune"
+msgid ""
+msgstr ""
 
 msgctxt "#30551"
 msgid "Recommendations"
@@ -539,32 +541,32 @@ msgid "Delete settings.xml"
 msgstr ""
 
 msgctxt "#30560"
-msgid "Subtitle language"
-msgstr "Limba subtitrării"
+msgid ""
+msgstr ""
 
 msgctxt "#30561"
-msgid "None"
-msgstr "Nici una"
+msgid ""
+msgstr ""
 
 msgctxt "#30562"
-msgid "All"
+msgid "View all"
 msgstr ""
 
 msgctxt "#30563"
-msgid "Setting"
+msgid ""
 msgstr ""
 
 msgctxt "#30564"
-msgid "Setting, English"
+msgid ""
 msgstr ""
 
 msgctxt "#30565"
-msgid "English"
+msgid ""
 msgstr ""
 
 msgctxt "#30566"
-msgid "Prompt"
-msgstr "Prompt"
+msgid ""
+msgstr ""
 
 msgctxt "#30567"
 msgid "Set as Watch Later"
@@ -575,11 +577,11 @@ msgid "Remove as Watch Later"
 msgstr "Șterge din 'Vezi mai târziu'"
 
 msgctxt "#30569"
-msgid "Are you sure you want to remove '%s' as your Watch Later list?"
+msgid "Are you sure you want to remove \"%s\" as your Watch Later list?"
 msgstr ""
 
 msgctxt "#30570"
-msgid "Are you sure you want to replace your current Watch Later list with '%s'?"
+msgid "Are you sure you want to replace your current Watch Later list with \"%s\"?"
 msgstr ""
 
 msgctxt "#30571"
@@ -591,11 +593,11 @@ msgid "Remove as History"
 msgstr "Șterge din istoric"
 
 msgctxt "#30573"
-msgid "Are you sure you want to remove '%s' as your History list?"
+msgid "Are you sure you want to remove \"%s\" as your History list?"
 msgstr ""
 
 msgctxt "#30574"
-msgid "Are you sure you want to replace your current History list with '%s'?"
+msgid "Are you sure you want to replace your current History list with \"%s\"?"
 msgstr ""
 
 msgctxt "#30575"
@@ -607,15 +609,15 @@ msgid "Failed"
 msgstr ""
 
 msgctxt "#30577"
-msgid "Settings"
-msgstr "Setări"
+msgid ""
+msgstr ""
 
 msgctxt "#30578"
 msgid "Force SSL certificate verification"
 msgstr ""
 
 msgctxt "#30579"
-msgid "InputStream Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream Adaptive now?"
+msgid "InputStream.Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream.Adaptive now?"
 msgstr ""
 
 msgctxt "#30580"
@@ -631,7 +633,7 @@ msgid "Autoplay suggested videos"
 msgstr ""
 
 msgctxt "#30583"
-msgid "Automatic"
+msgid ""
 msgstr ""
 
 msgctxt "#30584"
@@ -691,7 +693,7 @@ msgid "Updated: %s"
 msgstr ""
 
 msgctxt "#30598"
-msgid "Personal API keys enabled"
+msgid ""
 msgstr ""
 
 msgctxt "#30599"
@@ -699,7 +701,7 @@ msgid "Failed to enable personal API keys. Missing: %s"
 msgstr ""
 
 msgctxt "#30600"
-msgid "Subtitles"
+msgid ""
 msgstr ""
 
 msgctxt "#30601"
@@ -751,31 +753,31 @@ msgid "Retry"
 msgstr ""
 
 msgctxt "#30613"
-msgid "Retrieve Watch Later playlist id"
+msgid ""
 msgstr ""
 
 msgctxt "#30614"
-msgid "Failed to retrieve Watch Later playlist id. Add a few videos to Watch Later via the web/app and retry."
+msgid ""
 msgstr ""
 
 msgctxt "#30615"
-msgid "Cancel"
+msgid ""
 msgstr ""
 
 msgctxt "#30616"
-msgid "Must be signed in."
+msgid ""
 msgstr ""
 
 msgctxt "#30617"
-msgid "InputStream Adaptive"
+msgid "InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30618"
-msgid "Enable MPEG-DASH proxy"
+msgid ""
 msgstr ""
 
 msgctxt "#30619"
-msgid "Port"
+msgid ""
 msgstr ""
 
 msgctxt "#30620"
@@ -783,7 +785,7 @@ msgid "Port %s already in use. Cannot start http server."
 msgstr ""
 
 msgctxt "#30621"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)"
+msgid ""
 msgstr ""
 
 msgctxt "#30622"
@@ -795,7 +797,7 @@ msgid "Install InputStream Helper"
 msgstr ""
 
 msgctxt "#30624"
-msgid "Requires Kodi 17+"
+msgid ""
 msgstr ""
 
 msgctxt "#30625"
@@ -819,7 +821,7 @@ msgid "IP whitelist (comma delimited)"
 msgstr ""
 
 msgctxt "#30630"
-msgid "Save"
+msgid ""
 msgstr ""
 
 msgctxt "#30631"
@@ -891,15 +893,15 @@ msgid "Completed Live"
 msgstr ""
 
 msgctxt "#30648"
-msgid "API Key is incorrect. Settings - API - API Key"
+msgid "API Key is incorrect. Settings > API > API Key"
 msgstr ""
 
 msgctxt "#30649"
-msgid "Client Id is incorrect. Settings - API - API Id"
+msgid "Client Id is incorrect. Settings > API > API Id"
 msgstr ""
 
 msgctxt "#30650"
-msgid "Client Secret is incorrect. Settings - API - API Secret"
+msgid "Client Secret is incorrect. Settings > API > API Secret"
 msgstr ""
 
 msgctxt "#30651"
@@ -935,7 +937,7 @@ msgid "Enter a name for this user"
 msgstr ""
 
 msgctxt "#30659"
-msgid "User is now '%s'"
+msgid "User is now \"%s\""
 msgstr ""
 
 msgctxt "#30660"
@@ -959,15 +961,15 @@ msgid "Switch user"
 msgstr ""
 
 msgctxt "#30665"
-msgid "Switch to '%s' now?"
+msgid "Switch to \"%s\" now?"
 msgstr ""
 
 msgctxt "#30666"
-msgid "Removed '%s'"
+msgid "\"%s\" removed"
 msgstr ""
 
 msgctxt "#30667"
-msgid "Renamed '%s' to '%s'"
+msgid "Renamed \"%s\" to \"%s\""
 msgstr ""
 
 msgctxt "#30668"
@@ -1059,7 +1061,7 @@ msgid "Use for live streams"
 msgstr ""
 
 msgctxt "#30690"
-msgid "InputStream Adaptive >= 2.0.12 is required for adaptive live streams"
+msgid "InputStream.Adaptive >= 2.0.12 is required for adaptive live streams"
 msgstr ""
 
 msgctxt "#30691"
@@ -1111,7 +1113,7 @@ msgid "Play with subtitles"
 msgstr ""
 
 msgctxt "#30703"
-msgid "Are you sure?"
+msgid ""
 msgstr ""
 
 msgctxt "#30704"
@@ -1135,15 +1137,15 @@ msgid "Play audio only"
 msgstr ""
 
 msgctxt "#30709"
-msgid "Failed to retrieve Watch Later playlist id. To increase the chances of retrieval add 8-10 videos to Watch Later via the web/app and retry."
+msgid ""
 msgstr ""
 
 msgctxt "#30710"
-msgid "Failed to retrieve Watch Later playlist id. Try again tomorrow without removing any of the videos."
+msgid ""
 msgstr ""
 
 msgctxt "#30711"
-msgid "Searching for Watch Later... Page %s"
+msgid ""
 msgstr ""
 
 msgctxt "#30712"
@@ -1183,7 +1185,7 @@ msgid "Unsubscribed from channel"
 msgstr ""
 
 msgctxt "#30721"
-msgid "Default to WEBM adaptation set (4K)"
+msgid ""
 msgstr ""
 
 msgctxt "#30722"
@@ -1191,7 +1193,7 @@ msgid "Enable HDR video"
 msgstr ""
 
 msgctxt "#30723"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream Adaptive >= 2.3.14"
+msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream.Adaptive >= 2.3.14"
 msgstr ""
 
 msgctxt "#30724"
@@ -1247,15 +1249,15 @@ msgid "Shorts (1 minute or less)"
 msgstr ""
 
 msgctxt "#30737"
-msgid "Use alternate client details"
+msgid ""
 msgstr ""
 
 msgctxt "#30738"
-msgid "Alternate #1"
+msgid ""
 msgstr ""
 
 msgctxt "#30739"
-msgid "Alternate #2"
+msgid "Subscribers"
 msgstr ""
 
 msgctxt "#30740"
@@ -1475,11 +1477,11 @@ msgid "Views count display colour"
 msgstr ""
 
 msgctxt "#30794"
-msgid "Likes count display colour"
+msgid "Subscriber/Likes count display colour"
 msgstr ""
 
 msgctxt "#30795"
-msgid "Comments count display colour"
+msgid "Videos/Comments count display colour"
 msgstr ""
 
 msgctxt "#30796"
@@ -1545,6 +1547,174 @@ msgstr ""
 msgctxt "#30811"
 msgid "Filter Live folders"
 msgstr ""
+
+msgctxt "#30812"
+msgid "Clear subscription feed history"
+msgstr ""
+
+msgctxt "#30813"
+msgid "Delete subscription feed history database"
+msgstr ""
+
+msgctxt "#30814"
+msgid "feed history"
+msgstr ""
+
+msgctxt "#30815"
+msgid "Go back..."
+msgstr ""
+
+msgctxt "#30816"
+msgid "List is empty.[CR][CR]Refresh from context menu or try again later."
+msgstr ""
+
+msgctxt "#30817"
+msgid "Refresh settings.xml"
+msgstr ""
+
+msgctxt "#30818"
+msgid "Are you sure you want to refresh settings.xml?"
+msgstr ""
+
+msgctxt "#30819"
+msgid "Play from start"
+msgstr ""
+
+msgctxt "#30820"
+msgid "Podcast"
+msgstr ""
+
+#~ msgctxt "#30515"
+#~ msgid "Auto-Remove from 'Watch Later'"
+#~ msgstr "Eliminare automată din „Privesc mai târziu”"
+
+# msgctxt "Addon Summary"
+# msgid "Plugin for YouTube"
+# msgstr ""
+# msgctxt "Addon Description"
+# msgid "YouTube is a one of the biggest video-sharing websites of the world."
+# msgstr ""
+#~ msgctxt "#30000"
+#~ msgid "General"
+#~ msgstr "Generale"
+
+#~ msgctxt "#30031"
+#~ msgid "Advanced"
+#~ msgstr "Avansat"
+
+#~ msgctxt "#30108"
+#~ msgid "Remove"
+#~ msgstr "Elimină"
+
+#~ msgctxt "#30113"
+#~ msgid "Rename"
+#~ msgstr "Redenumire"
+
+#~ msgctxt "#30118"
+#~ msgid "Delete"
+#~ msgstr "Șterge"
+
+# YouTube
+# empty strings from id 30206 to 30499
+#~ msgctxt "#30500"
+#~ msgid "Channels"
+#~ msgstr "Canale"
+
+#~ msgctxt "#30501"
+#~ msgid "Playlists"
+#~ msgstr "Liste de redare"
+
+#~ msgctxt "#30521"
+#~ msgid "Select playlist"
+#~ msgstr "Selectați listă de redare"
+
+#~ msgctxt "#30522"
+#~ msgid "New playlist..."
+#~ msgstr "Listă de redare nouă..."
+
+#~ msgctxt "#30523"
+#~ msgid "Language"
+#~ msgstr "Limbă"
+
+#~ msgctxt "#30531"
+#~ msgid "Play all"
+#~ msgstr "Redă toate"
+
+#~ msgctxt "#30532"
+#~ msgid "Default"
+#~ msgstr "Implicit"
+
+#~ msgctxt "#30534"
+#~ msgid "Shuffle"
+#~ msgstr "Amestecă"
+
+#~ msgctxt "#30539"
+#~ msgid "Live"
+#~ msgstr "În direct"
+
+#~ msgctxt "#30543"
+#~ msgid "Refresh"
+#~ msgstr "Reîmprospătează"
+
+#~ msgctxt "#30548"
+#~ msgid "More..."
+#~ msgstr "Mai multe..."
+
+#~ msgctxt "#30550"
+#~ msgid "Region"
+#~ msgstr "Regiune"
+
+#~ msgctxt "#30560"
+#~ msgid "Subtitle language"
+#~ msgstr "Limba subtitrării"
+
+#~ msgctxt "#30561"
+#~ msgid "None"
+#~ msgstr "Nici una"
+
+#~ msgctxt "#30566"
+#~ msgid "Prompt"
+#~ msgstr "Prompt"
+
+#~ msgctxt "#30577"
+#~ msgid "Settings"
+#~ msgstr "Setări"
+
+#~ msgctxt "#30546"
+#~ msgid "Please log in twice!"
+#~ msgstr "Vă rugăm să vă autentificați de două ori!"
+
+#~ msgctxt "#30547"
+#~ msgid "You must enable two applications so that YouTube is functioning properly."
+#~ msgstr "Trebuie să activați două aplicații ca YouTube să funcționeze cum trebuie."
+
+#~ msgctxt "#30001"
+#~ msgid "Username"
+#~ msgstr "Nume utilizator"
+
+#~ msgctxt "#30002"
+#~ msgid "Password"
+#~ msgstr "Parolă"
+
+#~ msgctxt "#30103"
+#~ msgid "Library"
+#~ msgstr "Bibliotecă"
+
+#~ msgctxt "#30104"
+#~ msgid "Highlights"
+#~ msgstr "Highlights"
+
+#~ msgctxt "#30105"
+#~ msgid "Archive"
+#~ msgstr "Arhivă"
+
+#~ msgctxt "#30109"
+#~ msgid "Latest Videos"
+#~ msgstr "Ultimele videoclipri"
+
+#~ msgctxt "#30518"
+#~ msgid "Go to '%s'"
+#~ msgstr "Mergeți la '%s'"
 
 #~ msgctxt "#30503"
 #~ msgid "Show channel fanart"

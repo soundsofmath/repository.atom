@@ -24,7 +24,8 @@ class NextPageItem(DirectoryItem):
         items_per_page = params.get('items_per_page', 50)
         can_jump = ('next_page_token' not in params
                     and not path.startswith(('/channel',
-                                             '/special/recommendations')))
+                                             '/special/recommendations',
+                                             '/special/related_videos')))
         if 'page_token' not in params and can_jump:
             params['page_token'] = self.create_page_token(page, items_per_page)
 
@@ -32,21 +33,18 @@ class NextPageItem(DirectoryItem):
             context.localize('page.next') % page,
             context.create_uri(path, params),
             image=image,
+            fanart=fanart,
             category_label='__inherit__',
         )
 
         self.next_page = page
         self.items_per_page = items_per_page
 
-        if fanart:
-            self.set_fanart(fanart)
-
         context_menu = [
             menu_items.refresh(context),
-            menu_items.goto_page(context) if can_jump else None,
+            menu_items.goto_page(context, params) if can_jump else None,
             menu_items.goto_home(context),
             menu_items.goto_quick_search(context),
-            menu_items.separator(),
         ]
         self.add_context_menu(context_menu)
 

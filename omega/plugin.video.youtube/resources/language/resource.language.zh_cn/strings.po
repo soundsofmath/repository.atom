@@ -31,21 +31,22 @@ msgstr "此插件未被谷歌认可"
 
 # msgctxt "Addon Summary"
 # msgid "Plugin for YouTube"
-# msgstr "YouTube 插件"
+# msgstr ""
 # msgctxt "Addon Description"
 # msgid "YouTube is a one of the biggest video-sharing websites of the world."
-# msgstr "YouTube 是全世界最大的视频分享网站。"
+# msgstr ""
+# Kodion Settings
 msgctxt "#30000"
-msgid "General"
-msgstr "常规"
+msgid ""
+msgstr ""
 
 msgctxt "#30001"
-msgid "Username"
-msgstr "账号"
+msgid ""
+msgstr ""
 
 msgctxt "#30002"
-msgid "Password"
-msgstr "密码"
+msgid ""
+msgstr ""
 
 msgctxt "#30003"
 msgid "YouTube"
@@ -53,12 +54,12 @@ msgstr ""
 
 # empty strings from id 30004 to 30006
 msgctxt "#30007"
-msgid "Use InputStream Adaptive"
+msgid "Use InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30008"
-msgid "Configure InputStream Adaptive"
-msgstr "配置 InputStream Adaptive"
+msgid "Configure InputStream.Adaptive"
+msgstr ""
 
 msgctxt "#30009"
 msgid "Always ask for the video quality"
@@ -149,8 +150,8 @@ msgid "Configure %s?"
 msgstr ""
 
 msgctxt "#30031"
-msgid "Advanced"
-msgstr "高级"
+msgid ""
+msgstr ""
 
 msgctxt "#30032"
 msgid "View: TV Shows"
@@ -195,16 +196,16 @@ msgid "Search"
 msgstr "搜索"
 
 msgctxt "#30103"
-msgid "Library"
-msgstr "资料库"
+msgid ""
+msgstr ""
 
 msgctxt "#30104"
-msgid "Highlights"
-msgstr "亮点"
+msgid ""
+msgstr ""
 
 msgctxt "#30105"
-msgid "Archive"
-msgstr "存档"
+msgid ""
+msgstr ""
 
 msgctxt "#30106"
 msgid "Next Page (%d)"
@@ -215,12 +216,12 @@ msgid "Watch Later"
 msgstr "稍后观看"
 
 msgctxt "#30108"
-msgid "Remove"
-msgstr "移除"
+msgid ""
+msgstr ""
 
 msgctxt "#30109"
-msgid "Latest Videos"
-msgstr "最新的影片"
+msgid ""
+msgstr ""
 
 msgctxt "#30110"
 msgid "New Search"
@@ -235,8 +236,8 @@ msgid "Sign Out"
 msgstr "登出"
 
 msgctxt "#30113"
-msgid "Rename"
-msgstr "重命名"
+msgid ""
+msgstr ""
 
 msgctxt "#30114"
 msgid "Confirm delete"
@@ -255,8 +256,8 @@ msgid "Remove \"%s\"?"
 msgstr "移除 \"%s\"？"
 
 msgctxt "#30118"
-msgid "Delete"
-msgstr "删除"
+msgid ""
+msgstr ""
 
 msgctxt "#30119"
 msgid "Please wait..."
@@ -289,22 +290,22 @@ msgid "API Secret"
 msgstr "API 密文"
 
 msgctxt "#30204"
-msgid "Enable personal API keys"
-msgstr "允许私人 API 密钥"
+msgid ""
+msgstr ""
 
 msgctxt "#30205"
-msgid "Use preset API key set"
-msgstr "使用预设的 API 密钥设置"
+msgid ""
+msgstr ""
 
 # YouTube
 # empty strings from id 30206 to 30499
 msgctxt "#30500"
-msgid "Channels"
-msgstr "频道"
+msgid ""
+msgstr ""
 
 msgctxt "#30501"
-msgid "Playlists"
-msgstr "播放列表"
+msgid ""
+msgstr ""
 
 msgctxt "#30502"
 msgid "Go to %s"
@@ -359,8 +360,8 @@ msgid "Related Videos"
 msgstr "相关视频"
 
 msgctxt "#30515"
-msgid "Auto-Remove from 'Watch Later'"
-msgstr "从 “稍后观看” 中自动移除"
+msgid "Auto-Remove from Watch Later"
+msgstr ""
 
 msgctxt "#30516"
 msgid "Folders"
@@ -371,8 +372,8 @@ msgid "Subscribe to %s"
 msgstr "订阅 %s"
 
 msgctxt "#30518"
-msgid "Go to '%s'"
-msgstr "请使用浏览器打开以下链接： '%s'"
+msgid ""
+msgstr ""
 
 msgctxt "#30519"
 msgid "and enter the following code:"
@@ -383,16 +384,16 @@ msgid "Add to..."
 msgstr "添加到..."
 
 msgctxt "#30521"
-msgid "Select playlist"
-msgstr "选择播放列表"
+msgid ""
+msgstr ""
 
 msgctxt "#30522"
-msgid "New playlist..."
-msgstr "新建播放列表..."
+msgid ""
+msgstr ""
 
 msgctxt "#30523"
-msgid "Language"
-msgstr "语音"
+msgid ""
+msgstr ""
 
 msgctxt "#30524"
 msgid "Select language"
@@ -423,20 +424,20 @@ msgid "I dislike this"
 msgstr "我要踩一下"
 
 msgctxt "#30531"
-msgid "Play all"
-msgstr "全部播放"
+msgid ""
+msgstr ""
 
 msgctxt "#30532"
-msgid "Default"
-msgstr "默认"
+msgid ""
+msgstr ""
 
 msgctxt "#30533"
 msgid "Reverse"
 msgstr "反向"
 
 msgctxt "#30534"
-msgid "Shuffle"
-msgstr "任意"
+msgid ""
+msgstr ""
 
 msgctxt "#30535"
 msgid "Select the order of the playlist"
@@ -455,8 +456,8 @@ msgid "Disliked Videos"
 msgstr "踩过的视频"
 
 msgctxt "#30539"
-msgid "Live"
-msgstr "直播"
+msgid ""
+msgstr ""
 
 msgctxt "#30540"
 msgid "Play with..."
@@ -471,8 +472,8 @@ msgid "rtmpe streams are not supported"
 msgstr "不支持 RTMPE 流"
 
 msgctxt "#30543"
-msgid "Refresh"
-msgstr "刷新"
+msgid ""
+msgstr ""
 
 msgctxt "#30544"
 msgid "More Links from the description"
@@ -483,24 +484,24 @@ msgid "No further links found."
 msgstr "沒有符合此描述内容的其他链接。"
 
 msgctxt "#30546"
-msgid "Please log in twice!"
-msgstr "请登录两次！"
+msgid "Please complete all login prompts"
+msgstr ""
 
 msgctxt "#30547"
-msgid "You must enable two applications so that YouTube is functioning properly."
-msgstr "您必需启用至少两个应用，Youtube 插件才能正常运行。"
+msgid "You may be prompted to enable two applications so that YouTube is functioning properly."
+msgstr ""
 
 msgctxt "#30548"
-msgid "More..."
-msgstr "更多..."
+msgid ""
+msgstr ""
 
 msgctxt "#30549"
 msgid "No videos streams found"
 msgstr "沒有找到视频流"
 
 msgctxt "#30550"
-msgid "Region"
-msgstr "区域"
+msgid ""
+msgstr ""
 
 msgctxt "#30551"
 msgid "Recommendations"
@@ -539,32 +540,32 @@ msgid "Delete settings.xml"
 msgstr "删除 settings.xml"
 
 msgctxt "#30560"
-msgid "Subtitle language"
-msgstr "字幕语言"
+msgid ""
+msgstr ""
 
 msgctxt "#30561"
-msgid "None"
-msgstr "无"
+msgid ""
+msgstr ""
 
 msgctxt "#30562"
-msgid "All"
-msgstr "全部"
+msgid "View all"
+msgstr ""
 
 msgctxt "#30563"
-msgid "Setting"
-msgstr "设置"
+msgid ""
+msgstr ""
 
 msgctxt "#30564"
-msgid "Setting, English"
-msgstr "设置, English"
+msgid ""
+msgstr ""
 
 msgctxt "#30565"
-msgid "English"
-msgstr "英语"
+msgid ""
+msgstr ""
 
 msgctxt "#30566"
-msgid "Prompt"
-msgstr "提示"
+msgid ""
+msgstr ""
 
 msgctxt "#30567"
 msgid "Set as Watch Later"
@@ -575,12 +576,12 @@ msgid "Remove as Watch Later"
 msgstr "从稍后观看中移除"
 
 msgctxt "#30569"
-msgid "Are you sure you want to remove '%s' as your Watch Later list?"
-msgstr "确定要将 '%s' 从稍后观看列表中移除？"
+msgid "Are you sure you want to remove \"%s\" as your Watch Later list?"
+msgstr ""
 
 msgctxt "#30570"
-msgid "Are you sure you want to replace your current Watch Later list with '%s'?"
-msgstr "确定要用 '%s' 替换当前的稍后观看列表？"
+msgid "Are you sure you want to replace your current Watch Later list with \"%s\"?"
+msgstr ""
 
 msgctxt "#30571"
 msgid "Set as History"
@@ -591,12 +592,12 @@ msgid "Remove as History"
 msgstr "从历史记录中移除"
 
 msgctxt "#30573"
-msgid "Are you sure you want to remove '%s' as your History list?"
-msgstr "确定要将 '%s' 从历史记录列表中移除？"
+msgid "Are you sure you want to remove \"%s\" as your History list?"
+msgstr ""
 
 msgctxt "#30574"
-msgid "Are you sure you want to replace your current History list with '%s'?"
-msgstr "确定要用 '%s' 替换当前的历史记录列表？"
+msgid "Are you sure you want to replace your current History list with \"%s\"?"
+msgstr ""
 
 msgctxt "#30575"
 msgid "Succeeded"
@@ -607,15 +608,15 @@ msgid "Failed"
 msgstr "失败"
 
 msgctxt "#30577"
-msgid "Settings"
-msgstr "设置"
+msgid ""
+msgstr ""
 
 msgctxt "#30578"
 msgid "Force SSL certificate verification"
 msgstr "强制 SSL 证书验证"
 
 msgctxt "#30579"
-msgid "InputStream Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream Adaptive now?"
+msgid "InputStream.Adaptive is activated in the YouTube settings, however the add-on has been disabled. Would you like to enable InputStream.Adaptive now?"
 msgstr ""
 
 msgctxt "#30580"
@@ -631,8 +632,8 @@ msgid "Autoplay suggested videos"
 msgstr "自动播放推荐的视频"
 
 msgctxt "#30583"
-msgid "Automatic"
-msgstr "自动"
+msgid ""
+msgstr ""
 
 msgctxt "#30584"
 msgid "My Subscriptions (Filtered)"
@@ -691,15 +692,15 @@ msgid "Updated: %s"
 msgstr "已更新：%s"
 
 msgctxt "#30598"
-msgid "Personal API keys enabled"
-msgstr "允许私人 API 密钥"
+msgid ""
+msgstr ""
 
 msgctxt "#30599"
 msgid "Failed to enable personal API keys. Missing: %s"
 msgstr "允许私人 API 密钥失败。缺失：%s"
 
 msgctxt "#30600"
-msgid "Subtitles"
+msgid ""
 msgstr ""
 
 msgctxt "#30601"
@@ -751,39 +752,39 @@ msgid "Retry"
 msgstr "重试"
 
 msgctxt "#30613"
-msgid "Retrieve Watch Later playlist id"
-msgstr "检索稍后观看播放列表 ID"
+msgid ""
+msgstr ""
 
 msgctxt "#30614"
-msgid "Failed to retrieve Watch Later playlist id. Add a few videos to Watch Later via the web/app and retry."
-msgstr "检索稍后观看播放列表 ID 失败，通过 Web/App 添加一些视频到稍后观看后再重试。"
+msgid ""
+msgstr ""
 
 msgctxt "#30615"
-msgid "Cancel"
-msgstr "取消"
+msgid ""
+msgstr ""
 
 msgctxt "#30616"
-msgid "Must be signed in."
-msgstr "必需先登录。"
+msgid ""
+msgstr ""
 
 msgctxt "#30617"
-msgid "InputStream Adaptive"
+msgid "InputStream.Adaptive"
 msgstr ""
 
 msgctxt "#30618"
-msgid "Enable MPEG-DASH proxy"
+msgid ""
 msgstr ""
 
 msgctxt "#30619"
-msgid "Port"
-msgstr "端口"
+msgid ""
+msgstr ""
 
 msgctxt "#30620"
 msgid "Port %s already in use. Cannot start http server."
 msgstr "端口 %s 已经被占用，无法启动 HTTP 服务。"
 
 msgctxt "#30621"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)"
+msgid ""
 msgstr ""
 
 msgctxt "#30622"
@@ -795,8 +796,8 @@ msgid "Install InputStream Helper"
 msgstr "安装 InputStream Helper"
 
 msgctxt "#30624"
-msgid "Requires Kodi 17+"
-msgstr "必需 Kodi 17+"
+msgid ""
+msgstr ""
 
 msgctxt "#30625"
 msgid "InputStream Helper is already installed."
@@ -819,8 +820,8 @@ msgid "IP whitelist (comma delimited)"
 msgstr "IP 白名单（逗号分隔）"
 
 msgctxt "#30630"
-msgid "Save"
-msgstr "保存"
+msgid ""
+msgstr ""
 
 msgctxt "#30631"
 msgid "Successfully updated: %s"
@@ -891,16 +892,16 @@ msgid "Completed Live"
 msgstr "已结束的直播"
 
 msgctxt "#30648"
-msgid "API Key is incorrect. Settings - API - API Key"
-msgstr "API 密钥不正确。设置 - API - API Key"
+msgid "API Key is incorrect. Settings > API > API Key"
+msgstr ""
 
 msgctxt "#30649"
-msgid "Client Id is incorrect. Settings - API - API Id"
-msgstr "客户端 ID 不正确。设置 - API - API Id"
+msgid "Client Id is incorrect. Settings > API > API Id"
+msgstr ""
 
 msgctxt "#30650"
-msgid "Client Secret is incorrect. Settings - API - API Secret"
-msgstr "客户端密文不正确。设置 - API - API Secret"
+msgid "Client Secret is incorrect. Settings > API > API Secret"
+msgstr ""
 
 msgctxt "#30651"
 msgid "Location"
@@ -935,8 +936,8 @@ msgid "Enter a name for this user"
 msgstr "输入该用户的名称"
 
 msgctxt "#30659"
-msgid "User is now '%s'"
-msgstr "用户现在是 '%s'"
+msgid "User is now \"%s\""
+msgstr ""
 
 msgctxt "#30660"
 msgid "Users"
@@ -959,16 +960,16 @@ msgid "Switch user"
 msgstr "切换用户"
 
 msgctxt "#30665"
-msgid "Switch to '%s' now?"
-msgstr "切换到 '%s' ？"
+msgid "Switch to \"%s\" now?"
+msgstr ""
 
 msgctxt "#30666"
-msgid "Removed '%s'"
-msgstr "已移除 '%s'"
+msgid "\"%s\" removed"
+msgstr ""
 
 msgctxt "#30667"
-msgid "Renamed '%s' to '%s'"
-msgstr "已重命名 '%s' 为 '%s'"
+msgid "Renamed \"%s\" to \"%s\""
+msgstr ""
 
 msgctxt "#30668"
 msgid "Play count minimum percent"
@@ -1059,7 +1060,7 @@ msgid "Use for live streams"
 msgstr "用于直播流"
 
 msgctxt "#30690"
-msgid "InputStream Adaptive >= 2.0.12 is required for adaptive live streams"
+msgid "InputStream.Adaptive >= 2.0.12 is required for adaptive live streams"
 msgstr ""
 
 msgctxt "#30691"
@@ -1111,8 +1112,8 @@ msgid "Play with subtitles"
 msgstr "播放字幕"
 
 msgctxt "#30703"
-msgid "Are you sure?"
-msgstr "你确定吗？"
+msgid ""
+msgstr ""
 
 msgctxt "#30704"
 msgid "Use YouTube website urls with default player"
@@ -1135,16 +1136,16 @@ msgid "Play audio only"
 msgstr "只播放音频"
 
 msgctxt "#30709"
-msgid "Failed to retrieve Watch Later playlist id. To increase the chances of retrieval add 8-10 videos to Watch Later via the web/app and retry."
-msgstr "检索稍后观看播放列表 ID 失败。为了增加检索成功的机会，可以通过 Web/App 添加 8-10 个视频到稍后观看，然后再重试。"
+msgid ""
+msgstr ""
 
 msgctxt "#30710"
-msgid "Failed to retrieve Watch Later playlist id. Try again tomorrow without removing any of the videos."
-msgstr "检索稍后观看播放列表 ID 失败。请不要删除任何视频，明天再重试。"
+msgid ""
+msgstr ""
 
 msgctxt "#30711"
-msgid "Searching for Watch Later... Page %s"
-msgstr "搜索稍后观看... 页 %s"
+msgid ""
+msgstr ""
 
 msgctxt "#30712"
 msgid "Rate videos in playlists"
@@ -1183,15 +1184,15 @@ msgid "Unsubscribed from channel"
 msgstr "从频道取消订阅"
 
 msgctxt "#30721"
-msgid "Default to WEBM adaptation set (4K)"
-msgstr "默认为 WEBM 适配集（4K）"
+msgid ""
+msgstr ""
 
 msgctxt "#30722"
 msgid "Enable HDR video"
 msgstr ""
 
 msgctxt "#30723"
-msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream Adaptive >= 2.3.14"
+msgid "Proxy is required for MPEG-DASH VODs (see Advanced > HTTP Server)[CR]HDR and >1080p video requires InputStream.Adaptive >= 2.3.14"
 msgstr ""
 
 msgctxt "#30724"
@@ -1247,15 +1248,15 @@ msgid "Shorts (1 minute or less)"
 msgstr ""
 
 msgctxt "#30737"
-msgid "Use alternate client details"
+msgid ""
 msgstr ""
 
 msgctxt "#30738"
-msgid "Alternate #1"
+msgid ""
 msgstr ""
 
 msgctxt "#30739"
-msgid "Alternate #2"
+msgid "Subscribers"
 msgstr ""
 
 msgctxt "#30740"
@@ -1475,11 +1476,11 @@ msgid "Views count display colour"
 msgstr ""
 
 msgctxt "#30794"
-msgid "Likes count display colour"
+msgid "Subscriber/Likes count display colour"
 msgstr ""
 
 msgctxt "#30795"
-msgid "Comments count display colour"
+msgid "Videos/Comments count display colour"
 msgstr ""
 
 msgctxt "#30796"
@@ -1545,6 +1546,302 @@ msgstr ""
 msgctxt "#30811"
 msgid "Filter Live folders"
 msgstr ""
+
+msgctxt "#30812"
+msgid "Clear subscription feed history"
+msgstr ""
+
+msgctxt "#30813"
+msgid "Delete subscription feed history database"
+msgstr ""
+
+msgctxt "#30814"
+msgid "feed history"
+msgstr ""
+
+msgctxt "#30815"
+msgid "Go back..."
+msgstr ""
+
+msgctxt "#30816"
+msgid "List is empty.[CR][CR]Refresh from context menu or try again later."
+msgstr ""
+
+msgctxt "#30817"
+msgid "Refresh settings.xml"
+msgstr ""
+
+msgctxt "#30818"
+msgid "Are you sure you want to refresh settings.xml?"
+msgstr ""
+
+msgctxt "#30819"
+msgid "Play from start"
+msgstr ""
+
+msgctxt "#30820"
+msgid "Podcast"
+msgstr ""
+
+#~ msgctxt "#30515"
+#~ msgid "Auto-Remove from 'Watch Later'"
+#~ msgstr "从 “稍后观看” 中自动移除"
+
+#~ msgctxt "#30569"
+#~ msgid "Are you sure you want to remove '%s' as your Watch Later list?"
+#~ msgstr "确定要将 '%s' 从稍后观看列表中移除？"
+
+#~ msgctxt "#30570"
+#~ msgid "Are you sure you want to replace your current Watch Later list with '%s'?"
+#~ msgstr "确定要用 '%s' 替换当前的稍后观看列表？"
+
+#~ msgctxt "#30573"
+#~ msgid "Are you sure you want to remove '%s' as your History list?"
+#~ msgstr "确定要将 '%s' 从历史记录列表中移除？"
+
+#~ msgctxt "#30574"
+#~ msgid "Are you sure you want to replace your current History list with '%s'?"
+#~ msgstr "确定要用 '%s' 替换当前的历史记录列表？"
+
+#~ msgctxt "#30659"
+#~ msgid "User is now '%s'"
+#~ msgstr "用户现在是 '%s'"
+
+#~ msgctxt "#30665"
+#~ msgid "Switch to '%s' now?"
+#~ msgstr "切换到 '%s' ？"
+
+#~ msgctxt "#30667"
+#~ msgid "Renamed '%s' to '%s'"
+#~ msgstr "已重命名 '%s' 为 '%s'"
+
+# msgctxt "Addon Summary"
+# msgid "Plugin for YouTube"
+# msgstr "YouTube 插件"
+# msgctxt "Addon Description"
+# msgid "YouTube is a one of the biggest video-sharing websites of the world."
+# msgstr "YouTube 是全世界最大的视频分享网站。"
+#~ msgctxt "#30000"
+#~ msgid "General"
+#~ msgstr "常规"
+
+#~ msgctxt "#30031"
+#~ msgid "Advanced"
+#~ msgstr "高级"
+
+#~ msgctxt "#30108"
+#~ msgid "Remove"
+#~ msgstr "移除"
+
+#~ msgctxt "#30113"
+#~ msgid "Rename"
+#~ msgstr "重命名"
+
+#~ msgctxt "#30118"
+#~ msgid "Delete"
+#~ msgstr "删除"
+
+# YouTube
+# empty strings from id 30206 to 30499
+#~ msgctxt "#30500"
+#~ msgid "Channels"
+#~ msgstr "频道"
+
+#~ msgctxt "#30501"
+#~ msgid "Playlists"
+#~ msgstr "播放列表"
+
+#~ msgctxt "#30521"
+#~ msgid "Select playlist"
+#~ msgstr "选择播放列表"
+
+#~ msgctxt "#30522"
+#~ msgid "New playlist..."
+#~ msgstr "新建播放列表..."
+
+#~ msgctxt "#30523"
+#~ msgid "Language"
+#~ msgstr "语音"
+
+#~ msgctxt "#30531"
+#~ msgid "Play all"
+#~ msgstr "全部播放"
+
+#~ msgctxt "#30532"
+#~ msgid "Default"
+#~ msgstr "默认"
+
+#~ msgctxt "#30534"
+#~ msgid "Shuffle"
+#~ msgstr "任意"
+
+#~ msgctxt "#30539"
+#~ msgid "Live"
+#~ msgstr "直播"
+
+#~ msgctxt "#30543"
+#~ msgid "Refresh"
+#~ msgstr "刷新"
+
+#~ msgctxt "#30548"
+#~ msgid "More..."
+#~ msgstr "更多..."
+
+#~ msgctxt "#30550"
+#~ msgid "Region"
+#~ msgstr "区域"
+
+#~ msgctxt "#30560"
+#~ msgid "Subtitle language"
+#~ msgstr "字幕语言"
+
+#~ msgctxt "#30561"
+#~ msgid "None"
+#~ msgstr "无"
+
+#~ msgctxt "#30566"
+#~ msgid "Prompt"
+#~ msgstr "提示"
+
+#~ msgctxt "#30577"
+#~ msgid "Settings"
+#~ msgstr "设置"
+
+#~ msgctxt "#30583"
+#~ msgid "Automatic"
+#~ msgstr "自动"
+
+#~ msgctxt "#30598"
+#~ msgid "Personal API keys enabled"
+#~ msgstr "允许私人 API 密钥"
+
+#~ msgctxt "#30615"
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgctxt "#30619"
+#~ msgid "Port"
+#~ msgstr "端口"
+
+#~ msgctxt "#30630"
+#~ msgid "Save"
+#~ msgstr "保存"
+
+#~ msgctxt "#30703"
+#~ msgid "Are you sure?"
+#~ msgstr "你确定吗？"
+
+#~ msgctxt "#30546"
+#~ msgid "Please log in twice!"
+#~ msgstr "请登录两次！"
+
+#~ msgctxt "#30547"
+#~ msgid "You must enable two applications so that YouTube is functioning properly."
+#~ msgstr "您必需启用至少两个应用，Youtube 插件才能正常运行。"
+
+#~ msgctxt "#30001"
+#~ msgid "Username"
+#~ msgstr "账号"
+
+#~ msgctxt "#30002"
+#~ msgid "Password"
+#~ msgstr "密码"
+
+#~ msgctxt "#30008"
+#~ msgid "Configure InputStream Adaptive"
+#~ msgstr "配置 InputStream Adaptive"
+
+#~ msgctxt "#30103"
+#~ msgid "Library"
+#~ msgstr "资料库"
+
+#~ msgctxt "#30104"
+#~ msgid "Highlights"
+#~ msgstr "亮点"
+
+#~ msgctxt "#30105"
+#~ msgid "Archive"
+#~ msgstr "存档"
+
+#~ msgctxt "#30109"
+#~ msgid "Latest Videos"
+#~ msgstr "最新的影片"
+
+#~ msgctxt "#30204"
+#~ msgid "Enable personal API keys"
+#~ msgstr "允许私人 API 密钥"
+
+#~ msgctxt "#30205"
+#~ msgid "Use preset API key set"
+#~ msgstr "使用预设的 API 密钥设置"
+
+#~ msgctxt "#30518"
+#~ msgid "Go to '%s'"
+#~ msgstr "请使用浏览器打开以下链接： '%s'"
+
+#~ msgctxt "#30562"
+#~ msgid "All"
+#~ msgstr "全部"
+
+#~ msgctxt "#30563"
+#~ msgid "Setting"
+#~ msgstr "设置"
+
+#~ msgctxt "#30564"
+#~ msgid "Setting, English"
+#~ msgstr "设置, English"
+
+#~ msgctxt "#30565"
+#~ msgid "English"
+#~ msgstr "英语"
+
+#~ msgctxt "#30613"
+#~ msgid "Retrieve Watch Later playlist id"
+#~ msgstr "检索稍后观看播放列表 ID"
+
+#~ msgctxt "#30614"
+#~ msgid "Failed to retrieve Watch Later playlist id. Add a few videos to Watch Later via the web/app and retry."
+#~ msgstr "检索稍后观看播放列表 ID 失败，通过 Web/App 添加一些视频到稍后观看后再重试。"
+
+#~ msgctxt "#30616"
+#~ msgid "Must be signed in."
+#~ msgstr "必需先登录。"
+
+#~ msgctxt "#30624"
+#~ msgid "Requires Kodi 17+"
+#~ msgstr "必需 Kodi 17+"
+
+#~ msgctxt "#30648"
+#~ msgid "API Key is incorrect. Settings - API - API Key"
+#~ msgstr "API 密钥不正确。设置 - API - API Key"
+
+#~ msgctxt "#30649"
+#~ msgid "Client Id is incorrect. Settings - API - API Id"
+#~ msgstr "客户端 ID 不正确。设置 - API - API Id"
+
+#~ msgctxt "#30650"
+#~ msgid "Client Secret is incorrect. Settings - API - API Secret"
+#~ msgstr "客户端密文不正确。设置 - API - API Secret"
+
+#~ msgctxt "#30709"
+#~ msgid "Failed to retrieve Watch Later playlist id. To increase the chances of retrieval add 8-10 videos to Watch Later via the web/app and retry."
+#~ msgstr "检索稍后观看播放列表 ID 失败。为了增加检索成功的机会，可以通过 Web/App 添加 8-10 个视频到稍后观看，然后再重试。"
+
+#~ msgctxt "#30710"
+#~ msgid "Failed to retrieve Watch Later playlist id. Try again tomorrow without removing any of the videos."
+#~ msgstr "检索稍后观看播放列表 ID 失败。请不要删除任何视频，明天再重试。"
+
+#~ msgctxt "#30711"
+#~ msgid "Searching for Watch Later... Page %s"
+#~ msgstr "搜索稍后观看... 页 %s"
+
+#~ msgctxt "#30721"
+#~ msgid "Default to WEBM adaptation set (4K)"
+#~ msgstr "默认为 WEBM 适配集（4K）"
+
+#~ msgctxt "#30666"
+#~ msgid "Removed '%s'"
+#~ msgstr "已移除 '%s'"
 
 #~ msgctxt "#30736"
 #~ msgid "Hide short videos (1 minute or less)"

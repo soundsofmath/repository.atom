@@ -802,6 +802,67 @@ fix for inability to scrape IMDB ratings
     <description lang="tr_TR">The Movie Database (TMDb), topluluk tarafından oluşturulmuş bir film ve TV veritabanıdır. Her bir veri parçası, 2008 yılına dayanan muhteşem topluluğumuz tarafından eklenmiştir. TMDb'nin güçlü uluslararası odağı ve veri genişliği büyük ölçüde benzersizdir ve inanılmaz derecede gurur duyduğumuz bir şeydir. Basitçe söylemek gerekirse, topluluk içinde yaşıyor ve nefes alıyoruz ve bizi farklı kılan da tam olarak bu.</description>
     <description lang="zh_CN">TMDb 是一个由网络社区创建的影视数据库。每一条数据都是由我们令人惊叹的社区添加的，可以追溯到2008年。TMDb 强大的国际关注度和数据广度在很大程度上是无与伦比的，我们对此感到无比自豪。简单地说，我们生活在社区中，呼吸着社区的气息，这正是我们与众不同的原因。</description>
   </extension>
+</addon><addon id="peripheral.joystick" version="21.1.22" name="Joystick Support" provider-name="Team Kodi">
+  <requires>
+<import addon="kodi.binary.global.main" minversion="2.0.0" version="2.0.2" />
+<import addon="kodi.binary.global.general" minversion="1.0.4" version="1.0.5" />
+<import addon="kodi.binary.global.filesystem" minversion="1.1.7" version="1.1.8" />
+<import addon="kodi.binary.global.tools" minversion="1.0.0" version="1.0.4" />
+<import addon="kodi.binary.instance.peripheral" minversion="3.0.0" version="3.0.2" /></requires>
+  <extension point="kodi.peripheral" provides_joysticks="true" provides_buttonmaps="true" library_android="libperipheral.joystick.so" />
+  <extension point="xbmc.addon.metadata">
+    <license>GPL-2.0-or-later</license>
+    <source>https://github.com/xbmc/peripheral.joystick</source>
+    <platform>android-armv7</platform>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+    <summary lang="af_ZA">Kodi Speelstok Biblioteek</summary>
+    <summary lang="ca_ES">Llibreria Kodi Joystick</summary>
+    <summary lang="da_DK">Kodi Joystick Bibliotek</summary>
+    <summary lang="de_DE">Joystick-Bibliothek für Kodi</summary>
+    <summary lang="en_GB">Kodi Joystick Library</summary>
+    <summary lang="es_ES">Biblioteca de Joysticks Kodi</summary>
+    <summary lang="es_MX">Biblioteca de Joysticks de Kodi</summary>
+    <summary lang="fi_FI">Kodin peliohjainkirjasto</summary>
+    <summary lang="fr_FR">Bibliothèque de joystick Kodi</summary>
+    <summary lang="hr_HR">Kodi Joystick biblioteka</summary>
+    <summary lang="id_ID">Pustaka Joystick Kodi</summary>
+    <summary lang="is_IS">Aðgerðasafn Kodi fyrir stýripinna</summary>
+    <summary lang="it_IT">Libreria Joystick Kodi</summary>
+    <summary lang="ko_KR">Kodi 조이스틱 라이브러리</summary>
+    <summary lang="lv_LV">Kodi kursorsviru katalogs</summary>
+    <summary lang="nb_NO">Kodi Joystick-bibliotek</summary>
+    <summary lang="pl_PL">Biblioteka joysticków Kodi</summary>
+    <summary lang="pt_BR">Biblioteca de Joystick do Kodi</summary>
+    <summary lang="pt_PT">Biblioteca de joysticks do Kodi</summary>
+    <summary lang="ru_RU">Каталог джойстиков для Kodi</summary>
+    <summary lang="sv_SE">Kodi Joystick bibliotek</summary>
+    <summary lang="tr_TR">Kodi Oyun Çubuğu Kütüphanesi</summary>
+    <summary lang="zh_CN">Kodi 游戏杆库</summary>
+    <description lang="af_ZA">Hierdie biblioteek verskaf speelstok drywers en knoppie kaarte. Veelvuldige speelstok APIs word ondersteun, insluitend DirectX, XInput, DSL en die Linux Joystick API.</description>
+    <description lang="ca_ES">Aquesta llibreria proporciona controladors de joystick i mapes de botons. S'admeten diverses API de joystick, incloses DirectX, XInput, SDL i l'API Joystick de Linux.</description>
+    <description lang="da_DK">Dette bibliotek indeholder joystick-drivere og knapgrupperinger. Flere joystick-API'er understøttes, herunder DirectX, XInput, SDL og Linux Joystick API.</description>
+    <description lang="de_DE">Diese Bibliothek enthält Joysticktreiber und Schaltflächenzuordnungen. Es werden mehrere Joystick-APIs unterstützt, darunter DirectX, XInput, SDL und die Linux-Joystick-API.</description>
+    <description lang="en_GB">This library provides joystick drivers and button maps. Multiple joystick APIs are supported, including DirectX, XInput, SDL and the Linux Joystick API.</description>
+    <description lang="es_ES">Esta biblioteca otorga drivers de joystick y mapeo de botones. Soporta múltiples APIs de joystick, incluyendo DirectX, XInput, SDL y la API de Joystick de Linux.</description>
+    <description lang="es_MX">Esta biblioteca provee controladores de joysticks y mapas de botones. Múltiples APIs de joystick están soportadas, incluyendo DirectX, XInput, SDL y la Linux Joystick API.</description>
+    <description lang="fi_FI">Tämä kirjasto sisältää peliohjaimien ajureita ja painikemäärtiyksiä. Useita ohjainrajapintoja tuetaan, kuten mm. DirectX, XInput, SDL ja Linux Joystick API.</description>
+    <description lang="fr_FR">Cette bibliothèque fournit des pilotes de joystick et les maps de boutons. Plusieurs API de joystick sont prises en charge, notamment DirectX, XInput, SDL et l’API Linux Joystick.</description>
+    <description lang="hr_HR">Ova biblioteka omogućuje upravljačke programe igračih palica i mapiranje tipki. Više API igračih palica je podržano, uključujući DirectX, XInput, SDL i Linux Joystick API.</description>
+    <description lang="id_ID">Pustaka ini menyediakan penggerak joystick dan pemetaan tombol. Beberapa API joystick didukung, termasuk DirectX, XInput, SDL, dan API Joystick Linux.</description>
+    <description lang="is_IS">Þetta aðgerðasafn kemur með rekla fyrir stýripinna og hnappavarpanir. Stuðningur er við margskyns API fyrir stýripinna, þar með talið DirectX, XInput, SDL og Linux Joystick API.</description>
+    <description lang="it_IT">Questa libreria fornisce i driver del joystick e le mappe dei pulsanti. Sono supportate più API per joystick, tra cui DirectX, XInput, SDL e Linux Joystick API.</description>
+    <description lang="ko_KR">이 라이브러리는 조이스틱 드라이버와 버튼 맵을 제공합니다. DirectX, XInput, SDL 및 Linux Joystick API를 비롯한 여러 조이스틱 API가 지원됩니다.</description>
+    <description lang="lv_LV">Šajā katalogā ir pieejami kursorsviras draiveri un pogu izkārtojuma kartes. Tiek atbalstītas vairākas kursorsviras API, tostarp DirectX, XInput, SDL un Linux kursorsviras API.</description>
+    <description lang="nb_NO">Dette biblioteket inneholder joystick-drivere og knappkartlegging. Flere joystick-APIer støttes, blant annet DirectX, XInput, SDL og Linux Joystick API.</description>
+    <description lang="pl_PL">Ta biblioteka zawiera sterowniki joysticków i mapy przycisków. Obsługiwanych jest wiele interfejsów API joysticków, m.in. DirectX, XInput, SDL oraz Joystick API systemu Linux.</description>
+    <description lang="pt_BR">Esta biblioteca fornece drivers de joystick e mapeamento de botões. Diversas APIs de joystick são suportadas, incluindo DirectX, XInput, SDL e API de Joystick do Linux.</description>
+    <description lang="pt_PT">Esta biblioteca fornece controladores de joystick e mapeamentos de botões. São suportadas múltiplas APIs de joystick, incluindo DirectX, XInput, SDL e a API do joystick para Linux.</description>
+    <description lang="ru_RU">Этот каталог предоставляет драйверы джойстиков и схемы расположения кнопок. Поддерживается несколько API джойстиков, включая DirectX, XInput, SDL и Linux Joystick API.</description>
+    <description lang="tr_TR">Bu kitaplık, oyun çubuğu sürücüleri ve düğme haritaları sağlar. DirectX, XInput, SDL ve Linux Oyun Çubuğu API dahil olmak üzere çoklu oyun çubuğu API'leri desteklenir.</description>
+    <description lang="zh_CN">此库提供游戏杆驱动程序和按钮图。支持多个游戏杆 API，包括 DirectX、XInput、SDL 和 Linux 游戏杆 API。</description>
+  </extension>
 </addon><addon id="plugin.program.atomwizard" name="Atom Wizard" version="3.6.0" provider-name="soundsofmath">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -2189,12 +2250,13 @@ Use this to organize your Favourites.
 - See Changelog on Tools menu
         </news>
     </extension>
-</addon><addon id="plugin.video.youtube" name="YouTube" version="7.0.7" provider-name="anxdpanic, bromix, MoojMidge">
+</addon><addon id="plugin.video.youtube" name="YouTube" version="7.1.1.6" provider-name="anxdpanic, bromix, MoojMidge">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
         <import addon="script.module.requests" version="2.27.1" />
         <import addon="inputstream.adaptive" version="19.0.0" />
         <import addon="script.module.inputstreamhelper" version="0.2.2" optional="true" />
+        <import addon="script.module.pysocks" optional="true" />
     </requires>
     <extension point="xbmc.python.pluginsource" library="resources/lib/plugin.py">
         <provides>video</provides>
@@ -2221,6 +2283,7 @@ Use this to organize your Favourites.
         <summary lang="de_DE">Plugin für YouTube</summary>
         <summary lang="el_GR">Πρόσθετο YouTube</summary>
         <summary lang="en_GB">Plugin for YouTube</summary>
+        <summary lang="eo">Aldonaĵo por YouTube</summary>
         <summary lang="es_ES">Complemento para YouTube</summary>
         <summary lang="es_MX">Complemento para YouTube</summary>
         <summary lang="fi_FI">YouTube-lisäosa</summary>
@@ -2235,6 +2298,7 @@ Use this to organize your Favourites.
         <summary lang="nl_NL">Plugin voor YouTube</summary>
         <summary lang="pl_PL">Wtyczka YouTube</summary>
         <summary lang="pt_BR">Plugin para YouTube</summary>
+        <summary lang="ro_RO">Modul pentru YouTube</summary>
         <summary lang="ru_RU">Видеодополнение YouTube</summary>
         <summary lang="sk_SK">Doplnok pre YouTube</summary>
         <summary lang="sv_SE">Plugin för YouTube</summary>
@@ -2263,6 +2327,7 @@ Use this to organize your Favourites.
         <description lang="nl_NL">YouTube is een van de grootste videodelenwebsite in de hele wereld.</description>
         <description lang="pl_PL">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
         <description lang="pt_BR">O YouTube é um dos maiores sites de compartilhamento de vídeos do mundo.</description>
+        <description lang="ro_RO">YouTube este unul dintre cele mai mari saituri de distribuire de videoclipuri din lume.</description>
         <description lang="ru_RU">YouTube - популярнейший видеохостинговый сайт, предоставляющий пользователям услуги хранения, доставки и показа видео.</description>
         <description lang="sk_SK">YouTube je jednou z najväčších stránok na zdieľanie videa na svete.</description>
         <description lang="sv_SE">YouTube är en av de största videodelningssajterna i världen.</description>
@@ -2287,6 +2352,7 @@ Use this to organize your Favourites.
         <disclaimer lang="nl_NL">Deze plug-in wordt niet door Google ondersteund</disclaimer>
         <disclaimer lang="pl_PL">Ta wtyczka nie jest zatwierdzona przez Google</disclaimer>
         <disclaimer lang="pt_BR">Este plugin não é recomendado pelo Google</disclaimer>
+        <disclaimer lang="ro_RO">Acest modul nu este susținut de Google</disclaimer>
         <disclaimer lang="ru_RU">Плагин не поддерживается Google</disclaimer>
         <disclaimer lang="sk_SK">Tento doplnok nie je schválený spoločnosťou Google</disclaimer>
         <disclaimer lang="sv_SE">Detta plugin är inte godkänt av Google</disclaimer>
@@ -2295,36 +2361,36 @@ Use this to organize your Favourites.
         <disclaimer lang="vi_VN">Plugin này không được xác nhận bởi Google</disclaimer>
         <disclaimer lang="zh_CN">此插件未被谷歌认可</disclaimer>
         <disclaimer lang="zh_TW">此附加元件未由Google支持</disclaimer>
-    <news>## v7.0.7
+    <news>## v7.1.1.6
 ### Fixed
-- Fixed not being able to re-refresh a directory listing that has already been refreshed
-- Fixed various window and history nagivation issues
-- Fixed http server idle shutdown not restarting if plugin is run but GUI is still idle
-- Additional improvements to busy dialog crash workaround
-- Workaround for new settings interface not updated correctly
-- Fix bookmarks icon background colour
-- Fix adding channel items directly to bookmarks
-- Fixes for player monitoring preventing item being marked as watched
-- Fix invalid pageToken error by removing jump from unsupported listings
-- Fix issues with post play refresh possibly causing loss of window history
-- Fix bug that could lead to plugin continuously reloading
-- Attempted fix for socket error 98 on Linux
-  - For error 10013 on Windows try either of the following:
-    - Start-Process powershell -Verb runAs -ArgumentList "net stop winnat; net start winnat"
-    - Start-Process powershell -Verb runAs -ArgumentList "net stop hns; net start hns"
-- Fix changing fanart type on My Subscriptions
-- Fix not using thumbnail fanart for channels/subscriptions/playlists when enabled
-- Fix My Subscriptions threading issues
-- Fix failing to login
-- Improve resource usage
-- Fix adding video to playlist
-- Fix plugin settings raising exception in Kodi 19-20
-- Fix location icon background colour
-
-### Changed
-- Removed Settings &gt; Advanced &gt; Views &gt; Show channel fanart
-  - Now included as option in Settings &gt; Advanced &gt; Views &gt; Show </news></extension>
-</addon><addon id="pvr.iptvsimple" version="21.8.4" name="IPTV Simple Client" provider-name="nightik and Ross Nicholson">
+- Fix http server not listening on any interface if listen IP is 0.0.0.0
+- Standardise return type of LoginClient.refresh_token
+- Fix curl headers not being used when set on path of setResolvedUrl listitem
+- Fix HEAD requests to MPD manifests
+- Fix various Python2 incompatible changes
+- Properly distinguish between VP9 and VP9.2 with HDR info
+- Fix http server not running when script shows client IP
+- Fix not listing full stream details in selection dialog
+- Fix translated subtitles not being available for some videos
+- Fix labelling for auto dubbed audio tracks
+- Fix regressions in handling VP9.2 video streams
+- Fix error handling items without headers
+- Fix incorrectly determining Kodi release name
+- Fix search window history navigation when using direct links
+- Fix Python2/Android incompatibilty when checking CPU count
+- Fix method used to determine address of local network interface
+- Fix potential infinite loop with corrupted access_manager.json
+- Various improvements to multiple busy dialog crash workarounds
+- Fallback to search listing when search query is empty
+- Fix debug log string formatting error
+- Fix duplicated separators in context menu
+- Fix Kodi builtin using wrong playlist type
+- Ensure http server is started prior to creating MPD for playback
+- Fix shuffle play of playlists not working
+- Fix plugin category label not being applied if content type not set
+- Fix Kodi navigating to root path of Video window if plugin listing fails
+- Fix l</news></extension>
+</addon><addon id="pvr.iptvsimple" version="21.10.0" name="IPTV Simple Client" provider-name="nightik and Ross Nicholson">
   <requires>
 <import addon="kodi.binary.global.main" minversion="2.0.0" version="2.0.2" />
 <import addon="kodi.binary.global.general" minversion="1.0.4" version="1.0.5" />
@@ -2360,7 +2426,7 @@ Use this to organize your Favourites.
     <summary lang="en_NZ">Kodi PVR addon for IPTV support. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="en_US">Kodi PVR addon for IPTV support. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="es_AR">Addon Kodi PVR para soporte IPTV. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
-    <summary lang="es_ES">Complemento PVR de Kodi para soporte IPTV.</summary>
+    <summary lang="es_ES">Complemento Kodi PVR para compatibilidad con IPTV.</summary>
     <summary lang="es_MX">Complemento Kodi PVR para soporte de IPTV. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="et_EE">Kodi IPTV lisamoodul.</summary>
     <summary lang="fi_FI">Kodin tallenninlisäosa IPTV-tuelle. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
@@ -2388,7 +2454,7 @@ Use this to organize your Favourites.
     <summary lang="ro_RO">Supliment PVR Kodi pentru suport IPTV. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="ru_RU">Kodi PVR аддон для поддержки IPTV.</summary>
     <summary lang="sk_SK">Kodi PVR doplnok umožňujúci IPTV podporu. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
-    <summary lang="sl_SI">Kodijev dodatek PVR s podporo za IPTV. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
+    <summary lang="sl_SI">Kodijev dodatek PVR s podporo za IPTV.</summary>
     <summary lang="sr_RS">Kodi PVR додатни програм за IPTV подршку. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="sr_RS@latin">Kodi PVR dodatni program za IPTV podršku. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
     <summary lang="sv_SE">PVR-tillägg med IPTV-support för Kodi. https://github.com/afedchin/Kodi-addon-iptvsimple/wiki/IPTV-Simple-Home</summary>
@@ -2438,7 +2504,7 @@ Use this to organize your Favourites.
     <description lang="ro_RO">PVR Client IPTV suporta liste m3u, redare TV în direct pentru surse de multicast/unicast, ascultare canale radio si EPG.</description>
     <description lang="ru_RU">IPTV Simple PVR поддерживает просмотр потокового ТВ для юникаст/мультикаст источников, прослушивание радиоканалов и работу с телегидом.[CR]    [CR]Для документации посетите: https://github.com/kodi-pvr/pvr.iptvsimple/blob/Matrix/README.md[CR]    </description>
     <description lang="sk_SK">Jednoduchý PVR klient IPTV podporuje mp3 zoznamy súborov, streamovanie živého televízneho vysielania ako multicast/unicast zdroje, počúvanie rozhlasových kanálov a EPG.[CR]    [CR]Pre dokumentáciu navštívte: https://github.com/kodi-pvr/pvr.iptvsimple/blob/Matrix/README.md[CR]    </description>
-    <description lang="sl_SI">IPTV Simple odjemalec PVR podpira sezname m3u, pretakanja TV v živo za vire multicast/unicast, poslušenje radijskih postaj in EPG.</description>
+    <description lang="sl_SI">IPTV Simple PVR Client podpira sezname predvajanja m3u, pretakanje TV v živo za multicast/unicast vire, poslušanje radijskih kanalov in EPG.[CR] [CR]Za dokumentacijo obiščite: https://github.com/kodi-pvr/pvr.iptvsimple /blob/Matrix/README.md[CR]    </description>
     <description lang="sr_RS">IPTV Једноставан PVR Клијент подржава m3u листе за репродукцију, стримовање ТВ Уживо за multicast/unicast изворе, слушање Радио канала и EPG.</description>
     <description lang="sr_RS@latin">IPTV Jednostavan PVR Klijent podržava m3u liste za reprodukciju, strimovanje TV Uživo za multicast/unicast izvore, slušanje Radio kanala i EPG.</description>
     <description lang="sv_SE">IPTV Simple PVR Client stöder m3u-spellistor, strömmande Live-TV för multicast/unicast-källor, radiolyssning och EPG.</description>
@@ -2460,7 +2526,7 @@ Use this to organize your Favourites.
     <disclaimer lang="en_NZ">This is unstable software! The authors are in no way responsible for failed playings, incorrect EPG times, wasted hours, or any other undesirable effects.</disclaimer>
     <disclaimer lang="en_US">This is unstable software! The authors are in no way responsible for failed playings, incorrect EPG times, wasted hours, or any other undesirable effects.</disclaimer>
     <disclaimer lang="es_AR">Este es un software inestable. El autor no se hace responsable por reproducciones fallidas, datos de GEP incorrectos, horas perdidas o cualquier otro efecto indeseable.</disclaimer>
-    <disclaimer lang="es_ES">Este es un software inestable! El autor no se hace responsable de reproducciones fallidas, datos de EPG incorrectos, horas perdidas o cualquier otro efecto indeseado.</disclaimer>
+    <disclaimer lang="es_ES">¡Este es un software inestable! El autor no se hace responsable de reproducciones fallidas, datos de EPG incorrectos, horas perdidas o cualquier otro efecto no deseado.</disclaimer>
     <disclaimer lang="es_MX">¡Este es un software inestable! Los autores no son responsables en absoluto de reproducciones fallidas, tiempos EPG incorrectos, desperdicio de horas, o cualquier otro efecto indeseable.</disclaimer>
     <disclaimer lang="eu_ES">Software hau ezegonkorra da! Egileak ez dira inolaz ere erantzule editen erreprodukzio akatsez, EPG denbora okerrez, ordu galduez edo beste edozein ondorio ezerosotaz.</disclaimer>
     <disclaimer lang="fi_FI">Tämä on epävakaa ohjelmisto! Sen kehittäjät eivät ole millään tavoin vastuussa epäonnistuneista toistoista, virheellisistä ohjelmaoppaan aikatauluista, hukatusta ajasta tai mistään muistakaan ei-toivotuista seurauksista.</disclaimer>
