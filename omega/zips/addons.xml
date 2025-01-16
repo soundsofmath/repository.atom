@@ -2579,6 +2579,27 @@ Use this to organize your Favourites.
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="script.autoruns" name="Autoruns" version="2.0.4" provider-name="fight night, Jon Bovi">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" /> 
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+		<source>https://github.com/fightnight/fightnight-addons/tree/master/script.autoruns</source>
+		<summary lang="en">Disable startup services on Kodi</summary>
+		<summary lang="pt">Desactive serviços do arranque no Kodi</summary>
+		<description lang="en">You can disable startup services, improving Kodi internal speed.</description>
+		<description lang="pt">Pode desactivar serviços do arranque, melhorando a velocidade interna do Kodi.</description>
+		<disclaimer lang="en">Opensource addon not endorsed with Team Kodi.</disclaimer>
+		<disclaimer lang="pt">Addon opensource não afliado com a Equipa Kodi.</disclaimer>
+		<assets>
+				<icon>icon.png</icon>
+		</assets>
+    </extension>
 </addon><addon id="script.elementum.burst" name="Elementum [COLOR FFFF6B00]Burst[/COLOR]" version="0.0.88" provider-name="elgatito">
     <requires>
         <import addon="xbmc.addon" version="16.0.0" />
@@ -3462,6 +3483,32 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
         <website>https://github.com/martinblech/xmltodict</website>
         <source>https://github.com/martinblech/xmltodict</source>
         <forum />
+    </extension>
+</addon><addon id="script.module.youraccounts" name="Your Accounts" version="22.5.1" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        <import addon="script.module.requests" version="2.19.1" />
+    </requires>
+    <extension point="xbmc.python.script" library="lib/default.py">
+        <provides>executable</provides>
+    </extension>
+    
+    <extension point="xbmc.python.module" library="lib" /> 
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en">Your Accounts Module</summary>
+        <description>Single placeholder for all your accounts.</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en">The author is not responsible for the use of this addon. [CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot />
+        </assets>
+        <news />
     </extension>
 </addon><addon id="script.moria.artwork" version="1.1.0" name="Moria Artwork" provider-name="host505">
 	<requires>
