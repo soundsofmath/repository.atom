@@ -3313,6 +3313,22 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
         <news>1.0 Stable release</news>
         <source>https://github.com/totalrevolution/python-koding/tree/master/script.module.python.koding.aio</source>
     </extension>
+</addon><addon id="script.module.pytz" name="pytz" version="2023.3.0+matrix.1" provider-name="Stuart Bishop">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">World Timezone Definitions for Python.</summary>
+    <description lang="en_GB">pytz brings the Olson tz database into Python. This library allows accurate and cross platform timezone calculations using Python 2.4 or higher. It also solves the issue of ambiguous times at the end of daylight saving time, which you can read more about in the Python Library Reference (datetime.tzinfo).</description>
+    <license>MIT</license>
+    <platform>all</platform>
+    <website>https://pythonhosted.org/pytz/</website>
+    <source>https://github.com/stub42/pytz</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.module.requests" name="requests" version="2.31.0" provider-name="Python Software Foundation">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -4003,5 +4019,35 @@ Full Credit To Original Creaters SGK,Eddage,Bumpaneer</description>
 			<fanart>resources/fanart.jpg</fanart>
 		</assets>
 		<news>- fix yahoo weather again</news>
+	</extension>
+</addon><addon id="weather.openmeteo" name="Open-Meteo" version="1.0.0" provider-name="OpenHT">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" version="2.27.1+matrix.1" />
+		<import addon="script.module.dateutil" version="2.8.1+matrix.1" />
+		<import addon="script.module.pytz" version="2023.3.0+matrix.1" />
+		<import addon="script.module.pil" version="1.1.7" />
+	</requires>
+	<extension point="xbmc.python.weather" library="default.py" />
+        <extension point="xbmc.service" library="service.py" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Weather forecast from Open-Meteo</summary>
+		<description lang="en_GB">Weather, maps, airquality and pollen data from open-meteo.com, rainviewer.com, weather.gc.ca and met.no</description>
+		<platform>all</platform>
+		<license>GPL-2.0-or-later</license>
+		<forum>https://forum.kodi.tv/forumdisplay.php?fid=155</forum>
+		<website>https://openht.org</website>
+		<email>support@openht.org</email>
+		<source>https://github.com/bkury/weather.openmeteo</source>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<banner>resources/banner.png</banner>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>resources/screenshot1.jpg</screenshot>
+			<screenshot>resources/screenshot2.jpg</screenshot>
+			<screenshot>resources/screenshot3.jpg</screenshot>
+			<screenshot>resources/screenshot4.jpg</screenshot>
+			<screenshot>resources/screenshot5.jpg</screenshot>
+		</assets>
 	</extension>
 </addon></addons>
