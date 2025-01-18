@@ -1,0 +1,33 @@
+language: c
+env:
+ - PYTHON_INTP="python2.4"
+ - PYTHON_INTP="python2.5"
+ - PYTHON_INTP="python2.6" CFFI=no
+ - PYTHON_INTP="python2.6" CFFI=yes
+ - PYTHON_INTP="python2.7" CFFI=no
+ - PYTHON_INTP="python2.7" CFFI=yes
+ - PYTHON_INTP="python3.2" CFFI=no
+ - PYTHON_INTP="python3.2" CFFI=yes
+ - PYTHON_INTP="python3.3" CFFI=no
+ - PYTHON_INTP="python3.3" CFFI=yes
+ - PYTHON_INTP="python3.4" CFFI=no
+ - PYTHON_INTP="python3.4" CFFI=yes
+ - PYTHON_INTP="python3.5" CFFI=no
+ - PYTHON_INTP="python3.5" CFFI=yes
+ - PYTHON_INTP="pypy" CFFI=yes xflags="--jit enable_opts=intbounds:rewrite:virtualize:pure:earlyforce:heap:unroll"
+branches:
+ except:
+  - /^.*-wip$/
+install:
+ - ./travis_install.sh
+script:
+ - export PYTHONPATH=${PWD}/custom_packages
+ - ${PYTHON_INTP} -c "import cffi" 2>/dev/null && echo CFFI is installed || true
+ - if [ x${CFFI} = "xyes" ]; then ${PYTHON_INTP} -c"import cffi"; fi
+ - if [ x${CFFI} != "xyes" ]; then ! ${PYTHON_INTP} -c"import cffi" 2>/dev/null; fi
+ - major=$(${PYTHON_INTP} -V 2>&1 | cut -f2 -d' ' | cut -f1 -d'.')
+ - if [ "$major" -ge 3 ]; then xflags="-bb" ; fi
+ - ${PYTHON_INTP} -V
+ - echo "Custom Python flags:" \"${xflags:-none}\"
+ - ${PYTHON_INTP} -tt $xflags setup.py build
+ - ${PYTHON_INTP} -tt $xflags setup.py test
