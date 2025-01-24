@@ -13,7 +13,7 @@
                 "target": "videos",
                 "guid": "guid-9215cc4b",
                 "widget_style": "Corflute",
-                "disabled": "True"
+                "disabled": ""
             },
             {
                 "label": "Featured TV Shows",
@@ -30,7 +30,7 @@
                 "target": "videos",
                 "guid": "guid-efa61db1",
                 "widget_style": "Corflute",
-                "disabled": "True"
+                "disabled": ""
             },
             {
                 "label": "Featured Movies",
@@ -93,6 +93,16 @@
         "widgets": [
             {
                 "label": "Trending",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "target": "videos",
+                "guid": "guid-8e8b2f84",
+                "widget_sortby": "rating",
+                "widget_sortorder": "True",
+                "widget_style": "Poster"
+            },
+            {
+                "label": "Recommended",
                 "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
                 "path": "plugin://plugin.video.themoviedb.helper/?info=trending_day&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
                 "target": "videos",
@@ -100,17 +110,7 @@
                 "widgets": [],
                 "guid": "guid-60fe5fa1",
                 "widget_sortby": "rating",
-                "widget_sortorder": "True",
-                "widget_style": "Poster"
-            },
-            {
-                "label": "Recommended",
-                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
-                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
-                "target": "videos",
-                "guid": "guid-8e8b2f84",
-                "widget_sortby": "rating",
-                "widget_sortorder": "True",
+                "widget_sortorder": "",
                 "widget_style": "Apps"
             },
             {
@@ -189,7 +189,7 @@
                 "widget_style": "Apps"
             }
         ],
-        "disabled": "True"
+        "disabled": ""
     },
     {
         "label": "Live TV",
@@ -198,6 +198,14 @@
         "target": "",
         "guid": "guid-a3c47535",
         "widgets": [
+            {
+                "label": "Last Played Channels",
+                "path": "pvr://channels/tv/*?view=lastplayed",
+                "icon": "DefaultAddonPVRClient.png",
+                "target": "",
+                "guid": "guid-08941e4f",
+                "widget_style": "Icon"
+            },
             {
                 "label": "Grouped Channels",
                 "icon": "DefaultAddonPVRClient.png",
@@ -209,6 +217,6 @@
                 "widget_style": "Halo"
             }
         ],
-        "disabled": "True"
+        "disabled": ""
     }
 ]
