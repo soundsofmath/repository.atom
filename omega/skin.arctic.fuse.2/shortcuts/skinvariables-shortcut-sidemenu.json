@@ -13,7 +13,7 @@
                 "target": "videos",
                 "guid": "guid-9215cc4b",
                 "widget_style": "Corflute",
-                "disabled": ""
+                "disabled": "True"
             },
             {
                 "label": "Featured TV Shows",
@@ -30,7 +30,7 @@
                 "target": "videos",
                 "guid": "guid-efa61db1",
                 "widget_style": "Corflute",
-                "disabled": ""
+                "disabled": "True"
             },
             {
                 "label": "Featured Movies",
@@ -189,7 +189,7 @@
                 "widget_style": "Apps"
             }
         ],
-        "disabled": ""
+        "disabled": "True"
     },
     {
         "label": "Live TV",
@@ -217,6 +217,6 @@
                 "widget_style": "Halo"
             }
         ],
-        "disabled": ""
+        "disabled": "True"
     }
 ]
