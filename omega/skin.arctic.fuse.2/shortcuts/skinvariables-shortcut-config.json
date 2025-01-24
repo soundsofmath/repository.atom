@@ -129,7 +129,7 @@
         {
             "name": "Kodi Commands",
             "path": "grouping://shortcuts/links/commands/",
-            "icon": "special://skin/extras/icons/kodi.png",
+            "icon": "special://skin/extras/icons/arcticfuse2.png",
             "link": "false",
             "rule": "String.IsEqual(Window(Home).Property(Shortcuts.Groupings.Links),Links)"
         }

@@ -1,20 +1,37 @@
 [
     {
-        "icon": "special://skin/extras/icons/settings.png",
-        "label": "$LOCALIZE[5]",
-        "path": "ActivateWindow(settings)",
-        "target": ""
+        "label": "Quit",
+        "path": "Quit",
+        "icon": "special://skin/extras/icons/right-to-bracket.png",
+        "target": "",
+        "guid": "guid-c61392ce"
     },
     {
-        "icon": "special://skin/extras/icons/update.png",
+        "label": "Configure TMDbHelper",
+        "path": "RunPlugin(plugin://plugin.video.themoviedb.helper/?info=dir_settings)",
+        "icon": "special://skin/extras/icons/tmdb.png",
+        "target": "",
+        "guid": "guid-a00b7bb3"
+    },
+    {
+        "icon": "special://skin/extras/icons/repeat-off.png",
         "label": "$LOCALIZE[31364]",
         "path": "ReloadSkin()",
-        "target": ""
+        "target": "",
+        "guid": "guid-3098cb0e"
     },
     {
-        "icon": "special://skin/extras/icons/power.png",
-        "label": "$LOCALIZE[13009]",
-        "path": "Quit()",
-        "target": ""
+        "label": "Clean Databases",
+        "path": "PlayMedia(plugin://plugin.video.fen/?mode=clean_databases_cache&isFolder=false&iconImage=https%3A%2F%2Fi.imgur.com%2FRDNxy36.png)",
+        "icon": "special://skin/extras/icons/database.png",
+        "target": "",
+        "guid": "guid-7b924ec9"
+    },
+    {
+        "label": "File Manager",
+        "path": "ActivateWindow(filemanager)",
+        "icon": "special://skin/extras/icons/folder-tree.png",
+        "target": "",
+        "guid": "guid-ce87984c"
     }
 ]

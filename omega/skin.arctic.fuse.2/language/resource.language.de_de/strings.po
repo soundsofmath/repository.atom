@@ -443,9 +443,7 @@ msgid "In-Progress"
 msgstr "Angefangen"
 
 #: /1080i/SkinSettings.xml
-msgctxt "#31091"
-msgid "Blur background for classic widgets"
-msgstr "Hintergrund klassischer Widgets verwischen"
+
 
 #: /1080i/Includes_Shortcuts_Window.xml
 msgctxt "#31092"
@@ -2121,9 +2119,6 @@ msgid "Kodi logo"
 msgstr "Kodi-Logo"
 
 #: /1080i/SkinSettings.xml
-msgctxt "#31448"
-msgid "Show \"More\" item on limited widgets"
-msgstr "Zeige \"Mehr\" bei limitierten Widgets"
 
 #: /1080i/Custom_1180_Wizard.xml
 msgctxt "#31449"
@@ -2165,10 +2160,20 @@ msgctxt "#31456"
 msgid "Prebuilt"
 msgstr "Vorgefertigt"
 
+#: /1080i/SkinSettings.xml
+msgctxt "#31457"
+msgid "Scrollbar"
+msgstr "Scrollleiste"
+
 #: /1080i/Includes_Labels.xml
 msgctxt "#31458"
 msgid "Monochrome"
 msgstr "Monochrom"
+
+#: /1080i/Includes_Labels.xml
+msgctxt "#31459"
+msgid "Letter"
+msgstr "Buchstabe"
 
 #: /1080i/SkinSettings.xml /1080i/MusicOSD.xml
 msgctxt "#31460"
@@ -2179,6 +2184,21 @@ msgstr "Visualisierung anpassen"
 msgctxt "#31461"
 msgid "Choose preset"
 msgstr "Wähle Voreinstellung"
+
+#: /1080i/Includes_Views_Wall.xml
+msgctxt "#31462"
+msgid "Wall Banner"
+msgstr "Wand - Banner"
+
+#: /1080i/Includes_Views.xml
+msgctxt "#31463"
+msgid "Press down for filter and view options"
+msgstr "Nach unten drücken für Filter- und Anzeigeoptionen"
+
+#: /1080i/Includes_Views.xml
+msgctxt "#31464"
+msgid "Press right for filter and view options"
+msgstr "Rechts drücken für Filter- und Anzeigeoptionen"
 
 #: /1080i/Custom_1161_Dialog_Weather.xml
 msgctxt "#31465"

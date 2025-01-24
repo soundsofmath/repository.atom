@@ -420,7 +420,7 @@
     </variable>
 
     <variable name="Path_VideoInfo_Trailers">
-        <value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[Path_Youtube_Query,plugin://plugin.video.youtube/kodion/search/query/?q=,&amp;search_type=notvalid]</value>
+        <value condition="String.IsEqual(ListItem.DBType,musicvideo)">$VAR[Path_Youtube_Query,plugin://plugin.video.youtube/arcticfuse2on/search/query/?q=,&amp;search_type=notvalid]</value>
         <value>$VAR[Path_VideoInfo_Generic,,&amp;info=videos]</value>
     </variable>
 
