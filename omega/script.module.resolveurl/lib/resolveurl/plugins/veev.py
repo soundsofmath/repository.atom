@@ -27,8 +27,8 @@ from resolveurl.resolver import ResolveUrl, ResolverError
 
 class VeevResolver(ResolveUrl):
     name = 'Veev'
-    domains = ['veev.to']
-    pattern = r'(?://|\.)(veev\.to)/(?:e|d)/([0-9a-zA-Z]+)'
+    domains = ['veev.to', 'kinoger.pw', 'poophq.com', 'doods.to']
+    pattern = r'(?://|\.)((?:veev|kinoger|poophq|doods)\.(?:to|pw|com))/(?:e|d)/([0-9a-zA-Z]+)'
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
@@ -36,13 +36,12 @@ class VeevResolver(ResolveUrl):
         r = self.net.http_GET(web_url, headers=headers)
         if r.get_url() != web_url:
             media_id = r.get_url().split('/')[-1]
-        html = re.sub(r'(/\*.+?\*/)', '', r.content)
         # Still dancing
-        items = re.findall(r'>window\._vvto.+?fc\s*:\s*"([^"]+)', html)
+        items = re.findall(r'''[\.\s'](?:fc|_vvto\[[^\]]*)(?:['\]]*)?\s*[:=]\s*['"]([^'"]+)''', r.content)
         if items:
-            for f in items:
-                if '@' not in f and ' ' not in f:
-                    ch = veev_decode(f)
+            for f in items[::-1]:
+                ch = veev_decode(f)
+                if ch != f:
                     params = {
                         'op': 'player_api',
                         'cmd': 'gi',
@@ -56,9 +55,11 @@ class VeevResolver(ResolveUrl):
                     if jresp and jresp.get('file_status') == 'OK':
                         str_url = decode_url(veev_decode(jresp.get('dv')[0].get('s')), build_array(ch)[0])
                         return str_url + helpers.append_headers(headers)
+                    raise ResolverError('Video removed')
 
-            raise ResolverError('Video removed')
-        raise ResolverError('Unable to locate video')
+            raise ResolverError('Unable to locate video')
+
+        raise ResolverError('Video removed')
 
     def get_url(self, host, media_id):
         return self._default_get_url(host, media_id, template='https://{host}/e/{media_id}')

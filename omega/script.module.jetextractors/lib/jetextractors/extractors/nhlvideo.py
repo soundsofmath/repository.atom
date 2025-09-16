@@ -1,64 +1,65 @@
 import requests
 from bs4 import BeautifulSoup as bs
-from typing import List
-from ..models.Extractor import Extractor
-from ..models.Game import Game
-from ..models.Link import Link
+import xbmc
+from ..models import *
 
 
-class NhlVideo(Extractor):
-    domains = ["nhlvideo.net"]
+class NhlVideo(JetExtractor):
+    domains = ["nhlfullgame.com"]
     name = "NhlVideo"
 
-    def get_games(self) -> List[Game]:
-        games = []
+    def get_items(self, params: Optional[dict] = None, progress: Optional[JetExtractorProgress] = None) -> List[JetItem]:
+        items = []
+        if self.progress_init(progress, items):
+            return items
         base_url = f"https://{self.domains[0]}"
-        headers = {"User-Agent": self.user_agent, "Referer": base_url}
-        r = requests.get(base_url, headers=headers).text
+        url = base_url if params is None else params['page']
+        headers = {"User-Agent": self.user_agent, "Referer": url}
+        r = requests.get(url, headers=headers, timeout=self.timeout).text
         soup = (bs(r, 'html.parser'))
-        matches = soup.find_all(class_='short_item block_elem')
+        matches = soup.find_all(class_='portfolio-thumb ph-link')
         for match in matches:
-            name = match.h3.a.text.replace('Full Game Replay ', '').rstrip(' NHL')
+            title = match.img['title'].rstrip(' NHL Full Game Replay')
+            if self.progress_update(progress, title):
+                return items
+            xbmc.sleep(100)
             link = f"{base_url}{match.a['href']}"
-            icon = f"{base_url}{match.a.img['src']}"
-            games.append(Game(name, links=[Link(link, is_links=True)], icon=icon))
-        games.append(Game("[COLORyellow]Page 2[/COLOR]", page=2))
-        return games
+            thumbnail = f"{base_url}{match.img['src']}"
+            items.append(JetItem(title, links=[JetLink(link, links=True)], icon=thumbnail))
+        next_page = soup.find(class_='swchItem swchItem-next')
+        if next_page:
+            params = {"page": f"{base_url}{next_page['href']}"}
+        items.append(JetItem("[COLORyellow]Next Page[/COLOR]", links=[], params=params))
+        return items
     
-    def get_games_page(self, page) -> List[Game]:
-        games = []
-        base_url = f"https://{self.domains[0]}"
-        url = f"{base_url}?page{page}"
-        headers = {"User-Agent": self.user_agent, "Referer": base_url}
-        r = requests.get(url, headers=headers).text
-        soup = (bs(r, 'html.parser'))
-        matches = soup.find_all(class_='short_item block_elem')
-        for match in matches:
-            name = match.h3.a.text.replace('Full Game Replay ', '').rstrip(' NHL')
-            link = f"{base_url}{match.a['href']}"
-            icon = f"{base_url}{match.a.img['src']}"
-            games.append(Game(name, links=[Link(link, is_links=True)], icon=icon))
-        games.append(Game(f"[COLORyellow]Page {int(page) + 1}[/COLOR]", page=int(page) + 1))
-        return games
     
-    def get_links(self, url: str) -> List[Link]:
+    def get_links(self, url: JetLink) -> List[JetLink]:
         links = []
-        title = ''
-        link = ''
-        base_url = f"https://{self.domains[0]}"
+        base_url = f"https://{urlparse(url.address).netloc}/"
         headers = {"User-Agent": self.user_agent, "Referer": base_url}
-        r = requests.get(url, headers=headers).text
+        r = requests.get(url.address, headers=headers, timeout=self.timeout).text
         soup = bs(r, 'html.parser')
+        for button in soup.find_all(class_='su-button'):
+            link = button['href']
+            if 'nfl-replays' in link:
+                r = requests.get(link, headers=headers, timeout=self.timeout).text
+                _soup = bs(r, 'html.parser')
+                iframe = _soup.find('iframe')
+                if iframe:
+                    link = iframe['src']
+                else:
+                    continue
+            if link.startswith('//'):
+                link = f'https:{link}'
+            title = link.split('/')[2]
+            links.append(JetLink(link, name=title, resolveurl=True))
+        
         iframes = soup.find_all('iframe')
         for iframe in iframes:
             link = iframe['src']
             if link.startswith('//'):
                 link = f'https:{link}'
-            if 'youtube' in link:
-                yt_id = link.split('/')[-1]
-                link = f'plugin://plugin.video.youtube/play/?video_id={yt_id}'
-                title = 'Highlights'
-            else:
-                title = link.split('/')[2]
-            links.append(Link(link, name=title, is_resolveurl=True))
+            title = link.split('/')[2]
+            links.append(JetLink(link, name=title, resolveurl=True))
+        links.reverse()
         return links

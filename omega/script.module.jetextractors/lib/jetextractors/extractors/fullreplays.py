@@ -1,13 +1,9 @@
-from typing import List
-import sys
-import xbmcgui
+# Whoever wrote this: do NOT call xbmc or resolveurl functions in Jetextractors
 from bs4 import BeautifulSoup as bs
 from requests.sessions import Session
-from ..models.Extractor import Extractor
-from ..models.Game import Game
-from ..models.Link import Link
+from ..models import *
 
-class FullReplays(Extractor):
+class FullReplays(JetExtractor):
     domains = ["www.fullreplays.com"]
     name = "FullReplays"
     
@@ -21,76 +17,52 @@ class FullReplays(Extractor):
         self.session = Session()
         self.session.headers = self.headers
 
-    def get_games(self) -> List[Game]:
-        return self.get_games_page(self.base_url)
-    
-    def get_games_page(self, page: str) -> List[Game]:
-        games = [Game("Links may take several seconds to populate!")]
+    def get_items(self, params: Optional[dict] = None, progress: Optional[JetExtractorProgress] = None) -> List[JetItem]:
+        items = []
+        if self.progress_init(progress, items):
+            return items
+        
+        if params is None:
+            page = self.base_url
+        else:
+            page = params["page"]
         response = self.session.get(page).text
-        soup = (bs(response, 'html.parser'))
-        row = soup.find(class_='row vlog-posts row-eq-height')
-        for article in row.find_all('article'):
-            title = article.h2.text
-            link = article.a['href']
-            thumbnail = article.a.img['src']
-            games.append(Game(title, links=[Link(link, is_links=True)], icon=thumbnail))
+        soup = bs(response, 'html.parser')
+        
+        matches = soup.find_all(class_='row')
+        for match in matches:
+            articles = match.find_all('article')
+            for article in articles:
+                if article is None:
+                    continue
+                title = article.h2.text
+                if self.progress_update(progress, title):
+                    return items
+                link = article.a['href']
+                thumbnail = article.a.img['src']
+                items.append(JetItem(title, links=[JetLink(link, links=True)], icon=thumbnail))
+            
         pagination = soup.find(class_='next page-numbers')
         if pagination:
             next_page = pagination['href']
-            games.append(Game("[COLORyellow]Next Page[/COLOR]", page=next_page))
-        return games
+            items.append(JetItem("[COLORyellow]Next Page[/COLOR]", links=[], params={"page": next_page}))
+        return items
     
-    def get_links(self, url: str) -> List[Link]:
+    
+    def get_links(self, url: JetLink) -> List[JetLink]:
         links = []
-        response = self.session.get(url).text
+        response = self.session.get(url.address).text
         soup = bs(response, 'html.parser')
-        sources = soup.find_all(class_='frc-sources-wrap')
-        for source in sources:
-            host = source.find(class_='frc-vid-label').text.lower()
-            for button in source.find_all(class_='vlog-button'):               
-                title = f'{button.text.strip()} - {host.capitalize()}'
-                # link = button['data-sc']
-                try :
+        for source in soup.find_all(class_='frc-vid-sources-list'):
+            buttons = source.find_all(class_='vlog-button')
+            for button in buttons:
+                if button.get('data-sc') is not None:
                     link = button['data-sc']
-                except :
-                    continue
-                    
-                if 'hoolights.com' in link:
-                    continue                   
-                if 'youtube.com' in link:
-                    continue
-                    
-                links.append([title, link])
-        if links:
-            link = self.get_multilink(links)
-            if not link:
-                sys.exit()
-            title, link = link
-            if 'fviplions' in link:
-                from resolveurl.plugins.filelions import FileLionsResolver
-                splitted = link.split('/')
-                link = FileLionsResolver().get_media_url(splitted[2], splitted[-1])
-                if not link:
-                    sys.exit()
-                
-                return [Link(link, name=title, is_direct=True)]
-            if 'tapenoads' in link or 'tapeantiads' in link:
-               from resolveurl.plugins.streamtape import StreamTapeResolver
-               resolver = StreamTapeResolver()
-               splitted = link.split('/')
-               link = resolver.get_media_url(splitted[2], splitted[4])
-               if not link:
-                   sys.exit()
-               return [Link(link, name=title, is_direct=True)]
-            return [Link(link, name=title, is_resolveurl=True)]
-    
-    def get_multilink(self, lists):
-        if len(lists) == 1:
-            return lists[0]
-        labels = [i[0] for i in lists]
-        dialog = xbmcgui.Dialog()
-        ret = dialog.select('Choose a Link', labels)
-        if ret == -1:
-           return ''
-        return lists[ret]
+                else:
+                    print(button.text)
+                    link = button['href']
+                host = urlparse(link).netloc
+                title = f'{button.text.strip()} - {host}'
+                links.append(JetLink(link, name=title, resolveurl=True))
+        return links
         

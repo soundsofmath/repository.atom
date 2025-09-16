@@ -23,16 +23,22 @@ from six.moves import urllib_parse
 
 class FileLionsResolver(ResolveGeneric):
     name = 'FileLions'
-    domains = ['filelions.com', 'filelions.to', 'ajmidyadfihayh.sbs', 'alhayabambi.sbs',
-               'moflix-stream.click', 'azipcdn.com', 'mlions.pro', 'alions.pro', 'dlions.pro',
-               'filelions.live', 'motvy55.store', 'filelions.xyz', 'lumiawatch.top', 'filelions.online',
-               'javplaya.com', 'fviplions.com', 'egsyxutd.sbs', 'filelions.site', 'filelions.co',
-               'vidhide.com', 'vidhidepro.com', 'vidhidevip.com', 'javlion.xyz', 'fdewsdc.sbs',
-               'techradar.ink', 'anime7u.com', 'coolciima.online', 'gsfomqu.sbs', 'vidhidepre.com']
+    domains = [
+        'filelions.com', 'filelions.to', 'ajmidyadfihayh.sbs', 'alhayabambi.sbs', 'vidhideplus.com',
+        'moflix-stream.click', 'azipcdn.com', 'mlions.pro', 'alions.pro', 'dlions.pro',
+        'filelions.live', 'motvy55.store', 'filelions.xyz', 'lumiawatch.top', 'filelions.online',
+        'javplaya.com', 'fviplions.com', 'egsyxutd.sbs', 'filelions.site', 'filelions.co',
+        'vidhide.com', 'vidhidepro.com', 'vidhidevip.com', 'javlion.xyz', 'fdewsdc.sbs',
+        'techradar.ink', 'anime7u.com', 'coolciima.online', 'gsfomqu.sbs', 'vidhidepre.com',
+        'katomen.online', 'vidhide.fun', 'vidhidehub.com', 'dhtpre.com', '6sfkrspw4u.sbs', 'peytonepre.com',
+        'ryderjet.com', 'e4xb5c2xnz.sbs', 'smoothpre.com', 'kinoger.be', 'movearnpre.com', 'videoland.sbs',
+        'mivalyo.com', 'vidhidefast.com', 'taylorplayer.com'
+    ]
     pattern = r'(?://|\.)((?:filelions|ajmidyadfihayh|alhayabambi|techradar|moflix-stream|azipcdn|motvy55|' \
-              r'[mad]lions|lumiawatch|javplaya|javlion|fviplions|egsyxutd|fdewsdc|vidhide(?:pro|vip|pre)?|' \
-              r'anime7u|coolciima|gsfomqu)' \
-              r'\.(?:com?|to|sbs|ink|click|pro|live|store|xyz|top|online|site))/(?:s|v|f|d|embed|file)/([0-9a-zA-Z$:/.]+)'
+              r'[mad]lions|lumiawatch|javplaya|javlion|fviplions|egsyxutd|fdewsdc|vidhide|peytone|' \
+              r'anime7u|coolciima|gsfomqu|katomen|dht|6sfkrspw4u|ryderjet|e4xb5c2xnz|smooth|kinoger|' \
+              r'movearn|videoland|mivalyo|taylorplayer)(?:pro|vip|pre|plus|hub|fast)?' \
+              r'\.(?:com?|to|sbs|ink|click|pro|live|store|xyz|top|online|site|fun|be))/(?:s|v|f|d|embed|file|download)/([0-9a-zA-Z$:/.]+)'
 
     def get_media_url(self, host, media_id):
         if '$$' in media_id:
@@ -42,7 +48,10 @@ class FileLionsResolver(ResolveGeneric):
             referer = False
         return helpers.get_media_url(
             self.get_url(host, media_id),
-            patterns=[r'''sources:\s*\[{file:\s*["'](?P<url>[^"']+)'''],
+            patterns=[
+                r'''sources:\s*\[{file:\s*["'](?P<url>[^"']+)''',
+                r'''["']hls[24]["']:\s*["'](?P<url>[^"']+)'''
+            ],
             generic_patterns=False,
             referer=referer
         )
