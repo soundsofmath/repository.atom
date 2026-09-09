@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Featured Movies",
+        "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fintheatres.png/",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=now_playing&tmdb_type=movie&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&widget=true",
+        "target": "videos",
+        "guid": "guid-da33cd28",
+        "widget_style": "Landscape"
+    },
+    {
+        "label": "Featured TV Shows",
+        "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=tv&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&widget=true",
+        "target": "videos",
+        "guid": "guid-c800a6b0",
+        "widget_style": "Poster",
+        "widget_sortby": "userpreference",
+        "widget_sortorder": "True"
+    }
+]
+
+
