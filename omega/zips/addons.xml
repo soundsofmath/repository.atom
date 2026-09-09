@@ -961,6 +961,16 @@
         <source>https://github.com/martinblech/xmltodict</source>
         <forum />
     </extension>
+</addon><addon id="script.moria.artwork" version="1.1.0" name="Moria Artwork" provider-name="host505">
+	<requires>
+		
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Moria Addon</summary>
+		<description />
+		<platform>all</platform>
+	</extension>
 </addon><addon id="script.openweathermap.maps" name="OpenWeatherMap Maps" version="1.0.6" provider-name="ronie">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
