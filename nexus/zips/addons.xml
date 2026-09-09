@@ -1,5 +1,91 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="resource.images.studios.coloured" name="Studio Icons - Coloured" version="0.0.23" provider-name="Team Kodi">
+<addons><addon id="resource.font.robotocjksc" name="Roboto CJKSC" version="0.0.1" provider-name="jurialmunkey">
+    <requires>
+        <import addon="kodi.resource" version="1.0.0" />
+    </requires>
+    
+    <extension point="kodi.resource.font" compile="false" />
+    
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Roboto CJKSC fonts</summary>
+        <description lang="en_GB" />
+        <language />
+        <platform>all</platform>
+        <license>Apache-2.0</license>
+        <forum />
+        <email />
+        <source />
+        <news />
+        <disclaimer />
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="resource.images.arctic.waves" name="Arctic Waves" version="0.0.2" provider-name="drinfernoo">
+    <requires>
+        <import addon="kodi.resource" version="1.0.0" />
+    </requires>
+    
+    <extension point="kodi.resource.images" compile="false" type="skinbackgrounds" />
+    
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Background loading animation for Arctic Horizon.</summary>
+        <description lang="en_GB" />
+        <language />
+        <platform>all</platform>
+        <license>Apache-2.0</license>
+        <forum />
+        <website>https://www.github.com/drinfernoo</website>
+        <email />
+        <source />
+        <news />
+        <disclaimer />
+        <assets>
+            <icon>resources/31.jpg</icon>
+        </assets>
+    </extension>
+</addon><addon id="resource.images.moviecountryicons.maps" name="Movie Country Icons - Maps" version="0.0.1" provider-name="braz">
+	<extension point="kodi.resource.images" compile="false" type="moviecountryicons" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0" />
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Map icons for the Countries node in Movies. Maps courtesy of DJAISS, https://github.com/djaiss/mapsicon.</summary>
+		<description lang="en">Map icons for the Countries node in Movies. Maps courtesy of DJAISS, https://github.com/djaiss/mapsicon.</description>
+		<disclaimer lang="en">Requires implementation by skinner.</disclaimer>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+		<forum />
+		<website />
+		<email />
+		<source>https://github.com/braz96/resource.images.moviecountryicons.maps</source>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>screenshot.jpg</screenshot>
+		</assets>
+	</extension>
+</addon><addon id="resource.images.moviegenreicons.horizon" name="Movie Genre Icons - Horizon" version="0.0.1" provider-name="Swageroni_">
+	<extension point="kodi.resource.images" compile="true" type="moviegenreicons" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0" />
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Horizon Movie Genre Icons</summary>
+		<description lang="en">Movie Genre Icons for Horizon skin</description>
+		<platform>all</platform>
+	</extension>
+</addon><addon id="resource.images.moviegenreicons.transparent" name="Movie Genre Icons - Transparent" version="0.0.6" provider-name="Team Kodi">
+	<extension point="kodi.resource.images" compile="true" type="moviegenreicons" />
+	<requires>
+		<import addon="kodi.resource" version="1.0.0" />
+	</requires>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Transparent Movie Genre Icons</summary>
+		<description lang="en">Movie Genre Icons with a transparent background</description>
+		<platform>all</platform>
+	</extension>
+</addon><addon id="resource.images.studios.coloured" name="Studio Icons - Coloured" version="0.0.23" provider-name="Team Kodi">
 	<extension point="kodi.resource.images" compile="true" type="studios" />
 	<requires>
 		<import addon="kodi.resource" version="1.0.0" />
