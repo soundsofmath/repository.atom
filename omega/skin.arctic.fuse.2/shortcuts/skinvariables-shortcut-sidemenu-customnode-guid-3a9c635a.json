@@ -1,0 +1,11 @@
+[
+    {
+        "label": "Genres",
+        "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fgenre.png/",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=genres&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+        "target": "videos",
+        "submenu": [],
+        "widgets": [],
+        "guid": "guid-9b6d32c0"
+    }
+]

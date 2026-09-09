@@ -1,0 +1,222 @@
+[
+    {
+        "label": "Home",
+        "path": "ActivateWindow(addonbrowser)",
+        "icon": "special://skin/extras/icons/house.png",
+        "target": "",
+        "guid": "guid-eef8be56",
+        "widgets": [
+            {
+                "label": "Your In-Progress TV Shows",
+                "path": "plugin://plugin.video.themoviedb.helper/?tmdb_type=tv&list_name=Your+In-Progress+TV+shows&tmdb_id=None&info=trakt_inprogress&sort_by=added&sort_how=desc&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fdata%2fuser%2f0%2forg.xbmc.kodi%2fcache%2fapk%2fassets%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-9215cc4b",
+                "widget_style": "Corflute",
+                "disabled": "True"
+            },
+            {
+                "label": "Featured TV Shows",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "target": "videos",
+                "guid": "guid-cb104493",
+                "widget_style": "Poster"
+            },
+            {
+                "label": "Your In-Progress Movies",
+                "path": "plugin://plugin.video.themoviedb.helper/?tmdb_type=movie&list_name=Your+In-Progress+Movies&tmdb_id=None&info=trakt_inprogress&sort_by=added&sort_how=desc&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fdata%2fuser%2f0%2forg.xbmc.kodi%2fcache%2fapk%2fassets%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-efa61db1",
+                "widget_style": "Corflute",
+                "disabled": "True"
+            },
+            {
+                "label": "Featured Movies",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=now_playing&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fintheatres.png/",
+                "target": "videos",
+                "guid": "guid-43f41098",
+                "widget_style": "Apps"
+            }
+        ]
+    },
+    {
+        "label": "Movies",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=dir_movie&tmdb_type=None&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+        "icon": "special://skin/extras/icons/film.png",
+        "target": "videos",
+        "guid": "guid-3a9c635a",
+        "widgets": [
+            {
+                "label": "Trending",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "target": "videos",
+                "guid": "guid-afb59de4",
+                "widget_sortby": "default",
+                "widget_sortorder": "",
+                "widget_style": "Apps"
+            },
+            {
+                "label": "Recommended",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_day&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "target": "videos",
+                "submenu": [],
+                "widgets": [],
+                "guid": "guid-9cd6c835",
+                "widget_style": "Poster",
+                "widget_sortby": "rating",
+                "widget_sortorder": "True"
+            },
+            {
+                "label": "Popular",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=most_voted&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-e3c0a709",
+                "widget_style": "Apps",
+                "widget_sortby": "rating",
+                "widget_sortorder": ""
+            }
+        ],
+        "path_opendialog": "True"
+    },
+    {
+        "label": "TV Shows",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=dir_tv&tmdb_type=None&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+        "icon": "special://skin/extras/icons/tv.png",
+        "target": "videos",
+        "guid": "guid-203e30cb",
+        "widgets": [
+            {
+                "label": "Trending",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_week&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "target": "videos",
+                "guid": "guid-8e8b2f84",
+                "widget_sortby": "rating",
+                "widget_sortorder": "True",
+                "widget_style": "Poster"
+            },
+            {
+                "label": "Recommended",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fupcoming.png/",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=trending_day&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "target": "videos",
+                "submenu": [],
+                "widgets": [],
+                "guid": "guid-60fe5fa1",
+                "widget_sortby": "rating",
+                "widget_sortorder": "",
+                "widget_style": "Apps"
+            },
+            {
+                "label": "Popular",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=most_voted&tmdb_type=tv&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-8adbb30c",
+                "widget_style": "Poster"
+            }
+        ],
+        "path_opendialog": "True"
+    },
+    {
+        "label": "Kids",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=watch_providers&tmdb_type=movie&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+        "icon": "special://skin/extras/icons/user-regular.png",
+        "target": "videos",
+        "guid": "guid-20f1e446",
+        "widgets": [
+            {
+                "label": "Movies",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=discover&tmdb_type=movie&with_genres=16&with_id=True&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "target": "videos",
+                "submenu": [],
+                "widgets": [],
+                "guid": "guid-3bd99741",
+                "widget_style": "Apps"
+            },
+            {
+                "label": "TV Shows",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=discover&tmdb_type=tv&with_genres=10762&with_id=True&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-4cb96bfc",
+                "widget_style": "Poster"
+            },
+            {
+                "label": "Family",
+                "path": "plugin://plugin.video.themoviedb.helper/?info=discover&tmdb_type=movie&with_genres=10751&with_id=True&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-62c6301c",
+                "widget_sortby": "rating",
+                "widget_sortorder": "True",
+                "widget_style": "Halo"
+            }
+        ],
+        "path_opendialog": "True"
+    },
+    {
+        "label": "Trakt",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=dir_trakt&tmdb_type=None&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+        "icon": "special://skin/extras/icons/trakttv.png",
+        "target": "videos",
+        "guid": "guid-fddc53db",
+        "path_opendialog": "True",
+        "widgets": [
+            {
+                "label": "Miguel's Watchlist",
+                "icon": "image://%2fdata%2fuser%2f0%2forg.xbmc.kodi%2fcache%2fapk%2fassets%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "path": "plugin://plugin.video.themoviedb.helper/?list_name=Miguel%27s+Watchlist&list_slug=miguel-s-watchlist&user_slug=soundsofmath&plugin_category=Miguel%27s+Watchlist&owner=true&tmdb_id=None&info=trakt_userlist&sort_by=added&sort_how=desc&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "target": "videos",
+                "submenu": [],
+                "widgets": [],
+                "guid": "guid-c3098280",
+                "widget_style": "Poster"
+            },
+            {
+                "label": "Kim's Watchlist",
+                "path": "plugin://plugin.video.themoviedb.helper/?list_name=Kim%27s+Watchlist&list_slug=kim-s-watchlist&user_slug=soundsofmath&plugin_category=Kim%27s+Watchlist&owner=true&tmdb_id=None&info=trakt_userlist&sort_by=added&sort_how=desc&widget=true&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]",
+                "icon": "image://%2fdata%2fuser%2f0%2forg.xbmc.kodi%2fcache%2fapk%2fassets%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+                "target": "videos",
+                "guid": "guid-784159d6",
+                "widget_style": "Apps"
+            }
+        ],
+        "disabled": "True"
+    },
+    {
+        "label": "Live TV",
+        "path": "ActivateWindow(TVGuide)",
+        "icon": "special://skin/extras/icons/livetv.png",
+        "target": "",
+        "guid": "guid-a3c47535",
+        "widgets": [
+            {
+                "label": "Last Played Channels",
+                "path": "pvr://channels/tv/*?view=lastplayed",
+                "icon": "DefaultAddonPVRClient.png",
+                "target": "",
+                "guid": "guid-08941e4f",
+                "widget_style": "Icon"
+            },
+            {
+                "label": "Grouped Channels",
+                "icon": "DefaultAddonPVRClient.png",
+                "path": "pvr://channels/tv/",
+                "target": "",
+                "submenu": [],
+                "widgets": [],
+                "guid": "guid-c0e25164",
+                "widget_style": "Halo"
+            }
+        ],
+        "disabled": "True"
+    }
+]
