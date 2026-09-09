@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+  <defaultcontrol>3</defaultcontrol>
+  <backgroundcolor>Background</backgroundcolor>
+  <include>OpenClose_Animation</include>
+  <controls>
+    <include>DefaultBackground</include>
+    <control type="multiimage">
+      <include>FullScreenDimensions</include>
+      <aspectratio>scale</aspectratio>
+      <animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
+      <animation effect="fade" start="0" end="100" time="400" reversible="true" condition="!Window.Previous(Settings)">WindowOpen</animation>
+      <animation effect="fade" start="100" end="0" time="300" reversible="true" condition="!Window.Next(Settings)">WindowClose</animation>
+      <animation effect="fade" time="400">VisibleChange</animation>
+      <imagepath colordiffuse="35FFFFFF">$INFO[Skin.String(HomeFanart.path)]settings$INFO[Skin.String(HomeFanart.ext)]</imagepath>
+      <visible>!Player.HasMedia + !String.IsEmpty(Skin.String(HomeFanart.path))</visible>
+    </control>
+    <control type="label">
+      <top>100</top>
+      <left>120</left>
+      <textcolor>white</textcolor>
+      <label>$INFO[Control.GetLabel(2)]</label>
+      <include>BreadcrumbsLabel</include>
+    </control>
+    <control type="label">
+      <top>100</top>
+      <right>160</right>
+      <textcolor>white</textcolor>
+      <align>right</align>
+      <label>$INFO[System.Time]</label>
+      <include>BreadcrumbsLabel</include>
+    </control>
+    <control type="group">
+      <centerleft>50%</centerleft>
+      <top>180</top>
+      <width>1680</width>
+      <height>850</height>
+      <control type="image">
+        <texture colordiffuse="dialog_bg_100" border="6">common/dialog.png</texture>
+        <bordertexture border="20">common/shadow-20.png</bordertexture>
+        <bordersize>10</bordersize>
+        <width>1680</width>
+        <height>850</height>
+        <top>-10</top>
+        <left>-10</left>
+        <right>-10</right>
+        <bottom>-10</bottom>
+      </control>
+      <include content="Object_Separator">
+        <param name="horizontal" value="false"/>
+        <top>60</top>
+        <left>470</left>
+        <height>800</height>
+      </include>
+      <control type="group">
+        <include content="DefaultSettingButtonGradient">
+          <param name="id" value="5"/>
+          <param name="height" value="70"/>
+          <top>60</top>
+          <bottom>137</bottom>
+          <height>70</height>
+          <left>470</left>
+          <right>20</right>
+          <visible>ControlGroup(5).HasFocus()</visible>
+        </include>
+        <control type="grouplist" id="5">
+          <description>control area</description>
+          <top>60</top>
+          <left>470</left>
+          <right>60</right>
+          <height>700</height>
+          <itemgap>0</itemgap>
+          <onleft>3</onleft>
+          <onright>60</onright>
+          <pagecontrol>60</pagecontrol>
+          <usecontrolcoords>true</usecontrolcoords>
+        </control>
+      </control>
+      <control type="button" id="7">
+        <description>Default Button</description>
+        <include>DefaultSettingButton</include>
+      </control>
+      <control type="radiobutton" id="8">
+        <description>Default RadioButton</description>
+        <include content="DefaultSettingButton">
+          <param name="textwidth" value="640"/>
+        </include>
+      </control>
+      <control type="spincontrolex" id="9">
+        <description>Default SpinControlex</description>
+        <include content="DefaultSettingButton">
+          <param name="textwidth" value="640"/>
+        </include>
+        <aligny>center</aligny>
+      </control>
+      <control type="sliderex" id="13">
+        <description>Default Slider</description>
+        <include>DefaultSettingButton</include>
+        <aligny>center</aligny>
+      </control>
+      <control type="label" id="14">
+        <description>Default Label</description>
+          <textoffsetx>40</textoffsetx>
+          <width>470</width>
+          <height>70</height>
+          <textcolor>dialog_fg_30</textcolor>
+          <label>$LOCALIZE[31300]</label>
+          <font>font_small_defaults</font>
+          <aligny>center</aligny>
+      </control>
+      <control type="group">
+        <include content="DefaultSettingButtonGradient">
+          <param name="id" value="3"/>
+          <param name="height" value="70"/>
+          <top>60</top>
+          <left>70</left>
+          <height>70</height>
+          <width>400</width>
+        </include>
+        <control type="grouplist" id="3">
+          <description>button area</description>
+          <left>70</left>
+          <top>60</top>
+          <width>400</width>
+          <height>700</height>
+          <usecontrolcoords>true</usecontrolcoords>
+          <onright>5</onright>
+          <onup>3</onup>
+          <onleft>20</onleft>
+        </control>
+        <control type="button" id="10">
+          <description>Default Category Button</description>
+          <left>0</left>
+          <height>70</height>
+          <width>400</width>
+          <textoffsetx>40</textoffsetx>
+          <aligny>center</aligny>
+          <font>font27</font>
+          <texturefocus colordiffuse="00ffffff">lists/focus-rounded.png</texturefocus>
+          <texturenofocus/>
+        </control>
+        <include content="Object_Separator">
+          <param name="horizontal" value="false"/>
+          <top>60</top>
+          <left>70</left>
+          <height>800</height>
+        </include>
+        <include content="DefaultSettingButtonGradient">
+          <param name="id" value="20"/>
+          <param name="height" value="850"/>
+          <width>70</width>
+          <left>0</left>
+          <top>60</top>
+          <height>699</height>
+          <visible>Control.HasFocus(20)</visible>
+        </include>
+        <control type="radiobutton" id="20">
+          <top>60</top>
+          <width>699</width>
+          <left>0</left>
+          <height>699</height>
+          <angle>90</angle>
+          <onclick>SettingsLevelChange</onclick>
+          <textoffsetx>30</textoffsetx>
+          <textoffsety>0</textoffsety>
+          <texturefocus/>
+          <texturenofocus/>
+          <radioposx>15</radioposx>
+          <radioposy>15</radioposy>
+          <radiowidth>40</radiowidth>
+          <radioheight>40</radioheight>
+          <onleft>5</onleft>
+          <onright>3</onright>
+          <textureradiooffnofocus colordiffuse="dialog_fg_70">icons/settings.png</textureradiooffnofocus>
+          <textureradioonnofocus colordiffuse="dialog_fg_70">icons/settings.png</textureradioonnofocus>
+          <textureradioonfocus colordiffuse="white">icons/settings.png</textureradioonfocus>
+          <textureradioofffocus colordiffuse="white">icons/settings.png</textureradioofffocus>
+        </control>
+      </control>
+      <control type="group">
+        <right>30</right>
+        <top>130</top>
+        <bottom>90</bottom>
+        <width>60</width>
+        <control type="scrollbar" id="60">
+          <right>0</right>
+          <top>0</top>
+          <bottom>0</bottom>
+          <width>8</width>
+          <orientation>vertical</orientation>
+          <texturesliderbackground/>
+          <animation effect="slide" end="6,0" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(60)">conditional</animation>
+          <onleft>5</onleft>
+          <animation effect="fade" start="0" end="100" time="200" delay="300">Visible</animation>
+          <animation effect="fade" start="100" end="0" time="200">Hidden</animation>
+          <animation effect="fade" start="0" end="100" delay="300" time="320">WindowOpen</animation>
+          <animation effect="fade" start="100" end="0" time="150">WindowClose</animation>
+          <hitrect x="0" y="0" w="60" h="100%"/>
+        </control>
+      </control>
+    </control>
+    <control type="textbox" id="6">
+      <description>description area</description>
+      <top>1030</top>
+      <left>125</left>
+      <width>1400</width>
+      <height>50</height>
+      <font>font12</font>
+      <align>left</align>
+      <textcolor>b3ededed</textcolor>
+      <autoscroll time="3000" delay="5000" repeat="5000">true</autoscroll>
+    </control>
+    <control type="label" id="2">
+      <description>breadcrumbs label</description>
+      <visible>False</visible>
+    </control>
+  </controls>
+</window>
