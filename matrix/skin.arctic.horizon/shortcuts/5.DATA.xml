@@ -1,0 +1,10 @@
+<shortcuts>
+	<shortcut>
+		<defaultID />
+		<label>Reload Skin</label>
+		<label2>Custom item</label2>
+		<icon>DefaultShortcut.png</icon>
+		<thumb />
+		<action>ReloadSkin()</action>
+		</shortcut>
+	</shortcuts>
