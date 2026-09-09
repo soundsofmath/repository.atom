@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.acctview"
+       name="Account Viewer"
+       version="25.3.25"
+       provider-name="[COLOR springgreen]Tech[/COLOR] [COLOR green]E.[/COLOR] [COLOR lime]Coyote[/COLOR]">
+    <extension point="xbmc.python.pluginsource" library="default.py">
+    </extension>
+    <extension point="xbmc.python.module" library="resources" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">View Authorized Accounts</summary>
+        <description lang="en">Account Manager Dependency</description>
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <forum>https://t.me/+3cns4YYJWh03N2Ex</forum>
+        <website>https://tinyurl.com/TheL48</website>
+        <email></email>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon>
