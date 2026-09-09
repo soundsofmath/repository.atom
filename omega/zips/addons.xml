@@ -354,6 +354,290 @@
             <fanart>fanart.png</fanart>
         </assets>
     </extension>
+</addon><addon id="plugin.program.iptv.merge" name="IPTV Merge" provider-name="SlyGuy" version="0.26.0">
+  <requires>
+    <import addon="script.module.slyguy" version="0.78.7" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="service.py" start="login" />
+  <extension point="xbmc.addon.metadata">
+    <description lang="en">Easily merge multiple IPTV playlists &amp; EPGs from remote, local or supported add-on sources.</description>
+    <reuselanguageinvoker>true</reuselanguageinvoker>
+    <license />
+    <language />
+    <website />
+    <news>Add back Restart PVR setting</news>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
+</addon><addon id="plugin.program.livetv" name="Diggz Live TV Browser " version="420.3" provider-name="Diggz, JewBMX">
+    <requires>
+        <import addon="script.module.kodi-six" />
+    </requires>
+    <extension point="xbmc.python.script" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Opens Live TV websites from Kodi</summary>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="plugin.program.orderfavourites" name="Order Favourites" version="99.2.3" provider-name="doko">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>image</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <news>
+[COLOR lavender][B]Order Favourites[/B][/COLOR]
+[B]1.2.3:[/B]
+- Add-on metadata update with an icon fix.
+
+[B]1.2.2:[/B]
+- Ported the improvements from the Leia version to the Matrix version.
+
+[B]1.2.1:[/B]
+- Renamed "Save and exit" to "Save and reload", makes it clearer.
+- Added "Save and exit". Use this when save + reload happens to crash your Kodi. After saving, restart Kodi manually to see the changes.
+- Experimental Matrix version now available.
+
+[B]1.2.0:[/B]
+- Fixed a case when the add-on failed to read the favourites file because of Unicode strings.
+(Thanks to [I]msauers[/I] for the report.)
+- Changed the label and description of the 'Restart...' button to 'Restore...', which is
+clearer.
+
+[B]1.1.1:[/B]
+- Added menu items for a more traditional add-on UX.
+- Improved the profile reloading process.
+
+[B]1.1.0:[/B]
+- Improved the profile reloading process, it was crashing on Kodi 17.6.
+
+[B]1.0.4:[/B]
+- Safer handling of unicode text.
+- Optimizations, simplified the code even more.
+
+[B]1.0.3:[/B]
+- Added a proper custom dialog interface.
+- Greatly simplified the code, much faster to use.
+
+[B]1.0.2:[/B]
+- Fix for when the favorite item has unicode text.
+    </news>
+    <description lang="en">
+Lets you reorder the entries in your Favourites.
+Use this to organize your Favourites.
+    </description>
+    <platform>all</platform>
+    <assets>
+        <icon>icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="plugin.program.sports" name="Diggz Sports Browser " version="420.2" provider-name="Diggz, JewBMX">
+    <requires>
+        <import addon="script.module.kodi-six" />
+    </requires>
+    <extension point="xbmc.python.script" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Opens Sports Websites from Kodi</summary>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.absolution" name="[COLOR teal]Absolution[/COLOR]" provider-name="absolution" version="2.0.9">
+    <requires>
+        
+        
+        <import addon="script.absolution.artwork" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.absolutionscrapers" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+		<import addon="plugin.video.youtube" optional="true" />
+    </requires>
+    <extension library="absolution.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="service.py" point="xbmc.service" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en_GB">Absolution Media</summary>
+        <description lang="en_GB">[COLOR teal]The Chains Team[/COLOR]</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en_GB">The author of this add-on does not host any of the content which is found and has no affiliation with any of the content providers. This add-on simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+			<screenshot>screenshot.jpg</screenshot>
+        </assets>
+        <news>
+        See Changelog on Tools menu
+        </news>
+    </extension>
+</addon><addon id="plugin.video.daddylive" name="Daddylive" version="4.11" provider-name="THE CREW">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.inputstreamhelper" />
+        <import addon="script.module.six" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <description lang="pl">1.2</description>
+        <disclaimer lang="pl">test
+        </disclaimer>
+        <summary lang="en">Live TV and Sports</summary>
+        <description lang="en">Live TV and Sports</description>
+        <disclaimer lang="en">test
+        </disclaimer>
+        <language>pl</language>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <website />
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.dailymotion_com" name="DailyMotion.com" version="2.4.4" provider-name="gujal">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.six" version="0.0.1" />
+        <import addon="script.module.kodi-six" version="0.0.1" />
+        <import addon="script.module.requests" version="2.4.3" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="de_DE">Filme, TV, Musik, User-Clips und Live-Streams</summary>
+        <summary lang="en_GB">Movies, TV, Music, User-Clips, and Livestreams</summary>
+        <summary lang="fr_FR">Films, Séries TV, Musique, Clips, et Live</summary>
+        <summary lang="he_IL">סרטים, טלוויזיה, מוסיקה, סירטונים של המשתמש, תלת מימד והזרמה חיה</summary>
+        <description lang="de_DE">Dailymotion zieht 300 Millionen Nutzer aus der ganzen Welt an, die jeden Monat 3,5 Milliarden Videos auf ihrem Player ansehen.</description>
+        <description lang="en_GB">Dailymotion attracts 300 million users from around the world, who watch 3.5 billion videos on its player each month.</description>
+        <description lang="fr_FR">Dailymotion attire 300 millions d’utilisateurs qui regardent 3,5 milliards de vidéos sur son player chaque mois, à travers le monde.</description>
+        <description lang="he_IL">Dailymotion מושך 300 מיליון משתמשים מרחבי העולם שצופים ב -3.5 מיליארד סרטונים מדי חודש.</description>
+        <disclaimer lang="de_DE">Einige Teile dieses Addons sind in Ihrem Wohnsitzland möglicherweise nicht legal. Bitte informieren Sie sich vor der Installation bei den örtlichen Gesetzen.</disclaimer>
+        <disclaimer lang="en_GB">Some parts of this addon may not be legal in your country of residence - please check with your local laws before installing.</disclaimer>
+        <disclaimer lang="fr_FR">Certaines parties de cet addon peuvent ne pas être légales dans votre pays de résidence - s’il vous plaît vérifier avec vos lois locales avant d’installer.</disclaimer>
+        <disclaimer lang="he_IL">ייתכן שחלק מהתוספות האלו אינן חוקיות בארץ המגורים שלך - אנא בדוק את החוקים המקומיים שלך לפני ההתקנה.</disclaimer>
+        <news>
+[B]Version 2.4.4 - 02 Nov 2024[/B] 
+- Use videoinfotag instead of setinfo on Kodi 20+
+- Fix playback issues
+        </news>
+        <website>https://www.dailymotion.com</website>
+        <source>https://github.com/Gujal00/plugin.video.dailymotion_com</source>
+		<forum>https://forum.kodi.tv/showthread.php?tid=142626</forum>
+		<license>GPL-2.0-or-later</license>
+        <email>gujal at protonmail dot com</email>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/images/screenshot-01.jpg</screenshot>
+            <screenshot>resources/images/screenshot-02.jpg</screenshot>
+            <screenshot>resources/images/screenshot-03.jpg</screenshot>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.dlv2" name="DaddyLive V2" version="0.1.7" provider-name="X">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.routing" />
+    <import addon="script.module.pytz" />
+    <import addon="script.module.tzlocal" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    </assets>
+    <summary lang="en_GB" />
+	<description lang="en_GB">This is not a fork. Written by The X</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GPL-2.0-or-later</license>
+  </extension>
+</addon><addon id="plugin.video.dreammachine" name="[COLOR blue]D[COLOR salmon]r[COLOR violet]e[COLOR yellow]a[COLOR orange]m[COLOR lime]M[COLOR red]a[COLOR blue]c[COLOR salmon]h[COLOR violet]i[COLOR yellow]n[COLOR orange]e[/COLOR]" version="25.8.22" provider-name="[COLOR springgreen]G[/COLOR] [COLOR magenta]I[/COLOR][COLOR violet]n[/COLOR][COLOR mediumorchid]c[/COLOR][COLOR orchid].[/COLOR]">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.six" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Where dreams do come true ...</summary>
+        <description lang="en">Where dreams do come true ...</description>
+        <website />
+        <license>GPL 3.0</license>
+        <platform>all</platform>
+        <language>en</language>
+        <disclaimer lang="en">The author of this addon makes not responsible for the use of it</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.enigma" name="[COLORaqua]Enigma[/COLOR]" version="2.0.5" provider-name="CC/Community">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.module.universalscrapers" version="1.0.0" />
+        <import addon="script.module.python.koding.aio.alt" />
+        <import addon="script.module.beautifulsoup" version="3.2.1" />
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
+        <import addon="script.module.dateutil" />
+		<import addon="script.module.feedparser" version="5.1.3" />
+        
+        <import addon="script.module.resolveurl" />
+        
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>audio video</provides>
+    </extension>
+    <extension point="xbmc.arrakis" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en" />
+        <description lang="en">Enigma Addon based on Jen Template.</description>
+        <disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+        <platform>all</platform>
+        <assets>
+        <icon>en1.png</icon>
+        <fanart>fanart.jpg</fanart>
+        </assets>
+        <website />
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+    </extension>
 </addon><addon id="plugin.video.fen" name="Fen" provider-name="Tikipeter" version="3.5.01">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
