@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <backgroundcolor>Background</backgroundcolor>
+    <onunload>ClearProperty(TMDbHelper.WidgetContainer,home)</onunload>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9000&amp;levels=3&amp;group=mainmenu|shutdown|searchmenu)</onload>
+    <!-- set default home layout if none is set -->
+    <onload condition="!Skin.HasSetting(Prime_Main) + !Skin.HasSetting(Horizontal_Main)">Skin.SetBool(Horizontal_Main)</onload>
+    <!-- for horizontal layout -->
+    <onload condition="Skin.HasSetting(Horizontal_Main)">Skin.SetBool(TMDbHelper.EnableBlur)</onload>
+    <onload>SetProperty(TMDbHelper.Blur.Fallback,special://skin/extras/backgrounds/blur-background.jpg,Home)</onload>
+	<onload>SetProperty(TMDbHelper.Blur.SourceImage,Art(tvshow.fanart)|Art(fanart)|Art(tvshow.poster)|Art(poster),Home)</onload>
+    <!-- set fallback menu style -->
+    <onload condition="String.IsEmpty(Skin.String(MenuStyle))">Skin.SetString(MenuStyle,IconsText)</onload>
+    <!-- set default selection box -->
+    <onload condition="String.IsEmpty(Skin.String(HighlightSize))">Skin.SetString(HighlightSize,Bold)</onload>
+    <onload condition="String.IsEmpty(Skin.String(PosterHighlight))">Skin.SetString(PosterHighlight,Highlight)</onload>
+    <!-- set colourful rating icons as default -->
+    <onload condition="String.IsEmpty(Skin.String(Icons))">Skin.SetString(Icons,colorful)</onload>
+    <!-- alpha and colors values -->
+    <onload condition="String.IsEmpty(Skin.String(HomeAlphaValue))">Skin.SetString(HomeAlphaValue,100)</onload>
+    <onload condition="String.IsEmpty(Skin.String(AlphaValue))">Skin.SetString(AlphaValue,15)</onload>
+    <onload condition="String.IsEmpty(Skin.String(TMDbHelper.Colors.Luminance))">Skin.SetString(TMDbHelper.Colors.Luminance,0.75)</onload>
+    <onload condition="String.IsEmpty(Skin.String(TMDbHelper.Colors.Saturation))">Skin.SetString(TMDbHelper.Colors.Saturation,0.75)</onload>
+    <onload condition="String.IsEmpty(Skin.String(focuscolor.name))">Skin.SetString(focuscolor.name,ff00838f)</onload>
+    <onload condition="String.IsEmpty(Skin.String(gradientcolor.name))">Skin.SetString(gradientcolor.name,ff8bc34a)</onload>
+    <controls>
+        <control type="button" id="20000">
+            <include>HiddenObject</include>
+            <animation effect="fade" time="300" start="100" end="0">Focus</animation>
+            <onfocus>SetFocus(2000)</onfocus>
+            <onclick>noop</onclick>
+            <visible allowhiddenfocus="true">Control.HasFocus(20000)</visible>
+        </control>
+        <control type="button" id="20001">
+            <include>HiddenObject</include>
+            <animation effect="fade" time="300" start="100" end="0">Focus</animation>
+            <onfocus>SetFocus(2000)</onfocus>
+            <onclick>noop</onclick>
+            <visible allowhiddenfocus="true">Control.HasFocus(20001)</visible>
+        </control>
+        <control type="list" id="9989">
+            <posx>-20</posx>
+            <posy>-20</posy>
+            <width>1</width>
+            <height>1</height>
+            <visible>true</visible>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <onleft>50</onleft>
+            <onright>50</onright>
+            <itemlayout width="1" height="1"></itemlayout>
+            <focusedlayout height="1" width="1"></focusedlayout>
+            <content>
+                <include>skinshortcuts-submenu-1</include>
+            </content>
+        </control>
+        <control type="group">
+            <include>DefaultBackground</include>
+            <include>OpenClose_Fade</include>
+            <include condition="Skin.HasSetting(Prime_Main)">Prime_Main</include>
+            <include condition="Skin.HasSetting(Horizontal_Main)">Horizontal_Main</include>
+        </control>
+    </controls>
+</window>

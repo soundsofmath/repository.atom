@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="YouTubeSection">
+        <control type="list" id="$PARAM[id]">
+            <scrolltime tween="quadratic">400</scrolltime>
+            <orientation>horizontal</orientation>
+            <height>375.5</height>
+            <itemlayout height="375.5" width="600">
+                <include content="ViewLandscapeItemLayout"></include>
+            </itemlayout>
+            <focusedlayout height="375.5" width="600">
+                <include content="ViewLandscapeItemLayout"></include>
+                <include content="Selectbox">
+                    <param name="visible_posters" value="false"/>
+                    <param name="visible_squares" value="false"/>
+                    <param name="visible_landscapes" value="true + Control.HasFocus(1060)"/>
+                </include>
+            </focusedlayout>
+            <onclick>RunScript(plugin.video.themoviedb.helper,close_dialog=1190)</onclick>
+            <onclick>PlayMedia($ESCINFO[ListItem.FileNameAndPath])</onclick>
+            <content limit="10" target="videos" sortby="file">$VAR[Def_Youtube_List]</content>
+            <visible>$PARAM[visible]</visible>
+        </control>
+    </include>
+    <include name="InfoDialogItemLayout">
+        <control type="group">
+            <control type="image">
+                <width>200</width>
+                <height>300</height>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <texture colordiffuse="FF121212" diffuse="diffuse/poster-std.png">common/white.png</texture>
+            </control>
+            <control type="image">
+                <width>200</width>
+                <height>300</height>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <texture background="true" diffuse="diffuse/poster-std.png">$PARAM[icon]</texture>
+                <bordersize>1</bordersize>
+            </control>
+        </control>
+    </include>
+    <include name="InfoDialogFocusedLayout">
+        <control type="group">
+            <animation effect="zoom" start="100" end="106" time="300" tween="sine" easing="inout" center="auto">Focus</animation>
+            <control type="image">
+                <width>200</width>
+                <height>300</height>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <texture colordiffuse="FF121212" diffuse="diffuse/poster-std.png">common/white.png</texture>
+            </control>
+            <control type="label">
+                <top>260</top>
+                <left>20</left>
+                <width>160</width>
+                <align>center</align>
+                <scroll>true</scroll>
+                <font>font_tiny_hintlabel</font>
+                <textcolor>B3ededed</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="image">
+                <width>200</width>
+                <height>250</height>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <texture background="true" diffuse="diffuse/poster-std-half.png">$VAR[Image_Poster]</texture>
+                <bordersize>1</bordersize>
+            </control>
+        </control>
+    </include>
+    <include name="InfoDialogWallContainer">
+        <definition>
+            <control type="list" id="$PARAM[id]">
+                <width>1300</width>
+                <height>320</height>
+                <orientation>horizontal</orientation>
+                <!-- <animation effect="slide" start="0,0" end="0,-600" time="500" easing="inout" tween="cubic" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <animation effect="fade" start="0" end="100" time="300" easing="inout" tween="cubic" condition="Control.HasFocus($PARAM[id])">Conditional</animation> -->
+                <itemlayout width="220" height="320">
+                    <include content="InfoDialogItemLayout">
+                        <param name="icon" value="$PARAM[icon]"/>
+                        <param name="label" value="$PARAM[label]"/>
+                        <param name="label2" value="$PARAM[label2]"/>
+                    </include>
+                </itemlayout>
+                <focusedlayout width="220" height="320">
+                    <include content="InfoDialogFocusedLayout">
+                        <param name="icon" value="$PARAM[icon]"/>
+                        <param name="label" value="$PARAM[label]"/>
+                        <param name="label2" value="$PARAM[label2]"/>
+                    </include>
+                </focusedlayout>
+                <nested />
+            </control>
+        </definition>
+    </include>
+</includes>

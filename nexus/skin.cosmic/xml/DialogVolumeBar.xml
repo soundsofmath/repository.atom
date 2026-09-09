@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<controls>
+		<control type="group">
+			<bottom>-680</bottom>
+			<left>-720</left>
+			<width>384</width>
+			<height>64</height>
+			<animation effect="rotate" end="90" center="90" time="0" condition="true">Conditional</animation>
+			<control type="image">
+				<left>60</left>
+				<width>392</width>
+				<height>72</height>
+				<texture colordiffuse="dialog_bg_100" border="16">dialogs/volume/volume-bg.png</texture>
+			</control>
+			<control type="group">
+				<top>4</top>
+				<left>64</left>
+				<control type="progress" id="200">
+					<left>0</left>
+					<width>384</width>
+					<height>64</height>
+					<texturebg colordiffuse="dialog_bg_100" border="16">dialogs/volume/volume-bg.png</texturebg>
+					<midtexture colordiffuse="$VAR[ColorHighlight]" border="0,16,0,16">dialogs/volume/vol-mid.png</midtexture>
+					<lefttexture colordiffuse="00ffffff" border="16,16,0,16">dialogs/volume/vol-left.png</lefttexture>
+					<righttexture colordiffuse="$VAR[ColorHighlight]" border="0,16,16,16">dialogs/volume/vol-right.png</righttexture>
+					<info>Player.Volume</info>
+				</control>
+				<control type="image">
+					<width>64</width>
+					<height>64</height>
+					<texture colordiffuse="$VAR[ColorHighlight]" border="16,16,0,16">dialogs/volume/vol-left.png</texture>
+				</control>
+				<control type="label">
+					<left>64</left>
+					<width>64</width>
+					<align>center</align>
+					<aligny>center</aligny>
+					<font>font_vol</font>
+					<textcolor>dialog_fg_100</textcolor>
+					<angle>-90</angle>
+					<label>$INFO[Control.GetLabel(200)]</label>
+				</control>
+				<control type="image">
+					<top>-148</top>
+					<left>-78</left>
+					<width>40</width>
+					<height>40</height>
+					<texture colordiffuse="dialog_fg_100">$VAR[Volume_Icon]</texture>
+					<animation effect="rotate" end="-90" center="-90" time="0" condition="true">Conditional</animation>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

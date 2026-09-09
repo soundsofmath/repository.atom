@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Dialog_Notification_Group">
+        <param name="main_id" default="30"/>
+        <param name="sub_id" default="31"/>
+        <param name="nowplaying" default="false"/>
+        <param name="progress" default="Control.GetLabel(32)"/>
+        <param name="progress-id" default="32"/>
+        <param name="icon" default="buttons/info.png"/>
+        <definition>
+            <bottom>920</bottom>
+            <left>188</left>
+            <width>600</width>
+            <control type="label">
+                <top>72</top>
+                <left>10</left>
+                <height>32</height>
+                <width>32</width>
+                <align>center</align>
+                <textcolor>ff333333</textcolor>
+                <font>font_tiny_extprogress</font>
+                <label>$INFO[Control.GetLabel(32),,%]</label>
+                <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
+            </control>
+            <control type="group">
+                <top>4</top>
+                <control type="group">
+                    <left>-16</left>
+                    <centertop>50%</centertop>
+                    <width>80</width>
+                    <height>80</height>
+                    <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight]">$INFO[$PARAM[progress],progress/circle/p,.png]</texture>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorGradient]">$INFO[$PARAM[progress],progress/circle/p,.png]</texture>
+                        <animation effect="fade" end="66" condition="true">Conditional</animation>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <left>64</left>
+                <centertop>50%</centertop>
+                <height>90</height>
+                <control type="label" id="$PARAM[main_id]">
+                    <left>0</left>
+                    <centertop>33%</centertop>
+                    <height>26</height>
+                    <label>$PARAM[label]</label>
+                    <align>left</align>
+                    <width max="500">auto</width>
+                    <font>font_tiny_hintlabel</font>
+                    <textcolor>white</textcolor>
+                    <shadowcolor>text_shadow</shadowcolor>
+                </control>
+                <control type="label" id="$PARAM[sub_id]">
+                    <centerbottom>33%</centerbottom>
+                    <height>26</height>
+                    <label>$PARAM[label2]</label>
+                    <width max="500">auto</width>
+                    <scroll>true</scroll>
+                    <font>font_tiny_infolabel</font>
+                    <textcolor>white</textcolor>
+                    <shadowcolor>text_shadow</shadowcolor>
+                </control>
+            </control>
+        </definition>
+    </include>
+</includes>
