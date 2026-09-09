@@ -1,5 +1,399 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="resource.font.robotocjksc" name="Roboto CJKSC" version="0.0.1" provider-name="jurialmunkey">
+<addons><addon id="plugin.video.shazam" name="[COLOR=darkorange]Shazam[/COLOR]" provider-name="Patriot and Narcacist" version="0.0.3">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.shazam.artwork" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.shazamscrapers" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+		<import addon="script.module.metahandler" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+    </requires>
+    <extension library="shazam.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="service.py" point="xbmc.service" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en_GB">[COLOR=darkorange]Shazam Kodi 19+ (Wizard: And say my name so my powers may flow through you. I open my heart to you, Billy Batson. And in so doing, choose you as champion.)[/COLOR]</summary>
+        <description lang="en_GB" />
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en_GB">The author of this add-on does not host any of the content which is found and has no affiliation with any of the content providers. This add-on simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <news>
+        See Changelog in the Tools menu
+        </news>
+    </extension>
+</addon><addon id="plugin.video.thecrew" version="1.1.7" name="[COLOR orchid]THE CREW[/COLOR]" provider-name="The Crew">
+    <requires>
+        
+        <import addon="script.module.thecrew" />
+        <import addon="script.thecrew.artwork" />
+        <import addon="script.thecrew.metadata" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.simplejson" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.beautifulsoup4" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="plugin.video.youtube" optional="true" />
+        <import addon="script.module.inputstreamhelper" version="0.3.3" />
+    </requires>
+    <extension library="thecrew.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="service.py" point="xbmc.service" start="startup" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">The Crew is a team of individuals that does what it can to provide others, you the best in entertainment.</summary>
+        <description lang="en">Many come, Many go. The true and dedicated are here.</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+            <screenshot>resources/art/ss/1.png</screenshot>
+            <screenshot>resources/art/ss/2.png</screenshot>
+            <screenshot>resources/art/ss/3.png</screenshot>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.themoviedb.helper" version="5.1.4~nexus" name="TheMovieDb Helper" provider-name="jurialmunkey">
+<requires>
+  <import addon="xbmc.python" version="3.0.1" />
+  <import addon="script.module.requests" version="2.9.1" />
+  <import addon="script.module.pil" version="1.1.7" />
+  <import addon="script.module.addon.signals" version="0.0.6" />
+  <import addon="script.module.tmdbhelper" version="0.0.7" />
+  <import addon="script.module.infotagger" version="0.0.5" />
+  <import addon="script.module.beautifulsoup4" version="4.9.3" />
+</requires>
+<extension point="xbmc.python.pluginsource" library="resources/plugin.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.python.script" library="resources/script.py" />
+<extension point="xbmc.service" library="resources/service.py" />
+<extension point="xbmc.python.module" library="resources/modules" />
+<extension point="xbmc.addon.metadata">
+  <reuselanguageinvoker>false</reuselanguageinvoker>
+  <summary lang="en_GB">TheMovieDb Helper</summary>
+  <description lang="en_GB">TheMovieDb Helper provides details about movies, tvshows and actors from TMDb. Users can access a variety of lists from TMDb TVDb MDbList and Trakt.</description>
+  <disclaimer lang="en_GB">Data provided by TheMovieDb TVDb MDbList OMDb FanartTV and Trakt. Some of the information is provided by TheTVDB.com. Please consider supporting them. https://thetvdb.com/subscribe</disclaimer>
+  <license>GPL-3.0-or-later</license>
+  <website>https://github.com/jurialmunkey/plugin.video.themoviedb.helper</website>
+  <forum>https://forum.kodi.tv/showthread.php?tid=345847</forum>
+  <assets>
+    <icon>icon.png</icon>
+    <fanart>fanart.jpg</fanart>
+    <screenshot>resources/screenshot-01.jpg</screenshot>
+    <screenshot>resources/screenshot-02.jpg</screenshot>
+  </assets>
+</extension>
+</addon><addon id="plugin.video.thepromise" name="ThePromise" version="22.7.31" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        <import addon="script.thepromise.artwork" />
+        <import addon="script.module.resolveurl" />
+        <import addon="script.module.requests" />
+        <import addon="script.module.promisescrapers" />
+        <import addon="script.module.six" />
+        <import addon="script.module.kodi-six" />
+        <import addon="script.module.simplejson" />
+        <import addon="plugin.video.usgotv" optional="true" />
+        <import addon="plugin.video.swifttv" optional="true" />
+        <import addon="plugin.video.taptv" optional="true" />
+        <import addon="plugin.video.lntv" optional="true" />
+        <import addon="plugin.video.rbtv" optional="true" />
+        <import addon="plugin.video.youtube" optional="true" />
+    </requires>
+    <extension library="thepromise.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <summary lang="en_GB">ThePromise</summary>
+        <description lang="en_GB">Multi-source add-on</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum />
+        <website />
+        <source />
+        <disclaimer lang="en_GB">The author of this add-on does not host any of the content which is found and has no affiliation with any of the content providers. This add-on simply searches websites for content. Use at your own risk![CR]This project uses the TMDb, Trakt, Fanart.tv APIs, but is not affiliated nor endorsed by any of their respective ogranisations.[CR]Please support these ogranisations however you can.</disclaimer>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+        <news>
+- See Changelog on Tools menu
+        </news>
+    </extension>
+</addon><addon id="plugin.video.umbrella" name="Umbrella" provider-name="Umbrella" version="6.6.18">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.cocoscrapers" version="1.0.10" />
+		<import addon="script.module.requests" />
+		<import addon="script.module.beautifulsoup4" />
+		<import addon="script.module.metahandler" version="5.0.1a" optional="true" />
+		<import addon="plugin.video.youtube" optional="true" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="umbrella.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<item library="resources\lib\context\addtoLibrary.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Add to Library</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.addtoLibrary)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\traktManager.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Trakt Manager</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.traktManager)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,season) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearProviders.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Clear Providers</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.clearProviders)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]] |
+					[String.Contains(Container.FolderPath,videodb://) +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\clearBookmark.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Clear Item Bookmark</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.clearBookmark)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					ListItem.IsResumable +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\rescrape.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Rescrape Item</label>
+				<visible>
+					[!String.IsEmpty(Window(home).Property(context.umbrella.rescrape)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]]
+				</visible>
+			</item>
+			<item library="resources\lib\context\libRescrape.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Rescrape Lib Item</label>
+				<visible>
+					[String.Contains(Container.FolderPath,videodb://) | String.Contains(Container.ListItem.FolderPath,videodb://)] +
+					[String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.movieLib.path)) | String.Contains(Container.ListItem.Path,Window(home).Property(umbrella.tvLib.path))] +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\playFromHere.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Play from here</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.playFromHere)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+			<item library="resources\lib\context\autoPlay.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Auto Play</label>
+				<visible>
+					String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.autoPlay)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\sourceSelect.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Source Select</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(umbrella.autoPlay.enabled)) +
+					!String.IsEmpty(Window(home).Property(context.umbrella.sourceSelect)) +
+					String.StartsWith(ListItem.FolderPath,plugin://plugin.video.umbrella/?action=play) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\findSimilar.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Find Similar</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.findSimilar)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,tvshow) | String.IsEqual(ListItem.dbtype,movie)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseSeries.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Browse Series</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseSeries)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					[String.IsEqual(ListItem.dbtype,episode) | String.IsEqual(ListItem.dbtype,tvshow)]
+				</visible>
+			</item>
+			<item library="resources\lib\context\browseEpisodes.py">
+				<label>[B][COLOR $INFO[Window(home).Property(context.umbrella.highlightcolor)]]Umbrella[/COLOR][/B] - Browse Episodes</label>
+				<visible>
+					!String.IsEmpty(Window(home).Property(context.umbrella.browseEpisodes)) +
+					String.StartsWith(ListItem.path,plugin://plugin.video.umbrella/) +
+					String.IsEqual(ListItem.Property(isUmbrella_widget),true) +
+					String.IsEqual(ListItem.dbtype,episode)
+				</visible>
+			</item>
+		</menu>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.python.module" library="resources/lib/" />
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>true</reuselanguageinvoker>
+		<summary lang="en">[B]Umbrella[/B] - We do not host any of the contents streamed</summary>
+		<description lang="en">[B]Umbrella[/B][CR] This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.[CR]The author does not host any of the content in this addon and takes no responsibility for content found. We do not know anything about a lab under Raccoon City.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum />
+		<website>https://umbrellaplug.github.io</website>
+		<source>https://raw.githubusercontent.com/umbrellaplug/umbrellaplug.github.io/</source>
+		<disclaimer lang="en">The author of this addon does not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+			<screenshot>resources/screenshots/screenshot001.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot002.jpg</screenshot>
+			<screenshot>resources/screenshots/screenshot003.jpg</screenshot>
+		</assets>
+		<news>
+[B][COLOR black]Update - v6.6.18 - Feb 21th, 2023[/COLOR][/B]
+--[FIX][I] Fixed issue with playlist creation for playnext from widgets.[/I]
+		</news>
+	</extension>
+
+</addon><addon id="plugin.video.youtube" name="YouTube" version="7.0.0" provider-name="anxdpanic, bromix">
+    <requires>
+        <import addon="xbmc.python" version="3.0.1" />
+        <import addon="script.module.requests" version="2.12.4" />
+        <import addon="inputstream.adaptive" version="20.3.1" />
+        <import addon="script.module.inputstreamhelper" version="0.2.2" optional="true" />
+        <import addon="script.module.infotagger" version="0.0.5" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="resources/lib/default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="resources/lib/startup.py" />
+    <extension point="xbmc.python.module" library="resources/lib/" />
+    <extension point="xbmc.addon.metadata">
+        <news>
+[rem] removed support for versions of Kodi pre-Nexus v20
+[rem] removed support for python 2
+[rem] removed dependency on six
+[upd] Translations updated from Kodi Weblate
+        </news>
+        <assets>
+            <icon>resources/media/icon.png</icon>
+            <fanart>resources/media/fanart.jpg</fanart>
+        </assets>
+        <platform>all</platform>
+        <license>GPL-2.0-only</license>
+        <forum>https://ytaddon.panicked.xyz/forum</forum>
+        <website>https://www.youtube.com</website>
+        <source>https://github.com/anxdpanic/plugin.video.youtube</source>
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+        <summary lang="bg_BG">Добавка за YouTube</summary>
+        <summary lang="cs_CZ">Plugin pro YouTube</summary>
+        <summary lang="da_DK">Plugin til YouTube</summary>
+        <summary lang="de_DE">Plugin für YouTube</summary>
+        <summary lang="el_GR">Πρόσθετο YouTube</summary>
+        <summary lang="en_GB">Plugin for YouTube</summary>
+        <summary lang="es_ES">Plugin para YouTube</summary>
+        <summary lang="es_MX">Complemento para YouTube</summary>
+        <summary lang="fi_FI">YouTube-lisäosa</summary>
+        <summary lang="fr_FR">Plugin pour YouTube</summary>
+        <summary lang="he_IL">תוסף עבור YouTube</summary>
+        <summary lang="hr_HR">Dodatak za YouTube</summary>
+        <summary lang="hu_HU">YouTube kiegészítő</summary>
+        <summary lang="id_ID">Pengaya untuk YouTube</summary>
+        <summary lang="it_IT">Plugin per YouTube</summary>
+        <summary lang="ko_KR">유튜브 플러그인</summary>
+        <summary lang="nb_NO">Tillegg for YouTube</summary>
+        <summary lang="nl_NL">Plugin voor YouTube</summary>
+        <summary lang="pl_PL">Wtyczka YouTube</summary>
+        <summary lang="ru_RU">Видеодополнение YouTube</summary>
+        <summary lang="sk_SK">Doplnok pre YouTube</summary>
+        <summary lang="tr_TR">YouTube için eklenti</summary>
+        <summary lang="vi_VN">Plugin dành cho YouTube</summary>
+        <summary lang="zh_CN">油管插件</summary>
+        <summary lang="zh_TW">YouTube附加元件</summary>
+        <description lang="bg_BG">YouTube е един от най-големите уеб сайтове за споделяне на видео в целия свят.</description>
+        <description lang="cs_CZ">YouTube je jedna z největších webových stránek světa sdílející video.</description>
+        <description lang="da_DK">YouTube er et af verdens største videodelingswebsteder.</description>
+        <description lang="de_DE">YouTube ist eines der größten Video-Sharing-Websites der Welt.</description>
+        <description lang="el_GR">Το YouTube είναι μία από τις μεγαλύτερες ιστοσελίδες διαμοιρασμού βίντεο στον κόσμο.</description>
+        <description lang="en_GB">YouTube is one of the biggest video-sharing websites of the world.</description>
+        <description lang="es_ES">YouTube es uno de los sitios web más grande del mundo para compartir vídeos.</description>
+        <description lang="es_MX">YouTube es uno de los más grandes sitios web de intercambio de videos del mundo.</description>
+        <description lang="fi_FI">YouTube on yksi maailman suurimmista videoiden jakosivustoista.</description>
+        <description lang="fr_FR">YouTube est l'un des plus grands sites de partage vidéos du monde.</description>
+        <description lang="he_IL">YouTube הוא אחד מאתרי שיתוף הווידאו הגדולים בעולם.</description>
+        <description lang="hr_HR">YouTube je jedna od najvećih stranica za dijeljenje video sadržaja na svijetu.</description>
+        <description lang="hu_HU">A YouTube világ egyik legnagyobb videómegosztó weboldala.</description>
+        <description lang="id_ID">YouTube adalah salah satu situs web berbagi video terbesar di dunia.</description>
+        <description lang="it_IT">YouTube è uno dei più grandi siti di condivisione video del mondo.</description>
+        <description lang="ko_KR">유튜브는 세상에서 가장 큰 동영상 공유 사이트 중의 하나입니다.</description>
+        <description lang="nb_NO">YouTube er en av verdens største nettsider for videodeling.</description>
+        <description lang="nl_NL">YouTube is een van de grootste videodelenwebsite in de hele wereld.</description>
+        <description lang="pl_PL">YouTube jest jednym z największych na świecie serwisów udostępniania wideo.</description>
+        <description lang="ru_RU">YouTube - популярнейший видеохостинговый сайт, предоставляющий пользователям услуги хранения, доставки и показа видео.</description>
+        <description lang="sk_SK">YouTube je jednou z najväčších stránok na zdieľanie videa na svete.</description>
+        <description lang="tr_TR">YouTube, dünya üzerindeki en büyük video paylaşma platformlarından birisidir.</description>
+        <description lang="vi_VN">YouTube là một trong những trang web chia sẻ video lớn nhất trên thế giới.</description>
+        <description lang="zh_CN">油管是世界上最大的视频分享网站之一。</description>
+        <description lang="zh_TW">Youtube 是全世界最大的影片分享網站。</description>
+        <disclaimer lang="cs_CZ">Tento plugin není schválen společností Google</disclaimer>
+        <disclaimer lang="da_DK">Dette plugin er ikke godkendt af Google</disclaimer>
+        <disclaimer lang="de_DE">Dieses Plugin ist nicht von Google befürwortet</disclaimer>
+        <disclaimer lang="el_GR">Η παρούσα μικροεφαρμογή δεν έχει υϊοθετηθεί από την Google</disclaimer>
+        <disclaimer lang="en_GB">This plugin is not endorsed by Google</disclaimer>
+        <disclaimer lang="es_ES">Este add-on no está respaldado por Google</disclaimer>
+        <disclaimer lang="es_MX">Este complemento no está respaldado por Google</disclaimer>
+        <disclaimer lang="fi_FI">Google ei tue tätä lisäosaa</disclaimer>
+        <disclaimer lang="fr_FR">Ce module n'est pas validé par Google</disclaimer>
+        <disclaimer lang="hr_HR">Ovaj dodatak nije podržan od strane Googlea</disclaimer>
+        <disclaimer lang="id_ID">Plugin ini tidak didukung oleh Google</disclaimer>
+        <disclaimer lang="it_IT">Questo plugin non è approvato da Google</disclaimer>
+        <disclaimer lang="ko_KR">이 플러그인은 Google의 허가를 받지 않았습니다</disclaimer>
+        <disclaimer lang="nl_NL">Deze plug-in wordt niet door Google ondersteund</disclaimer>
+        <disclaimer lang="pl_PL">Ta wtyczka nie jest zatwierdzona przez Google</disclaimer>
+        <disclaimer lang="ru_RU">Плагин не поддерживается Google</disclaimer>
+        <disclaimer lang="sk_SK">Tento doplnok nie je schválený spoločnosťou Google</disclaimer>
+        <disclaimer lang="tr_TR">Bu eklenti Google tarafından üretilmemiştir</disclaimer>
+        <disclaimer lang="vi_VN">Plugin này không được xác nhận bởi Google</disclaimer>
+        <disclaimer lang="zh_CN">此插件未被谷歌认可</disclaimer>
+        <disclaimer lang="zh_TW">此附加元件未由Google支持</disclaimer>
+    </extension>
+</addon><addon id="resource.font.robotocjksc" name="Roboto CJKSC" version="0.0.1" provider-name="jurialmunkey">
     <requires>
         <import addon="kodi.resource" version="1.0.0" />
     </requires>
