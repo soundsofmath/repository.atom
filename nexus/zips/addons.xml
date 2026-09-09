@@ -352,6 +352,20 @@ v1.0.1 (2019-08-06)
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="script.thepromise.artwork" name="ThePromise Artwork" version="22.7.31" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>ThePromise Artwork</summary>
+        <description>ThePromise Artwork</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="script.toolbox" name="ToolBox Script" version="2.0.0" provider-name="phil65,sualfred">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
