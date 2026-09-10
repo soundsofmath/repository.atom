@@ -95,6 +95,16 @@
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.moria.artwork" version="1.1.0" name="Moria Artwork" provider-name="host505">
+	<requires>
+		
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Moria Addon</summary>
+		<description />
+		<platform>all</platform>
+	</extension>
 </addon><addon id="script.openweathermap.maps" name="OpenWeatherMap Maps" version="1.0.6" provider-name="ronie">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
@@ -115,6 +125,20 @@
 		</assets>
 		<news>- fix crash on timeout</news>
 	</extension>
+</addon><addon id="script.shazam.artwork" version="0.0.1" name="[COLOR=darkorange]Shazam Artwork[/COLOR]" provider-name="Patriot">
+    <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Shazam Artwork</summary>
+        <description>Provides Shazam Artwork</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="script.skin.helper.colorpicker" name="Skin Helper Service ColorPicker" version="2.0.1" provider-name="sualfred,marcelveldt">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
@@ -283,6 +307,20 @@ v1.0.1 (2019-08-06)
     <fanart>fanart.jpg</fanart>
   </assets>
 </extension>
+</addon><addon id="script.thepromise.artwork" name="ThePromise Artwork" version="22.7.31" provider-name="[COLORpurple]• [COLORorchid]Tech [COLORdarkorchid]E [COLORplum]Coyote [COLORpurple]•[/COLOR]">
+    <requires>
+        
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary>ThePromise Artwork</summary>
+        <description>ThePromise Artwork</description>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="script.toolbox" name="ToolBox Script" version="1.1.2" provider-name="phil65">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
