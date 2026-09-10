@@ -2716,6 +2716,19 @@ Use this to organize your Favourites.
 		<description lang="en">White Weather Icons</description>
 		<platform>all</platform>
 	</extension>
+</addon><addon id="resource.uisounds.arcticfuse3" version="1.0.1" name="Arctic Fuse 3 UI Sounds" provider-name="Team Arctic Fuse 3">
+  <requires>
+    <import addon="kodi.resource" version="1.0.0" />
+  </requires>
+  <extension point="kodi.resource.uisounds" />
+  <extension point="kodi.addon.metadata">
+    <summary lang="en">Arctic Fuse 3 GUI sounds</summary>
+    <description lang="en">Arctic Fuse 3 GUI sounds</description>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="resource.uisounds.arctifuse" version="1.0.1" name="Arctic Fuse UI Sounds" provider-name="Team Arctic Fuse">
   <requires>
     <import addon="kodi.resource" version="1.0.0" />
