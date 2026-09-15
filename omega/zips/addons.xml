@@ -4183,7 +4183,6 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
         <source />
         <assets>
             <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
 </addon><addon id="skin.arctic.fuse.2" name="Arctic Fuse 2" provider-name="jurialmunkey" version="2.6.11">
