@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fonts>
+
+    <fontset id="Default" unicode="false">
+        <include>Font_Default</include>
+    </fontset>
+
+    <fontset id="NotoRoboto - Arabic / Hebrew" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">RobotoNotoCondensed-Black.ttf</param>
+            <param name="font_bold">RobotoNotoCondensed-Bold.ttf</param>
+            <param name="font_regular">RobotoNotoCondensed-Regular.ttf</param>
+            <param name="font_light">RobotoNotoCondensed-Light.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>
+
+    <fontset id="CJK - Chinese / Japanese / Korean" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</param>
+            <param name="font_bold">resource://resource.font.robotocjksc/RobotoCJKSC-Bold.ttf</param>
+            <param name="font_regular">resource://resource.font.robotocjksc/RobotoCJKSC-Regular.ttf</param>
+            <param name="font_light">resource://resource.font.robotocjksc/RobotoCJKSC-Light.ttf</param>
+            <param name="aspect_system">0.8</param>
+            <param name="aspect_standard">0.89</param>
+        </include>
+    </fontset>	
+
+    <fontset id="Gobold Thin" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">Gobold Thin.ttf</param>
+            <param name="font_bold">Gobold Thin.ttf</param>
+            <param name="font_regular">Gobold Thin.ttf</param>
+            <param name="font_light">Gobold Thin.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>
+
+    <fontset id="JuneGull" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">JuneGull.ttf</param>
+            <param name="font_bold">JuneGull.ttf</param>
+            <param name="font_regular">JuneGull.ttf</param>
+            <param name="font_light">JuneGull.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>
+
+    <fontset id="RockoFLF" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">RockoFLF.ttf</param>
+            <param name="font_bold">RockoFLF.ttf</param>
+            <param name="font_regular">RockoFLF.ttf</param>
+            <param name="font_light">RockoFLF.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>
+
+    <fontset id="VanillaExtractRegular" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">VanillaExtractRegular.ttf</param>
+            <param name="font_bold">VanillaExtractRegular.ttf</param>
+            <param name="font_regular">VanillaExtractRegular.ttf</param>
+            <param name="font_light">VanillaExtractRegular.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>
+
+    <fontset id="VinylCuts" unicode="true">
+        <include content="Font_Default">
+            <param name="font_black">VinylCuts.ttf</param>
+            <param name="font_bold">VinylCuts.ttf</param>
+            <param name="font_regular">VinylCuts.ttf</param>
+            <param name="font_light">VinylCuts.ttf</param>
+            <param name="aspect_system">0.8</param>
+        </include>
+    </fontset>	
+
+</fonts>
+
+
+
