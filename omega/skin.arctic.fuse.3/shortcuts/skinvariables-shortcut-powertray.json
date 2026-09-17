@@ -1,0 +1,34 @@
+[
+    {
+        "label": "File Manager",
+        "path": "ActivateWindow(filemanager)",
+        "icon": "special://skin/extras/icons/filebox.png",
+        "target": "",
+        "guid": "guid-1db101c4"
+    },
+    {
+        "label": "Configure TMDbHelper",
+        "path": "RunPlugin(plugin://plugin.video.themoviedb.helper/?info=dir_settings)",
+        "icon": "special://skin/extras/icons/configure.png",
+        "target": "",
+        "guid": "guid-ce9dfe3a"
+    },
+    {
+        "label": "Reload Skin",
+        "icon": "special://skin/extras/icons/paint-roller.png",
+        "path": "ReloadSkin",
+        "target": "",
+        "submenu": [],
+        "widgets": [],
+        "guid": "guid-36520e6a"
+    },
+    {
+        "label": "Quit",
+        "path": "Quit",
+        "icon": "special://skin/extras/icons/right-to-bracket.png",
+        "target": "",
+        "guid": "guid-d6870fc3"
+    }
+]
+
+
