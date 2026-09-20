@@ -3216,7 +3216,7 @@ Use this to organize your Favourites.
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.idna" name="idna" version="3.10.0" provider-name="Kim Davies">
+</addon><addon id="script.module.idna" name="idna" version="3.4.0" provider-name="Kim Davies">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
   </requires>
