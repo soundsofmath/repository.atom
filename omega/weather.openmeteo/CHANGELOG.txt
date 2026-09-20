@@ -1,3 +1,45 @@
+v1.0.29 (12/11/2025)
+--------------------
+* Personalized weather forecast should now work with any skin
+* Forecast support up to 12 days
+* Reworked addon settings
+
+v1.0.26 (4/11/2025)
+--------------------
+* Personalized weather forecast
+* Alternative weather API for skin developers
+* Added timeofday window properties
+* Added snow window property
+* Added season window property
+* Added new default WMO weather icons
+* Added setting to disable map layers for any location
+  Note: Only the first location is enabled by default
+* Do not rely on addon settings for geolocation
+* Fixed rare exception if weather data is not up to date
+* Fixed addon settings corruption on some android devices (hopefully)
+* Added translation: Italian (thanks @mapi68)
+* Added translation: Russian (thanks @feruk)
+
+v1.0.14 (22/07/2025)
+--------------------
+* Added pressure units: hPa, kPa, mmHg, inHg, psi
+* Adjust map download timers
+* Fix geolocation loop on broken KODI devices
+* Added translation: Chinese (thanks @wabisabi926)
+
+v1.0.10 (22/05/2025)
+--------------------
+* Custom location names
+* Use highest weather code for condition alert
+* Re-download maps & layers when changing mapzoom level
+* Removing locations should now work properly
+* Fix 12h/24h time for weather alerts
+* Added translation: Slovak (thanks @frederik877)
+* Added translation: Tamil (thanks @தமிழ்நேரம்)
+* Added translation: Czech (thanks @Tomas)
+* Added translation: Indonesian (thanks @Nao3Line)
+* Added translation: Hungarian (thanks @frodo19)
+
 v1.0.0 (15/12/2024)
 -------------------
 * Official KODI repository

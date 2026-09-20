@@ -80,7 +80,7 @@ def getdata(type, loc, map=None):
 
 	# URL
 	if type == 'weather':
-		url = config.map_api.get(type).format(map[0], map[1])
+		url = config.map_api.get(type).format(map[0], map[1], config.maxdays)
 	elif type == 'airquality':
 		url = config.map_api.get(type).format(map[0], map[1])
 	elif type == 'sun':
@@ -159,7 +159,6 @@ def getrvindex(type):
 # Get location (GeoIP)
 def getloc(locid):
 	utils.log(f'Geolocation ...')
-	utils.setsetting('geoip', 'true')
 
 	# Get location
 	try:
@@ -192,6 +191,22 @@ def getloc(locid):
 		utils.setsetting(f'loc{locid}lon', str(location["longitude"]))
 		utils.setsetting(f'loc{locid}tz', str(location["timezone"]))
 
+# Clear location
+def clearloc(locid, last=False):
+	if last:
+		utils.setsetting(f'loc{locid}data', '321318000')
+		utils.setsetting(f'loc{locid}map', '321318000')
+		utils.setsetting(f'loc{locid}rv', '321318000')
+		utils.setsetting(f'loc{locid}gc', '321318000')
+	else:
+		utils.setsetting(f'loc{locid}', '')
+		utils.setsetting(f'loc{locid}user', '')
+		utils.setsetting(f'loc{locid}alert', 'true')
+		utils.setsetting(f'loc{locid}utz', 'false')
+		utils.setsetting(f'loc{locid}tz', '')
+		utils.setsetting(f'loc{locid}lat', '0')
+		utils.setsetting(f'loc{locid}lon', '0')
+
 # Set location
 def setloc (locid):
 	utils.log(f'Search dialog ...')
@@ -201,57 +216,70 @@ def setloc (locid):
 	keyboard = xbmc.Keyboard(input, utils.loc(14024), False)
 	keyboard.doModal()
 
-	if (keyboard.isConfirmed() and keyboard.getText()):
+	if keyboard.isConfirmed():
+		search = keyboard.getText()
 
-		try:
-			locs   = []
-			search = keyboard.getText()
-			url    = config.map_api.get('search').format(search)
-			data   = json.loads(geturl(url))['results']
-		except:
-			utils.log('No results found', 2)
-			dialog.ok('Open-meteo', utils.loc(284))
+		# No changes
+		if search == input:
+			utils.log(f'[LOC{locid}] No changes')
+
+		# Remove location
+		elif search == '':
+			check = utils.setting(f'loc{int(locid)+1}')
+
+			if not check:
+				utils.log(f'[LOC{locid}] Removed')
+				clearloc(locid)
+				clearloc(locid, True)
+
+		# Search location
 		else:
-			for item in data:
-				li = xbmcgui.ListItem(f'{item.get("name")}, {item.get("admin1")}, {item.get("country_code")} (Lat: {item.get("latitude")}, Lon: {item.get("longitude")})')
-				locs.append(li)
+			try:
+				locs   = []
+				url    = config.map_api.get('search').format(search)
+				data   = json.loads(geturl(url))['results']
+			except:
+				utils.log('[LOC{locid}] No results')
+				dialog.ok('Open-meteo', utils.loc(284))
+			else:
+				for item in data:
+					li = xbmcgui.ListItem(f'{item.get("name")}, {item.get("admin1")}, {item.get("country_code")} (Lat: {item.get("latitude")}, Lon: {item.get("longitude")})')
+					locs.append(li)
 
-			select = dialog.select(utils.loc(396), locs, useDetails=True)
+				select = dialog.select(utils.loc(396), locs, useDetails=True)
 
-			if select != -1:
+				if select != -1:
 
-				# Cleanup cache dir
-				dir   = f'{config.addon_cache}/{locid}'
-				files = sorted(list(Path(dir).glob('*')))
+					# Cleanup cache dir
+					dir   = f'{config.addon_cache}/{locid}'
+					files = sorted(list(Path(dir).glob('*')))
 
-				for file in files:
-					os.remove(file)
+					for file in files:
+						os.remove(file)
 
-				# Set location
-				utils.log(f'Location {locid}: {data[select].get("name")}, {data[select].get("admin1")}, {data[select].get("country_code")} {data[select].get("latitude")} {data[select].get("longitude")}')
-				utils.setsetting(f'loc{locid}', f'{data[select].get("name")}, {data[select].get("admin1")}, {data[select].get("country_code")}')
-				utils.setsetting(f'loc{locid}lat', data[select]["latitude"])
-				utils.setsetting(f'loc{locid}lon', data[select]["longitude"])
-				utils.setsetting(f'loc{locid}tz', data[select]["timezone"])
+					# Set location
+					utils.log(f'Location {locid}: {data[select].get("name")}, {data[select].get("admin1")}, {data[select].get("country_code")} {data[select].get("latitude")} {data[select].get("longitude")}')
+					utils.setsetting(f'loc{locid}', f'{data[select].get("name")}, {data[select].get("admin1")}, {data[select].get("country_code")}')
+					utils.setsetting(f'loc{locid}lat', data[select]["latitude"])
+					utils.setsetting(f'loc{locid}lon', data[select]["longitude"])
+					utils.setsetting(f'loc{locid}tz', data[select]["timezone"])
 
-				# Wait for settings dialog
-				while xbmcgui.getCurrentWindowDialogId() == 10140:
-					utils.log(f'Waiting for settings dialog ...')
-					utils.monitor.waitForAbort(1)
+					# Wait for settings dialog
+					while xbmcgui.getCurrentWindowDialogId() == 10140:
+						utils.log(f'Waiting for settings dialog ...')
+						utils.monitor.waitForAbort(1)
 
-					if utils.monitor.abortRequested():
-						return
+						if utils.monitor.abortRequested():
+							return
 
-				# Cleanup lastupdate
-				utils.setsetting(f'loc{locid}data', '321318000')
-				utils.setsetting(f'loc{locid}map', '321318000')
-				utils.setsetting(f'loc{locid}layer', '321318000')
+					# Cleanup lastupdate
+					clearloc(locid, True)
 
-				# Refresh
-				if int(utils.settingrpc("weather.currentlocation")) == int(locid):
-					weather.Main(str(locid), mode='download')
-					weather.Main(str(locid), mode='update')
-				else:
-					weather.Main(str(locid), mode='download')
-					weather.Main(str(locid), mode='updatelocs')
+					# Refresh
+					if int(utils.settingrpc("weather.currentlocation")) == int(locid):
+						weather.Main(str(locid), mode='download')
+						weather.Main(str(locid), mode='update')
+					else:
+						weather.Main(str(locid), mode='download')
+						weather.Main(str(locid), mode='updatelocs')
 

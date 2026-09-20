@@ -8,16 +8,20 @@ from . import api
 def Main():
 	startup = True
 	utils.log(f'Starting service ...')
+	utils.setsetting('service', 'idle')
 	utils.log(config.addon_info, 3)
+
+	# Geolocation
+	if not utils.geoip() and not utils.setting('loc1'):
+		utils.geoip(True)
+		utils.setsetting('service', 'running')
+		weather.Main('1', mode='geoip')
+		weather.Main('1', mode='download')
+		utils.setsetting('service', 'idle')
 
 	# Service
 	while not utils.monitor.abortRequested():
 		utils.setsetting('service', 'running')
-
-		# Geolocation
-		if startup and not utils.setting('geoip'):
-			weather.Main('1', mode='geoip')
-			weather.Main('1', mode='download')
 
 		# Init
 		if utils.settingrpc('weather.addon') == 'weather.openmeteo':
@@ -63,10 +67,4 @@ def Main():
 
 	utils.log(f'Stopping service ...')
 	api.s.close()
-
-	# Workaround KODI issue (v0.9.5)
-	try:
-		utils.setsetting('service', 'stopped')
-	except:
-		pass
 
