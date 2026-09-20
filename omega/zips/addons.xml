@@ -383,7 +383,7 @@
   <requires>
     <import addon="xbmc.core" version="0.1.0" />
   </requires>
-</addon><addon id="metadata.album.universal" name="Universal Album Scraper" version="3.1.10" provider-name="Olympia, Team Kodi">
+</addon><addon id="metadata.album.universal" name="Universal Album Scraper" version="3.1.20" provider-name="Olympia, Team Kodi">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
     <import addon="metadata.common.allmusic.com" version="3.1.0" />
@@ -400,11 +400,11 @@
         <icon>icon.png</icon>
     </assets>
     <summary lang="af_ZA">Universele Skraper vir Albums</summary>
-    <summary lang="ast_ES">Scraper universal pa álbumes</summary>
     <summary lang="be_BY">Універсальны сродак атрымання звестак пра альбомы</summary>
     <summary lang="bg_BG">Универсален източник на информация за албуми</summary>
+    <summary lang="bs_BA">Univerzalni strugač za albume</summary>
     <summary lang="ca_ES">Raspador universal per àlbums</summary>
-    <summary lang="cs_CZ">Univerzální zdroj získávání dat pro alba</summary>
+    <summary lang="cs_CZ">Univerzální zdroj informací o albech</summary>
     <summary lang="cy_GB">Crafwr Albymau Cyffredinol</summary>
     <summary lang="da_DK">Universel scraper til albummer</summary>
     <summary lang="de_DE">Universeller Scraper für Alben</summary>
@@ -434,7 +434,7 @@
     <summary lang="mk_MK">Универзален превземач за Албуми</summary>
     <summary lang="ms_MY">Pengikis Universel untuk Album</summary>
     <summary lang="nb_NO">Universalskraper for album</summary>
-    <summary lang="nl_NL">Universele Scraper voor Albums</summary>
+    <summary lang="nl_NL">Universele scraper voor albums</summary>
     <summary lang="pl_PL">Uniwersalny ekstraktor informacji o albumach muzycznych</summary>
     <summary lang="pt_BR">Scraper Universal para Álbuns</summary>
     <summary lang="pt_PT">Colector universal para álbuns</summary>
@@ -445,15 +445,15 @@
     <summary lang="sv_SE">Universiell albumskrapa</summary>
     <summary lang="ta_IN">ஆல்பங்களின் ஒட்டு மொத்தமான சுரண்டி</summary>
     <summary lang="tr_TR">Albümler için Evrensel Bilgi Sağlayıcı</summary>
-    <summary lang="uk_UA">Універсальний здирач для альбомів</summary>
+    <summary lang="uk_UA">Універсальний екстрактор для альбомів</summary>
     <summary lang="vi_VN">Trình lấy dữ liệu album từ nhiều nguồn</summary>
     <summary lang="zh_CN">通用音乐专辑信息刮削器</summary>
-    <summary lang="zh_TW">通用音樂專輯訊息搜刮器</summary>
+    <summary lang="zh_TW">通用音樂專輯訊息爬蟲</summary>
     <description lang="af_ZA">Hierdie skraper kollekteer inligting vanaf die volgende ondersteunde werwe: MusicBrainz, last.fm, allmusic.com en amazon.de, terwyl kunswerke gegryp word vanaf: fanart.tv, last.fm en allmusic.com. Dit kan veld vir veld gestel word vanaf watter werf jy die spesifieke inligting wil hê.[CR][CR]Die aanvaklike soektog word altyd op MusicBrainz gedoen. Ingeval skakels van allmusic en/of amazon.de nie bygevoeg is op die MusicBrainz werf, kan velde vanaf allmusic.com en/of amazon.de nie gaan haal word nie (egter baie maklik om daardie ontbrekende skakels by te voeg).</description>
-    <description lang="ast_ES">Esti scraper recueye información de les siguientes webs: MusicBrainz, last.fm, allmusic.com y amazon.de, mentanto obtién les imáxenes de fanart.tv, last.fm y allmusic.com. Permite especificar de qué web se quier obtener la información pa cada campu. ⏎ ⏎ La gueta inicial faise siempre en MusicBrainz. En casu de que los enllaces a allmusic y/o amazon.de nun tean amestaos na web de MusicBrainz, nun van poder obtenese los campos d'información d' estos dos sitios (magar que ye mui fácil amestar esos enllaces que falten)</description>
     <description lang="bg_BG">Сваля информация от следните сайтове: MusicBrainz, last.fm, allmusic.com и amazon.de. Изобрания извлича от: fanart.tv, last.fm и allmusic.com. Можете да определите от кой сайт каква информация да се сваля.[CR][CR]Първоначалното търсене винаги се прави в MusicBrainz. Когато не са налични препратки към allmusic и/или amazon.de на сайта на MusicBrainz извличането на информация от allmusic.com и/или amazon.de става невъзможно (добавянето им е много лесно).</description>
+    <description lang="bs_BA">Ovaj strugač prikuplja informacije sa sljedećih podržanih web lokacija: MusicBrainz, last.fm, allmusic.com i amazon.de, dok preuzima ilustracije sa: fanart.tv, last.fm i allmusic.com. Može se postaviti polje po polje sa koje stranice želite te specifične informacije.[CR][CR]Početna pretraga se uvijek vrši na MusicBrainz-u. U slučaju da linkovi za allmusic i/ili amazon.de nisu dodani na MusicBrainz stranicu, polja sa allmusic.com i/ili amazon.de ne mogu se preuzeti (vrlo je lako dodati te nedostajuće linkove).</description>
     <description lang="ca_ES">Aquest raspador recull informació dels següents llocs: MusicBrainz, last.fm, allmusic.com i amazon.de, alhora que agafa art de: fanart.tv, last.fm i allmusic.com. Es pot configurar camp a camp des de quin lloc voleu la informació específica. [CR][CR]La cerca inicial es realitza sempre a MusicBrainz. Els camps d'allmusic i d'amazon.de no es poden obtenir en el cas que els enllaços d'allmusic i d'amazon.de no siguin al lloc web de MusicBrainz (tot i que els enllaços que falten són fàcils d'afegir).</description>
-    <description lang="cs_CZ">Tento zdroj získává data z následujících podporovaných stránek: MusicBrainz, last.fm, allmusic.com and amazon.de, while grabs artwork from: fanart.tv, last.fm a allmusic.com. Je možno podrobně nastavit, které informace si přejete získat ze kterých stránek.[CR][CR]Prvotní vyhledání je vžy provedeno na MusicBrainz. V případě, že odkaz pro allmusic a nebo amazon.de není přidaný na stránku MusicBrainz, není možné údaje z allmusic.com a amazon.de stáhnout (avšak je velmi snadné tyto chybějící odkazy přidat).</description>
+    <description lang="cs_CZ">Tento zdroj informací získává údaje z následujících podporovaných stránek: MusicBrainz, last.fm, allmusic.com a amazon.de a grafiku ze stránek fanart.tv, last.fm a allmusic.com. U jednotlivých polí lze nastavit, z které stránky se mají konkrétní údaje získávat.[CR][CR]Úvodní vyhledávání se vždy provádí v MusicBrainz. Pokud na MusicBrainz nejsou přidány odkazy na allmusic a/nebo amazon.de, údaje z allmusic.com a/nebo amazon.de nelze načíst (chybějící odkazy lze ale velmi snadno doplnit).</description>
     <description lang="cy_GB">Mae'r crafwr yn casglu gwybodaeth o'r gwefannau canlynol: MusicBrainz, last.fm, allmusic.com ac amazon.de, tra'n cipio gwaith celf o: fanart.tv, last.fm and allmusic.com. Mae modd ei osod fesul maes i ddewis pa wefan i gasglu gwybodaeth benodol.[CR][CR]Bydd y chwilio cychwynnol yn cael ei wneud ar MusicBrainz. Rhag ofn nad yw dolen allmusic wedi ei osod ar wefan MusicBrainz nid oes modd estyn meysydd o allmusic.com (mae'n hawdd gosod y dolenni coll hynny)</description>
     <description lang="da_DK">Denne scraper samler information fra følgende sider: MusicBrainz, last.fm, allmusic.com og amazon.de og henter illustrationer fra: fanart.tv, last.fm og allmusic.com. Det kan indstilles felt for felt, fra hvilket websted du ønsker den specifikke information.[CR][CR]Den indledende søgning udføres altid på MusicBrainz. I tilfælde af at allmusic og/eller amazon.de-links ikke tilføjes på MusicBrainz-siden, kan felter fra allmusic.com og/eller amazon.de ikke hentes (men det er helt enkelt at tilføje de manglende links).</description>
     <description lang="de_DE">Dieser Scraper sammelt Informationen von den folgenden unterstützten Websites: MusicBrainz, Last.fm, Allmusic.com und Amazon.de. Es werden dabei Grafiken von den folgenden Seiten geladen: Fanart.tv, Last.fm und Allmusic.com. Von welcher Seite die Informationen geladen werden, kann einzeln konfiguriert werden. [CR][CR]Die initiale Suche wird immer über MusicBrainz durchgeführt. Sollten keine Allmusic- und/oder Amazon.de-Links auf der MusicBrainz-Seite gesetzt worden sein, können Felder von Allmusic.com und/oder Amazon.de nicht geladen werden (fehlende Links können jedoch sehr einfach hinzugefügt werden).</description>
@@ -462,7 +462,7 @@
     <description lang="en_NZ">This scraper collects information from the following supported sites: MusicBrainz, last.fm, allmusic.com and amazon.de, while grabs artwork from: fanart.tv, last.fm and allmusic.com. It can be set field by field that from which site you want that specific information.[CR][CR]The initial search is always done on MusicBrainz. In case allmusic and/or amazon.de links are not added on the MusicBrainz site, fields from allmusic.com and/or amazon.de cannot be fetched (very easy to add those missing links though).</description>
     <description lang="en_US">This scraper collects information from the following supported sites: MusicBrainz, last.fm, allmusic.com and amazon.de, while grabs artwork from: fanart.tv, last.fm and allmusic.com. It can be set field by field that from which site you want that specific information.[CR][CR]The initial search is always done on MusicBrainz. In case allmusic and/or amazon.de links are not added on the MusicBrainz site, fields from allmusic.com and/or amazon.de cannot be fetched (very easy to add those missing links though).</description>
     <description lang="es_AR">Este scraper recolecta información de las siguientes webs: MusicBrainz, last.fm, allmusic.com y amazon.de, mientras obtiene las imágenes de fanart.tv, last.fm y allmusic.com. Permite especificar de qué web se quiere obtener la información para cada campo. ⏎ ⏎ La búsqueda inicial se realiza siempre en MusicBrainz. En caso de que los enlaces a allmusic y/o amazon.de no estén añadidos en la web de MusicBrainz, no se podrán obtener los campos de información de estos dos sitios (aunque es muy fácil añadir esos enlaces que faltan).</description>
-    <description lang="es_ES">Este scraper recolecta información de las siguientes webs: MusicBrainz, last.fm, allmusic.com y amazon.de, mientras obtiene las imágenes de fanart.tv, last.fm y allmusic.com. Permite especificar de qué web se quiere obtener la información para cada campo. ⏎ ⏎ La búsqueda inicial se realiza siempre en MusicBrainz. En caso de que los enlaces a allmusic y/o amazon.de no estén añadidos en la web de MusicBrainz, no se podrán obtener los campos de información de estos dos sitios (aunque es muy fácil añadir esos enlaces que faltan).</description>
+    <description lang="es_ES">Este scraper recopila información de las siguientes webs: MusicBrainz, last.fm, allmusic.com y amazon.de, mientras obtiene las imágenes de fanart.tv, last.fm y allmusic.com. Permite especificar de qué web se quiere obtener la información para cada campo. ⏎ ⏎ La búsqueda inicial se realiza siempre en MusicBrainz. En caso de que los enlaces a allmusic y/o amazon.de no estén añadidos en la web de MusicBrainz, no se podrán obtener los campos de información de estos dos sitios (aunque es muy fácil añadir esos enlaces que faltan).</description>
     <description lang="es_MX">Este scraper obtiene información de los siguientes sitios soportados: MusicBrainz, last.fm, allmusic.com y amazon.de, mientras obtiene artwork de: fanart.tv, last.fm y allmusic.com. Puede ser configurado campo por campo de que sitio quieres esa información específica.[CR][CR]La búsqueda inicial siempre es hecha en MusicBrainz. En el caso en que los enlaces de allmusic y/o amazon.de no son agregados en el sitio de MusicBrainz, campos de allmusic.com y/o amazon.de no pueden ser obtenidos. (De cualquier manera es muy fácil agregar esos enlaces no encontrados).</description>
     <description lang="et_EE">See kaabits kogub infot järgmistelt lehtedelt: MusicBrainz, last.fm, allmusic.com ja amazon.de, pilte: fanart.tv, last.fm ja allmusic.com. Võimalik on välja kaupa määrata, milliselt lehelt mis infot soovid.[CR][CR]Esmane otsing tehakse alati saidilt MusicBrainz. Kui MusicBrainz lehele pole allmusic ja/või amazon.de linke lisatud, siis neilt lehtedelt sisu hankida ei saa (puuduvaid linke saad ise lihtsalt lisada).</description>
     <description lang="eu_ES">Arraspatzaile honek hurrengo webguneetatik eskuratzen du informazioa: MusicBrainz, last.fm, allmusic.com eta amazon.de, eta azalak, berriz, hauetatik: fanart.tv, last.fm and allmusic.com. Eremu bakoitzarentzako aukera daiteke nondik eskuratu informazio konkretua.[CR][CR]Hasierako bilaketa beti MusicBrainz webgunean egiten da. allmusic eta/edo amazon.de estekak MusicBrainz webgunean ez badaude gehituak, allmusic eta/edo amazon.de webguneetako eremuak ezingo dira eskuratu (hala eta guztiz ere, falta litzatekeen esteka horiek gehitzea oso erraza da).</description>
@@ -483,7 +483,7 @@
     <description lang="mk_MK">This scraper collects information from the following supported sites: MusicBrainz, last.fm, allmusic.com and amazon.de, while grabs artwork from: fanart.tv, last.fm and allmusic.com. It can be set field by field that from which site you want that specific information.⏎ ⏎ The initial search is always done on MusicBrainz. In case allmusic and/or amazon.de links are not added on the MusicBrainz site, fields from allmusic.com and/or amazon.de cannot be fetched (very easy to add those missing links though).</description>
     <description lang="ms_MY">Pengikis ini mendapatkan maklumat dari laman tersokong berikut: MusicBrainz, last.fm, allmusic.com dan amazon.de, manakala ia dapatkan kerja seni dari: fanart.tv, last.fm dan allmusic.com. Ia boleh tetapkan medan mengikut medan supaya anda boleh dapatkan maklumat khusus dari laman tertentu.⏎[CR]⏎[CR]Gelintar awalan sentiasa bermula dengan MusicBrainz. Pautan allmusic dan/atau amazon.de tidak ditambah ke laman MusicBrainz, medan dari allmusic.com dan/atau amazon.de sukar didapati.</description>
     <description lang="nb_NO">Denne skraperen innsamler informasjon fra følgende nettsteder: MusicBrainz, last.fm, allmusic.com og amazon.de, mens den henter grafikk fra: fanart.tv, last.fm og allmusic.com. Du kan selv bestemme hvilken kilde du ønsker å hente informasjon fra.[CR][CR]Det første søket blir alltid gjort med MusicBrainz. Hvis allmusic.com og/eller amazon.de linker ikke tilgjengelig hos MusicBrainz, kan ikke felter fra allmusic.com og/eller amazon.de hentes (dog er det er veldig lett å legge til de manglende linkene).</description>
-    <description lang="nl_NL">Deze scraper verzamelt informatie van de volgende ondersteunde sites: MusicBrainz, Last.fm, allmusic.com en amazon.de. Afbeeldingen worden verzameld van de volgende sites: fanart.tv, Last.fm en allmusic.com. Per veld kan aangegeven worden van welke site je de specifieke informatie wil halen. De initiële zoekopdracht wordt altijd gedaan van MusicBrainz.[CR][CR]In het geval dat links naar allmusic en/of amazon.de niet zijn toegevoegd op de MusicBrainz site, kunnen velden niet worden opgehaald bij deze sites. (Het is niet moeilijk om de ontbrekende links toe te voegen.)</description>
+    <description lang="nl_NL">Deze scraper verzamelt informatie van de volgende ondersteunde sites: MusicBrainz, Last.fm, allmusic.com en amazon.de. Afbeeldingen worden verzameld van de volgende sites: fanart.tv, Last.fm en allmusic.com. Per veld kan aangegeven worden van welke site je de specifieke informatie wil halen. De initiële zoekopdracht wordt altijd gedaan van MusicBrainz.[CR][CR]In het geval dat links naar allmusic en/of amazon.de niet zijn toegevoegd op de MusicBrainz site, kunnen velden niet worden opgehaald bij deze sites (Het is niet moeilijk om de ontbrekende links toe te voegen).</description>
     <description lang="pl_PL">Ten scraper zbiera informacje z następujących stron: MusicBrainz, last.fm, allmusic.com oraz amazon.de, a grafiki pobiera z: fanart.tv, last.fm i allmusic.com. Dla każdego pola z informacjami można wybrać osobną stronę.[CR][CR]Początkowe wyszukiwanie jest zawsze wykonywane na MusicBrainz. Gdy linki do allmusic i/lub amazon.de nie są dodane na stronie MusicBrainz, nie można pobrać tych pól z allmusic.com i/lub amazon.de (pomimo to brakujące linki można bardzo łatwo dodać).</description>
     <description lang="pt_BR">Este scraper coleta informações nos seguintes sites:[CR]MusicBrainz, last.fm, allmusic.com e amazon.de, enquanto pega os artwork de: fanart.tv, last.fm and allmusic.com. O Mesmo pode ser configurara campo a campo em que site você quer obter informações específicas. A procura inicial é sempre feita no MusicBrainz. No caso allmusic e/ou amazon.de não terem sido adicionados no site MusicBrainz, campos de allmusic.com e/ou amazona.de não serão buscados (embora seja muito fácil adicionar os links faltantes).</description>
     <description lang="pt_PT">Este colector recolhe informações dos seguintes sítios:[CR]MusicBrainz, last.fm, allmusic.com e amazon.de, enquanto obtém artwork de: fanart.tv, last.fm e allmusic.com. Pode definir em cada campo o sítio do qual quer obter as informações. A pesquisa inicial é sempre feita no MusicBrainz. Caso os endereços allmusic e/ou amazon.de não tenham sido adicionados no sítio MusicBrainz, os campos do allmusic.com e/ou amazon.de não serão obtidos (no entanto, é muito fácil adicionar os links em falta).</description>
@@ -494,12 +494,12 @@
     <description lang="sv_SE">Denna skrapa samlar information från följande sajter: MusicBrainz, last.fm, allmusic.com och amazon.de, och konstverk från: fanart.tv, last.fm och allmusic.com. Det kan anges fält för fält vilken sajt du vill få den specifika informationen.⏎ ⏎ Den initiala sökningen är alltid utförd på MusicBrainz sajt, fälten från allmusic.com och/eller amazon.de länkarna läggs inte till på MusicBrainz sajten, fälten från allmusic.com och/eller amazon.de kan inte hämtas (väldigt enkelt att lägga till dom saknade länkarna dock).</description>
     <description lang="ta_IN">இந்த சுரண்டியானது MusicBrainz, last.fm, allmusic.com மற்றும் amazon.de ஆகிய இணையதளத்தில் இருந்து தகவல்களை சேகரிக்கும். திரை குறும்படங்களை fanart.tv, last.fm மற்றும் allmusic.com ஆகிய இணையதளத்தில் இருந்து தகவல்களை சேகரிக்கும். ⏎ ⏎ முதன்மை தேடல் எப்போதும் MusicBrainz தான் நடக்கும். allmusic மற்றும் amazon.de சேர்க்கபடாவிட்டால் அவற்றில் இருந்து தகவல்கள் செமிக்கபடமாட்டது (தவறிய இணைப்புகளை சேர்ப்பது மிகவும் எளிது).</description>
     <description lang="tr_TR">Bu bilgi sağlayıcı, bilgileri toplamak için şu siteleri desteklemektedir: MusicBrainz, last.fm, allmusic.com ve amazon.de, çizimleri için ise: fanart.tv, last.fm ve allmusic.com desteklenmektedir. Her bilginin özellikle nereden alınacağını tek tek ayarlayabilirsiniz.[CR][CR]İlk olarak arama daima MusicBrainz'de yapılır. MusicBrainz'e allmusic ve/veya amazon.de linkleri eklenmemiş olması durumunda allmusic.com'dan ve/veya amazon.de'den ilgili alanlar alınamaz (gerçi bu eksik linkleri eklemek çok kolaydır).</description>
-    <description lang="uk_UA">Здирач збирає інформацію з наступних сторінок: MusicBrainz, last.fm, allmusic.com та amazon.de, тоді як отримує обкладинки з: fanart.tv, last.fm та allmusic.com.[CR][CR]Початковий пошук завжди робиться на MusicBrainz. Якщо посилання з allmusic і/або amazon.de не додаються на сторінку MusicBrainz, тоді поля з allmusic.com і/або amazon.de неможливо отримати (однак дуже легко додати ці пропущені посилання).</description>
+    <description lang="uk_UA">Цей екстрактор витягує загальну інформацію з веб-сайтів MusicBrainz, last.fm, allmusic.com та amazon.de, а зображення — з fanart.tv, last.fm та allmusic.com. Для кожного поля можна вказати з якого веб-сайту потрібно брати інформацію.[CR][CR]Початковий пошук завжди робиться на MusicBrainz. Якщо на веб-сайті MusicBrainz не додано посилання на allmusic та/або amazon.de, тоді поля з allmusic.com та/або amazon.de неможливо отримати (проте ці пропущені посилання дуже легко додати).</description>
     <description lang="vi_VN">Trình này thu thập thông tin từ những site được hỗ trợ như: MusicBrainz, last.fm, allmusic.com, amazon.de, và lấy ảnh bìa từ các nguồn: fanart.tv, last.fm và allmusic.com. Bạn có thể tùy chỉnh chọn từng thứ riêng biệt để lấy từ site bạn muốn.[CR][CR]Lần tìm kiếm đầu tiên luôn luôn được sử dụng từ MusicBrainz. Trong trường hợp các link allmusic và/hoặc amazon.de không có trên MusicBrainz, các trường từ allmusic.com và/hoặc amazon.de sẽ không thể lấy về được (tuy nhiên rất dễ để tự thêm vào các link này bằng tay).</description>
     <description lang="zh_CN">本刮削器支持从以下网站获取信息：MusicBrainz、last.fm、allmusic.com 和 amazon.de，并从以下网站获取艺术图片：fanart.tv、last.fm 和 allmusic.com。你可以指定每一项内容的来源网站。[CR][CR]初始结果总是先从 MusicBrainz 获取。如果 MusicBrainz 网站没有到 allmusic 和/或 amazon.de 的外部链接，则无法获取 allmusic.com 的/或 amazon.de 的信息（当然你能很容易地加入缺失的链接）。</description>
     <description lang="zh_TW">本搜刮器支援從以下網站取得資訊：MusicBrainz、last.fm、allmusic.com和amazon.de，並從以下網站取得專輯照片：fanart.tv、last.fm和allmusic.com。您還可以指定每一項內容的來源網站。[CR][CR]初始搜尋結果將會先從MusicBrainz取得。如果MusicBrainz網站沒有加入到allmusic和/或amazon.de的外部連結，則無法取得allmusic.com的/或amazon.de的信息(當然您能很輕易地加入遺失的連結)。</description>
   </extension>
-</addon><addon id="metadata.artists.universal" name="Universal Artist Scraper" version="4.3.12" provider-name="Olympia, Team Kodi">
+</addon><addon id="metadata.artists.universal" name="Universal Artist Scraper" version="4.3.24" provider-name="Olympia, Team Kodi">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
     <import addon="metadata.common.allmusic.com" version="3.1.0" />
@@ -519,8 +519,9 @@
     <summary lang="ar_SA">ماسحة الفنان العالمية</summary>
     <summary lang="be_BY">Універсальны сродак атрымання звестак пра выканаўцаў</summary>
     <summary lang="bg_BG">Универсален източник за информация за артисти</summary>
+    <summary lang="bs_BA">Univerzalna strugalica za umjetnike</summary>
     <summary lang="ca_ES">Raspador universal per artistes</summary>
-    <summary lang="cs_CZ">Univerzální zdroj získávání dat pro umělce</summary>
+    <summary lang="cs_CZ">Univerzální zdroj informací o interpretech</summary>
     <summary lang="cy_GB">Crafwr Cyffredinol ar gyfer Artistiaid</summary>
     <summary lang="da_DK">Universel scraper til kunstnere</summary>
     <summary lang="de_DE">Universeller Scraper für Interpreten</summary>
@@ -529,10 +530,10 @@
     <summary lang="en_NZ">Universal Scraper for Artists</summary>
     <summary lang="en_US">Universal Scraper for Artists</summary>
     <summary lang="es_AR">Scraper Universal para Artistas</summary>
-    <summary lang="es_ES">Scraper universal para Intérpretes</summary>
+    <summary lang="es_ES">Scraper universal para artistas</summary>
     <summary lang="es_MX">Scraper Universal de Artistas</summary>
     <summary lang="et_EE">Universaalne esitajate kaabits</summary>
-    <summary lang="fi_FI">Universaali tietolähde esittäjille</summary>
+    <summary lang="fi_FI">Universaali tietolähde artisteille</summary>
     <summary lang="fr_CA">Extracteur universel pour les artistes</summary>
     <summary lang="fr_FR">Collecteur universel pour les artistes</summary>
     <summary lang="gl_ES">Scraper Universal para Artistas</summary>
@@ -550,7 +551,7 @@
     <summary lang="my_MM">အနုပညာရှင်များအတွက် Universal Scraper</summary>
     <summary lang="nb_NO">Universalskraper for artister</summary>
     <summary lang="nl_NL">Universele scraper voor artiesten</summary>
-    <summary lang="pl_PL">Universal Scraper informacji o artystach muzycznych</summary>
+    <summary lang="pl_PL">Uniwersalny ekstraktor informacji o wykonawcach muzycznych</summary>
     <summary lang="pt_BR">Scraper Universal para Artistas</summary>
     <summary lang="pt_PT">Colector universal para Artistas</summary>
     <summary lang="ro_RO">Scraper universal pentru artisti</summary>
@@ -560,7 +561,7 @@
     <summary lang="sv_SE">Universiell artistskrapa</summary>
     <summary lang="ta_IN">கலைஞர்களின் ஒட்டு மொத்தமான சுரண்டி</summary>
     <summary lang="tr_TR">Sanatçılar için Genel Bilgi Sağlayıcı</summary>
-    <summary lang="uk_UA">Універсальний здирач для виконавців</summary>
+    <summary lang="uk_UA">Універсальний екстрактор для виконавців</summary>
     <summary lang="vi_VN">Trình lấy dữ liệu Nghệ sĩ từ nhiều nguồn</summary>
     <summary lang="zh_CN">通用歌手信息刮削器</summary>
     <summary lang="zh_TW">通用演出者訊息搜括器</summary>
@@ -568,8 +569,9 @@
     <description lang="ar_SA">هذه الماسحة تجمع المعلومات من المواقع المدعومة التالية: TheAudioDb.com, MusicBrainz, last.fm, and allmusic.com, في حين تأخذ عناوين الأعمال الفنية من: fanart.tv, htbackdrops.com, last.fm and allmusic.com. يمكن أن ترتب حقل تلو حقل حسب الموقع الذي تريد منه تلك المعلومة المحددة.[CR][CR]البحث الابتدائي يتم دائما على ميوزك برينز. في حال أن رابط كل الموسيقى غير مضاف على حقول موقع ميوزك برينز من allmusic.com لا يمكن الحصول عليها(على الرغم من سهولة إضافة هذه الروابط المفقودة).</description>
     <description lang="be_BY">Гэты сканер збірае інфармацыю з наступных сайтаў: TheAudioDb.com, MusicBrainz, last.fm, allmusic.com, і бярэ вокладкі з: fanart.tv, htbackdrops.com, last.fm і allmusic.com. Кожнае поле можна наладзіць, каб атрымліваць інфармацыю з патрэбных вам крыніц.[CR][CR]Спачатку пошук выконваецца на MusicBrainz. Калі на сайце MusicBrainz не дададзеная спасылка на allmusic, то палі з allmusic.com не будуць запаўняцца (спасылку вельмі лёгка дадаць).</description>
     <description lang="bg_BG">Сваля информация от следните сайтове: TheAudioDb.com, MusicBrainz, last.fm, and allmusic.com. Изобрания извлича от: fanart.tv, htbackdrops.com, last.fm and allmusic.com. Можете да определите от кой сайт каква информация да се сваля.[CR][CR]Първоначалното търсене винаги се прави в MusicBrainz. Когато не е налична препратка към allmusic.com на сайта на MusicBrainz извличането на информация от allmusic.com става невъзможно (добавянето на препратка е много лесно).</description>
+    <description lang="bs_BA">Ovaj strugač prikuplja informacije sa sljedećih podržanih stranica: TheAudioDb.com, MusicBrainz, last.fm i allmusic.com, dok umjetnička djela preuzima sa: fanart.tv, htbackdrops.com, last.fm i allmusic.com. Može se postaviti polje po polje sa koje stranice želite dobiti te specifične informacije.[CR][CR]Početna pretraga se uvijek vrši na MusicBrainz-u. U slučaju da link za allmusic nije dodan na stranicu MusicBrainz, polja sa allmusic.com ne mogu se preuzeti (vrlo je lako dodati te nedostajuće linkove).</description>
     <description lang="ca_ES">Aquest raspador recopila informació dels següents llocs compatibles: TheAudioDb.com, MusicBrainz, last.fm i allmusic.com, mentre que agafa obres d'art de: fanart.tv, htbackdrops.com, last.fm i allmusic.com. Es pot establir camp per camp des del lloc on voleu aquesta informació específica.[CR][CR]La cerca inicial sempre es fa a MusicBrainz. En cas que no s'afegeixi l'enllaç allmusic als camps del MusicBrainz, els camps d'allmusic.com no es podran obtenir (tot i que és molt fàcil afegir aquests enllaços que falten).</description>
-    <description lang="cs_CZ">Tento zdroj dat získává informace z následujících podporovaných stránek: TheAudioDb.com, MusicBrainz, last.fm, and allmusic.com, while grabs artwork from: fanart.tv, htbackdrops.com, last.fm a allmusic.com. Lze nastavit jakou informaci stahovat z jakých stránek.[CR][CR]Základní hledání je vždy provedeno na MusicBrainz. V případě, že schází odkaz allmusic na stránce MusicBrains, nelze stáhnout informace z allmusic.com (avšak je velmi snadné chybějící odkazy přidat).</description>
+    <description lang="cs_CZ">Tento zdroj informací získává údaje z následujících podporovaných stránek: TheAudioDb.com, MusicBrainz, last.fm a allmusic.com a grafiku ze stránek fanart.tv, htbackdrops.com, last.fm a allmusic.com. U jednotlivých polí lze nastavit, z které stránky se mají konkrétní údaje získávat.[CR][CR]Úvodní vyhledávání se vždy provádí v MusicBrainz. Pokud v polích na MusicBrainz není přidán odkaz na allmusic, nelze údaje z allmusic.com načíst (chybějící odkazy lze ale velmi snadno doplnit).</description>
     <description lang="cy_GB">Mae'r crafwr yn casglu gwybodaeth o'r gwefannau canlynol: TheAudioDb.com, MusicBrainz, last.fm, a allmusic.com, tra'n cipio gwaith celf o: fanart.tv, htbackdrops.com, last.fm a allmusic.com. Mae modd ei osod fesul maes i ddewis pa wefan i gasglu gwybodaeth benodol.[CR][CR]Bydd y chwilio cychwynnol yn cael ei wneud ar MusicBrainz. Rhag ofn nad yw dolen allmusic wedi ei osod ar wefan MusicBrainz nid oes modd estyn meysydd o allmusic.com (mae'n hawdd gosod y dolenni coll hynny).</description>
     <description lang="da_DK">Denne scraper indsamler information fra følgende websteder: TheAudioDb.com, MusicBrainz, last.fm og allmusic.com, og henter illustrationer fra: fanart.tv, htbackdrops.com, last.fm og allmusic.com. Det kan indstilles felt for felt, fra hvilket websted du ønsker den specifikke information.[CR][CR]Den indledende søgning udføres altid på MusicBrainz. I tilfælde af, at allmusic-linket ikke er tilføjet på MusicBrainz-webstedet, kan felter fra allmusic.com ikke hentes ((men det er helt enkelt at tilføje de manglende links).</description>
     <description lang="de_DE">Dieser Scraper sammelt Informationen von den folgenden unterstützten Websites: MusicBrainz, Last.fm, Allmusic.com und Amazon.de. Es werden dabei Grafiken von den folgenden Seiten geladen: Fanart.tv, Last.fm und Allmusic.com. Von welcher Seite die Informationen geladen werden, kann einzeln konfiguriert werden. [CR][CR]Die initiale Suche wird immer über MusicBrainz durchgeführt. Sollten keine Allmusic- und/oder Amazon.de-Links auf der MusicBrainz-Seite gesetzt worden sein, können Felder von Allmusic.com und/oder Amazon.de nicht geladen werden (fehlende Links können jedoch sehr einfach hinzugefügt werden).</description>
@@ -596,7 +598,7 @@
     <description lang="ms_MY">Pengikis ini mendapatkan maklumat dari laman tersokong berikut: TheAudioDb.com, MusicBrainz, last.fm dan allmusic.com, manakala ia dapatkan kerja seni dari: fanart.tv, htbckdrops.com, last.fm dan allmusic.com. Ia boleh tetapkan medan mengikut medan supaya anda boleh dapatkan maklumat khusus dari laman tertentu.⏎[CR]⏎[CR]Gelintar awalan sentiasa bermula dengan MusicBrainz. Pautan allmusic tidak ditambah ke laman MusicBrainz, medan dari allmusic.com sukar didapati.</description>
     <description lang="my_MM">ဒီ Scraper သည် အချက်အလက်များကို အောက်ဖော်ပြပါ ထောက်ပံ့ထားသော ဆိုဒ်များမှ စုဆောင်းပါသည်။ ထိုဆိုဒ်များမှာ TheAudioDb.com,MusicBrainz,last..fm, နှင့် allmusic.com တို့ဖြစ်သည်။</description>
     <description lang="nb_NO">Denne skraperen samler informasjon fra følgende støttede steder: TheAudioDb.com, MusicBrainz, last.fm og allmusic.com, mens den henter artwork fra: fanart.tv, htbackdrops.com, last.fm og allmusic.com. Du kan stegvis velge hvilken kilde du ønsker og hente spesifikk informasjon fra.[CR][CR]Det første søket er alltid gjort hos MusicBrainz. I tilfeller hvor allmusic-linker ikke er lagt til hos MusicBrainz-siden, kan ikke felter fra allmusic.com hentes (det er veldig lett å legge til de manglende linkene).</description>
-    <description lang="nl_NL">Deze scraper verzamelt informatie van de volgende ondersteunde websites: TheAudioDb.com, MusicBrainz, last.fm, en allmusic.com en tevens pakt hij afbeeldingen van fanart.tv, htbackdrops.com, last.fm en allmusic.com. Het is mogelijk om per veld aan te geven van welke website je de specifieke informatie wilt halen.[CR][CR]De initiële zoekopdracht wordt altijd uitgevoerd op MusicBrainz. Wanneer de allmusic link niet is toegevoegd in de juiste velden op de MusicBrainz website kan de informatie van allmusic.com niet worden opgehaald. (Het is erg makkelijk om deze ontbrekende links toe te voegen.)</description>
+    <description lang="nl_NL">Deze scraper verzamelt informatie van de volgende ondersteunde websites: TheAudioDb.com, MusicBrainz, last.fm, en allmusic.com en tevens pakt hij afbeeldingen van fanart.tv, htbackdrops.com, last.fm en allmusic.com. Het is mogelijk om per veld aan te geven van welke website je de specifieke informatie wilt halen.[CR][CR]De initiële zoekopdracht wordt altijd uitgevoerd op MusicBrainz. Wanneer de allmusic link niet is toegevoegd in de juiste velden op de MusicBrainz website kan de informatie van allmusic.com niet worden opgehaald (Het is erg makkelijk om deze ontbrekende links toe te voegen).</description>
     <description lang="pl_PL">Ten ekstraktor pobiera informacje z następujących stron: TheAudioDb.com, MusicBrainz, last.fm, and allmusic.com, a grafiki pobiera z: fanart.tv, htbackdrops.com, last.fm i allmusic.com. Dla każdego pola z informacjami można wybrać osobną stronę.[CR][CR]Początkowe wyszukiwanie jest zawsze wykonywane w serwisie MusicBrainz. Gdy wyszukiwanie nie jest wskazane na stronę MusicBrainz, następuje przeszukiwanie serwisu allmusic.com (brakujące linki można łatwo dodać później).</description>
     <description lang="pt_BR">Este scraper coleta informações nos seguintes sites:[CR]MusicBrainz, last.fm, allmusic.com e amazon.de, enquanto pega os artwork de: fanart.tv, last.fm and allmusic.com. O Mesmo pode ser configurara campo a campo em que site você quer obter informações específicas. A procura inicial é sempre feita no MusicBrainz. No caso allmusic e/ou amazon.de não terem sido adicionados no site MusicBrainz, campos de allmusic.com e/ou amazona.de não serão buscados (embora seja muito fácil adicionar os links faltantes).</description>
     <description lang="pt_PT">Este colector recolhe informações dos seguintes sítios:[CR]TheAudioDb.com, MusicBrainz, last.fm e allmusic.com, enquanto obtém artwork de: fanart.tv, htbackdrops.com, last.fm e allmusic.com. Pode definir em cada campo o sítio de onde quer obter as informações. [CR][CR]A pesquisa inicial é sempre feita no MusicBrainz. Caso um endereço allmusic não tenha sido adicionado no sítio MusicBrainz, os campos do allmusic.com não serão obtidos (no entanto, é muito fácil adicionar os links em falta).</description>
@@ -607,12 +609,12 @@
     <description lang="sv_SE">Denna skrapa samlar information från följande sajter: TheAudioDb.com, MusicBrainz, last.fm och allmusic.com, medans den samlar konstverk från: fanart.tv, htbackdrops.com, last.fm och allmusic.com. Du kan ange fält för fält från vilken sajt du vill ha den specifika inforamtionen från. Den initiala sökningen är alltid gjord på MusicBrainz. Om inte allmusic.com länken läggs till på MusicBrainz sajten, kan inte fält från allmusic.com hämtas (väldigt enkelt att lägga till dom saknade länkarna dock).</description>
     <description lang="ta_IN">இந்த சுரண்டியானது TheAudioDb.com, MusicBrainz, last.fm, allmusic.com ஆகிய இணையதளத்தில் இருந்து தகவல்களை சேகரிக்கும். திரை குறும்படங்களை fanart.tv, htbackdrops.com, last.fm மற்றும் allmusic.com ஆகிய இணையதளத்தில் இருந்து தகவல்களை சேகரிக்கும். ⏎ ⏎ முதன்மை தேடல் எப்போதும் MusicBrainz தான் நடக்கும். allmusic மற்றும் amazon.de சேர்க்கபடாவிட்டால் அவற்றில் இருந்து தகவல்கள் செமிக்கபடமாட்டது (தவறிய இணைப்புகளை சேர்ப்பது மிகவும் எளிது).</description>
     <description lang="tr_TR">Bu bilgi sağlayıcı aşağıdaki desteklenen sitelerden bilgi toplar: TheAudioDb.com, MusicBrainz, last.fm ve allmusic.com; albüm resimlerini ise fanart.tv, htbackdrops.com, last.fm ve allmusic.com sitelerinden alır. Hangi siteden hangi bilgiyi almak istediğinizi ilgili alanda belirtebilirsiniz.[CR][CR]İlk arama her zaman MusicBrainz'de yapılır. allmusic bağlantısının MusicBrainz site alanlarına eklenmediği durumlarda allmusic.com'dan veri getirimi yapılamaz (eksik bağlantılar kolaylıkla eklenebilir).</description>
-    <description lang="uk_UA">Здирач збирає інформацію з наступних сторінок: TheAudioDb.com, MusicBrainz, last.fm та allmusic.com, тоді як отримує обкладинки з: fanart.tv, htbackdrops.com, last.fm та allmusic.com. Для кожного поля можно вказати з якої сторінки ви бажаєте його заповнити.[CR][CR]Початковий пошук завжди робиться на MusicBrainz. Якщо посилання з allmusic не додаються на сторінку MusicBrainz, тоді поля з allmusic.com неможливо отримати (однак дуже легко додати ці пропущені посилання).</description>
+    <description lang="uk_UA">Цей екстрактор витягує загальну інформацію з веб-сайтів TheAudioDb.com, MusicBrainz, last.fm та allmusic.com, а зображення — з fanart.tv, htbackdrops.com, last.fm та allmusic.com. Для кожного поля можна вказати з якого веб-сайту потрібно брати інформацію.[CR][CR]Початковий пошук завжди робиться на MusicBrainz. Якщо на веб-сайті MusicBrainz не додано посилання на allmusic, тоді поля з allmusic.com неможливо отримати (проте ці пропущені посилання дуже легко додати).</description>
     <description lang="vi_VN">Trình này thu thập thông tin từ những site được hỗ trợ như: TheAudioDb.com, MusicBrainz, last.fm, allmusic.com, và lấy ảnh bìa từ các nguồn: fanart.tv, htbackdrops.com, last.fm và allmusic.com. Bạn có thể tùy chỉnh chọn từng thứ riêng biệt để lấy từ site bạn muốn.[CR][CR]Lần tìm kiếm đầu tiên luôn luôn được sử dụng từ MusicBrainz. Trong trường hợp các link allmusic không có trên MusicBrainz, các trường từ allmusic.com sẽ không thể lấy về được (tuy nhiên rất dễ để tự thêm vào các link này bằng tay).</description>
     <description lang="zh_CN">本刮削器支持从以下网站获取信息：TheAudioDb.com、MusicBrainz、last.fm 和 allmusic.com，并从以下网站获取艺术图片：fanart.tv、htbackdrops.com、last.fm 和 allmusic.com。你可以指定每一项内容的来源网站。[CR][CR]初始结果总是先从 MusicBrainz 获取，如果 MusicBrainz 网站未加入到 allmusic 的外部链接，则无法获取 allmusic.com 的信息（当然你能很容易地加入缺失的链接）。</description>
-    <description lang="zh_TW">本搜刮器支援從以下網站取得資訊：TheAudioDb.com、MusicBrainz、last.fm和allmusic.com，並從以下網站取得專輯圖片：fanart.tv、htbackdrops.com、last.fm和allmusic.com。您可以指定每一項內容的來源網站。[CR][CR]初始搜尋結果總是先從MusicBrainz取得，如果MusicBrainz網站未加入到allmusic的外部連結，則無法取得allmusic.com的資訊 (當然您能很輕易地加入遺失的連結)。</description>
+    <description lang="zh_TW">本搜刮器支援從以下網站取得資訊：TheAudioDb.com、MusicBrainz、last.fm 和 allmusic.com，並從以下網站取得專輯圖片：fanart.tv、htbackdrops.com、last.fm 和 allmusic.com。您可以指定每一項內容的來源網站。[CR][CR]初始搜尋結果總是先從 MusicBrainz 取得，如果 MusicBrainz 網站未加入到 allmusic 的外部連結，則無法取得 allmusic.com 的資訊 (當然您能很輕易地加入遺失的連結)。</description>
   </extension>
-</addon><addon id="metadata.common.fanart.tv" name="fanart.tv Scraper Library" version="3.6.4" provider-name="Team Kodi">
+</addon><addon id="metadata.common.fanart.tv" name="fanart.tv Scraper Library" version="3.6.5" provider-name="Team Kodi">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
   </requires>
@@ -646,7 +648,7 @@
     <description lang="se">Ladda ner bakgrundsbilder från www.fanart.tv.com</description>
     <description lang="zh">从www.fanart.tv.com下载背景图</description>
   </extension>
-</addon><addon id="metadata.generic.albums" name="Generic Album Scraper" version="1.0.18" provider-name="Team Kodi">
+</addon><addon id="metadata.generic.albums" name="Generic Album Scraper" version="1.0.19" provider-name="Team Kodi">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
 		<import addon="xbmc.metadata" version="2.1.0" />
@@ -665,7 +667,26 @@
 		</assets>
 		<news>- add album 3dthumb image support</news>
 	</extension>
-</addon><addon id="metadata.themoviedb.org.python" name="The Movie Database Python" version="3.0.1" provider-name="Team Kodi">
+</addon><addon id="metadata.generic.artists" name="Generic Artist Scraper" version="1.0.19" provider-name="Team Kodi">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="xbmc.metadata" version="2.1.0" />
+	</requires>
+	<extension point="xbmc.metadata.scraper.artists" library="default.py" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Generic music scraper for artists</summary>
+		<description lang="en_GB">Searches for artist information and artwork across multiple websites.</description>
+		<platform>all</platform>
+		<license>GPL-2.0-only</license>
+		<forum>https://forum.kodi.tv/showthread.php?tid=351571</forum>
+		<source>https://gitlab.com/ronie/metadata.generic.artists/</source>
+		<reuselanguageinvoker>true</reuselanguageinvoker>
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+		<news>- add artist cutout image support</news>
+	</extension>
+</addon><addon id="metadata.themoviedb.org.python" name="The Movie Database Python" version="3.2.2" provider-name="Team Kodi">
   <requires>
     <import addon="xbmc.metadata" version="2.1.0" />
     <import addon="xbmc.python" version="3.0.0" />
@@ -673,17 +694,19 @@
   <extension point="xbmc.metadata.scraper.movies" library="python/scraper.py" />
   <extension point="xbmc.addon.metadata">
     <reuselanguageinvoker>true</reuselanguageinvoker>
-    <news>v3.0.1 (2024-04-22)
-- fix scraper error when tags are disabled
+    <news>v3.2.2 (2026-08-19)
+- Updated Czech and Chinese translations
+
+v3.2.1 (2026-06-28)
+- fix scraper error for deprecated TMDB fields and other response changes
+
+v3.2.0 (2026-03-08)
+- add option for keyart from TMDB
+- add whitelist option for "keywords as tags"
+- fix - don't save empty uniqueID values
 
 v3.0.0 (2024-04-17)
-- version 3 for Kodi 20 Nexus and above
-
-v2.2.1 (2024-04-12)
-- Update YouTube plugin URL for trailers
-
-v2.2.0 (2024-01-10)
-- Support IMDB/TMDB IDs in filename for Kodi 21 Omega (uniqueIDs directly from Kodi)</news>
+- version 3 for Kodi 20 Nexus and above</news>
     <platform>all</platform>
     <license>GPL-2.0-or-later</license>
     <forum>https://forum.kodi.tv/showthread.php?tid=344580</forum>
@@ -695,8 +718,9 @@ v2.2.0 (2024-01-10)
     <summary lang="af_ZA">TMDB Fliek Skraper</summary>
     <summary lang="be_BY">Сродак для атрымання звестак пра фільмы на аснове TMDB</summary>
     <summary lang="bg_BG">Сваля инф. за филми от TMDB</summary>
+    <summary lang="bs_BA">Python TMDB filmski strugač</summary>
     <summary lang="ca_ES">Raspador Python de pel·lícules de TMDB</summary>
-    <summary lang="cs_CZ">Zdroj zisku dat k filmům TMDB</summary>
+    <summary lang="cs_CZ">Zdroj filmových metadat TMDb v Pythonu</summary>
     <summary lang="cy_GB">Crafwr Ffilmiau TMDB</summary>
     <summary lang="da_DK">Python TMDB scraper til film</summary>
     <summary lang="de_DE">Python TMDB Film-Scraper</summary>
@@ -705,7 +729,7 @@ v2.2.0 (2024-01-10)
     <summary lang="en_NZ">Python TMDB Movie Scraper</summary>
     <summary lang="en_US">Python TMDB Movie Scraper</summary>
     <summary lang="es_AR">Scraper de Películas de TheMovieDB</summary>
-    <summary lang="es_ES">Scraper de películas de TheMovieDB</summary>
+    <summary lang="es_ES">Scraper de películas para TheMovieDB</summary>
     <summary lang="es_MX">Scraper de Películas TMDb</summary>
     <summary lang="et_EE">Python TMDB filmikaabits</summary>
     <summary lang="fi_FI">The Movie Database (TMDB) Python -tietolähde elokuville</summary>
@@ -731,24 +755,25 @@ v2.2.0 (2024-01-10)
     <summary lang="pl_PL">Ekstraktor filmowy TMDB</summary>
     <summary lang="pt_BR">Scraper de Filmes TMDb</summary>
     <summary lang="pt_PT">Colector de filmes TMDb</summary>
-    <summary lang="ro_RO">Scraper de filme TMDb</summary>
+    <summary lang="ro_RO">Catalog de filme TMDb</summary>
     <summary lang="ru_RU">Инфоресурс на базе TMDB</summary>
     <summary lang="se">Skrapa för TMDb</summary>
     <summary lang="sk_SK">Phyton TheMovieDB sťahovač filmových metadát</summary>
     <summary lang="sl_SI">Ponudnik informacij o filmih TMDB</summary>
-    <summary lang="sv_SE">Pyton TMDB Filmskrapa</summary>
+    <summary lang="sv_SE">Python TMDB Filmskrapa</summary>
     <summary lang="ta_IN">LastFM நிகழ்படம் சுரண்டி</summary>
     <summary lang="th_TH">ตัวรับข้อมูลภาพยนต์ TMDB</summary>
     <summary lang="tr_TR">Python TMDB Film Bilgi Sağlayıcısı</summary>
-    <summary lang="uk_UA">TMDB — джерело інформації про фільми</summary>
+    <summary lang="uk_UA">Екстрактор даних про фільми з TMDb</summary>
     <summary lang="vi_VN">Trình lấy dữ liệu Phim từ TMDB</summary>
     <summary lang="zh_CN">TMDB 电影刮削器</summary>
-    <summary lang="zh_TW">TMDB 電影搜括器</summary>
+    <summary lang="zh_TW">TMDB 電影資料爬蟲</summary>
     <description lang="af_ZA">themoviedb.org is 'n verniet en oop fliek databasis. Dit is totaal gebruiker gedryf deur mense soos jy. TMDB word huidiglik deur miljoene mense elke maand gebruik, en met hulle kragtige API word dit ook deur baie gewilde media sentrums soos Kodi gebruik om Fliek Metadata, Plakkate en Ondersteunerkuns te onttrek om die gebruiker se ondervinding te verryk.</description>
     <description lang="be_BY">themoviedb.org - бясплатная і адкрытая база даных фільмаў. Яна напаўняецца і падтрымліваецца карыстальнікамі. TMDb штомесяц карыстаюцца мільёны людзей, а дзякуючы магутнаму API базу могуць выкарыстоўваць папулярныя медыяцэнтры накшталт Kodi, якія бяруць адтуль метаданыя, постары і ілюстрацыі.</description>
     <description lang="bg_BG">themoviedb.org е безплатна и отворена филмова база данни. Задвижва се изцяло от потребителите си, от хора като вас. Милиони хора по света всеки месец ползват TMDb. Благодарение на многофункционално API може да се ползва от най-различни и популярни медийни центрове като Kodi, които извличат метаданни, постери и фанарт за филми с цел за красивото оформяне на интерфейса.</description>
+    <description lang="bs_BA">themoviedb.org je besplatna i otvorena baza podataka o filmovima. U potpunosti je vođena od strane korisnika poput vas. TMDb trenutno koriste milioni ljudi svakog mjeseca, a zahvaljujući svom moćnom API-ju, koriste ga i mnogi popularni medijski centri poput Kodija za preuzimanje metapodataka o filmovima, postera i umjetnosti obožavatelja kako bi obogatili korisničko iskustvo.</description>
     <description lang="ca_ES">themoviedb.org és una base de dades gratuïta i oberta. Es manté completament per usuaris com tu. TMDb es fa servir per milions de persones cada mes i amb la seva potent API també és utilitzada per molts reproductors multimèdia com el Kodi per obtenir les metadades de pel·lícules, pòsters i fan art per enriquir l'experiència d'usuari.</description>
-    <description lang="cs_CZ">themoviedb.org je otevřená a svobodná databáze filmů. Je řízena uživateli, tedy lidmi jako vy. TMDB je každý měsíc používána milióny lidí a se svým výborným API je také používano mnoha populárními mediálními centry jako je Kodi, k získávání metadat, plagátů a fanartu filmů pro obohacení uživatelského zážitku.</description>
+    <description lang="cs_CZ">themoviedb.org je svobodná a otevřená databáze filmů. Je zcela řízená uživateli, tedy lidmi jako vy. TMDb každý měsíc používají miliony lidí a díky výkonnému API ji používá také řada oblíbených mediálních center, jako je Kodi, k získávání metadat filmů, plakátů a fanartu pro lepší uživatelský zážitek.</description>
     <description lang="cy_GB">Mae themoviedb.org yn gronfa ddata ffilmiau rhydd ac agored. Mae'n cael ei yrru gan ddefnyddwyr fel chi. Mae TMDb yn cael ei ddefnyddio gan filiynau o bobl bob mis a gyda'i API pwerus, mae'n cael ei ddefnyddio gan lawer o'r canolfannau cyfrwng fel Kodi i estyn metadata ffilmiau, posteri a chelf er mwyn cyfoethogi profiad defnyddwyr.</description>
     <description lang="da_DK">themoviedb.org er en gratis og åben filmdatabase. Den er helt og aldeles brugerdrevet af folk som dig. TMDb bruges i øjeblikket af millioner af mennesker hver måned, og med deres kraftfulde API bruges den også af mange populære mediecentre såsom Kodi til at hente filmmetadata, plakater og fankunst for at berige brugerens oplevelse.</description>
     <description lang="de_DE">TheMovieDB.org ist eine freie und offene Filmdatenbank. Sie wird komplett von ihren Anwendern betrieben. TMDB wird von Millionen von Menschen und dank ihrer mächtigen API auch von vielen Media-Centern, wie z. B. Kodi, benutzt, um Film-Metadaten, Poster und Fanarts zu beziehen.</description>
@@ -757,7 +782,7 @@ v2.2.0 (2024-01-10)
     <description lang="en_NZ">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
     <description lang="en_US">themoviedb.org is a free and open movie database. It's completely user driven by people like you. TMDb is currently used by millions of people every month and with their powerful API, it is also used by many popular media centers like Kodi to retrieve Movie Metadata, Posters and Fanart to enrich the user's experience.</description>
     <description lang="es_AR">themovieDB.org es una base de datos de películas gratuita y abierta. Está formada con contenido subido por usuarios como vos. TMDb es actualmente utilizada por millones de personas cada mes y, gracias a su poderosa API, es usada por muchos programas populares como Kodi para descargar Información de Películas, Posters y Fanart para enriquecer la experiencia de usar Kodi.</description>
-    <description lang="es_ES">themovieDB.org es una base de datos de películas libre y abierta. Esta completamente gestionada por gente como tu. TMDb se usa diariamente por millones de personas gracias a su potente API, que es usada por más programas aparte de Kodi para descargar información de películas así como Carteles o Fanart (Fondos de escritorio basados en películas usados en distintos skins) para enriquecer la experiencia de usar Kodi.</description>
+    <description lang="es_ES">themovieDB.org es una base de datos de películas gratuita y abierta. Esta completamente gestionada por gente como tú. TMDb se usa diariamente por millones de personas gracias a su potente API, que es usada por más programas aparte de Kodi para descargar información de películas así como pósters o fanart para enriquecer la experiencia de usar Kodi.</description>
     <description lang="es_MX">themoviedb.org es una base de datos de películas gratis y abierta. Es completamente manejada por usuarios y personas como tu. Actualmente TMDb es usada por millones de personas cada mes, y dado a su poderosa API, es usada también por varios media centers populares como Kodi para obtener Metada de Películas, Posters y Fanarts, enriqueciendo de esta manera la experiencia del usuario.</description>
     <description lang="et_EE">themoviedb.org on tasuta ja avatud filmide andmebaas. See on täielikult kasutajate poolt hooldatud. TMDb-d kasutavad igal kuul miljonid inimesed. Seda kasutatakse kasutajakogemuse rikastamiseks paljudes teistes populaarsetes programmides, nagu Kodi, laadides alla filmiteavet, plakateid ja fännikunsti.</description>
     <description lang="fi_FI">The Movie Database (TMDB) on yhteisön ylläpitämä, ilmainen ja avoin tietokanta elokuville ja televisiosarjoille. Palvelulla on miljoonia kuukausittaisia käyttäjiä ja sen tehokkaan rajapinnan avulla Kodi ja monet muut mediasovellukset voivat hyödyntää palvelun metatietoja ja mediakuvituksia käyttökokemuksen parantamiseen. Tietokannan vahva painotus kansaivälisyyteen ja kattava tietomäärä on suurelta osin ylivertainen ja olemme tästä erittäin ylpeitä. Yksinkertaisesti sanoen, elämme ja hengitämme yhteisönä ja juuri se tekee meistä erilaisia.</description>
@@ -781,7 +806,7 @@ v2.2.0 (2024-01-10)
     <description lang="pl_PL">themoviedb.org jest wolną i otwartą filmową bazą danych. Jest ona całkowicie zarządzana przez osoby takie jak Ty. Obecnie odwiedzają ją miliony osób miesięcznie, a dzięki dostępności interfejsu programistycznego jest używana przez wiele centrów multimedialnych, takich jak Kodi, do pobierania informacji o filmach, plakatów i fototapet.</description>
     <description lang="pt_BR">O themoviedb.org é um banco de dados aberto e gratuito. É completamente operado por pessoas como você. O TMDb é atualmente usado por milhares de pessoas a cada mês e com sua poderosa API, é usado por muitas centrais de mídia populares como o Kodi para buscar metadados, cartazes e fanart de filmes para enriquecer a experiência do usuário.</description>
     <description lang="pt_PT">O themoviedb.org é uma base de dados de filmes livre e aberta. É actualizado inteiramente por pessoas como você e usado por milhões todos os meses. Com o poderoso motor de busca disponível, também se tornou no favorito para muitos programas de centro de média, como o popular Kodi, para obter informação, posters e fanart que enriquecem a experiência do utilizador.</description>
-    <description lang="ro_RO">themoviedb.org este o bază de date de filme gratuită și deschisă. Este actualizată de oameni ca și tine. TMDb este curent folosită de milioane de oameni în fiecare lună și datorită API-ului puternic, este de asemena folosită de multe centre media populare ca Kodi pentru a obține informații despre filme, afișe și imagini produse de fani (Fanart) care îmbogățesc experiența utilizatorului.</description>
+    <description lang="ro_RO">themoviedb.org este o bază de date de filme gratuită și deschisă. Este actualizată de oameni ca și tine. TMDb este actual folosită de milioane de oameni în fiecare lună și datorită API-ului puternic, este de asemenea folosită de multe centre media populare ca Kodi pentru a obține informații despre filme, afișe, decoruri și imagini produse de fani (Fanart), care îmbogățesc experiența utilizatorului.</description>
     <description lang="ru_RU">themoviedb.org — это бесплатная и открытая база данных фильмов. Она полностью поддерживается обычными людьми. В данный момент сайт TMDb используют миллионы людей каждый месяц, и благодаря мощному API его могут использовать различные популярные медиацентры, такие как Kodi, чтобы получать метаданные, постеры и фанарт для фильмов с целью красивого оформления интерфейса.</description>
     <description lang="se">themoviedb.org är en fri och öppen filmdatabas. Det drivs helt av människor som dig. TMDb används av miljontals människor varje månad och med deras kraftfulla API, är det också använt av många populära mediacenter som Kodi för att hämta filmmetadata, omslag och fanart för att förgylla användarens upplevelse.</description>
     <description lang="sk_SK">themoviedb.org je voľná a otvorená databáza filmov. Je výlučne vedená užívateľmi ako si ty. TMDb je každý mesiac používaná miliónmi ľudí, a vďaka svojmu výkonnému API je veľmi populárna medzi 'media centrami' ako Kodi pre sťahovanie filmových metadát, plagátov a fanartov pre obohatenie zážitkov.</description>
@@ -790,12 +815,12 @@ v2.2.0 (2024-01-10)
     <description lang="ta_IN">themoviedb.org ஒரு இலவச மற்றும் திறந்த திரைப்பட தரவுத்தளம் ஆகும். இந்த தரவுத்தளம் முற்றிலும் பயனர் மக்களால் இயக்கப்படுகிறது. TMDb அவர்களது சக்திவாய்ந்த API இனால் தற்போது பல இலட்சக்கணக்கான மக்களால் ஒவ்வொரு மாதமும் பயன்படுத்தப்படுகிறது, இது Kodi போன்ற பல பிரபல ஊடக மையங்களில் பயனர் அனுபவத்தை மேம்படுத்த பயன்படுத்தப்படுகிறது.</description>
     <description lang="th_TH">themoviedb.org เป็นฐานข้อมูลภาพยนตร์ที่ฟรีและเปิดกว้าง. มันถูกขับเคลื่อนจากผู้ใช้ โดยคนเช่นคุณ. TMDb ปัจจุบันมีการใช้โดยคนนับล้านในแต่ละเดือน และมีประสิทธิภาพด้วย API ของพวกเขา , มันยังถูกใช้โดยหลายศูนย์สื่อที่นิยมเช่น Kodi เพื่อดึง อธิบายข้อมูลภาพยนตร์, โปสเตอร์และ แฟนอาร์ต เพื่อเพิ่มประสบการณ์ของผู้ใช้</description>
     <description lang="tr_TR">themoviedb.org ücretsiz ve herkese açık bir film veri tabanıdır. Tamamen kullanıcılar tarafından oluşturulmakta ve yönetilmektedir. TMDb her ay milyonlarca kullanıcı tarafından kullanılmakta ve güçlü API'si sayesinde Kodi gibi bir çok popüler medya merkezi tarafından Film Veritabanı, Poster ve Fanart bilgilerini kullanarak kullanıcı deneyimini zenginleştirmektedir.</description>
-    <description lang="uk_UA">themoviedb.org - це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. В даний момент сайт TMDb використовують мільйони людей кожен місяць, і завдяки потужному API, його можуть використовувати різні популярні медіацентри, такі як Kodi, щоб отримувати метадані, постери і фанарт для фільмів з метою оформлення інтерфейсу.</description>
+    <description lang="uk_UA">themoviedb.org — це безкоштовна і відкрита база даних фільмів. Вона повністю підтримується звичайними людьми. На даний момент сайтом TMDb користуються мільйони людей кожен місяць. А завдяки потужному API цю базу можуть використовувати різні популярні медіацентри, такі як Kodi, отримуючи з неї метадані, постери і фанарт для фільмів для показу в своїх графічних інтерфейсах.</description>
     <description lang="vi_VN">themoviedb.org là cơ sở dữ liệu về phim ảnh mở và miễn phí. Nó hoàn toàn được kiểm soát bởi những người như bạn. TMDb hiện tại đang được sử dụng bởi hàng triệu người dùng hàng tháng và với sự hỗ trợ của bộ API mạnh mẽ nó cũng được sử dụng bởi những thiết bị giải trí cá nhân như Kodi cho việc lấy dữ liệu về Phim ảnh, Poster và Fanart để làm tăng trải nghiệm của người sử dụng</description>
-    <description lang="zh_CN">themoviedb.org 是一个开放和自由的电影数据库。它完全由象你一样的用户来掌控。TMDb 每月为上百万用户提供服务，并通过强大的 API 界面为许多流行的媒体中心系统如 Kodi 提供电影资料、封面海报和同人画以丰富用户的体验。</description>
+    <description lang="zh_CN">themoviedb.org 是一个开放和自由的电影数据库。它完全由象你一样的用户来掌控。TMDb 每月为上百万用户提供服务，并通过强大的 API 界面为许多流行的媒体中心系统如 Kodi 提供电影资料、封面海报和背景图以丰富用户的体验。</description>
     <description lang="zh_TW">themoviedb.org是一個免費和開放的電影資料庫。它是完全由與您一樣的廣大使用者來更新資訊。 TMDb目前擁有數以百萬計的使用人次並且有著強大的API，許多受歡迎的媒體中心平台像Kodi藉由TMDb獲取電影的數據資料庫，海報和影片資訊，以豐富使用者體驗。</description>
   </extension>
-</addon><addon id="metadata.tvshows.themoviedb.org.python" name="TMDb TV Shows" version="1.7.2" provider-name="Team Kodi">
+</addon><addon id="metadata.tvshows.themoviedb.org.python" name="TMDb TV Shows" version="1.7.13" provider-name="Team Kodi">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
     <import addon="xbmc.metadata" version="2.1.0" />
@@ -803,9 +828,9 @@ v2.2.0 (2024-01-10)
   <extension point="xbmc.metadata.scraper.tvshows" library="main.py" cachepersistence="00:15" />
   <extension point="xbmc.addon.metadata">
     <reuselanguageinvoker>true</reuselanguageinvoker>
-    <news>1.7.2
-fix for inability to scrape IMDB ratings
-	</news>
+    <news>1.7.13
+ignore image list when API returns anything other than a list for images
+  	</news>
     <platform>all</platform>
     <license>GPL-3.0-or-later</license>
     <assets>
