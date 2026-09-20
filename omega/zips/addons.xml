@@ -2293,14 +2293,14 @@ Use this to organize your Favourites.
             <screenshot>resources/art/ss/3.png</screenshot>
         </assets>
     </extension>
-</addon><addon id="plugin.video.themoviedb.helper" version="6.16.2" name="TMDb Helper" provider-name="jurialmunkey">
+</addon><addon id="plugin.video.themoviedb.helper" version="6.17.3" name="TMDb Helper" provider-name="jurialmunkey">
 <requires>
   <import addon="xbmc.python" version="3.0.1" />
   <import addon="script.module.requests" version="2.9.1" />
   <import addon="script.module.pil" version="1.1.7" />
   <import addon="script.module.addon.signals" version="0.0.6" />
   <import addon="script.module.jurialmunkey" version="0.2.35" />
-  <import addon="script.module.infotagger" version="0.0.5" />
+  <import addon="script.module.infotagger" version="0.0.9" />
   <import addon="script.module.qrcode" version="6.1.0" />
 </requires>
 <extension point="xbmc.python.pluginsource" library="resources/plugin.py">
@@ -2711,7 +2711,7 @@ Use this to organize your Favourites.
             <icon>icon.png</icon>
         </assets>
     </extension>
-</addon><addon id="resource.images.studios.coloured" name="Studio Icons - Coloured" version="0.0.23" provider-name="Team Kodi">
+</addon><addon id="resource.images.studios.coloured" name="Studio Icons - Coloured" version="0.0.24" provider-name="Team Kodi">
 	<extension point="kodi.resource.images" compile="true" type="studios" />
 	<requires>
 		<import addon="kodi.resource" version="1.0.0" />
@@ -3216,7 +3216,7 @@ Use this to organize your Favourites.
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.idna" name="idna" version="3.4.0" provider-name="Kim Davies">
+</addon><addon id="script.module.idna" name="idna" version="3.10.0" provider-name="Kim Davies">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
   </requires>
@@ -3232,7 +3232,7 @@ Use this to organize your Favourites.
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.infotagger" name="InfoTagger" provider-name="jurialmunkey" version="0.0.8">
+</addon><addon id="script.module.infotagger" name="InfoTagger" provider-name="jurialmunkey" version="0.0.9">
   <requires>
     <import addon="xbmc.python" version="3.0.1" />
   </requires>
