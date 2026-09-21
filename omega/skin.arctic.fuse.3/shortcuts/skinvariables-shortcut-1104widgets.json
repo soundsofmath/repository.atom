@@ -1,0 +1,10 @@
+[
+    {
+        "label": "Watchlist",
+        "path": "plugin://plugin.video.themoviedb.helper/?info=trakt_watchlist&tmdb_type=both&list_name=Combined+Watchlist&tmdb_id=None&sort_by=year&sort_how=desc&reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]&widget=true",
+        "icon": "image://%2fstorage%2femulated%2f0%2fAndroid%2fdata%2forg.xbmc.kodi%2ffiles%2f.kodi%2faddons%2fplugin.video.themoviedb.helper%2f%2fresources%2ficons%2fthemoviedb%2fdefault.png/",
+        "target": "videos",
+        "guid": "guid-04aa0bc8",
+        "widget_style": "Poster"
+    }
+]

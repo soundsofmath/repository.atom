@@ -14,20 +14,6 @@
         "widget_style": "Poster"
     },
     {
-        "label": "Albums",
-        "icon": "special://skin/extras/icons/songs.png",
-        "path": "DefaultSearch-Albums",
-        "target": "music",
-        "widget_style": "Square"
-    },
-    {
-        "label": "Artists",
-        "icon": "special://skin/extras/icons/songs.png",
-        "path": "DefaultSearch-Artists",
-        "target": "music",
-        "widget_style": "Square"
-    },
-    {
         "label": "Movies (TMDb)",
         "icon": "special://skin/extras/icons/film.png",
         "path": "DefaultSearch-TMDBMovies",

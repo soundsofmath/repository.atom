@@ -117,10 +117,6 @@
                     "value": "Skin.SetString(HomeSwitcher.Home.Mode,Standard)"
                 }],
                 [{
-                    "rules": ["String.IsEmpty(Skin.String(HomeSwitcher.Search.Mode))"],
-                    "value": "Skin.SetString(HomeSwitcher.Search.Mode,Combined)"
-                }],
-                [{
                     "rules": ["String.IsEmpty(Skin.String(HomeSwitcher.1101.Mode))"],
                     "value": "Skin.SetString(HomeSwitcher.1101.Mode,Standard)"
                 }],
@@ -174,10 +170,8 @@
                 "route=run_executebuiltin=special://skin/shortcuts/skinvariables-startup.json&use_rules=True&var_image_simplebackground={var_image_simplebackground}"
             ]
         },
-        {
-            "rules": ["!Window.IsVisible(LoginScreen.xml)"],
-            "value": "{ReplaceWindowCommand}"
-        },
+
+        "{ReplaceWindowCommand}",
         {
             "rules": ["{VideoPath}!="],
             "value": [
