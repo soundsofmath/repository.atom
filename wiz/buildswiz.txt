@@ -1,6 +1,6 @@
 name="Arctic Fuse 3 Build"
 version="1.0"
-url="https://archive.org/download/arctic-fuse-3-omega_202609/ArcticFuse3Omega.zip"
+url="https://archive.org/download/arctic-fuse-3-omega_20260921/ArcticFuse3Omega.zip"
 minor="http://"
 gui="https://"
 kodi="21.0"
