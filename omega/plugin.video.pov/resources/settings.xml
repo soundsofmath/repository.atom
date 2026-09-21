@@ -7,7 +7,7 @@
 		<setting label="External Scrapers" type="lsep" />
 		<setting id="provider.external" label="Enable" type="bool" default="true" />
 		<setting id="filter.foreign.single.audio" label="Remove identified Foreign single audio sources" type="bool" default="true" />
-		<setting id="filter.undesirables" label="Remove Undesirables" type="bool" default="false" />
+		<setting id="filter.undesirables" label="Remove Undesirables" type="bool" default="true" />
 			<setting label="Define User Undesirables" type="action" subsetting="true" visible="eq(-1,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=undesirablesInput)" />
 			<setting label="Remove User Undesirables" type="action" subsetting="true" visible="eq(-2,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=undesirablesUserRemove)" />
 		<setting id="debug.enabled" label="Enable Debug" type="bool" default="false" />
@@ -243,18 +243,18 @@
 	<category label="Playback">
 		<!-- Playback -->
 		<setting label="Movies" type="lsep" />
-		<setting id="auto_play_movie" label="Auto Play" type="bool" default="false" />
-		<setting id="autoplay_quality_movie" label="Limit Auto Play Quality" type="action" default="SD, 720p, 1080p, 4K" visible="eq(-1,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=autoplay_quality_movie)" />
-		<setting id="results_quality_movie" label="Limit Quality" type="action" default="SD, 720p, 1080p, 4K" visible="eq(-2,false)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=results_quality_movie)" />
+		<setting id="auto_play_movie" label="Auto Play" type="bool" default="true" />
+		<setting id="autoplay_quality_movie" label="Limit Auto Play Quality" type="action" default="SD, 720p, 1080p" visible="eq(-1,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=autoplay_quality_movie)" />
+		<setting id="results_quality_movie" label="Limit Quality" type="action" default="SD, 720p, 1080p" visible="eq(-2,false)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=results_quality_movie)" />
 		<setting id="auto_resume_movie" label="Automatically Resume Playback" type="enum" default="0" values="Never|Always|Autoplay Only" />
 		<setting id="stingers.enable" label="Enable Credit Scene Notification (Movie Stingers)" type="bool" default="true" />
 			<setting id="stingers.threshold" label="Notification Threshold (Seconds After Start)" type="slider" default="10" range="10,10,60" option="int" subsetting="true" visible="eq(-1,true)" />
 		<setting label="Episodes" type="lsep" />
-		<setting id="autoscrape_next_episode" label="Autoscrape Next Episode (Source Select)" type="bool" default="false" />
+		<setting id="autoscrape_next_episode" label="Autoscrape Next Episode (Source Select)" type="bool" default="true" />
 			<setting id="autoscrape_next_window_time" label="Show Notification Before End (secs)" type="slider" default="20" range="10,10,180" option="int" subsetting="true" visible="eq(-1,true)" />
-		<setting id="auto_play_episode" label="Auto Play" type="bool" default="false" />
-		<setting id="autoplay_quality_episode" label="Limit Auto Play Quality" type="action" default="SD, 720p, 1080p, 4K" visible="eq(-1,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=autoplay_quality_episode)" />
-		<setting id="autoplay_next_episode" label="Autoplay Next Episode" type="bool" default="false" visible="eq(-2,true)" />
+		<setting id="auto_play_episode" label="Auto Play" type="bool" default="true" />
+		<setting id="autoplay_quality_episode" label="Limit Auto Play Quality" type="action" default="SD, 720p, 1080p" visible="eq(-1,true)" action="RunPlugin(plugin://plugin.video.pov/?mode=set_quality_choice&amp;quality_setting=autoplay_quality_episode)" />
+		<setting id="autoplay_next_episode" label="Autoplay Next Episode" type="bool" default="true" visible="eq(-2,true)" />
 			<setting id="autoplay_next_show_window" label="Show Next Episode Window" type="bool" default="true" subsetting="true" visible="eq(-3,true)+eq(-1,true)" />
 			<setting id="autoplay_next_window_timer_method" label="Show Window Based On" type="enum" default="0" values="Time Remaining|Percentage Played" subsetting="true" visible="eq(-4,true)+eq(-2,true)+eq(-1,true)" />
 			<setting id="autoplay_next_window_time" label="Show Window Before End (secs)" type="slider" default="20" range="10,10,180" option="int" subsetting="true" visible="eq(-5,true)+eq(-3,true)+eq(-2,true)+eq(-1,0)" />
@@ -291,12 +291,12 @@
 			<setting id="results.language" label="Priority Language" type="select" default="English" values="English|Arabic|Bengali|Bulgarian|Chinese|Croatian|Czech|Danish|Dutch|Finnish|French|German|Greek|Hebrew|Hindi|Hungarian|Icelandic|Indonesian|Italian|Japanese|Korean|Malay|Norwegian|Persian|Polish|Portuguese|Portuguese (Brazil)|Punjabi|Romanian|Russian|Serbian|Slovenian|Spanish|Swedish|Tagalog|Tamil|Telugu|Thai|Turkish|Ukrainian|Urdu|Vietnamese" subsetting="true" enable="eq(-1,true)" />
 		<!-- Sorting and Filtering -->
 		<setting label="Sorting and Filtering" type="lsep" />
-		<setting id="results.sort_order_display" label="Results Sorting" type="action" default="Quality, Provider, Size" action="RunPlugin(plugin://plugin.video.pov/?mode=results_sorting_choice)" />
+		<setting id="results.sort_order_display" label="Results Sorting" type="action" default="Size, Quality, Provider" action="RunPlugin(plugin://plugin.video.pov/?mode=results_sorting_choice)" />
 		<setting id="results.sort_size" label="Size Sort Order" type="enum" default="0" values="Descending|Ascending" />
-		<setting id="results.size_filter" label="Filter Results by Size" type="enum" default="0" values="Never|Download Speed|File Size" />
+		<setting id="results.size_filter" label="Filter Results by Size" type="enum" default="2" values="Never|Download Speed|File Size" />
 			<setting id="results.size.speed" label="Internet Speed (Mbit/s)" type="number" default="20" subsetting="true" visible="eq(-1,1)" />
-			<setting id="results.size.file" label="File Size (MB)" type="number" default="10000" subsetting="true" visible="eq(-2,2)" />
-		<setting id="results.include.unknown.size" label="Include Results With Unknown Size" type="bool" default="true" />
+			<setting id="results.size.file" label="File Size (MB)" type="number" default="5000" subsetting="true" visible="eq(-2,2)" />
+		<setting id="results.include.unknown.size" label="Include Results With Unknown Size" type="bool" default="false" />
 		<setting id="include_prerelease_results" label="Include Pre-Release Results (CAM/SCR/TELE)" type="bool" default="false" />
 		<setting id="include_3d_results" label="Include 3D Results" type="bool" default="false" />
 		<setting id="filter_hevc" label="HEVC Files Filter" type="enum" default="0" values="Include|Exclude|Prefer (Autoplay)|Sort to Top" />
