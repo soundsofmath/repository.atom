@@ -22,7 +22,6 @@ from resolveurl.lib.net import Net, get_ua  # @UnusedImport  # NOQA
 from resolveurl.lib import cache  # @UnusedImport  # NOQA
 from resolveurl.lib import kodi
 from resolveurl.lib import pyaes
-from random import choice
 
 logger = log_utils.Logger.get_logger()
 addon_path = kodi.get_path()
@@ -38,25 +37,24 @@ set_setting = kodi.set_setting
 open_settings = kodi.open_settings
 has_addon = kodi.has_addon
 i18n = kodi.i18n
+translate_path = kodi.translate_path
 
 # Supported video formats
 VIDEO_FORMATS = kodi.supported_video_extensions()
 
-# RAND_UA = get_ua()
-IE_USER_AGENT = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko'
-FF_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:140.0) Gecko/20100101 Firefox/140.0'
-OPERA_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36 OPR/119.0.0.0'
-IOS_USER_AGENT = 'Mozilla/5.0 (iPhone17,1; CPU iPhone OS 18_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Mohegan Sun/4.7.4'
-IPAD_USER_AGENT = 'Mozilla/5.0 (iPad16,3; CPU OS 18_3_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Tropicana_NJ/5.7.1'
-ANDROID_USER_AGENT = 'Mozilla/5.0 (Linux; Android 15; SM-S931U Build/AP3A.240905.015.A2; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/132.0.6834.163 Mobile Safari/537.36'
-EDGE_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0'
-CHROME_USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
-SAFARI_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_7_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15'
-SMR_USER_AGENT = 'ResolveURL for Kodi/%s' % (addon_version)
+# QR-Code file
+QR_FILE = kodi.translate_path('special://temp/qr_img.png')
 
-# Quick hack till I decide how to handle this
-_USER_AGENTS = [FF_USER_AGENT, OPERA_USER_AGENT, EDGE_USER_AGENT, CHROME_USER_AGENT, SAFARI_USER_AGENT]
-RAND_UA = choice(_USER_AGENTS)
+# temporary subtitles file
+VTT_FILE = kodi.translate_path('special://temp/temp_subs.en.vtt')
+
+# Byparr Support
+BP_ENABLED = kodi.get_setting('bp_enable') == 'true'
+BP_URL = kodi.get_setting('bp_url')
+BP_TIMEOUT = int(kodi.get_setting('bp_timeout') or '60')
+
+SMR_USER_AGENT = 'ResolveURL for Kodi/%s' % (addon_version)
+RAND_UA = get_ua()
 
 
 def log_file_hash(path):
@@ -67,6 +65,13 @@ def log_file_hash(path):
         py_data = ''
 
     logger.log('%s hash: %s' % (os.path.basename(path), hashlib.md5(py_data).hexdigest()))
+
+
+def make_qr_file(url):
+    import pyqrcode
+    image_url = pyqrcode.create(url)
+    image_url.png(QR_FILE, scale=4.4)
+    return QR_FILE
 
 
 def file_length(py_path, key=''):
@@ -116,3 +121,13 @@ def encrypt_py(plain_text, key):
         cipher_text = ''
 
     return cipher_text
+
+
+def write_subs(subs_file):
+    if kodi_version >= 19.0:
+        with open(VTT_FILE, 'w', encoding='utf-8') as f:
+            f.write(subs_file)
+    else:
+        with open(VTT_FILE, 'w') as f:
+            f.write(subs_file.encode('utf8'))
+    return VTT_FILE

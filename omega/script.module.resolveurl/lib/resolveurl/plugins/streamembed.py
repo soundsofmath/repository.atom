@@ -21,16 +21,17 @@ import re
 from resolveurl import common
 from resolveurl.lib import helpers
 from resolveurl.resolver import ResolveUrl, ResolverError
+from six.moves import urllib_parse
 
 
 class StreamEmbedResolver(ResolveUrl):
     name = 'StreamEmbed'
-    domains = ['bullstream.xyz', 'mp4player.site', 'watch.gxplayer.xyz']
-    pattern = r'(?://|\.)((?:bullstream|mp4player|watch.gxplayer)\.(?:xyz|site))/watch\?v=([0-9a-zA-Z]+)'
+    domains = ['bullstream.xyz', 'mp4player.site', 'watch.gxplayer.xyz', 'watch.brstream.cc']
+    pattern = r'(?://|\.)((?:watch\.)?(?:br|bull|mp4|gx)(?:player|stream)\.(?:xyz|site|cc))/watch\?v=([0-9a-zA-Z]+)'
 
     def get_media_url(self, host, media_id):
         web_url = self.get_url(host, media_id)
-        headers = {'User-Agent': common.FF_USER_AGENT}
+        headers = {'User-Agent': common.RAND_UA}
         html = self.net.http_GET(web_url, headers=headers).content
         data = re.search(r'var\s*video\s*=\s*(.*?);\s', html)
         if data:
@@ -43,7 +44,10 @@ class StreamEmbedResolver(ResolveUrl):
             if 'type=audio' not in html.lower():
                 sources = re.findall(r'\d+x(?P<label>[\d]+).*\n(?P<url>[^\n]+)', html)
                 if sources:
-                    return helpers.pick_source(helpers.sort_sources_list(sources)) + helpers.append_headers(headers)
+                    source = helpers.pick_source(helpers.sort_sources_list(sources))
+                    if source.startswith('/'):
+                        source = urllib_parse.urljoin(url, source)
+                    return source + helpers.append_headers(headers)
             else:
                 return url + helpers.append_headers(headers)
 

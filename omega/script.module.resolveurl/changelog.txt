@@ -1,23 +1,21 @@
-Version 5.1.178 (Sep 01, 2025)
+Version 5.1.208 (Aug 30, 2026)
 - Code Base Changes:
     - None
 
 - Resolvers Added:
-    - None
+    - anonstream
+    - vcdnlare
 
 - Resolvers Fixed/Updated:
-    - doodstream
-    - filelions
-    - kinoger
-    - streamwish
-    - updown
-    - uploadflix
-    - vidguard
-    - vidtube
-    - wecima
+    - embedojo
+    - flyfile
+    - uperbox
+    - vidsonic
+    - voesx
 
 - Resolvers Removed
     - None
+
 
 - Languages Added/Updated
     - None
